@@ -1,0 +1,33 @@
+name: Publish NuGet Package
+
+on:
+  push:
+    branches:
+      - main  # Or your release branch
+
+jobs:
+  build_and_publish:
+    runs-on: windows-latest  # Use a Windows runner to build .NET projects
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '8.0.x'  # Specify your .NET version
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Pack
+        run: dotnet pack --configuration Release --no-build --output ./nupkg
+
+      - name: Pack and Publish Autodesk.Authentication
+        run: |
+          dotnet pack Autodesk.Authentication/Autodesk.Authentication.csproj --configuration Release --no-build --output ./nupkg
+          dotnet nuget push Autodesk.Authentication/nupkg/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+        if: github.ref == 'refs/heads/main'  # Ensure this only runs on pushes to main
