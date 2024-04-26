@@ -29,5 +29,5 @@ jobs:
       - name: Pack and Publish Autodesk.Authentication
         run: |
           dotnet pack Autodesk.Authentication/Autodesk.Authentication.csproj --configuration Release --no-build --output ./nupkg
-          dotnet nuget push Autodesk.Authentication/nupkg/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+          dotnet nuget ./*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
         if: github.ref == 'refs/heads/main'  # Ensure this only runs on pushes to main
