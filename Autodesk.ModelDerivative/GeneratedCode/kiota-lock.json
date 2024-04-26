@@ -1,0 +1,44 @@
+{
+  "descriptionHash": "AEB9F60B76841E2B12A1D1DF371369285D44DCE2CE90742A3EA66E0AF95AB46841CA29CD087C6BDF13D2F8C77B160F237B25D89321A5BACC02D69AA14D84FDAB",
+  "descriptionLocation": "..\\..\\..\\private\\Autodesk.ModelDerivative\\OpenAPI\\Autodesk.ModelDerivative.yaml",
+  "lockFileVersion": "1.0.0",
+  "kiotaVersion": "1.13.0",
+  "clientClassName": "BaseModelDerivativeClient",
+  "clientNamespaceName": "Autodesk.ModelDerivative",
+  "language": "CSharp",
+  "usesBackingStore": false,
+  "excludeBackwardCompatible": false,
+  "includeAdditionalData": false,
+  "serializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Text.TextSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Form.FormSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Multipart.MultipartSerializationWriterFactory"
+  ],
+  "deserializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Text.TextParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Form.FormParseNodeFactory"
+  ],
+  "structuredMimeTypes": [
+    "application/json",
+    "text/plain",
+    "application/x-www-form-urlencoded",
+    "multipart/form-data"
+  ],
+  "includePatterns": [
+    "/designdata/formats",
+    "/designdata/job",
+    "/designdata/{urn}/manifest",
+    "/designdata/{urn}/manifest/{derivativeUrn}",
+    "/designdata/{urn}/manifest/{derivativeUrn}/signedcookies",
+    "/designdata/{urn}/metadata",
+    "/designdata/{urn}/metadata/{modelGuid}",
+    "/designdata/{urn}/metadata/{modelGuid}/properties",
+    "/designdata/{urn}/metadata/{modelGuid}/properties:query",
+    "/designdata/{urn}/references",
+    "/designdata/{urn}/thumbnail"
+  ],
+  "excludePatterns": [],
+  "disabledValidationRules": []
+}

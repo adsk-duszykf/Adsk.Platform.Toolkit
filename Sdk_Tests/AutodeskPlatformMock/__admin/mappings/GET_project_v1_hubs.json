@@ -1,0 +1,153 @@
+{
+  "Guid": "3aab4d39-5b4c-4c53-950c-b9d5329c9f66",
+  "UpdatedAt": "2024-04-24T08:27:17.9916806Z",
+  "Title": "Proxy Mapping for GET /project/v1/hubs",
+  "Description": "Proxy Mapping for GET /project/v1/hubs",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/project/v1/hubs",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Host",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "localhost:4200",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "User-Agent",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "kiota-dotnet/1.2.0",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Accept-Encoding",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "gzip, deflate",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ],
+    "Params": [
+      {
+        "Name": "filter%5Battributes.name%5D",
+        "Matchers": [
+          {
+            "Name": "ExactMatcher",
+            "Pattern": "AdskDuszykf",
+            "IgnoreCase": false
+          }
+        ]
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "jsonapi": {
+        "version": "1.0"
+      },
+      "links": {
+        "self": {
+          "href": "https://developer.api.autodesk.com/project/v1/hubs?filter%5Battributes.name%5D=AdskDuszykf"
+        }
+      },
+      "data": [
+        {
+          "type": "hubs",
+          "id": "b.0d4abac9-fe59-48c7-9321-23db942f45a7",
+          "attributes": {
+            "name": "AdskDuszykf",
+            "extension": {
+              "type": "hubs:autodesk.bim360:Account",
+              "version": "1.0",
+              "schema": {
+                "href": "https://developer.api.autodesk.com/schema/v1/versions/hubs:autodesk.bim360:Account-1.0"
+              },
+              "data": {}
+            },
+            "region": "US"
+          },
+          "links": {
+            "self": {
+              "href": "https://developer.api.autodesk.com/project/v1/hubs/b.0d4abac9-fe59-48c7-9321-23db942f45a7"
+            }
+          },
+          "relationships": {
+            "projects": {
+              "links": {
+                "related": {
+                  "href": "https://developer.api.autodesk.com/project/v1/hubs/b.0d4abac9-fe59-48c7-9321-23db942f45a7/projects"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "meta": {
+        "warnings": [
+          {
+            "Id": null,
+            "HttpStatusCode": "403",
+            "ErrorCode": "BIM360DM_ERROR",
+            "Title": "Unable to get hubs from BIM360DM APAC.",
+            "Detail": "You don't have permission to access this API",
+            "AboutLink": null,
+            "Source": null,
+            "meta": null
+          }
+        ]
+      }
+    },
+    "Headers": {
+      "Content-Type": "application/vnd.api+json",
+      "Server": "nginx",
+      "Date": "Wed, 24 Apr 2024 08:27:17 GMT",
+      "Transfer-Encoding": "chunked",
+      "Connection": "keep-alive",
+      "Vary": "Accept-Encoding",
+      "X-Frame-Options": "SAMEORIGIN",
+      "X-XSS-Protection": "1; mode=block",
+      "X-Content-Type-Options": "nosniff",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "X-Request-ID": "407a62bd-159e-4ff8-ac0b-4cd400f55185",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+    }
+  }
+}

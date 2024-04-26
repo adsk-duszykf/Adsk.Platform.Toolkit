@@ -1,0 +1,40 @@
+{
+  "descriptionHash": "782BB701E4FD993E942CB4942BF61E3F19A7FA83F24359B3C0F83F0F75BB0F94FCD6778492116D63BE16DCC618B8939985F1457B72C1E78E202E01DB0BB3BA9F",
+  "descriptionLocation": "..\\..\\..\\private\\Autodesk.Authentication\\OpenAPI\\authentication.yaml",
+  "lockFileVersion": "1.0.0",
+  "kiotaVersion": "1.13.0",
+  "clientClassName": "BaseAuthenticationClient",
+  "clientNamespaceName": "Autodesk.Authentication",
+  "language": "CSharp",
+  "usesBackingStore": false,
+  "excludeBackwardCompatible": false,
+  "includeAdditionalData": false,
+  "serializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Text.TextSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Form.FormSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Multipart.MultipartSerializationWriterFactory"
+  ],
+  "deserializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Text.TextParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Form.FormParseNodeFactory"
+  ],
+  "structuredMimeTypes": [
+    "application/json",
+    "text/plain",
+    "application/x-www-form-urlencoded",
+    "multipart/form-data"
+  ],
+  "includePatterns": [
+    "/.well-known/openid-configuration",
+    "/authentication/v2/authorize",
+    "/authentication/v2/introspect",
+    "/authentication/v2/keys",
+    "/authentication/v2/logout",
+    "/authentication/v2/revoke",
+    "/authentication/v2/token"
+  ],
+  "excludePatterns": [],
+  "disabledValidationRules": []
+}

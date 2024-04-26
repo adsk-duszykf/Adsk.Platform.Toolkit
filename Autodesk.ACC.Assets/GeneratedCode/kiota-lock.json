@@ -1,0 +1,52 @@
+{
+  "descriptionHash": "3DCC4BF28777A0C481CB406283274BA094B7D64E6534A98EF9798546CB9AAA7BFD6E8EDB3320214CCADB39211A3EEC9ABAEA4B2D2EE45C172F0233DFFDE91B8C",
+  "descriptionLocation": "../../../private/Autodesk.ACC.Assets/OpenAPI/assets.yaml",
+  "lockFileVersion": "1.0.0",
+  "kiotaVersion": "1.7.0",
+  "clientClassName": "BaseModelPropertiesClient",
+  "clientNamespaceName": "Autodesk.ACC.ModelProperties",
+  "language": "CSharp",
+  "usesBackingStore": false,
+  "excludeBackwardCompatible": false,
+  "includeAdditionalData": false,
+  "serializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Text.TextSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Form.FormSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Multipart.MultipartSerializationWriterFactory"
+  ],
+  "deserializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Text.TextParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Form.FormParseNodeFactory"
+  ],
+  "structuredMimeTypes": [
+    "application/json",
+    "text/plain",
+    "application/x-www-form-urlencoded",
+    "multipart/form-data"
+  ],
+  "includePatterns": [
+    "/v2/projects/{projectId}/custom-properties/lineages/{lineageUrn}/values",
+    "/v2/projects/{projectId}/custom-properties/parameters",
+    "/v2/projects/{projectId}/custom-properties/parameters/{parameterId}",
+    "/v2/projects/{projectId}/diffs/{diffId}",
+    "/v2/projects/{projectId}/diffs/{diffId}/fields",
+    "/v2/projects/{projectId}/diffs/{diffId}/manifest",
+    "/v2/projects/{projectId}/diffs/{diffId}/properties",
+    "/v2/projects/{projectId}/diffs/{diffId}/queries",
+    "/v2/projects/{projectId}/diffs/{diffId}/queries/{queryId}",
+    "/v2/projects/{projectId}/diffs/{diffId}/queries/{queryId}/properties",
+    "/v2/projects/{projectId}/diffs:batch-status",
+    "/v2/projects/{projectId}/indexes/{indexId}",
+    "/v2/projects/{projectId}/indexes/{indexId}/fields",
+    "/v2/projects/{projectId}/indexes/{indexId}/manifest",
+    "/v2/projects/{projectId}/indexes/{indexId}/properties",
+    "/v2/projects/{projectId}/indexes/{indexId}/queries",
+    "/v2/projects/{projectId}/indexes/{indexId}/queries/{queryId}",
+    "/v2/projects/{projectId}/indexes/{indexId}/queries/{queryId}/properties",
+    "/v2/projects/{projectId}/indexes:batch-status"
+  ],
+  "excludePatterns": [],
+  "disabledValidationRules": []
+}

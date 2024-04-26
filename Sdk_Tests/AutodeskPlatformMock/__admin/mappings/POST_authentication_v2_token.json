@@ -1,0 +1,117 @@
+{
+  "Guid": "c6b68526-d43d-4c70-a32f-e19843cb04f5",
+  "UpdatedAt": "2024-04-24T08:27:17.4459591Z",
+  "Title": "Proxy Mapping for POST /authentication/v2/token",
+  "Description": "Proxy Mapping for POST /authentication/v2/token",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/authentication/v2/token",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "POST"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Host",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "localhost:4200",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "User-Agent",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "kiota-dotnet/1.2.0",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Accept-Encoding",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "gzip, deflate",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Content-Type",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/x-www-form-urlencoded",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Content-Length",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "130",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ],
+    "Body": {
+      "Matcher": {
+        "Name": "ExactMatcher",
+        "Pattern": "grant_type=client_credentials&scope=bucket%3Acreate%20bucket%3Adelete%20data%3Aread%20data%3Acreate%20data%3Awrite%20data%3Asearch",
+        "IgnoreCase": true
+      }
+    }
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "access_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjY0RE9XMnJoOE9tbjNpdk1NU0xlNGQ2VHEwUV9SUzI1NiIsInBpLmF0bSI6ImFzc2MifQ.eyJzY29wZSI6WyJidWNrZXQ6Y3JlYXRlIiwiYnVja2V0OmRlbGV0ZSIsImRhdGE6cmVhZCIsImRhdGE6Y3JlYXRlIiwiZGF0YTp3cml0ZSIsImRhdGE6c2VhcmNoIl0sImNsaWVudF9pZCI6ImVkbnFBbXNDRWtrbE1JQVZyY042ZVFQQUtMc2ZWblhnIiwiaXNzIjoiaHR0cHM6Ly9kZXZlbG9wZXIuYXBpLmF1dG9kZXNrLmNvbSIsImF1ZCI6Imh0dHBzOi8vYXV0b2Rlc2suY29tIiwianRpIjoiTXppOTFwQlJwUWpBbUZaUHVCWkh0NW11dTl2MjdUOHZYd1JiRFVYc2tVdjlqY210Smh4Q2sycnd4ZjBLWnAxVSIsImV4cCI6MTcxMzk1MDgzN30.LG_JAUDiTBw_jMi09-TaznwsN4axN3BweWmu4MYUEMfbgGYzCyuEHmCdx53b5i2ZxNC-xaQ1EQ22eW3_U1LIQimsCkm8g4kKPOmMRRFHAeyLUQuk-noKyXPWu-zZeYXBkIhnhhmwHXtvl1ZYWU-tVaprsJXKl3rGHET33Sz980ZshGbfiv7kVj-7PJmzcTyMNpEAklqs1-Ay3CoJwAAsKtuN2_t7mQ-p2DYIv7UEi8-2NZDXww3JwB1aZBakkGlCryn5l7tjhJzUJgxCCy0OCSh5QctqPZFWCjvvKg2wUyW1pthDYU-tYMWam_kSdQ5IhWhF4OIL_O9MBTrDD9hjMQ",
+      "token_type": "Bearer",
+      "expires_in": 3599
+    },
+    "Headers": {
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "909",
+      "Server": "nginx",
+      "Date": "Wed, 24 Apr 2024 08:27:17 GMT",
+      "Connection": "keep-alive",
+      "Cache-Control": "no-store",
+      "Pragma": "no-cache",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+      "X-Request-ID": "4fb7fb8d-0577-4a08-829e-42458a65a0f1",
+      "X-Frame-Options": "SAMEORIGIN"
+    }
+  }
+}

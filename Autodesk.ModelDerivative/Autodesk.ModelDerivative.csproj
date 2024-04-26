@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>$(AssemblyName)</Title>
+    <Authors>DuszykF</Authors>
+    <Company>Autodesk</Company>
+    <Description>Autodesk Platform: Model Derivative Service SDK</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Kiota.Serialization.Form" Version="1.1.6" />
+    <PackageReference Include="Microsoft.Kiota.Serialization.Json" Version="1.2.2" />
+    <PackageReference Include="Microsoft.Kiota.Serialization.Multipart" Version="1.1.4" />
+    <PackageReference Include="Microsoft.Kiota.Serialization.Text" Version="1.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Autodesk.Common.HttpClient\Autodesk.Common.HttpClientLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
