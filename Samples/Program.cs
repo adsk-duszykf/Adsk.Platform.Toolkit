@@ -61,9 +61,6 @@ Func<Task<string>> GetAccessToken()
         return token?.AccessToken is null ? throw new InvalidOperationException() : token.AccessToken;
     };
 }
-void test() {
-    var a=new HttpClientRequestAdapter(new AnonymousAuthenticationProvider,)
-}
 
 class ParseNode : IParseNodeFactory
 {
