@@ -29,4 +29,5 @@ jobs:
       - name: Publish Nuget Packages
         run: dotnet nuget push *.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
         working-directory: ./nupkg
+        continue-on-error: true  # Continue even if the push fails
         if: github.ref == 'refs/heads/main'  # Ensure this only runs on pushes to main
