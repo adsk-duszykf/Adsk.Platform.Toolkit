@@ -29,7 +29,5 @@ jobs:
           dotnet pack --configuration Release --no-build /p:Version=$VERSION --output ./nupkg
 
       - name: Publish Nuget Packages
-        run: dotnet nuget push *.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+        run: dotnet nuget push *.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate --no-symbols --verbosity detailed
         working-directory: ./nupkg
-        continue-on-error: true  # Continue even if the push fails
-        if: github.ref == 'refs/heads/main'  # Ensure this only runs on pushes to main
