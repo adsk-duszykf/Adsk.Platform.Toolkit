@@ -12,6 +12,8 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     
     <Version>1.0.1</Version>
+    
+    <PackageId>APS.Toolkit.Authentication</PackageId>
   </PropertyGroup>
 
   <ItemGroup>

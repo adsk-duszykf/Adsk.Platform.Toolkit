@@ -12,6 +12,8 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
 
     <Version>1.0.0</Version>
+
+    <PackageId>APS.Toolkit.ModelDerivative</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
