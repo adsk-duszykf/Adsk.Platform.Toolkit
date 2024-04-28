@@ -25,7 +25,7 @@ jobs:
 
       - name: Pack
         run: |
-          VERSION=$(echo ${{ github.ref }} | sed -e 's,refs/tags/v,,')
+          $VERSION = "${{ github.ref }}" -replace 'refs/tags/v', ''
           dotnet pack --configuration Release --no-build /p:Version=$VERSION --output ./nupkg
 
       - name: Publish Nuget Packages
