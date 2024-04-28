@@ -20,13 +20,19 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
 
-      - name: Build
+      - name: Get Version
+        id: get_version
+        
         run: |
           $VERSION = "${{ github.ref }}" -replace 'refs/tags/v', ''
-          dotnet build --configuration Release --no-restore /p:Version=$VERSION
+          echo "::set-output name=version::${{ github.ref }}" -replace 'refs/tags/v', ''
+
+      - name: Build
+        run: |
+          dotnet build --configuration Release --no-restore /p:Version=${{ steps.get_version.outputs.version }}
 
       - name: Pack
-        run:  dotnet pack --configuration Release --no-build /p:Version=$VERSION --output ./nupkg
+        run:  dotnet pack --configuration Release --no-build /p:Version=${{ steps.get_version.outputs.version }} --output ./nupkg
 
       - name: Publish Nuget Packages
         run: dotnet nuget push *.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
