@@ -2,8 +2,8 @@ name: Publish NuGet Package
 
 on:
   push:
-    branches:
-      - main  # Or your release branch
+    tags:
+      - 'v*'
 
 jobs:
   build_and_publish:
@@ -24,7 +24,9 @@ jobs:
         run: dotnet build --configuration Release --no-restore
 
       - name: Pack
-        run: dotnet pack --configuration Release --no-build --output ./nupkg
+        run: |
+          VERSION=$(echo ${{ github.ref }} | sed -e 's,refs/tags/v,,')
+          dotnet pack --configuration Release --no-build /p:Version=$VERSION --output ./nupkg
 
       - name: Publish Nuget Packages
         run: dotnet nuget push *.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
