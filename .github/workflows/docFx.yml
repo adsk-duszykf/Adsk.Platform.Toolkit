@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: windows-latest  # Use a Windows runner to build .NET projects
+    runs-on: ubuntu-latest  # Use a Windows runner to build .NET projects
 
     steps:
     - name: Checkout repository
