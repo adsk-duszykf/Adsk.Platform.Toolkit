@@ -30,8 +30,12 @@ jobs:
       run: docfx docfx.json
       working-directory: ./Documentation
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./Documentation/_site  # Set this to your DocFX output directory
+        # Upload entire repository
+        path: './Documentation/_site'
+        
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
