@@ -4,7 +4,10 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <PackageId>APS.Toolkit.ACC.AccountAdmin</PackageId>
+    <PackageId>Adsk.Platform.ACC.AccountAdmin</PackageId>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://aps.autodesk.com/en/docs/acc/v1/reference/http/admin-accounts-accountidprojects-GET/</PackageProjectUrl>
+
   </PropertyGroup>
 
   <ItemGroup>

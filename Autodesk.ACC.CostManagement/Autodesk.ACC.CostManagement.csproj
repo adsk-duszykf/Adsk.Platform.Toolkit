@@ -4,7 +4,9 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <PackageId>APS.Toolkit.ACC.CostManagement</PackageId>
+    <PackageId>Adsk.Platform.ACC.CostManagement</PackageId>
+    <PackageProjectUrl>https://aps.autodesk.com/en/docs/acc/v1/reference/http/cost-actions-POST/</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,6 +24,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Autodesk.Common.HttpClient\Autodesk.Common.HttpClientLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

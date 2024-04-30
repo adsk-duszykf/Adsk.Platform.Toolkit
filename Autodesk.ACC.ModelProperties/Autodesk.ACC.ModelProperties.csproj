@@ -5,17 +5,14 @@
     <RootNamespace>Autodesk.ModelProperties</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>$(AssemblyName)</Title>
-    <Authors>DuszykF</Authors>
-    <Company>Autodesk</Company>
     <Description>Autodesk Platform: Model Properties Service SDK</Description>
 
     <Version>1.0.0</Version>
 
     <PackageReadmeFile>README.md</PackageReadmeFile>
 
-    <PackageId>APS.Toolkit.ACC.ModelProperties</PackageId>
+    <PackageId>Adsk.Platform.ACC.ModelProperties</PackageId>
   </PropertyGroup>
 
   <ItemGroup>

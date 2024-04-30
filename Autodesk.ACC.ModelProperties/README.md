@@ -1,1 +1,1 @@
-﻿# Autodesk.ACC.ModelProperties
+﻿Fluent API and tools wrapping the Autodesk [ACC Model Properties Service](https://aps.autodesk.com/en/docs/acc/v1/reference/http/index-v2-index-fields-get/)

@@ -13,7 +13,9 @@
     
     <Version>1.0.1</Version>
     
-    <PackageId>APS.Toolkit.Authentication</PackageId>
+    <PackageId>Adsk.Platform.Authentication</PackageId>
+    
+    <PackageProjectUrl>https://aps.autodesk.com/en/docs/oauth/v2/developers_guide/overview/</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

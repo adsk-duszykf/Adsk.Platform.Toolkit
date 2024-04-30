@@ -6,14 +6,14 @@
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>$(AssemblyName)</Title>
-    <Authors>DuszykF</Authors>
-    <Company>Autodesk</Company>
-    <Description>Autodesk Platform: Model Derivative Service SDK</Description>
+    <Description>Autodesk Platform: Model Derivative Service SDK and tools</Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
 
     <Version>1.0.0</Version>
 
-    <PackageId>APS.Toolkit.ModelDerivative</PackageId>
+    <PackageId>Adsk.Platform.ModelDerivative</PackageId>
+
+    <PackageProjectUrl>https://aps.autodesk.com/en/docs/model-derivative/v2/developers_guide/overview/</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

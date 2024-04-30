@@ -7,15 +7,15 @@
     <RootNamespace>Autodesk.DataManagement</RootNamespace>
     <Title>$(AssemblyName)</Title>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Authors>DuszykF</Authors>
-    <Company>Autodesk</Company>
     <Description>Autodesk Platform: Data Management Service SDK</Description>
     
     <Version>1.0.0</Version>
     
     <PackageReadmeFile>README.md</PackageReadmeFile>
     
-    <PackageId>APS.Toolkit.DataManagement</PackageId>
+    <PackageId>Adsk.Platform.DataManagement</PackageId>
+    
+    <PackageProjectUrl>https://aps.autodesk.com/en/docs/data/v2/developers_guide/overview/</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

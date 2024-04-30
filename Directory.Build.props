@@ -1,0 +1,13 @@
+<!-- Default values for projects -->
+<Project>
+  <PropertyGroup>
+    <Company>-</Company>
+    <Authors>duszykf</Authors>
+    <Copyright>Copyright © 2023. All Rights Reserved.</Copyright>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <NeutralLanguage>en</NeutralLanguage>
+    <RepositoryUrl>https://github.com/adsk-duszykf/Adsk.Platform.Toolkit</RepositoryUrl>
+
+  </PropertyGroup>
+</Project>
