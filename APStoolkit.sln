@@ -32,8 +32,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autodesk.ACC.AccountAdmin",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autodesk.ACC.CostManagement", "Autodesk.ACC.CostManagement\Autodesk.ACC.CostManagement.csproj", "{01C677CB-BC24-4116-8A32-F357BA679A0D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autodesk.ACC.Assets", "Autodesk.ACC.Assets\Autodesk.ACC.Assets.csproj", "{A5091167-B72F-42F6-AA0A-FA8A9BEAB6E8}"
-EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Documentation", "Documentation\", "{7070175C-2F17-4EBD-8C78-7B9F53C06050}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
@@ -95,10 +93,6 @@ Global
 		{01C677CB-BC24-4116-8A32-F357BA679A0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01C677CB-BC24-4116-8A32-F357BA679A0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01C677CB-BC24-4116-8A32-F357BA679A0D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A5091167-B72F-42F6-AA0A-FA8A9BEAB6E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A5091167-B72F-42F6-AA0A-FA8A9BEAB6E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A5091167-B72F-42F6-AA0A-FA8A9BEAB6E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A5091167-B72F-42F6-AA0A-FA8A9BEAB6E8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7070175C-2F17-4EBD-8C78-7B9F53C06050}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7070175C-2F17-4EBD-8C78-7B9F53C06050}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{A81DA2EF-5919-4551-8701-F68B5A688853}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

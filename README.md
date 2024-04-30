@@ -43,14 +43,15 @@ Console.WriteLine($"Hubs: {string.Join(';', hubIds)}");
 
 The repository contains a C# SDK for several APS services, including:
 
-| Service | SDK | Helper functions |
-|:--|:--|:--|
-| Authentication | Stable | Yes |
-| Data Management | Stable | Yes |
-| Model Derivative | Stable | Yes |
-| ACC/BIM360 Account Admin | In development | No |
-| ACC Assets | In development | No |
-| ACC Cost Management | In development | No |
+| Service | SDK | Helper functions | Package |
+|--|--|--|--|
+| Authentication | Stable | [Yes](https://adsk-duszykf.github.io/Adsk.Platform.Toolkit/api/Autodesk.Authentication.Helpers.AuthenticationClientHelper.html) | [Adsk.Platform.Authentication](https://www.nuget.org/packages/Adsk.Platform.Authentication) |
+| Data Management | Stable | [Yes](https://adsk-duszykf.github.io/Adsk.Platform.Toolkit/api/Autodesk.DataManagement.Helpers.DataManagementClientHelper.html) | [Adsk.Platform.DataManagement](https://www.nuget.org/packages/Adsk.Platform.DataManagement) |
+| Model Derivative | Stable | [Yes](https://adsk-duszykf.github.io/Adsk.Platform.Toolkit/api/Autodesk.ModelDerivative.Helpers.ModelDerivativeClientHelper.html) | [Adsk.Platform.ModelDerivative](https://www.nuget.org/packages/Adsk.Platform.ModelDerivative) |
+| ACC Model Properties | Stable | [Yes](https://adsk-duszykf.github.io/Adsk.Platform.Toolkit/api/Autodesk.ACC.ModelProperties.Helpers.ModelPropertiesClientHelper.html) | [Adsk.Platform.ACC.ModelProperties](https://www.nuget.org/packages/Adsk.Platform.ACC.ModelProperties) |
+| ACC/BIM360 Account Admin | In development | No | [Adsk.Platform.ACC.AccountAdmin](https://www.nuget.org/packages/Adsk.Platform.ACC.AccountAdmin) |
+| ACC Cost Management | In development | No | [Adsk.Platform.ACC.CostManagement](https://www.nuget.org/packages/Adsk.Platform.ACC.CostManagement) |
+| ACC Assets | In development | No | - |
 
 ## Get started
 

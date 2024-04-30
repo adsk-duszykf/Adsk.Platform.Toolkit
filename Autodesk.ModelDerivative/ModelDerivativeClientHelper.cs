@@ -6,9 +6,16 @@ using Microsoft.Kiota.Http.HttpClientLibrary.Middleware.Options;
 
 namespace Autodesk.ModelDerivative.Helpers;
 
-public class ModelDerivativeClientHelper(BaseModelDerivativeClient api)
+public class ModelDerivativeClientHelper
 {
-
+    /// <summary>
+    /// The Model Derivative API client
+    /// </summary>
+    public BaseModelDerivativeClient Api { get; init; }
+    internal ModelDerivativeClientHelper(BaseModelDerivativeClient api)
+    {
+        Api = api;
+    }
     /// <summary>
     /// Returns the model tree, regardless of whether the model is in US or EMEA region.
     /// The ForceGet flag is used to retrieve large models tree.
@@ -30,7 +37,7 @@ public class ModelDerivativeClientHelper(BaseModelDerivativeClient api)
 
         if (string.IsNullOrEmpty(modelGuid))
         {
-            var views = await api.Designdata[fileUrnToBase64].Metadata.GetAsync();
+            var views = await Api.Designdata[fileUrnToBase64].Metadata.GetAsync();
             modelGuid = views?.Data?.Metadata?.FirstOrDefault()?.Guid
                             ?? throw new InvalidOperationException("No view found.");
         }
@@ -42,7 +49,7 @@ public class ModelDerivativeClientHelper(BaseModelDerivativeClient api)
                 InspectResponseHeaders = true
             };
             var responseHandler = new NativeResponseHandler();
-            var objectTree = await api.Designdata[fileUrnToBase64].Metadata[modelGuid].GetAsync(r =>
+            var objectTree = await Api.Designdata[fileUrnToBase64].Metadata[modelGuid].GetAsync(r =>
             {
                 r.QueryParameters.Forceget = true;
                 r.Options.Add(headersInspectorOption);
@@ -65,7 +72,7 @@ public class ModelDerivativeClientHelper(BaseModelDerivativeClient api)
         // Once the tree is ready, we can retrieve the data.
         // Note: Was not able to unzip the response body, so we are calling the API again to get the tree.
         // Then the content is unzipped with the HttpClient handler.
-        var objectTree = await api.Designdata[fileUrnToBase64].Metadata[modelGuid].GetAsync(r =>
+        var objectTree = await Api.Designdata[fileUrnToBase64].Metadata[modelGuid].GetAsync(r =>
         {
             r.QueryParameters.Forceget = true;
         });

@@ -6,14 +6,18 @@ using SDKmodels = Autodesk.ACC.ModelProperties.Models;
 
 namespace Autodesk.ACC.ModelProperties.Helpers;
 
-public class ModelPropertiesClientHelper(BaseModelPropertiesClient client)
+public class ModelPropertiesClientHelper
 {
-
+    public BaseModelPropertiesClient Api { get; init; }
+    internal ModelPropertiesClientHelper(BaseModelPropertiesClient api)
+    {
+        Api = api;
+    }
     public async Task<List<Field>> GetFields(string projectId, string indexId)
     {
         projectId = FixProjectId(projectId);
 
-        var fieldsAsStream = await client.V2.Projects[projectId].Indexes[indexId].Fields.GetAsync()
+        var fieldsAsStream = await Api.V2.Projects[projectId].Indexes[indexId].Fields.GetAsync()
                                     ?? throw new InvalidOperationException("No field returned");
 
         return ConvertLDJsonToList<Field>(fieldsAsStream);
@@ -23,7 +27,7 @@ public class ModelPropertiesClientHelper(BaseModelPropertiesClient client)
     {
         projectId = FixProjectId(projectId);
 
-        var propertiesAsStream = await client.V2.Projects[projectId].Indexes[indexId].Queries[queryId].Properties.GetAsync()
+        var propertiesAsStream = await Api.V2.Projects[projectId].Indexes[indexId].Queries[queryId].Properties.GetAsync()
                                     ?? throw new InvalidOperationException("No property returned");
 
         return ConvertLDJsonToList<ExpandoObject>(propertiesAsStream);
@@ -39,7 +43,7 @@ public class ModelPropertiesClientHelper(BaseModelPropertiesClient client)
     {
         projectId = FixProjectId(projectId);
 
-        var response = await client.V2.Projects[projectId].IndexesBatchStatus.PostAsync(new SDKmodels.IndexVersionsQueryRequest()
+        var response = await Api.V2.Projects[projectId].IndexesBatchStatus.PostAsync(new SDKmodels.IndexVersionsQueryRequest()
         {
             Versions = [new() { VersionUrn = fileVersionUrns }]
         });
@@ -50,7 +54,7 @@ public class ModelPropertiesClientHelper(BaseModelPropertiesClient client)
         while (indexBuildState == SDKmodels.JobState.PROCESSING)
         {
             await Task.Delay(5000);
-            indexBuildStatus = await client.V2.Projects[projectId].Indexes[indexBuildStatus?.IndexId].GetAsync();
+            indexBuildStatus = await Api.V2.Projects[projectId].Indexes[indexBuildStatus?.IndexId].GetAsync();
             indexBuildState = indexBuildStatus?.State;
         }
 
@@ -66,14 +70,14 @@ public class ModelPropertiesClientHelper(BaseModelPropertiesClient client)
     {
         projectId = FixProjectId(projectId);
 
-        var queryRunStatus = await client.V2.Projects[projectId].Indexes[indexId].Queries.PostAsync(query);
+        var queryRunStatus = await Api.V2.Projects[projectId].Indexes[indexId].Queries.PostAsync(query);
 
         var queryRunState = queryRunStatus?.State;
 
         while (queryRunState == SDKmodels.JobState.PROCESSING)
         {
             await Task.Delay(5000);
-            queryRunStatus = await client.V2.Projects[projectId].Indexes[indexId].Queries[queryRunStatus?.QueryId].GetAsync();
+            queryRunStatus = await Api.V2.Projects[projectId].Indexes[indexId].Queries[queryRunStatus?.QueryId].GetAsync();
             queryRunState = queryRunStatus?.State;
         }
 

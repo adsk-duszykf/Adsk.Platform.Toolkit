@@ -9,13 +9,22 @@ using SDKmodels = Autodesk.DataManagement.Models;
 
 namespace Autodesk.DataManagement.Helpers;
 
-public class DataManagementClientHelper(BaseDataManagementClient dataMgtClient, BaseOSSClient ossClient)
+public class DataManagementClientHelper
 {
     private readonly HttpClient httpClient = new();
-    private readonly V1RequestBuilder _dataMgtClient = dataMgtClient.Data.V1;
-    private readonly V2RequestBuilder _ossClient = ossClient.Oss.V2;
+    private readonly V1RequestBuilder _dataMgtClient;
+    private readonly V2RequestBuilder _ossClient;
     private static readonly char[] separator = ['\\', '/'];
 
+    public BaseDataManagementClient DataMgtApi { get; init; }
+    public BaseOSSClient OssApi { get; init; }
+    internal DataManagementClientHelper(BaseDataManagementClient dataMgtApi, BaseOSSClient ossApi)
+    {
+        DataMgtApi = dataMgtApi;
+        OssApi = ossApi;
+        _dataMgtClient = dataMgtApi.Data.V1;
+        _ossClient = ossApi.Oss.V2;
+    }
     /// <summary>
     /// Download file version from ACC/BIM360
     /// </summary>
@@ -147,7 +156,7 @@ public class DataManagementClientHelper(BaseDataManagementClient dataMgtClient, 
 
         //Get the top folder
         var topFolderName = folders[2];
-        var topFolders = await dataMgtClient.Project.V1.Hubs[hubId].Projects[projectId].TopFolders.GetAsync();
+        var topFolders = await DataMgtApi.Project.V1.Hubs[hubId].Projects[projectId].TopFolders.GetAsync();
 
         var topFolder = topFolders?.Data?.FirstOrDefault(f => string.Equals(f?.Attributes?.Name, topFolderName, StringComparison.InvariantCultureIgnoreCase));
 
@@ -265,7 +274,7 @@ public class DataManagementClientHelper(BaseDataManagementClient dataMgtClient, 
     /// <returns>Hub Id</returns>
     public async Task<List<string>> GetHubIdByNameAsync(string hubName)
     {
-        var hubs = await dataMgtClient.Project.V1.Hubs.GetAsync(r => { r.QueryParameters.FilterattributesName = hubName; });
+        var hubs = await DataMgtApi.Project.V1.Hubs.GetAsync(r => { r.QueryParameters.FilterattributesName = hubName; });
 
         return hubs?.Data?.Select(h => h.Id ?? "")?.ToList() ?? [];
 
@@ -319,7 +328,7 @@ public class DataManagementClientHelper(BaseDataManagementClient dataMgtClient, 
 
         async Task<List<(string projectId, string projectName)>> getProjects(int pageNumber)
         {
-            var projects = await dataMgtClient.Project.V1.Hubs[hubId].Projects.GetAsync(r => { r.QueryParameters.Pagenumber = pageNumber; });
+            var projects = await DataMgtApi.Project.V1.Hubs[hubId].Projects.GetAsync(r => { r.QueryParameters.Pagenumber = pageNumber; });
 
             isLastPage = projects?.Links?.Next is null;
 

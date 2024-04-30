@@ -1,8 +1,36 @@
 ﻿# Authentication
 
-## Quick Start
+Each service needs an authentication provider. The authentication provider is passed to the `client` constructor as a function retrieving the access token.
+
+````csharp
+public async Task<Hubs> GetHub()
+{
+
+    async Task<string> getAccessToken()
+    {
+        //return access token with your logic
+    }
+
+    var DMclient = new DataManagementClient(getAccessToken);
+
+    var hubs = await DMclient.DataMgtApi.Project.V1.Hubs.GetAsync();
+
+    return hubs;
+}
+````
+
+
+## Authentication toolkit
+
+Install the `Adsk.Platform.Authentication` package:
+
+```dotnetcli
+dotnet add package Adsk.Platform.Authentication
+```
 
 ### 2 legged authentication
+
+Getting a 2-legged access token is a common scenario. The SDK provides a helper class to simplify:
 
 ````csharp
 // Create a new instance of the AuthenticationClient
@@ -14,6 +42,35 @@ var authClient = new AuthenticationClient();
 	APS_CLIENT_SECRET, 
 	[AuthenticationScope.DataWrite, AuthenticationScope.DataRead]);
 
+````
+
+Here is an example of how to get the hub list:
+
+````csharp
+using Autodesk.DataManagement;
+using Autodesk.Authentication;
+
+public async Task<Hubs> GetHub()
+{
+
+    var APS_CLIENT_ID="abcd"; // Replace with your client id
+    var APS_CLIENT_SECRET="1234"; // Replace with your client secret
+
+    AuthenticationClient authClient = new();
+
+    async Task<string> getAccessToken()
+    {
+        var token = await authClient.Helper.GetTwoLeggedToken(APS_CLIENT_ID, APS_CLIENT_SECRET, [ AuthenticationScope.DataRead]);
+
+        return token?.AccessToken is null ? throw new InvalidOperationException() : token.AccessToken;
+    }
+
+    var DMclient = new DataManagementClient(getAccessToken);
+
+    var hubs = await DMclient.DataMgtApi.Project.V1.Hubs.GetAsync();
+
+    return hubs;
+}
 ````
 
 ### 3 legged authentication

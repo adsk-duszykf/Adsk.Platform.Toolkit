@@ -3,12 +3,26 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
 using Autodesk.Authentication.Authentication.V2.Token;
-using SDKmodels=Autodesk.Authentication.Models;
 using Autodesk.Authentication.Helpers.Models;
+using SDKmodels = Autodesk.Authentication.Models;
 
 namespace Autodesk.Authentication.Helpers;
-public class AuthenticationClientHelper(BaseAuthenticationClient authClient, HttpClient httpClient)
+/// <summary>
+/// Helper class for the Autodesk Authentication SDK
+/// </summary>
+public class AuthenticationClientHelper
 {
+    private readonly HttpClient httpClient;
+
+    /// <summary>
+    /// The Authentication API client
+    /// </summary>
+    public BaseAuthenticationClient Api { get; init; }
+    internal AuthenticationClientHelper(BaseAuthenticationClient api, HttpClient httpClient)
+    {
+        Api = api;
+        this.httpClient = httpClient;
+    }
     /// <summary>
     /// Create the url for reaching the Autodesk login page with PKCE authentication
     /// </summary>
@@ -56,7 +70,7 @@ public class AuthenticationClientHelper(BaseAuthenticationClient authClient, Htt
     }
 
     /// <summary>
-    /// Create the url for reaching the Autodesk login page with PKCE authentication
+    /// Create the url for reaching the Autodesk login page (3legged Auth)
     /// </summary>
     /// <param name="clientId">Autodesk App Id</param>
     /// <param name="redirectUri">Callback url</param>
@@ -64,7 +78,7 @@ public class AuthenticationClientHelper(BaseAuthenticationClient authClient, Htt
     /// <param name="nonce">Optional, except if scope is 'OpenId'</param>
     /// <param name="state"></param>
     /// <param name="forceLogin"></param>
-    /// <returns>Url for Autodesk PKCE authentication</returns>
+    /// <returns>Url for the Autodesk login page</returns>
     public static string CreateAuthenticationUrl(string clientId, string redirectUri, IEnumerable<AuthenticationScope> scope, string nonce = "", string state = "", bool forceLogin = false)
     {
         var scopeAsString = CreateScopeString(scope);
@@ -120,7 +134,7 @@ public class AuthenticationClientHelper(BaseAuthenticationClient authClient, Htt
             Scope = scopes is null ? null : CreateScopeString(scopes)
         };
 
-        var result = await authClient.Authentication.V2.Token.PostAsync(bodyReq, r =>
+        var result = await Api.Authentication.V2.Token.PostAsync(bodyReq, r =>
         {
             r.Headers.Add("Authorization", CreateAuthorizationString(clientId, clientSecret));
         });
@@ -176,7 +190,7 @@ public class AuthenticationClientHelper(BaseAuthenticationClient authClient, Htt
 
         var authString = CreateAuthorizationString(clientId, clientSecret);
 
-        var result = await authClient.Authentication.V2.Token.PostAsync(body, r =>
+        var result = await Api.Authentication.V2.Token.PostAsync(body, r =>
         {
             r.Headers.Add("Authorization", authString);
         });
@@ -224,9 +238,9 @@ public class AuthenticationClientHelper(BaseAuthenticationClient authClient, Htt
 
 }
 
-public static class EnumExtensions
+internal static class EnumExtensions
 {
-    public static string? GetEnumMemberValue<TEnum>(this TEnum enumValue) where TEnum : struct, IConvertible
+    internal static string? GetEnumMemberValue<TEnum>(this TEnum enumValue) where TEnum : struct, IConvertible
     {
         if (!typeof(TEnum).IsEnum)
         {

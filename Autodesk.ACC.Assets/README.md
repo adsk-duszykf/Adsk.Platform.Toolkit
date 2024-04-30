@@ -1,1 +1,0 @@
-Fluent API and tools wrapping the Autodesk [ACC Assets Service](https://aps.autodesk.com/en/docs/acc/v1/reference/http/assets-assets-batch-create-POST-v2/)
