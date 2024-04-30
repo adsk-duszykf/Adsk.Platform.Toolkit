@@ -1,0 +1,32 @@
+name: Publish DocFX Documentation
+
+on:
+  push:
+    tags:
+      - 'd*'
+
+jobs:
+  build-and-deploy:
+    runs-on: windows-latest  # Use a Windows runner to build .NET projects
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '8.0.x'  # Set the version required by your DocFX project
+
+    - name: Install DocFX
+      run: dotnet tool update -g docfx
+
+    - name: Build documentation
+      run: docfx docfx.json
+      working-directory: ./Documentation
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./Documentation/_site  # Set this to your DocFX output directory
