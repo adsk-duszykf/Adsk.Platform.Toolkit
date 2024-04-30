@@ -4,7 +4,12 @@ on:
   push:
     tags:
       - 'd*'
-
+  
+permissions:
+  actions: read
+  pages: write
+  id-token: write
+  
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest  # Use a Windows runner to build .NET projects
