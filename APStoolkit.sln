@@ -55,6 +55,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Documentation", "Documentat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samples", "Samples\Samples.csproj", "{A81DA2EF-5919-4551-8701-F68B5A688853}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autodesk.ACC.CustomAttributes", "Autodesk.ACC.CustomAttributes\Autodesk.ACC.CustomAttributes.csproj", "{13CE690A-C0DB-42B6-A887-8F590CFB22EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{A81DA2EF-5919-4551-8701-F68B5A688853}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A81DA2EF-5919-4551-8701-F68B5A688853}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A81DA2EF-5919-4551-8701-F68B5A688853}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13CE690A-C0DB-42B6-A887-8F590CFB22EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13CE690A-C0DB-42B6-A887-8F590CFB22EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13CE690A-C0DB-42B6-A887-8F590CFB22EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13CE690A-C0DB-42B6-A887-8F590CFB22EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
