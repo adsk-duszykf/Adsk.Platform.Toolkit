@@ -2,36 +2,36 @@
 using Autodesk.Authentication.Helpers.Models;
 using Autodesk.DataManagement;
 using Sdk_Tests;
-using WireMock.Server;
 
 namespace Tests.DataManagement;
 
 [TestClass]
 public class DataManagementClientHelperTests
 {
-    private static WireMockServer? _server;
-    private static readonly string PROXY_URL = "http://localhost:4200";
     private static readonly Settings config = Settings.Load();
+
+    private DataManagementClient DMclient { get; init; }
+
+    public DataManagementClientHelperTests()
+    {
+        DMclient = InitializeDMclient();
+    }
 
     [ClassInitialize]
     public static void StartMockServer(TestContext context)
     {
-        _server = APSmockServer.StartMockServer(PROXY_URL);
+        APSmockServer.StartMockServer();
     }
 
     [ClassCleanup]
     public static void StopMockServer()
     {
-
-        _server?.Stop();
-        _server?.Dispose();
+        APSmockServer.Dispose();
     }
+
     [TestMethod]
     public async Task ShouldReturnHubs()
     {
-
-        var DMclient = InitializeDMclient();
-
         var hubs = await DMclient.DataMgtApi.Project.V1.Hubs.GetAsync();
 
         Assert.IsNotNull(hubs);
@@ -40,9 +40,6 @@ public class DataManagementClientHelperTests
     [TestMethod]
     public async Task ShouldReturnHubIdGivingItsName()
     {
-
-        var DMclient = InitializeDMclient();
-
         var hubs = await DMclient.Helper.GetHubIdByNameAsync(config.HUB_NAME);
 
         Assert.IsNotNull(hubs);
@@ -51,9 +48,6 @@ public class DataManagementClientHelperTests
     [TestMethod]
     public async Task ShouldReturnProjectsGivingHubName()
     {
-
-        var DMclient = InitializeDMclient();
-
         var projects = await DMclient.Helper.GetAllProjectsByHubNameAsync(config.HUB_NAME);
 
         Assert.IsNotNull(projects);
@@ -63,9 +57,6 @@ public class DataManagementClientHelperTests
     [TestMethod]
     public async Task ShouldReturnFileListWithinFolder()
     {
-
-        var DMclient = InitializeDMclient();
-
         var files = await DMclient.Helper.GetLatestFilesVersionAsync(config.PROJECT_ID, config.FOLDER_ID);
 
         Assert.IsNotNull(files);
@@ -73,9 +64,6 @@ public class DataManagementClientHelperTests
     [TestMethod]
     public async Task ShouldReturnRevitFileListWithinFolder()
     {
-        var DMclient = InitializeDMclient();
-
-
         var files = await DMclient.Helper.GetLatestFileVersionAsync(config.PROJECT_ID, config.FOLDER_ID, ["rvt"]);
 
         Assert.IsNotNull(files);
@@ -84,8 +72,6 @@ public class DataManagementClientHelperTests
     [TestMethod]
     public async Task ShouldFindFileByPath()
     {
-        var DMclient = InitializeDMclient();
-
         var file = await DMclient.Helper.GetFileItemByPathAsync(config.SAMPLE_FILE_PATH);
 
         Assert.IsNotNull(file);
@@ -93,8 +79,6 @@ public class DataManagementClientHelperTests
     [TestMethod]
     public async Task ShouldReturnFolderGivingItsPath()
     {
-        var DMclient = InitializeDMclient();
-
         var folderPath = Path.GetDirectoryName(config.SAMPLE_FILE_PATH) ?? throw new ArgumentException($"'{nameof(config.SAMPLE_FILE_PATH)}' is invalid");
         var folder = await DMclient.Helper.GetFolderByPathAsync(folderPath);
 
@@ -107,8 +91,6 @@ public class DataManagementClientHelperTests
     [TestMethod]
     public async Task ShouldReturnFoldersWithinFolder()
     {
-        var DMclient = InitializeDMclient();
-
         var folderPath = Path.GetDirectoryName(config.SAMPLE_FILE_PATH) ?? throw new ArgumentException($"'{nameof(config.SAMPLE_FILE_PATH)}' is invalid");
         var folders = await DMclient.Helper.GetAllSubFoldersByPathAsync(folderPath);
 
@@ -119,8 +101,6 @@ public class DataManagementClientHelperTests
     [TestMethod]
     public async Task ShouldReturnFilesWithinFolder()
     {
-        var DMclient = InitializeDMclient();
-
         var folderPath = Path.GetDirectoryName(config.SAMPLE_FILE_PATH) ?? throw new ArgumentException($"'{nameof(config.SAMPLE_FILE_PATH)}' is invalid");
         var files = await DMclient.Helper.GetAllFilesByFolderPathAsync(folderPath);
 
@@ -131,9 +111,6 @@ public class DataManagementClientHelperTests
     [TestMethod]
     public async Task ShouldUploadFileInBucket()
     {
-
-        var DMclient = InitializeDMclient();
-
         var bucketName = Guid.NewGuid().ToString();
 
         var newBucket = await DMclient.OssApi.Oss.V2.Buckets.PostAsync(new Autodesk.DataManagement.OSS.Models.Create_buckets_payload() { PolicyKey = Autodesk.DataManagement.OSS.Models.Create_buckets_payload_policyKey.Transient, BucketKey = bucketName });
@@ -159,9 +136,6 @@ public class DataManagementClientHelperTests
     [TestMethod]
     public async Task ShouldCreateTwoVersionsOfFileInACC()
     {
-
-        var DMclient = InitializeDMclient();
-
         //Create a random file content
         var uniqueFileName = $"{Guid.NewGuid()}.txt";
 
@@ -221,14 +195,14 @@ public class DataManagementClientHelperTests
             });
     }
 
-    private DataManagementClient InitializeDMclient()
+    private static DataManagementClient InitializeDMclient()
     {
 
-        var proxyClient = Autodesk.Common.HttpClientLibrary.HttpClient.Create();
+        var authProxyClient = Autodesk.Common.HttpClientLibrary.HttpClient.Create();
 
-        proxyClient.BaseAddress = new Uri(PROXY_URL);
+        authProxyClient.BaseAddress = new Uri(APSmockServer.GetProxyUrl(AdskService.Authentication));
 
-        var authClient = new AuthenticationClient(proxyClient);
+        var authClient = new AuthenticationClient(authProxyClient);
 
         var scope = new List<AuthenticationScope>
         {
@@ -247,7 +221,11 @@ public class DataManagementClientHelperTests
             return token?.AccessToken is null ? throw new InvalidOperationException() : token.AccessToken;
         }
 
-        var DMclient = new DataManagementClient(getAccessToken, proxyClient);
+        var dataMgtProxyClient = Autodesk.Common.HttpClientLibrary.HttpClient.Create();
+
+        dataMgtProxyClient.BaseAddress = new Uri(APSmockServer.GetProxyUrl(AdskService.DataManagement));
+
+        var DMclient = new DataManagementClient(getAccessToken, dataMgtProxyClient);
 
         return DMclient;
     }

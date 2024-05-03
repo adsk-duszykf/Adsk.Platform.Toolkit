@@ -7,25 +7,44 @@ using WireMock.Settings;
 
 namespace Tests
 {
-    internal class APSmockServer : IDisposable
+    internal class APSmockServer
     {
+        private static Dictionary<AdskService, string> ServiceRootUrls => new()
+        {
+            {AdskService.DataManagement, "https://developer.api.autodesk.com"},
+            {AdskService.Authentication, "https://developer.api.autodesk.com"},
+            {AdskService.ModelDerivative, "https://developer.api.autodesk.com/modelderivative/v2"},
+            {AdskService.CustomAttributes, "https://developer.api.autodesk.com/bim360/docs/v1"}
+        };
+
+        public static string GetProxyUrl(AdskService service)
+        {
+            return $"{BaseProxyURL}/{service}";
+        }
+
+        private static readonly string BaseProxyURL = "http://localhost:4200";
         private static readonly Settings config = Settings.Load();
-        private static WireMockServer? _server;
+        public static WireMockServer? MockServer { get; private set; }
+
 
         /// <summary>
-        /// 
+        /// Create a mock
         /// </summary>
+        /// <param name="recordingPath">Path to the folder containing the recorded responses</param>
         /// <param name="proxyUrl">URL used by HttpClient in replacement of APS host</param>
-        /// <returns></returns>
-        public static WireMockServer StartMockServer(string proxyUrl)
+        /// <param name="serviceRootUrl">URL of the APS host</param>
+        /// <param name="urlPathReplacements">Settings for replacing the URL in the request before performing it</param>
+        /// <returns>Mock server</returns>
+        public static WireMockServer StartMockServer()
         {
 
-            if (_server is not null)
+            if (MockServer is not null)
             {
-                return _server;
+                return MockServer;
             }
 
-            var recordingPath = config.RECORDED_ENDPOINTS_FOLDER_PATH;
+            var recordingPath = Path.Combine(config.RECORDED_ENDPOINTS_FOLDER_PATH);
+
             if (string.IsNullOrEmpty(recordingPath))
             {
                 throw new ArgumentNullException($"'{nameof(recordingPath)}' is undefined in the config file");
@@ -37,33 +56,53 @@ namespace Tests
             }
 
 
-            _server = WireMockServer.Start(new WireMockServerSettings
+            MockServer = WireMockServer.Start(new WireMockServerSettings
             {
 
                 //ReadStaticMappings = true,
-                Urls = [proxyUrl],
-                StartAdminInterface = true,
+                Urls = [BaseProxyURL],
                 FileSystemHandler = new LocalFileSystemHandler(recordingPath),
 
             });
 
-            _server.Given(Request.Create().WithPath("*"))
-                .RespondWith(Response.Create().WithProxy(new ProxyAndRecordSettings
-                {
-                    Url = "https://developer.api.autodesk.com",
-                    SaveMapping = true,
-                    SaveMappingToFile = true,
-                    ExcludedHeaders = ["Authorization"],
+            var adskServices = Enum.GetValues(typeof(AdskService)).Cast<AdskService>().ToList();
 
-                }));
+            foreach (var service in adskServices)
+            {
+                MockServer
+                    .Given(Request.Create().WithPath($"*/{service}/*"))
+                    .RespondWith(Response.Create()
+                        .WithProxy(new ProxyAndRecordSettings
+                        {
+                            Url = ServiceRootUrls[service],
 
-            return _server;
+                            SaveMapping = true,
+                            SaveMappingToFile = true,
+                            ExcludedHeaders = ["Authorization"],
+                            ReplaceSettings = new ProxyUrlReplaceSettings
+                            {
+                                OldValue = $"/{service}",
+                                NewValue = ""
+                            }
+                        })
+                    );
+            }
+
+            return MockServer;
         }
 
-        public void Dispose()
+        public static void Dispose()
         {
-            _server?.Stop();
-            _server?.Dispose();
+            MockServer?.Stop();
+            MockServer?.Dispose();
         }
+    }
+
+    internal enum AdskService
+    {
+        Authentication,
+        ModelDerivative,
+        DataManagement,
+        CustomAttributes
     }
 }

@@ -13,18 +13,65 @@ public class ModelDerivativeClientHelperTests
 
     readonly Settings config = Settings.Load();
 
+    public ModelDerivativeClient MDclient { get; init; }
+
+    public ModelDerivativeClientHelperTests()
+    {
+        MDclient = InitializeDMclient();
+    }
+
+    [ClassInitialize]
+    public static void StartMockServer(TestContext context)
+    {
+        APSmockServer.StartMockServer();
+    }
+
+    [ClassCleanup]
+    public static void StopMockServer()
+    {
+        APSmockServer.Dispose();
+    }
+
     [TestMethod]
     public async Task ShouldReturnObjectTree()
     {
-        async Task<string> getAccessToken()
-        {
-            var token = await authClient.Helper.GetTwoLeggedToken(config.APS_CLIENT_ID, config.APS_CLIENT_SECRET, [AuthenticationScope.DataRead]);
-            return token?.AccessToken is null ? throw new InvalidOperationException() : token.AccessToken;
-        }
-        var MDclient = new ModelDerivativeClient(Location.US, getAccessToken);
-
         var objectTree = await MDclient.Helper.GetObjectTree(config.FILE_URN);
 
         Assert.IsNotNull(objectTree);
+    }
+
+    private ModelDerivativeClient InitializeDMclient()
+    {
+
+        var authProxyClient = Autodesk.Common.HttpClientLibrary.HttpClient.Create();
+
+        authProxyClient.BaseAddress = new Uri(APSmockServer.GetProxyUrl(AdskService.Authentication));
+
+        var authClient = new AuthenticationClient(authProxyClient);
+
+        var scope = new List<AuthenticationScope>
+        {
+            AuthenticationScope.BucketCreate,
+            AuthenticationScope.BucketDelete,
+            AuthenticationScope.DataRead,
+            AuthenticationScope.DataCreate,
+            AuthenticationScope.DataWrite,
+            AuthenticationScope.DataSearch
+        };
+
+        async Task<string> getAccessToken()
+        {
+            var token = await authClient.Helper.GetTwoLeggedToken(config.APS_CLIENT_ID, config.APS_CLIENT_SECRET, scope);
+
+            return token?.AccessToken is null ? throw new InvalidOperationException() : token.AccessToken;
+        }
+
+        var MDProxyClient = Autodesk.Common.HttpClientLibrary.HttpClient.Create();
+
+        MDProxyClient.BaseAddress = new Uri(APSmockServer.GetProxyUrl(AdskService.ModelDerivative));
+
+        var MDclient = new ModelDerivativeClient(Location.US, getAccessToken, MDProxyClient);
+
+        return MDclient;
     }
 }

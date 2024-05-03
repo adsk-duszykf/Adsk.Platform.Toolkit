@@ -17,7 +17,9 @@ namespace Sdk_Tests
         public string FOLDER_ID { get; set; } = string.Empty;
         public string FILE_URN { get; set; } = string.Empty;
         public string SAMPLE_FILE_PATH { get; set; } = string.Empty;
-        public static IConfiguration? Configuration { get; private set; }
+
+
+        private static IConfiguration? Configuration { get; set; }
         public static Settings Load()
         {
 
@@ -35,4 +37,6 @@ namespace Sdk_Tests
         }
 
     }
+
+
 }
