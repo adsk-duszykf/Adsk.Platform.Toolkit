@@ -64,8 +64,8 @@ This object contains 2 properties:
 The Fluent API reflects the Rest API endpoint structure:
 
 ````csharp
-//https://developer.api.autodesk.com/project/v1/hubs (GET)
-                   client.DataMgtApi.Project.V1.Hubs.GetAsync()
+//https://developer.api.autodesk.com / project / v1 / hubs  (GET)
+                   client.DataMgtApi . Project . V1 . Hubs . GetAsync()
 ````
 
 For more details about the SDK structure, see the [Kiota documentation](https://learn.microsoft.com/en-us/openapi/kiota/request-builders)

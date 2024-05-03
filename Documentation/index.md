@@ -43,14 +43,15 @@ Console.WriteLine($"Hubs: {string.Join(';', hubIds)}");
 
 The repository contains a C# SDK for several APS services, including:
 
-| Service | SDK | Helper functions |
-|:--|:--|:--|
-| Authentication | Stable | Yes |
-| Data Management | Stable | Yes |
-| Model Derivative | Stable | Yes |
-| ACC/BIM360 Account Admin | In development | No |
-| ACC Assets | In development | No |
-| ACC Cost Management | In development | No |
+| Service | SDK | Helper functions | Package |
+|--|--|--|--|
+| Authentication | Stable | [Yes](https://adsk-duszykf.github.io/Adsk.Platform.Toolkit/api/Autodesk.Authentication.Helpers.AuthenticationClientHelper.html) | [Adsk.Platform.Authentication](https://www.nuget.org/packages/Adsk.Platform.Authentication) |
+| Data Management | Stable | [Yes](https://adsk-duszykf.github.io/Adsk.Platform.Toolkit/api/Autodesk.DataManagement.Helpers.DataManagementClientHelper.html) | [Adsk.Platform.DataManagement](https://www.nuget.org/packages/Adsk.Platform.DataManagement) |
+| Model Derivative | Stable | [Yes](https://adsk-duszykf.github.io/Adsk.Platform.Toolkit/api/Autodesk.ModelDerivative.Helpers.ModelDerivativeClientHelper.html) | [Adsk.Platform.ModelDerivative](https://www.nuget.org/packages/Adsk.Platform.ModelDerivative) |
+| ACC Model Properties | Stable | [Yes](https://adsk-duszykf.github.io/Adsk.Platform.Toolkit/api/Autodesk.ACC.ModelProperties.Helpers.ModelPropertiesClientHelper.html) | [Adsk.Platform.ACC.ModelProperties](https://www.nuget.org/packages/Adsk.Platform.ACC.ModelProperties) |
+| ACC/BIM360 Account Admin | In development | No | [Adsk.Platform.ACC.AccountAdmin](https://www.nuget.org/packages/Adsk.Platform.ACC.AccountAdmin) |
+| ACC Cost Management | In development | No | [Adsk.Platform.ACC.CostManagement](https://www.nuget.org/packages/Adsk.Platform.ACC.CostManagement) |
+| ACC Assets | In development | No | - |
 
 ## Get started
 
@@ -63,8 +64,8 @@ This object contains 2 properties:
 The Fluent API reflects the Rest API endpoint structure:
 
 ````csharp
-//https://developer.api.autodesk.com/project/v1/hubs (GET)
-                   client.DataMgtApi.Project.V1.Hubs.GetAsync()
+//https://developer.api.autodesk.com / project / v1 / hubs  (GET)
+                   client.DataMgtApi . Project . V1 . Hubs . GetAsync()
 ````
 
 For more details about the SDK structure, see the [Kiota documentation](https://learn.microsoft.com/en-us/openapi/kiota/request-builders)
@@ -102,5 +103,4 @@ There are other SDK generators like [OpenAPI Generator](https://github.com/OpenA
 - Coded in C# => Easy to understand, extend and execute
 
 Here is an introduction by the authors:
-
 > [!Video https://www.youtube.com/embed/sQ9Pv-rQ1s8]
