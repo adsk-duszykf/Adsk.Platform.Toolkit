@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Autodesk.ACC.CustomAttributes\Autodesk.ACC.CustomAttributes.csproj" />
+    <ProjectReference Include="..\Autodesk.ACC.FileManagement\Autodesk.ACC.FileManagement.csproj" />
     <ProjectReference Include="..\Autodesk.Authentication\Autodesk.Authentication.csproj" />
     <ProjectReference Include="..\Autodesk.DataManagement\Autodesk.DataManagement.csproj" />
     <ProjectReference Include="..\Autodesk.ModelDerivative\Autodesk.ModelDerivative.csproj" />
