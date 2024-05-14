@@ -30,6 +30,14 @@ public class DataManagementClientHelperTests
     }
 
     [TestMethod]
+    public async Task ShouldReturnRFIsContainerId()
+    {
+        var hubId = (await DMclient.Helper.GetHubIdByNameAsync(config.HUB_NAME))[0];
+        var containerId = await DMclient.Helper.GetRFIsContainerId(hubId, config.PROJECT_ID);
+
+        Assert.IsNotNull(containerId);
+    }
+    [TestMethod]
     public async Task ShouldReturnHubs()
     {
         var hubs = await DMclient.DataMgtApi.Project.V1.Hubs.GetAsync();

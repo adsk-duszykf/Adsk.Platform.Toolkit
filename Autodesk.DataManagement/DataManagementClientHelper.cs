@@ -28,6 +28,25 @@ public class DataManagementClientHelper
     }
 
     /// <summary>
+    /// Get the container id of the RFIs
+    /// </summary>
+    /// <param name="hubId">hub id.</param>
+    /// <param name="projectId">project id</param>
+    /// <returns>The RFI container ID</returns>
+    /// <remarks>The 'b.' for the <paramref name="hubId"/> and <paramref name="projectId"/> is managed automatically</remarks>
+    /// <exception cref="InvalidOperationException">If RFIs container not found</exception>
+    public async Task<string> GetRFIsContainerId(string hubId, string projectId)
+    {
+        hubId = FixHubId(hubId);
+        projectId = FixProjectId(projectId);
+
+        var projectDetails = await DataMgtApi.Project.V1.Hubs[hubId].Projects[projectId].GetAsync();
+
+        return projectDetails?.Data?.Relationships?.Rfis?.Data?.Id
+                ?? throw new InvalidOperationException("RFIs container not found");
+    }
+
+    /// <summary>
     /// Download file version from ACC/BIM360
     /// </summary>
     /// <param name="projectId">Id of the project. The prefix 'b.' is handled automatically</param>
@@ -851,6 +870,15 @@ public class DataManagementClientHelper
         return projectId.StartsWith("b.") ? projectId : $"b.{projectId}";
     }
 
+    /// <summary>
+    /// Fix hub id by adding the prefix 'b.' if it is missing
+    /// </summary>
+    /// <param name="hubId">Hub id to fix</param>
+    /// <returns>Hub id with 'b.' prefix</returns>
+    public string FixHubId(string hubId)
+    {
+        return hubId.StartsWith("b.") ? hubId : $"b.{hubId}";
+    }
     private async Task<Completes3upload_response_200?> UploadNewVersionAsync(string projectId, string folderId, string fileName, Stream fileContent, int defaultChunkSize = 10000000)
     {
         var fileChunks = await CreateFIleChunks(fileContent, defaultChunkSize);
