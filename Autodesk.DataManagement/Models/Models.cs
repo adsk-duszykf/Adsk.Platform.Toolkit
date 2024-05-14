@@ -28,14 +28,13 @@ public record FolderPath
 {
     public IdNameMap Hub { get; set; } = new();
     public IdNameMap Project { get; set; } = new();
+    /// <summary>
+    /// List of folders in the path
+    /// </summary>
     public List<IdNameMap> Folders { get; set; } = [];
     public string Path => string.Join("\\", Folders.Select(f => f.Name));
 }
-public record IdNameMap
-{
-    public string Id { get; set; } = "";
-    public string Name { get; set; } = "";
-};
+public record IdNameMap(string Id = "", string Name = "");
 
 public interface IHasFileName
 {

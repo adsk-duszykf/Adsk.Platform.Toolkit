@@ -2,24 +2,45 @@
 
 The root object for each service is `{service}Client`. For example, the root object for the Data Management service is `DataManagementClient`.
 This object contains 2 properties:
-    - `Api`: Contains the root object for the API.
-    - `Helper`: Contains methods that cover common scenarios combining multiple API calls.
+
+- `Api`: Contains the root object for the API.
+- `Helper`: Contains methods that cover common scenarios combining multiple API calls.
 
 The SDK reflects the Rest API endpoint structure. For example, the endpoint `GET https://developer.api.autodesk.com/project/v1/hubs` is represented by the following code:
 
 ````csharp
-client.DataMgtApi.Project.V1.Hubs.GetAsync()
+//https://developer.api.autodesk.com / project / v1 / hubs  (GET)
+                   client.DataMgtApi . Project . V1 . Hubs . GetAsync()
 ````
 
 For more details about the SDK structure, see the [Kiota documentation](https://learn.microsoft.com/en-us/openapi/kiota/request-builders)
 
-For code examples look at the files `{service}ClientHelper.cs`.
+**Minimal example using Data Management toolkit:**
+
+````csharp
+public async Task<Hubs> GetHub()
+{
+
+    async Task<string> getAccessToken()
+    {
+        //return access token with your logic
+    }
+
+    var DMclient = new DataManagementClient(getAccessToken);
+
+    var hubs = await DMclient.DataMgtApi.Project.V1.Hubs.GetAsync();
+
+    return hubs;
+}
+````
 
 ## Authentication
 
 Each service needs an authentication provider. The authentication provider is passed to the `client` constructor as a function retrieving the access token.
 
-**Example with authentication SDK:**
+The [Authentication toolkit](https://adsk-duszykf.github.io/Adsk.Platform.Toolkit/docs/Authentication/README.html) provides a set of methods to get the access token.
+
+**Minimal example using using the authentication toolkit:**
 
 ````csharp
 public async Task<Hubs> GetHub()
@@ -45,21 +66,20 @@ public async Task<Hubs> GetHub()
 }
 ````
 
-**Example without authentication SDK:**
+## Helper methods
 
-````csharp
-public async Task<Hubs> GetHub()
-{
+Most of the toolkits contain a `Helper` object that contains methods that cover common scenarios combining multiple API calls.
 
-    async Task<string> getAccessToken()
-    {
-        //return access token with your logic
-    }
+Some underlying API require multiple calls to get all values (pagination) like `GET /project/v1/hubs/{hubId}/projects`. For such cases, the helper methods provides 2 approaches:
 
-    var DMclient = new DataManagementClient(getAccessToken);
+- Methods retrieving an enumerable. Which simplifies the parallelization. Relevant if you manage large datasets. Works well with `await foreach` or library like [Reactive.io](https://github.com/dotnet/reactive)
 
-    var hubs = await DMclient.DataMgtApi.Project.V1.Hubs.GetAsync();
+    ```csharp
+    IAsyncEnumerable<FileVersion> GetLatestFilesVersionAsync()
+    ```
 
-    return hubs;
-}
-````
+- Methods retrieving all values in a single call. Which are more straightforward to use. Relevant if you manage small datasets.
+
+    ```csharp
+    Task<List<FileVersion>> GetAllLatestFilesVersionAsync()
+    ```

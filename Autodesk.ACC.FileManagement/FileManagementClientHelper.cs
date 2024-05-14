@@ -1,6 +1,7 @@
 using System.Net;
 using Autodesk.ACC.FileManagement.Models;
 using Autodesk.ACC.FileManagement.Projects.Item.Versions.Item.CustomAttributesBatchUpdate;
+using CommonUtils;
 
 
 namespace Autodesk.ACC.FileManagement.Helpers;
@@ -47,7 +48,6 @@ public class FileManagementClientHelper
         await Api.Projects[projectId].Versions[fileVersionId].CustomAttributesBatchUpdate.PostAsync(reqBody);
     }
 
-
     /// <summary>
     /// Get all custom attribute definitions for an ACC/BIM360 folder
     /// </summary>
@@ -57,6 +57,18 @@ public class FileManagementClientHelper
     /// <remarks>Handles the pagination of the underlying api</remarks>
     public async Task<List<CustomAttributeDefinitions_results>> GetAllCustomAttributeDefinitionAsync(string projectId, string folderId)
     {
+        return await GetCustomAttributeDefinitionAsync(projectId, folderId).GetAll();
+    }
+
+    /// <summary>
+    /// Get all custom attribute definitions for an ACC/BIM360 folder
+    /// </summary>
+    /// <param name="projectId">ACC/BIM360 project id</param>
+    /// <param name="folderId">Folder Id containing the file</param>
+    /// <returns>Stream of Id, Name and type of the attribute</returns>
+    /// <remarks>Handles the pagination of the underlying api</remarks>
+    public async IAsyncEnumerable<CustomAttributeDefinitions_results> GetCustomAttributeDefinitionAsync(string projectId, string folderId)
+    {
         var allCustomAttributes = new List<CustomAttributeDefinitions_results>();
 
         var isLastPage = false;
@@ -64,20 +76,21 @@ public class FileManagementClientHelper
 
         while (isLastPage == false)
         {
-            var customAttributes = await Api.Projects[projectId].Folders[folderId].CustomAttributeDefinitions.GetAsync((req) =>
+            var customAttributes = (await Api.Projects[projectId].Folders[folderId].CustomAttributeDefinitions.GetAsync((req) =>
             {
                 req.QueryParameters.Limit = 200;
                 req.QueryParameters.Offset = offset;
-            });
+            }));
 
-            allCustomAttributes.AddRange(customAttributes?.Results ?? []);
+            foreach (var attr in customAttributes?.Results ?? [])
+            {
+                yield return attr;
+            }
 
             offset++;
             isLastPage = string.IsNullOrEmpty(customAttributes?.Pagination?.NextUrl);
 
         }
-
-        return allCustomAttributes;
 
     }
 }

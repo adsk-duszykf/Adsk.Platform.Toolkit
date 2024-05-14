@@ -57,14 +57,14 @@ public class DataManagementClientHelperTests
     [TestMethod]
     public async Task ShouldReturnFileListWithinFolder()
     {
-        var files = await DMclient.Helper.GetLatestFilesVersionAsync(config.PROJECT_ID, config.FOLDER_ID);
+        var files = await DMclient.Helper.GetAllLatestFilesVersionAsync(config.PROJECT_ID, config.FOLDER_ID);
 
         Assert.IsNotNull(files);
     }
     [TestMethod]
     public async Task ShouldReturnRevitFileListWithinFolder()
     {
-        var files = await DMclient.Helper.GetLatestFileVersionAsync(config.PROJECT_ID, config.FOLDER_ID, ["rvt"]);
+        var files = await DMclient.Helper.GetAllLatestFilesVersionAsync(config.PROJECT_ID, config.FOLDER_ID, ["rvt"]);
 
         Assert.IsNotNull(files);
     }

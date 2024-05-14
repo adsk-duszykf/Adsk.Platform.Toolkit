@@ -57,6 +57,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samples", "Samples\Samples.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autodesk.ACC.FileManagement", "Autodesk.ACC.FileManagement\Autodesk.ACC.FileManagement.csproj", "{A46EF087-9934-4F90-82AA-E76A9C4F1A79}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CommonUtils", "CommonUtils\CommonUtils.shproj", "{CC48C5D2-463D-439C-B642-690476FCE018}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,5 +113,10 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B7DC4C3F-A185-447B-AF77-486FCEB6F3E6}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		CommonUtils\CommonUtils.projitems*{a46ef087-9934-4f90-82aa-e76a9c4f1a79}*SharedItemsImports = 5
+		CommonUtils\CommonUtils.projitems*{c005059e-57ed-49fa-8aaa-d31ce52dc395}*SharedItemsImports = 5
+		CommonUtils\CommonUtils.projitems*{cc48c5d2-463d-439c-b642-690476fce018}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal
