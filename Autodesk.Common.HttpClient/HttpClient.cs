@@ -3,7 +3,7 @@ using Microsoft.Kiota.Abstractions.Authentication;
 using Microsoft.Kiota.Http.HttpClientLibrary;
 
 namespace Autodesk.Common.HttpClientLibrary;
-public class HttpClient
+public static class HttpClient
 {
     /// <summary>
     /// Creates a new HttpClient with an error handler and a decompression handler.

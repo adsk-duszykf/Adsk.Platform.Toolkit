@@ -1,32 +1,14 @@
-﻿# Authentication
+﻿# Adsk.Platform.Authentication
 
-Each service needs an authentication provider. The authentication provider is passed to the `client` constructor as a function retrieving the access token.
+The `Adsk.Platform.DataManagement` toolkit provides a set of APIs to interact with the [Autodesk Authentication Service](https://aps.autodesk.com/developer/overview/authentication-api).
 
-````csharp
-public async Task<Hubs> GetHub()
-{
+## Installation
 
-    async Task<string> getAccessToken()
-    {
-        //return access token with your logic
-    }
-
-    var DMclient = new DataManagementClient(getAccessToken);
-
-    var hubs = await DMclient.DataMgtApi.Project.V1.Hubs.GetAsync();
-
-    return hubs;
-}
-````
-
-
-## Authentication toolkit
-
-Install the `Adsk.Platform.Authentication` package:
-
-```dotnetcli
+```bash
 dotnet add package Adsk.Platform.Authentication
 ```
+
+## Usage
 
 ### 2 legged authentication
 

@@ -24,13 +24,18 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Autodesk.ACC.FileManagement\Autodesk.ACC.FileManagement.csproj" />
+    <ProjectReference Include="..\Autodesk.ACC.RFIs\Autodesk.ACC.RFIs.csproj" />
     <ProjectReference Include="..\Autodesk.Authentication\Autodesk.Authentication.csproj" />
+    <ProjectReference Include="..\Autodesk.Common.HttpClient\Autodesk.Common.HttpClientLibrary.csproj" />
     <ProjectReference Include="..\Autodesk.DataManagement\Autodesk.DataManagement.csproj" />
     <ProjectReference Include="..\Autodesk.ModelDerivative\Autodesk.ModelDerivative.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="refreshToken.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

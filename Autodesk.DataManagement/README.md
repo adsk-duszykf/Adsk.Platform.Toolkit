@@ -1,6 +1,8 @@
-﻿# APS DataManagement/OSS services SDK for CSharp
+﻿# Adsk.Platform.DataManagement
 
-## How to use the SDKs
+The `Adsk.Platform.DataManagement` toolkit provides a set of APIs to interact with the [Autodesk Data Management Service](https://aps.autodesk.com/developer/overview/data-management-api).
+
+## Usage
 See [here](../README.md#how-to-use-the-sdks) for details.
 
 ### Urn vs Id

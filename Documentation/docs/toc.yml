@@ -2,10 +2,15 @@
 - href: ../index.md
 - href: GetStarted/quickStart.md
 - name: SDKs
-- href: Authentication/README.md
-- href: DataManagement/README.md
+- name: HttpClient
+  href: HttpClient/README.md
+- name: Authentication
+  href: Authentication/README.md
+- name: Data Management
+  href: DataManagement/README.md
 - name: Advanced
-- href: Advanced/index.md
+- name: Customizing the SDK (Advanced)
+  href: Advanced/index.md
 
 
 

@@ -1,8 +1,16 @@
-﻿# DataManagement
+﻿# Adsk.Platform.DataManagement
 
-## How to use the SDKs
+The `Adsk.Platform.DataManagement` toolkit provides a set of APIs to interact with the [Autodesk Data Management Service](https://aps.autodesk.com/developer/overview/data-management-api).
 
-See [here](../GetStarted/quickStart.md) for details.
+## Installation
+
+```bash
+dotnet add package Adsk.Platform.DataManagement
+```
+
+## Usage
+
+See the  [QuickStart Guide](../GetStarted/quickStart.md) for details.
 
 ### Urn vs Id
 

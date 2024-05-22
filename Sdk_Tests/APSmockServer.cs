@@ -14,8 +14,18 @@ namespace Tests
             {AdskService.DataManagement, "https://developer.api.autodesk.com"},
             {AdskService.Authentication, "https://developer.api.autodesk.com"},
             {AdskService.ModelDerivative, "https://developer.api.autodesk.com/modelderivative/v2"},
-            {AdskService.CustomAttributes, "https://developer.api.autodesk.com/bim360/docs/v1"}
+            {AdskService.ACC_CustomAttributes, "https://developer.api.autodesk.com/bim360/docs/v1"},
+            {AdskService.ACC_RFIs, "https://developer.api.autodesk.com/bim360/rfis"},
         };
+
+        public static HttpClient CreateProxyHttpClient(AdskService service, HttpClient? httpClient = null)
+        {
+            httpClient ??= new();
+
+            httpClient.BaseAddress = new Uri(GetProxyUrl(service));
+
+            return httpClient;
+        }
 
         public static string GetProxyUrl(AdskService service)
         {
@@ -103,6 +113,7 @@ namespace Tests
         Authentication,
         ModelDerivative,
         DataManagement,
-        CustomAttributes
+        ACC_CustomAttributes,
+        ACC_RFIs
     }
 }

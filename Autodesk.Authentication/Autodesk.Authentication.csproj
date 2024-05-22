@@ -19,6 +19,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\Documentation\docs\Authentication\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AspNet.Security.OAuth.Autodesk" Version="8.0.0">
       <TreatAsUsed>true</TreatAsUsed>
     </PackageReference>
@@ -30,13 +37,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Autodesk.Common.HttpClient\Autodesk.Common.HttpClientLibrary.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
   </ItemGroup>
 
 </Project>

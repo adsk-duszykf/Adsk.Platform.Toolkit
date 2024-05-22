@@ -43,9 +43,7 @@ public class ModelDerivativeClientHelperTests
     private ModelDerivativeClient InitializeDMclient()
     {
 
-        var authProxyClient = Autodesk.Common.HttpClientLibrary.HttpClient.Create();
-
-        authProxyClient.BaseAddress = new Uri(APSmockServer.GetProxyUrl(AdskService.Authentication));
+        var authProxyClient = APSmockServer.CreateProxyHttpClient(AdskService.Authentication);
 
         var authClient = new AuthenticationClient(authProxyClient);
 
@@ -66,9 +64,7 @@ public class ModelDerivativeClientHelperTests
             return token?.AccessToken is null ? throw new InvalidOperationException() : token.AccessToken;
         }
 
-        var MDProxyClient = Autodesk.Common.HttpClientLibrary.HttpClient.Create();
-
-        MDProxyClient.BaseAddress = new Uri(APSmockServer.GetProxyUrl(AdskService.ModelDerivative));
+        var MDProxyClient = APSmockServer.CreateProxyHttpClient(AdskService.ModelDerivative);
 
         var MDclient = new ModelDerivativeClient(Location.US, getAccessToken, MDProxyClient);
 

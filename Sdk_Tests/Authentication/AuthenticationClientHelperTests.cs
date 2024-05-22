@@ -11,7 +11,7 @@ namespace Tests.Authentication
 
         public AutodeskAuthentication_Tests()
         {
-            AuthClient = InitializeDMclient();
+            AuthClient = InitializeAuthClient();
         }
 
         [ClassInitialize]
@@ -27,7 +27,7 @@ namespace Tests.Authentication
         }
 
         [TestMethod]
-        public async Task ShouldBeCreated()
+        public async Task ShouldGenerate2LeggedToken()
         {
             Settings config = Settings.Load();
 
@@ -36,12 +36,10 @@ namespace Tests.Authentication
             Assert.IsNotNull(authToken);
 
         }
-        private AuthenticationClient InitializeDMclient()
+        private AuthenticationClient InitializeAuthClient()
         {
 
-            var authProxyClient = Autodesk.Common.HttpClientLibrary.HttpClient.Create();
-
-            authProxyClient.BaseAddress = new Uri(APSmockServer.GetProxyUrl(AdskService.Authentication));
+            var authProxyClient = APSmockServer.CreateProxyHttpClient(AdskService.Authentication);
 
             var authClient = new AuthenticationClient(authProxyClient);
 

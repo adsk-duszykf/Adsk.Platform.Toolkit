@@ -8,6 +8,7 @@
     <FileVersion>1.0.0.0</FileVersion>
     <NeutralLanguage>en</NeutralLanguage>
     <RepositoryUrl>https://github.com/adsk-duszykf/Adsk.Platform.Toolkit</RepositoryUrl>
+    <PackageIconUrl>https://adsk-duszykf.github.io/Adsk.Platform.Toolkit/</PackageIconUrl>
 
   </PropertyGroup>
 </Project>

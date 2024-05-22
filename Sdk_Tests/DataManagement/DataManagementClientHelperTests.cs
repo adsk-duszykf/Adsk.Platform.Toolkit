@@ -33,7 +33,7 @@ public class DataManagementClientHelperTests
     public async Task ShouldReturnRFIsContainerId()
     {
         var hubId = (await DMclient.Helper.GetHubIdByNameAsync(config.HUB_NAME))[0];
-        var containerId = await DMclient.Helper.GetRFIsContainerId(hubId, config.PROJECT_ID);
+        var containerId = await DMclient.Helper.GetRFIsContainerIdAsync(hubId, config.PROJECT_ID);
 
         Assert.IsNotNull(containerId);
     }
@@ -206,11 +206,10 @@ public class DataManagementClientHelperTests
     private static DataManagementClient InitializeDMclient()
     {
 
-        var authProxyClient = Autodesk.Common.HttpClientLibrary.HttpClient.Create();
-
-        authProxyClient.BaseAddress = new Uri(APSmockServer.GetProxyUrl(AdskService.Authentication));
+        var authProxyClient = APSmockServer.CreateProxyHttpClient(AdskService.Authentication);
 
         var authClient = new AuthenticationClient(authProxyClient);
+
 
         var scope = new List<AuthenticationScope>
         {
@@ -229,9 +228,7 @@ public class DataManagementClientHelperTests
             return token?.AccessToken is null ? throw new InvalidOperationException() : token.AccessToken;
         }
 
-        var dataMgtProxyClient = Autodesk.Common.HttpClientLibrary.HttpClient.Create();
-
-        dataMgtProxyClient.BaseAddress = new Uri(APSmockServer.GetProxyUrl(AdskService.DataManagement));
+        var dataMgtProxyClient = APSmockServer.CreateProxyHttpClient(AdskService.DataManagement);
 
         var DMclient = new DataManagementClient(getAccessToken, dataMgtProxyClient);
 

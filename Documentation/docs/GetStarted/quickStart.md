@@ -17,7 +17,7 @@ For more details about the SDK structure, see the [Kiota documentation](https://
 
 **Minimal example using Data Management toolkit:**
 
-````csharp
+```csharp
 public async Task<Hubs> GetHub()
 {
 
@@ -32,7 +32,7 @@ public async Task<Hubs> GetHub()
 
     return hubs;
 }
-````
+```
 
 ## Authentication
 

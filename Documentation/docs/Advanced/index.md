@@ -1,4 +1,3 @@
-
 # Customizing the SDK (Advanced)
 
 ## HttpClient
@@ -118,7 +117,8 @@ Here is an example with the `ModelDerivativeClient` for getting a large object t
   public async Task<ObjectTree?> GetObjectTree(string fileUrnToBase64, string modelGuid)
     {
 
-        var getTreee = async () =>
+        // Override the default response handler to get the response
+        HttpResponseMessage getTree = async () =>
         {
             var responseHandler = new NativeResponseHandler();
             var objectTree = await api.Designdata[fileUrnToBase64].Metadata[modelGuid].GetAsync(r =>
@@ -131,14 +131,14 @@ Here is an example with the `ModelDerivativeClient` for getting a large object t
             return responseHandler.Value as HttpResponseMessage;
         };
 
-        var response = await getTreee();
+        var response = await getTree();
 
         // For large models, the response is 202 Accepted, and the tree is not ready yet.
         // We need to wait and retry until the tree is ready.
         while (response.StatusCode == System.Net.HttpStatusCode.Created)
         {
             await Task.Delay(5000);
-            response = await getTreee();
+            response = await getTree();
         }
 
         // Now we call again the API to get the tree with the default response handler. 

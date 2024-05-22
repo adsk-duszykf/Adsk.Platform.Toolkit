@@ -35,7 +35,7 @@ public class DataManagementClientHelper
     /// <returns>The RFI container ID</returns>
     /// <remarks>The 'b.' for the <paramref name="hubId"/> and <paramref name="projectId"/> is managed automatically</remarks>
     /// <exception cref="InvalidOperationException">If RFIs container not found</exception>
-    public async Task<string> GetRFIsContainerId(string hubId, string projectId)
+    public async Task<string> GetRFIsContainerIdAsync(string hubId, string projectId)
     {
         hubId = FixHubId(hubId);
         projectId = FixProjectId(projectId);

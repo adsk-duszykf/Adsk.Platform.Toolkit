@@ -9,6 +9,6 @@
     <Import_RootNamespace>CommonUtils</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Class1.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AsyncEnumerableExtensions.cs" />
   </ItemGroup>
 </Project>

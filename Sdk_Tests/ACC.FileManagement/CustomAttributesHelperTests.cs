@@ -74,9 +74,7 @@ public class CustomAttributesHelperTests
     private FileManagementClient InitializeClient()
     {
 
-        var authProxyClient = Autodesk.Common.HttpClientLibrary.HttpClient.Create();
-
-        authProxyClient.BaseAddress = new Uri(APSmockServer.GetProxyUrl(AdskService.Authentication));
+        var authProxyClient = APSmockServer.CreateProxyHttpClient(AdskService.Authentication);
 
         var authClient = new AuthenticationClient(authProxyClient);
 
@@ -97,9 +95,7 @@ public class CustomAttributesHelperTests
             return token?.AccessToken is null ? throw new InvalidOperationException() : token.AccessToken;
         }
 
-        var CCProxyClient = Autodesk.Common.HttpClientLibrary.HttpClient.Create();
-
-        CCProxyClient.BaseAddress = new Uri(APSmockServer.GetProxyUrl(AdskService.CustomAttributes));
+        var CCProxyClient = APSmockServer.CreateProxyHttpClient(AdskService.ACC_CustomAttributes);
 
         var CustomAttrClient = new FileManagementClient(getAccessToken, CCProxyClient);
 
