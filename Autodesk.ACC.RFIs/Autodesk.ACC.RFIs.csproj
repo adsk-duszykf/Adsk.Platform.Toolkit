@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <PackageId>Adsk.Platform.ACC.RFIs</PackageId>
     <Title>$(AssemblyName)</Title>
+    <Description>Autodesk Platform: ACC RFIs Service SDK</Description>
   </PropertyGroup>
 
   <ItemGroup>

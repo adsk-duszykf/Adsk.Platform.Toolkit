@@ -10,9 +10,9 @@ public static class HttpClient
     /// </summary>
     /// <param name="finalHandler">Optional: If set will replace the default error and decompression handlers</param>
     /// <returns>A new instance of <see cref="Microsoft.Kiota.Http.HttpClientLibrary.KiotaClientFactory"/></returns>
-    public static System.Net.Http.HttpClient Create(HttpMessageHandler? finalHandler = null)
+    public static System.Net.Http.HttpClient Create((int maxRequests, TimeSpan? timeWindow) rateLimit = default, HttpMessageHandler? finalHandler = null)
     {
-        var handler = finalHandler ?? DefaultHandler;
+        var handler = finalHandler ?? GetDefaultHandler(rateLimit.maxRequests, rateLimit.timeWindow);
         return KiotaClientFactory.Create(handler);
     }
 
@@ -31,23 +31,31 @@ public static class HttpClient
         return new HttpClientRequestAdapter(auth, null, null, httpClient); ;
     }
 
-    private static HttpMessageHandler DefaultHandler
+    private static HttpMessageHandler GetDefaultHandler(int maxRequests, TimeSpan? timeWindow)
     {
-        get
+
+        var httpHandlerStack = new ErrorHandler
         {
+            InnerHandler = new RateLimitingHandler(
+                 new HttpClientHandler()
+                 {
+                     AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
 
-            var error = new ErrorHandler
-            {
-                InnerHandler = new HttpClientHandler()
-                {
-                    AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
+                 }
+                 , maxRequests, timeWindow)
+        };
 
-                }
-            };
+        /*            var httpHandlerStack = new ErrorHandler
+                    {
+                        InnerHandler = new HttpClientHandler()
+                        {
+                            AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
 
-            return error;
+                        }
+                    };*/
 
-        }
+        return httpHandlerStack;
+
     }
 }
 

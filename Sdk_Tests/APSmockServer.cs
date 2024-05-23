@@ -9,6 +9,9 @@ namespace Tests
 {
     internal class APSmockServer
     {
+        private static readonly string BaseMockServerURL = "http://localhost:4200";
+        private static readonly Settings config = Settings.Load();
+        public static WireMockServer? MockServer { get; private set; }
         private static Dictionary<AdskService, string> ServiceRootUrls => new()
         {
             {AdskService.DataManagement, "https://developer.api.autodesk.com"},
@@ -22,19 +25,17 @@ namespace Tests
         {
             httpClient ??= new();
 
-            httpClient.BaseAddress = new Uri(GetProxyUrl(service));
+            httpClient.BaseAddress = new Uri(GetMockAPSserviceUrl(service));
 
             return httpClient;
         }
 
-        public static string GetProxyUrl(AdskService service)
+        public static string GetMockAPSserviceUrl(AdskService service)
         {
-            return $"{BaseProxyURL}/{service}";
+            return $"{BaseMockServerURL}/{service}";
         }
 
-        private static readonly string BaseProxyURL = "http://localhost:4200";
-        private static readonly Settings config = Settings.Load();
-        public static WireMockServer? MockServer { get; private set; }
+
 
 
         /// <summary>
@@ -70,7 +71,7 @@ namespace Tests
             {
 
                 //ReadStaticMappings = true,
-                Urls = [BaseProxyURL],
+                Urls = [BaseMockServerURL],
                 FileSystemHandler = new LocalFileSystemHandler(recordingPath),
 
             });
@@ -97,6 +98,12 @@ namespace Tests
                         })
                     );
             }
+
+            MockServer.Given(Request.Create().WithPath("*/ratelimit/*"))
+                .RespondWith(Response.Create()
+                                .WithStatusCode(System.Net.HttpStatusCode.OK)
+                                .WithDelay(2)
+                                .WithHeader("Retry-After", "120"));
 
             return MockServer;
         }
