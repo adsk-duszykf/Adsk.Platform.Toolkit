@@ -63,6 +63,7 @@ public class HttpClientTest
 
         }
 
+        await Task.WhenAll(tasks);
 
         var endAt = DateTime.Now;
 
