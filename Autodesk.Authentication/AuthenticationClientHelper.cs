@@ -153,13 +153,13 @@ public class AuthenticationClientHelper
     /// <param name="scopes"></param>
     /// <param name="authTokenStore">Used for storing the generated token. The token will be reused until it expires. At that point it will be regenerated</param>
     /// <returns>Function returning a 2L AccessToken</returns>
-    public Func<Task<string?>> CreateTwoLeggedAutoRefreshToken(string clientId, string clientSecret, IEnumerable<AuthenticationScope> scopes, ITokenStore authTokenStore)
+    public Func<Task<string>> CreateTwoLeggedAutoRefreshToken(string clientId, string clientSecret, IEnumerable<AuthenticationScope> scopes, ITokenStore authTokenStore)
     {
         return async () =>
         {
             var currentToken = authTokenStore.Get();
 
-            var isExpired = currentToken is not null && currentToken?.ExpiresAt.Subtract(DateTime.UtcNow).TotalSeconds < 10;
+            var isExpired = currentToken is null || currentToken?.ExpiresAt.Subtract(DateTime.UtcNow).TotalSeconds < 10;
 
             if (isExpired)
             {
@@ -168,7 +168,7 @@ public class AuthenticationClientHelper
                 authTokenStore.Set(currentToken);
             }
 
-            return currentToken?.AccessToken;
+            return currentToken?.AccessToken ?? string.Empty;
         };
     }
 
