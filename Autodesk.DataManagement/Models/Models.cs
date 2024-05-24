@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using Autodesk.DataManagement.Models;
 
 namespace Autodesk.DataManagement.Helpers.Models;
 
@@ -10,6 +11,12 @@ public partial record class FileVersion(string? FolderId, string FileName, strin
     private static partial Regex GetVersion();
 }
 
+/// <summary>
+/// File item data
+/// </summary>
+/// <param name="Data">File Item data</param>
+/// <param name="Included">Tip version of the file item</param>
+public record FileItem(FolderContents_data Data, FolderContents_included Included) { }
 public record SubFolderList
 {
     public FolderItem ParentFolder { get; set; } = new();

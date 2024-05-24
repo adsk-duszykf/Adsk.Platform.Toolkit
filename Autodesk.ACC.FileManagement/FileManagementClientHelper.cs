@@ -1,4 +1,3 @@
-using System.Net;
 using Autodesk.ACC.FileManagement.Models;
 using Autodesk.ACC.FileManagement.Projects.Item.Versions.Item.CustomAttributesBatchUpdate;
 using CommonUtils;
@@ -19,34 +18,55 @@ public class FileManagementClientHelper
     /// </summary>
     /// <param name="projectId">Id of the ACC/BIM360 project storing the file version to update. Example: 'c0337487-5b66-422b-a284-c273b424af54' </param>
     /// <param name="folderId">Id of the folder containing the file version to update.</param>
-    /// <param name="fileVersionId">Id of the file version to update. Example: 'urn:adsk.wipprod:fs.file:vf.Efx_JwkDQkuOHB21T2v30w?version=1'</param>
+    /// <param name="fileVersionId">Id of the file version to update. Example: 'urn:adsk.wipprod:fs.file:vf.C_U3fVV_RMi4o9W-ve4LwQ?version=2'</param>
     /// <param name="attributes">New attributes values. Only pass attributes that must be updated. Pass null for clearing an attribute</param>
-    public async Task UpdateCustomAttributesAsync(string projectId, string folderId, string fileVersionId, List<(string Name, string Value)> attributes)
+    public async Task<List<AttributeUpdateError>> UpdateCustomAttributesAsync(string projectId, string folderId, string fileVersionId, List<(string Name, string Value)> attributes)
     {
 
-        var existingAttributes = await GetAllCustomAttributeDefinitionAsync(projectId, folderId);
+        var ACC_Attributes = await GetAllCustomAttributeDefinitionAsync(projectId, folderId);
 
-        var reqBody = new List<CustomAttributesBatchUpdate>();
+        var attributesToUpdate = new List<CustomAttributesBatchUpdate>();
 
+        var errors = new List<AttributeUpdateError>();
+
+        //Include in the payload only attributes that exists
         foreach (var attr in attributes)
         {
-            var attributeId = existingAttributes.FirstOrDefault(a => string.Equals(a.Name, attr.Name, StringComparison.InvariantCultureIgnoreCase))?.Id;
-            if (attributeId is null)
+            var ACC_Attribute = FindMatchingACC_Attribute(ACC_Attributes, attr);
+
+            if (ACC_Attribute is null)
             {
+                errors.Add(new AttributeUpdateError(attr, "Not found"));
                 continue;
             }
 
-            reqBody.Add(new CustomAttributesBatchUpdate
+            var (newAttributeValue, errorMsg) = GetFormatedAttributeValue(ACC_Attribute, attr.Value);
+
+            if (errorMsg != string.Empty)
             {
-                Id = attributeId,
-                Value = attr.Value
+                errors.Add(new AttributeUpdateError(attr, errorMsg));
+                continue;
+            }
+
+            attributesToUpdate.Add(new CustomAttributesBatchUpdate
+            {
+                Id = ACC_Attribute?.Id,
+                Value = newAttributeValue
             });
         }
 
-        fileVersionId = WebUtility.UrlEncode(fileVersionId);
+        //No attribute to update
+        if (attributesToUpdate.Count == 0)
+        {
+            return errors;
+        }
 
-        await Api.Projects[projectId].Versions[fileVersionId].CustomAttributesBatchUpdate.PostAsync(reqBody);
+        await Api.Projects[projectId].Versions[fileVersionId].CustomAttributesBatchUpdate.PostAsync(attributesToUpdate);
+
+        return errors;
     }
+
+    public record AttributeUpdateError((string Name, string Value) attribute, string error);
 
     /// <summary>
     /// Get all custom attribute definitions for an ACC/BIM360 folder
@@ -93,4 +113,47 @@ public class FileManagementClientHelper
         }
 
     }
+    static CustomAttributeDefinitions_results? FindMatchingACC_Attribute(List<CustomAttributeDefinitions_results> ACC_Attributes, (string Name, string Value) searchedAttribute)
+    {
+        var existingAttribute = ACC_Attributes.FirstOrDefault(a => string.Equals(a.Name, searchedAttribute.Name, StringComparison.InvariantCultureIgnoreCase));
+
+
+        return existingAttribute;
+    }
+    static (string formatedValue, string error) GetFormatedAttributeValue(CustomAttributeDefinitions_results? ACC_Attribute, string newValue)
+    {
+        var errorMsg = string.Empty;
+        switch (ACC_Attribute?.Type)
+        {
+            case CustomAttributeDefinitions_results_type.String:
+                if (newValue.Length > 255) errorMsg = "For text field (string) attributes, the max length is 255";
+                break;
+            case CustomAttributeDefinitions_results_type.Date:
+                if (DateTime.TryParse(newValue, out var date))
+                {
+                    newValue = date.ToString();
+                }
+                else
+                {
+                    errorMsg = "Date attributes need to be compliant with ISO8601 like '2023-05-24T14:25:00'";
+                }
+                break;
+            case CustomAttributeDefinitions_results_type.Array:
+                var matchingDropDownLitValue = ACC_Attribute.ArrayValues?.FirstOrDefault(v => string.Equals(v, newValue, StringComparison.InvariantCultureIgnoreCase));
+                if (matchingDropDownLitValue is null)
+                {
+                    errorMsg = $"Possible values are '{string.Join("; ", ACC_Attribute.ArrayValues ?? [])}'";
+                }
+                else
+                {
+                    newValue = matchingDropDownLitValue;
+                }
+                break;
+            default:
+                break;
+        }
+
+        return (newValue, errorMsg);
+    }
+
 }

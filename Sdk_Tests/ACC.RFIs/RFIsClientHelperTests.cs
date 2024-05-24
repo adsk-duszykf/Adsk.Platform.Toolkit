@@ -34,7 +34,7 @@ public class RFIsClientHelperTests
     public async Task ShouldReturnListOfRFIs()
     {
 
-        var hubId = (await DMClient.Helper.GetHubIdByNameAsync(config.HUB_NAME))[0];
+        var hubId = (await DMClient.Helper.GetHubsByNameAsync(config.HUB_NAME))[0].Id ?? "";
 
         var containerId = await DMClient.Helper.GetRFIsContainerIdAsync(hubId, config.PROJECT_ID);
 

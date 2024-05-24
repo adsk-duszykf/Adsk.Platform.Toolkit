@@ -56,8 +56,9 @@ public class CustomAttributesHelperTests
 
         //Act
         //Update the custom attribute
-        var fileId = WebUtility.UrlEncode(config.FILE_URN); //WORKAROUND: Wiremock decodes the url parameters, so we need to encode it before sending it. See https://github.com/WireMock-Net/WireMock.Net/issues/1097
-        await CustomAttrClient.Helper.UpdateCustomAttributesAsync(config.PROJECT_ID, config.FOLDER_ID, fileId, attributes);
+        var fileId = WebUtility.UrlEncode(WebUtility.UrlEncode(config.FILE_URN));  //WORKAROUND: Wiremock decodes the url parameters, so we need to encode it before sending it. See https://github.com/WireMock-Net/WireMock.Net/issues/1097
+
+        var errors = await CustomAttrClient.Helper.UpdateCustomAttributesAsync(config.PROJECT_ID, config.FOLDER_ID, fileId, attributes);
 
         //Get the updated custom attribute
         var customAttributes = await CustomAttrClient.Api.Projects[config.PROJECT_ID].VersionsBatchGet.PostAsync(new VersionsBatchGetPostRequestBody()
@@ -69,6 +70,7 @@ public class CustomAttributesHelperTests
                                    ?.CustomAttributes?.FirstOrDefault(attr => string.Equals(attr.Name, attributeName, StringComparison.InvariantCultureIgnoreCase));
 
         //Assert
+        Assert.IsTrue(errors.Count == 0);
         Assert.AreEqual(attrValue, updatedAttribute?.Value);
     }
     private FileManagementClient InitializeClient()

@@ -1,6 +1,7 @@
 ﻿using Autodesk.DataManagement.Data.V1;
 using Autodesk.DataManagement.Data.V1.Projects.Item.Folders.Item.Contents;
 using Autodesk.DataManagement.Helpers.Models;
+using Autodesk.DataManagement.Models;
 using Autodesk.DataManagement.OSS;
 using Autodesk.DataManagement.OSS.Models;
 using Autodesk.DataManagement.OSS.Oss.V2;
@@ -127,7 +128,7 @@ public class DataManagementClientHelper
     /// </summary>
     /// <param name="folderPath"></param>
     /// <returns>List of file ids</returns>
-    public async Task<(FolderPath Folder, List<IdNameMap> Files)> GetAllFilesByFolderPathAsync(string folderPath)
+    public async Task<(FolderPath Folder, List<FileItem> Files)> GetAllFilesByFolderPathAsync(string folderPath)
     {
         var files = await GetFilesByFolderPathAsync(folderPath).GetAll();
 
@@ -135,16 +136,16 @@ public class DataManagementClientHelper
     }
 
     /// <summary>
-    /// Return the ids of the files in a folder
+    /// Return the files in a folder
     /// </summary>
     /// <param name="folderPath"></param>
-    /// <returns>Stream of file id</returns>
-    public async IAsyncEnumerable<(FolderPath Folder, IdNameMap File)> GetFilesByFolderPathAsync(string folderPath)
+    /// <returns>Stream of file</returns>
+    public async IAsyncEnumerable<(FolderPath Folder, FileItem File)> GetFilesByFolderPathAsync(string folderPath)
     {
 
         var folder = await GetFolderByPathAsync(folderPath);
 
-        var files = GetFileItemIdsByFolderIdAsync(folder.Project.Id, folder.Folders.Last().Id);
+        var files = GetFileItemByFolderIdAsync(folder.Project.Id, folder.Folders.Last().Id);
 
         await foreach (var item in files)
         {
@@ -154,12 +155,12 @@ public class DataManagementClientHelper
     }
 
     /// <summary>
-    /// Get the file item name and Id by the its path
+    /// Get the file item by its path
     /// </summary>
     /// <param name="filePath"></param>
-    /// <returns>Name and Id of the file item</returns>
+    /// <returns>File item and path data</returns>
     /// <exception cref="InvalidOperationException"></exception>
-    public async Task<IdNameMap> GetFileItemByPathAsync(string filePath)
+    public async Task<(FolderPath PathData, FileItem FileData)> GetFileItemByPathAsync(string filePath)
     {
         string[] folders = filePath.Split(separator, StringSplitOptions.RemoveEmptyEntries);
 
@@ -172,11 +173,12 @@ public class DataManagementClientHelper
         var projectId = FixProjectId(folder.Project.Id);
         var parentFolderId = folder.Folders.Last().Id;
 
-        var fileVersions = GetFileItemIdsByFolderIdAsync(projectId, parentFolderId);
+        var fileItems = GetFileItemByFolderIdAsync(projectId, parentFolderId);
 
-        var file = await fileVersions.FirstOrDefault(f => string.Equals(f.Name, fileName, StringComparison.InvariantCultureIgnoreCase));
+        var file = await fileItems.FirstOrDefault(f => string.Equals(f.Data.Attributes?.DisplayName, fileName, StringComparison.InvariantCultureIgnoreCase))
+                    ?? throw new InvalidOperationException($"File '{fileName}' not found in folder '{subFolderPath}'");
 
-        return file is null ? throw new InvalidOperationException($"File '{fileName}' not found in folder '{folder.Folders.Last().Name}'") : file;
+        return (folder, file);
     }
 
     /// <summary>
@@ -343,15 +345,15 @@ public class DataManagementClientHelper
     }
 
     /// <summary>
-    /// Return the hub ids
+    /// Get the hubs given the name
     /// </summary>
-    /// <param name="hubName">Name of the hub</param>
-    /// <returns>Hub Id</returns>
-    public async Task<List<string>> GetHubIdByNameAsync(string hubName)
+    /// <param name="hubName">Name of the hub. Insensitive case</param>
+    /// <returns>Hub data</returns>
+    public async Task<List<Hubs_data>> GetHubsByNameAsync(string hubName)
     {
-        var hubs = await DataMgtApi.Project.V1.Hubs.GetAsync(r => { r.QueryParameters.FilterattributesName = hubName; });
+        var hubs = await DataMgtApi.Project.V1.Hubs.GetAsync();
 
-        return hubs?.Data?.Select(h => h.Id ?? "")?.ToList() ?? [];
+        return hubs?.Data?.Where(h => string.Equals(h.Attributes?.Name, hubName, StringComparison.InvariantCultureIgnoreCase))?.ToList() ?? [];
 
     }
 
@@ -364,7 +366,7 @@ public class DataManagementClientHelper
     /// <exception cref="InvalidOperationException"></exception>
     public async Task<(string hubId, List<IdNameMap> projects)> GetProjectIdsByNameAsync(string hubName, string projectName)
     {
-        var hubs = await GetHubIdByNameAsync(hubName);
+        var hubs = await GetHubsByNameAsync(hubName);
 
         if (hubs.Count == 0)
             throw new InvalidOperationException($"Hub '{hubName}' not found");
@@ -372,7 +374,7 @@ public class DataManagementClientHelper
         if (hubs.Count > 1)
             throw new InvalidOperationException($"'{hubs.Count}' hubs found with the name '{hubName}'. This method assumes the 'hubName' is unique");
 
-        var hubId = hubs[0];
+        var hubId = hubs[0].Id ?? "";
 
         var allProjects = (await GetProjectsByHubIdAsync(hubId).GetAll()).Where(p => string.Equals(p.Name, projectName, StringComparison.InvariantCultureIgnoreCase));
 
@@ -447,7 +449,7 @@ public class DataManagementClientHelper
     /// <exception cref="InvalidOperationException"> <para>hubName</para> is not unique or not found</exception>
     public async IAsyncEnumerable<(string HubId, IdNameMap Project)> GetProjectsByHubNameAsync(string hubName)
     {
-        var hubs = await GetHubIdByNameAsync(hubName);
+        var hubs = await GetHubsByNameAsync(hubName);
 
         if (hubs.Count == 0)
             throw new InvalidOperationException($"Hub {hubName} not found");
@@ -455,7 +457,7 @@ public class DataManagementClientHelper
         if (hubs.Count > 1)
             throw new InvalidOperationException($"{hubs.Count} found with the name '{hubName}'. This method assumes the 'hubName' is unique");
 
-        var hubId = hubs[0];
+        var hubId = hubs[0].Id ?? "";
 
         await foreach (var project in GetProjectsByHubIdAsync(hubId))
         {
@@ -471,9 +473,9 @@ public class DataManagementClientHelper
     /// <param name="folderId">Folder urn like: <c>urn:adsk.wipprod:dm.folder:hC6k4hndRWaeIVhIjvHu8w</c></param>
     /// <param name="fileExtensions">File extensions filter</param>
     /// <returns>List of file items</returns>
-    public async Task<List<IdNameMap>> GetAllFileItemIdsByFolderIdAsync(string projectId, string folderId, IEnumerable<string>? fileExtensions = null)
+    public async Task<List<FileItem>> GetAllFileItemIdsByFolderIdAsync(string projectId, string folderId, IEnumerable<string>? fileExtensions = null)
     {
-        return await GetFileItemIdsByFolderIdAsync(projectId, folderId, fileExtensions).GetAll();
+        return await GetFileItemByFolderIdAsync(projectId, folderId, fileExtensions).GetAll();
     }
 
     /// <summary>
@@ -483,13 +485,13 @@ public class DataManagementClientHelper
     /// <param name="folderId">Folder urn like: <c>urn:adsk.wipprod:dm.folder:hC6k4hndRWaeIVhIjvHu8w</c></param>
     /// <param name="fileExtensions">File extensions filter</param>
     /// <returns>List of file items</returns>
-    public async IAsyncEnumerable<IdNameMap> GetFileItemIdsByFolderIdAsync(string projectId, string folderId, IEnumerable<string>? fileExtensions = null)
+    public async IAsyncEnumerable<FileItem> GetFileItemByFolderIdAsync(string projectId, string folderId, IEnumerable<string>? fileExtensions = null)
     {
         projectId = FixProjectId(projectId);
 
         var pageNumber = 0;
         var isLastPage = false;
-        IEnumerable<IdNameMap> fileItemIds;
+        IEnumerable<FileItem> fileItemIds = [];
 
 
         while (isLastPage == false)
@@ -506,7 +508,7 @@ public class DataManagementClientHelper
         }
 
 
-        async Task<(IEnumerable<IdNameMap> data, bool isLastPage)> getFileItemIdsByFolderIdByPageAsync(int pageNumber)
+        async Task<(IEnumerable<FileItem> data, bool isLastPage)> getFileItemIdsByFolderIdByPageAsync(int pageNumber)
         {
 
             var folderContents = await _dataMgtClient.Projects[projectId].Folders[folderId].Contents
@@ -519,28 +521,23 @@ public class DataManagementClientHelper
 
             isLastPage = folderContents?.Links?.Next is null;
 
-            var fileIds = folderContents?.Data?
-                .Select(c =>
-                {
-                    if (c?.Attributes?.DisplayName is null || c?.Id is null)
-                        throw new InvalidOperationException("Invalid file");
+            var data = folderContents?.Data?
+                        .Select(f => new FileItem(
+                                        f,
+                                        folderContents?.Included?.FirstOrDefault(v => v.Id == f?.Relationships?.Tip?.Data?.Id)
+                                        ?? throw new InvalidDataException()))
+                        ?? [];
 
-                    return new IdNameMap()
-                    {
-                        Name = c.Attributes.DisplayName,
-                        Id = c.Id
-                    };
-                }
-                ) ?? [];
 
+            //No file extension filter
             if (fileExtensions is null || !fileExtensions.Any())
             {
-                return (fileIds, isLastPage);
+                return (data, isLastPage);
             }
 
-            fileIds = fileIds.Where(file => fileExtensions.Any(ext => file.Name.EndsWith(ext, StringComparison.CurrentCultureIgnoreCase)));
+            var filteredFileItem = data.Where(file => file.Data?.Attributes?.Name != null && fileExtensions.Any(ext => file.Data.Attributes.Name.EndsWith(ext, StringComparison.CurrentCultureIgnoreCase))).ToList();
 
-            return (fileIds, isLastPage);
+            return (filteredFileItem, isLastPage);
         }
     }
 
@@ -610,9 +607,9 @@ public class DataManagementClientHelper
             throw new InvalidDataException();
         }
 
-        var items = GetFileItemIdsByFolderIdAsync(projectId, folderId);
+        var items = GetFileItemByFolderIdAsync(projectId, folderId);
 
-        var fileItem = await items.FirstOrDefault(i => string.Equals(i.Name, fileName, StringComparison.InvariantCultureIgnoreCase));
+        var fileItem = await items.FirstOrDefault(i => string.Equals(i.Data.Attributes?.Name, fileName, StringComparison.InvariantCultureIgnoreCase));
 
         var versionId = string.Empty;
         var fileItemId = string.Empty;
@@ -625,7 +622,7 @@ public class DataManagementClientHelper
         }
         else
         {
-            var result = await UpdateFileAsync(projectId, fileItem.Id, fileName, newVersion.ObjectId);
+            var result = await UpdateFileAsync(projectId, fileItem.Data.Id ?? throw new InvalidDataException(), fileName, newVersion.ObjectId);
             versionId = result?.Data?.Id ?? throw new InvalidOperationException("Version id is null");
             fileItemId = result?.Included?.FirstOrDefault()?.Id ?? throw new InvalidOperationException("File id is null");
         }
@@ -735,7 +732,7 @@ public class DataManagementClientHelper
 
             var fileIds = files.Select(c =>
             {
-                if (c?.Attributes?.DisplayName is null || c?.Id is null)
+                if (c.Attributes?.DisplayName is null || c?.Id is null)
                     throw new InvalidOperationException("Invalid file");
 
                 var parentFolderId = c.Relationships?.Parent?.Data?.Id;
@@ -809,7 +806,7 @@ public class DataManagementClientHelper
 
             var fileIds = folderContents?.Data?.Select(c =>
             {
-                if (c?.Attributes?.DisplayName is null || c?.Id is null)
+                if (c.Attributes?.DisplayName is null || c?.Id is null)
                     throw new InvalidOperationException("Invalid file");
 
                 var parentFolderId = c.Relationships?.Parent?.Data?.Id;
@@ -881,7 +878,6 @@ public class DataManagementClientHelper
     }
     private async Task<Completes3upload_response_200?> UploadNewVersionAsync(string projectId, string folderId, string fileName, Stream fileContent, int defaultChunkSize = 10000000)
     {
-        var fileChunks = await CreateFIleChunks(fileContent, defaultChunkSize);
 
         //Create signed urls
         projectId = FixProjectId(projectId);

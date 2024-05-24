@@ -32,7 +32,7 @@ public class DataManagementClientHelperTests
     [TestMethod]
     public async Task ShouldReturnRFIsContainerId()
     {
-        var hubId = (await DMclient.Helper.GetHubIdByNameAsync(config.HUB_NAME))[0];
+        var hubId = (await DMclient.Helper.GetHubsByNameAsync(config.HUB_NAME))[0].Id ?? "";
         var containerId = await DMclient.Helper.GetRFIsContainerIdAsync(hubId, config.PROJECT_ID);
 
         Assert.IsNotNull(containerId);
@@ -48,7 +48,7 @@ public class DataManagementClientHelperTests
     [TestMethod]
     public async Task ShouldReturnHubIdGivingItsName()
     {
-        var hubs = await DMclient.Helper.GetHubIdByNameAsync(config.HUB_NAME);
+        var hubs = await DMclient.Helper.GetHubsByNameAsync(config.HUB_NAME);
 
         Assert.IsNotNull(hubs);
     }
