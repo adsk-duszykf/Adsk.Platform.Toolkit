@@ -159,7 +159,7 @@ public class DataManagementClientHelper
     /// </summary>
     /// <param name="filePath"></param>
     /// <returns>File item and path data</returns>
-    /// <exception cref="InvalidOperationException"></exception>
+    /// <exception cref="FileNotFoundException">Thrown when file is not found. File name included in the exception</exception>
     public async Task<(FolderPath PathData, FileItem FileData)> GetFileItemByPathAsync(string filePath)
     {
         string[] folders = filePath.Split(separator, StringSplitOptions.RemoveEmptyEntries);
@@ -176,7 +176,7 @@ public class DataManagementClientHelper
         var fileItems = GetFileItemByFolderIdAsync(projectId, parentFolderId);
 
         var file = await fileItems.FirstOrDefault(f => string.Equals(f.Data.Attributes?.DisplayName, fileName, StringComparison.InvariantCultureIgnoreCase))
-                    ?? throw new InvalidOperationException($"File '{fileName}' not found in folder '{subFolderPath}'");
+                    ?? throw new FileNotFoundException($"File '{fileName}' not found in folder '{subFolderPath}'", filePath);
 
         return (folder, file);
     }
