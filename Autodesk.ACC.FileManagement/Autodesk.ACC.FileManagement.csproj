@@ -28,10 +28,6 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
   <Import Project="..\CommonUtils\CommonUtils.projitems" Label="Shared" />
 
 </Project>

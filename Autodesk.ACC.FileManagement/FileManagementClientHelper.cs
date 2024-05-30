@@ -1,3 +1,4 @@
+using Autodesk.ACC.FileManagement.Helpers.Models;
 using Autodesk.ACC.FileManagement.Models;
 using Autodesk.ACC.FileManagement.Projects.Item.Versions.Item.CustomAttributesBatchUpdate;
 using CommonUtils;
@@ -20,7 +21,8 @@ public class FileManagementClientHelper
     /// <param name="folderId">Id of the folder containing the file version to update.</param>
     /// <param name="fileVersionId">Id of the file version to update. Example: 'urn:adsk.wipprod:fs.file:vf.C_U3fVV_RMi4o9W-ve4LwQ?version=2'</param>
     /// <param name="attributes">New attributes values. Only pass attributes that must be updated. Pass null for clearing an attribute</param>
-    public async Task<List<AttributeUpdateError>> UpdateCustomAttributesAsync(string projectId, string folderId, string fileVersionId, List<(string Name, string Value)> attributes)
+    /// <returns>List of errors</returns>
+    public async Task<List<AttributeUpdateError>> UpdateCustomAttributesAsync(string projectId, string folderId, string fileVersionId, List<CustomAttribute> attributes)
     {
 
         var ACC_Attributes = await GetAllCustomAttributeDefinitionAsync(projectId, folderId);
@@ -33,10 +35,11 @@ public class FileManagementClientHelper
         foreach (var attr in attributes)
         {
             var ACC_Attribute = FindMatchingACC_Attribute(ACC_Attributes, attr);
+            var attribute = new CustomAttribute(attr.Name, attr.Value);
 
             if (ACC_Attribute is null)
             {
-                errors.Add(new AttributeUpdateError(attr, "Not found"));
+                errors.Add(new AttributeUpdateError(attribute, "Not found"));
                 continue;
             }
 
@@ -44,7 +47,7 @@ public class FileManagementClientHelper
 
             if (errorMsg != string.Empty)
             {
-                errors.Add(new AttributeUpdateError(attr, errorMsg));
+                errors.Add(new AttributeUpdateError(attribute, errorMsg));
                 continue;
             }
 
@@ -65,8 +68,6 @@ public class FileManagementClientHelper
 
         return errors;
     }
-
-    public record AttributeUpdateError((string Name, string Value) attribute, string error);
 
     /// <summary>
     /// Get all custom attribute definitions for an ACC/BIM360 folder
@@ -113,7 +114,7 @@ public class FileManagementClientHelper
         }
 
     }
-    static CustomAttributeDefinitions_results? FindMatchingACC_Attribute(List<CustomAttributeDefinitions_results> ACC_Attributes, (string Name, string Value) searchedAttribute)
+    static CustomAttributeDefinitions_results? FindMatchingACC_Attribute(List<CustomAttributeDefinitions_results> ACC_Attributes, CustomAttribute searchedAttribute)
     {
         var existingAttribute = ACC_Attributes.FirstOrDefault(a => string.Equals(a.Name, searchedAttribute.Name, StringComparison.InvariantCultureIgnoreCase));
 
