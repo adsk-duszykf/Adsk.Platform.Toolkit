@@ -1,13 +1,16 @@
 - name: Get Started
 - href: ../index.md
 - href: GetStarted/quickStart.md
-- name: SDKs
+- name: Core Services
 - name: HttpClient
   href: HttpClient/README.md
 - name: Authentication
   href: Authentication/README.md
 - name: Data Management
   href: DataManagement/README.md
+- name: ACC
+- name: File Management
+  href: ACC/FileManagement/index.md
 - name: Advanced
 - name: Customizing the SDK (Advanced)
   href: Advanced/index.md

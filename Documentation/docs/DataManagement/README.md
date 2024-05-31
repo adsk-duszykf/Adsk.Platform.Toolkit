@@ -1,6 +1,12 @@
 ﻿# Adsk.Platform.DataManagement
 
-The `Adsk.Platform.DataManagement` toolkit provides a set of APIs to interact with the [Autodesk Data Management Service](https://aps.autodesk.com/developer/overview/data-management-api).
+The package `Adsk.Platform.DataManagement` provides a set of APIs to interact with the [Autodesk Data Management Service](https://aps.autodesk.com/developer/overview/data-management-api).
+
+## Documentation
+
+- [API Reference](xref:Autodesk.DataManagement): Strongly typed API
+- [Helpers](xref:Autodesk.DataManagement.Helpers.DataManagementClientHelper): Set of helper methods
+
 
 ## Installation
 
@@ -10,13 +16,15 @@ dotnet add package Adsk.Platform.DataManagement
 
 ## Usage
 
-See the  [QuickStart Guide](../GetStarted/quickStart.md) for details.
+See the  [QuickStart Guide](../GetStarted/quickStart.md) for a general understanding.
+
+The root object is [`DataManagementClient`](xref:Autodesk.DataManagement.DataManagementClient). This object provides access to the `Authentication` API and the `Helpers` method.
 
 ### Urn vs Id
 
 The SDK uses `urn` and `id` interchangeably. Basically, the `id` is an unique identifier for an `folder`, `item`, `version` this `id` is a string starting with prefix `urn`.
 
-### Filtering
+### Basic Filtering
 
 Few endpoints support filters as query parameters (see [Filtering](https://aps.autodesk.com/en/docs/data/v2/developers_guide/filtering/) in the APS documentation).
 
@@ -35,7 +43,9 @@ public async Task<List<FolderContent>> getFolderContentByPageAsync(string projec
 }
 ````
 
-But for more complex filters, you need to override the default URL:
+### Advanced Filtering
+
+Complex filters cannot be handled by the Intellisense. In this case, you can use the `CreateRequestWithFilters` method to create a request with filters.
 
 ````csharp
 

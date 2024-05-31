@@ -38,9 +38,10 @@
       "modern"
     ],
     "globalMetadata": {
-      "_appName": "Autodesk Platform SDK Documentation",
-      "_appTitle": "Autodesk Platform SDK Documentation",
+      "_appName": "Autodesk Platform Toolkit Documentation",
+      "_appTitle": "Autodesk Platform Toolkit Documentation",
       "_enableSearch": true,
+
       "pdf": false
     }
   }

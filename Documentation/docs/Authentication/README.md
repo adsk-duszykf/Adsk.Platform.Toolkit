@@ -2,6 +2,11 @@
 
 The `Adsk.Platform.DataManagement` toolkit provides a set of APIs to interact with the [Autodesk Authentication Service](https://aps.autodesk.com/developer/overview/authentication-api).
 
+## Documentation
+
+- [API Reference](xref:Autodesk.Authentication): Strongly typed API
+- [Helpers](xref:Autodesk.Authentication.Helpers.AuthenticationClientHelper): Set of helper methods
+
 ## Installation
 
 ```bash
@@ -9,6 +14,8 @@ dotnet add package Adsk.Platform.Authentication
 ```
 
 ## Usage
+
+The root object is [`AuthenticationClient`](xref:Autodesk.Authentication.AuthenticationClient). This object provides access to the `Authentication` API and the `Helpers` method.
 
 ### 2 legged authentication
 

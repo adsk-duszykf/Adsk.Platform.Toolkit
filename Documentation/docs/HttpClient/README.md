@@ -6,15 +6,19 @@
 
 Compare to the standard `System.Net.Http.HttpClient`, this implementation has the following features:
 
-- Retry logic
+- [Retry logic](#retry-logic)
 - Response decompression
-- Error handling.
-- Url Redirection
-- Concurrency
+- [Error handling](#error-handling)
+- [Url Redirection](#url-redirection)
+- [Concurrency rate limit](#concurrency-rate-limit)
 
 ## Installation
 
-Not necessary to install separately. It's included in the APS toolkit libraries.
+```bash
+dotnet add package Adsk.Platform.DataManagement
+```
+
+This package is a dependency of the other packages`Adsk.Platform.*`.
 
 ## Usage
 
@@ -42,15 +46,17 @@ public async Task<Hubs> GetHub()
 ### Concurrency rate limit
 
 The concurrency rate limit can be enabled with the `HttpClient` constructor.
+The rate limit is defined by the maximum number of concurrent requests and the time window. This limit is per endpoint.
 
 ```csharp
 public async Task GetUsersConcurrently()
 {
-    var requestTimeWindow = TimeSpan.FromMilliseconds(1000);
 
-    //Pass the max number of concurrent requests and the time window to the HttpClient
+    //Limit to 10 requests per second
+    var requestTimeWindow = TimeSpan.FromMilliseconds(1000);
     var httpClient = Autodesk.Common.HttpClientLibrary.HttpClient.Create((10, requestTimeWindow));
 
+    //Just run all tasks in parallel. The HttpClient will handle the concurrency rate limit
     var tasks = new List<Task>();
     for (int i = 0; i < 20; i++)
     {
@@ -73,9 +79,9 @@ By default, the concurrency rate limit is disabled.
 The error handler throw an `HttpRequestException` exception if:
 
 - Status code is not in the range 200-299
-- Status code is handled by the [retry logic](#retry-logic) or the [redirection logic](#url-redirection)
+- Status code is not handled by the [retry logic](#retry-logic) or the [redirection logic](#url-redirection)
 
-The exception message will contain the response status code and the endpoint response content as a `string``.
+The exception message contains the response status code and the endpoint response content as a `string`.
 
 ```csharp
 using Autodesk.DataManagement;
@@ -106,7 +112,7 @@ public async Task<Hubs> GetHub()
 
 ### Retry logic
 
-The client use the default retry logic provided with `Kiota`.
+The client uses the default retry logic provided with `Kiota`. The code below shows which status codes are considered as 'retry-able'.
 
 ```csharp
 private static bool ShouldRetry(HttpStatusCode? statusCode)
@@ -123,7 +129,7 @@ private static bool ShouldRetry(HttpStatusCode? statusCode)
 
 ### Url Redirection
 
-The client use the default redirection logic provided with `Kiota`.
+The client uses the default redirection logic provided with `Kiota`. The code below shows which status codes are considered as redirection.
 
 ```csharp
 private static bool IsRedirect(HttpStatusCode statusCode)
@@ -140,11 +146,11 @@ private static bool IsRedirect(HttpStatusCode statusCode)
 }
 ```
 
+## Bring your own `HttpClient`
 
+This default `httpClient` can be replaced by your own implementation.
 
-### Custom HttpClient
-
-This default `httpClient` can be replaced by a custom implementation. For example, you can use the `Polly` library to implement a retry policy.
+For example, the [Polly](https://www.pollydocs.org/) library could be used to implement a retry policy.
 
 ```csharp
 using System;
@@ -173,6 +179,7 @@ public async Task<Hubs> GetHub()
     return hubs;
 }
 
+// Create a custom HttpClient with a Polly retry policy
 private HttpClient CreateHttpClient() {
 
     var retryPipeline = new ResiliencePipelineBuilder<HttpResponseMessage>()
