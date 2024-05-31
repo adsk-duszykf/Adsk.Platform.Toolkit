@@ -43,7 +43,7 @@ public class FileManagementClientHelper
                 continue;
             }
 
-            var (newAttributeValue, errorMsg) = GetFormatedAttributeValue(ACC_Attribute, attr.Value);
+            var (newAttributeValue, errorMsg) = GetFormattedAttributeValue(ACC_Attribute, attr.Value);
 
             if (errorMsg != string.Empty)
             {
@@ -97,11 +97,11 @@ public class FileManagementClientHelper
 
         while (isLastPage == false)
         {
-            var customAttributes = (await Api.Projects[projectId].Folders[folderId].CustomAttributeDefinitions.GetAsync((req) =>
+            var customAttributes = await Api.Projects[projectId].Folders[folderId].CustomAttributeDefinitions.GetAsync((req) =>
             {
                 req.QueryParameters.Limit = 200;
                 req.QueryParameters.Offset = offset;
-            }));
+            });
 
             foreach (var attr in customAttributes?.Results ?? [])
             {
@@ -121,7 +121,7 @@ public class FileManagementClientHelper
 
         return existingAttribute;
     }
-    static (string formatedValue, string error) GetFormatedAttributeValue(CustomAttributeDefinitions_results? ACC_Attribute, string newValue)
+    static (string formattedValue, string error) GetFormattedAttributeValue(CustomAttributeDefinitions_results? ACC_Attribute, string newValue)
     {
         var errorMsg = string.Empty;
         switch (ACC_Attribute?.Type)

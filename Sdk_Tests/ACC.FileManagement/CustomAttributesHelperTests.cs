@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using Autodesk.ACC.FileManagement;
+using Autodesk.ACC.FileManagement.Helpers.Models;
 using Autodesk.ACC.FileManagement.Projects.Item.VersionsBatchGet;
 using Autodesk.Authentication;
 using Autodesk.Authentication.Helpers.Models;
@@ -49,9 +50,9 @@ public class CustomAttributesHelperTests
         var random = new Random();
         var attrValue = random.Next().ToString();
 
-        var attributes = new List<(string Name, string Value)>()
+        var attributes = new List<CustomAttribute>()
         {
-            (Name: attributeName, Value: attrValue),
+            new(attributeName, attrValue)
         };
 
         //Act
