@@ -1,13 +1,9 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using System.Diagnostics.CodeAnalysis;
 using Autodesk.Authentication;
 using Autodesk.Authentication.Helpers.Models;
 using Autodesk.DataManagement;
-using Microsoft.Kiota.Abstractions;
-using Microsoft.Kiota.Abstractions.Authentication;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Http.HttpClientLibrary;
 
 String APS_CLIENT_ID = "YOUR_CLIENT_ID";
 String APS_CLIENT_SECRET = "YOUR_CLIENT_SECRET";
@@ -28,7 +24,7 @@ async Task<string> GetFileId(string ACCfilePath)
     // A single method call to get the file id by path
     var file = await DMclient.Helper.GetFileItemByPathAsync(ACCfilePath);
 
-    return file.Id;
+    return file.FileData.Data.Id ?? throw new InvalidDataException();
 }
 async Task<string[]> GetHubIds()
 {
