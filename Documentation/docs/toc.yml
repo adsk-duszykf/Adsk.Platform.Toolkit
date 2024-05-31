@@ -8,9 +8,15 @@
   href: Authentication/README.md
 - name: Data Management
   href: DataManagement/README.md
+- name: Model Derivative
+  href: ModelDerivative/index.md
 - name: ACC
 - name: File Management
   href: ACC/FileManagement/index.md
+- name: Model Properties
+  href: ACC/ModelProperties/index.md
+- name: RFIs
+  href: ACC/RFIs/index.md
 - name: Advanced
 - name: Customizing the SDK (Advanced)
   href: Advanced/index.md

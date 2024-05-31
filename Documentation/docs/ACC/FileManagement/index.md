@@ -17,7 +17,7 @@ dotnet add package Adsk.Platform.ACC.FileManagement
 
 See the  [QuickStart Guide](../../GetStarted/quickStart.md) for a general understanding.
 
-The root object is [`FileManagementClient`](xref:Autodesk.ACC.FileManagement.FileManagementClient). This object provides access to the `Authentication` API and the `Helpers` method.
+The root object is [`FileManagementClient`](xref:Autodesk.ACC.FileManagement.FileManagementClient). This object provides access to the `ACC File Management APIs`  and the `Helpers` method.
 
 
 ### Use the [API](xref:Autodesk.ACC.FileManagement)
