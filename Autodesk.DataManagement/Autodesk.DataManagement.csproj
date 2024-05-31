@@ -14,8 +14,6 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     
     <PackageId>Adsk.Platform.DataManagement</PackageId>
-    
-    <PackageProjectUrl>https://aps.autodesk.com/en/docs/data/v2/developers_guide/overview/</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
