@@ -552,6 +552,16 @@ public class DataManagementClientHelper
     /// <exception cref="InvalidDataException">No signed url was created</exception>
     public async Task<Completes3upload_response_200> UploadFileAsync(string bucketId, string uniqueFileName, Stream fileContent, int defaultChunkSize = 10000000)
     {
+        //Enforce the S3 minimum chunk size 5MB
+        var minimalcChunkSize = 5 * 1024 * 1024;
+        if (defaultChunkSize < minimalcChunkSize)
+            defaultChunkSize = minimalcChunkSize;
+
+        //S3 maximum chunk size is 5GB, but 500MB makes more sense
+        var maximalcChunkSize = 500 * 1024 * 1024;
+        if (defaultChunkSize > maximalcChunkSize)
+            defaultChunkSize = maximalcChunkSize;
+
         var fileChunks = await CreateFIleChunks(fileContent, defaultChunkSize);
 
         //Create signed urls
