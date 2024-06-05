@@ -1,4 +1,5 @@
-﻿using Sdk_Tests;
+﻿using System.Net;
+using Sdk_Tests;
 using WireMock.Handlers;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
@@ -23,7 +24,16 @@ namespace Tests
 
         public static HttpClient CreateProxyHttpClient(AdskService service, HttpClient? httpClient = null)
         {
-            httpClient ??= new();
+
+            var handler = new Autodesk.Common.HttpClientLibrary.ErrorHandler
+            {
+                InnerHandler = new HttpClientHandler
+                {
+                    AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
+                }
+            };
+
+            httpClient ??= new(handler);
 
             httpClient.BaseAddress = new Uri(GetMockAPSserviceUrl(service));
 
