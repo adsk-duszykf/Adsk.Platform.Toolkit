@@ -117,7 +117,7 @@ public class DataManagementClientHelperTests
     }
 
     [TestMethod]
-    public async Task ShouldUploadFileInBucket()
+    public async Task ShouldUploadFileInBucketWithMultiParts()
     {
         var bucketName = Guid.NewGuid().ToString();
 
@@ -126,14 +126,17 @@ public class DataManagementClientHelperTests
         //Create a random file content
         var uniqueFileName = $"{Guid.NewGuid()}.txt";
 
-        byte[] byteArray = new byte[11 * 1024];
+        //ChunkSize < FileSize =>  4 chunks
+        var chuncSize = 6 * 1024 * 1024;
+
+        byte[] byteArray = new byte[20 * 1024 * 1024];
         var rnd = new Random();
         rnd.NextBytes(byteArray);
 
         var fileContent = new MemoryStream(byteArray);
 
         //Upload the file by chunks
-        var files = await DMclient.Helper.UploadFileAsync(bucketName, uniqueFileName, fileContent, 50000);
+        var files = await DMclient.Helper.UploadFileAsync(bucketName, uniqueFileName, fileContent, chuncSize);
 
         Assert.IsNotNull(files);
 
@@ -141,6 +144,32 @@ public class DataManagementClientHelperTests
         await DMclient.OssApi.Oss.V2.Buckets[bucketName].DeleteAsync();
     }
 
+    [TestMethod]
+    public async Task ShouldUploadFileInBucketWithoutMultiParts()
+    {
+        var bucketName = Guid.NewGuid().ToString();
+
+        var newBucket = await DMclient.OssApi.Oss.V2.Buckets.PostAsync(new Autodesk.DataManagement.OSS.Models.Create_buckets_payload() { PolicyKey = Autodesk.DataManagement.OSS.Models.Create_buckets_payload_policyKey.Transient, BucketKey = bucketName });
+
+        //Create a random file content
+        var uniqueFileName = $"{Guid.NewGuid()}.txt";
+
+        //ChunkSize > FileSize => 1 chunk
+        var chuncSize = 5 * 1024 * 1024;
+        byte[] byteArray = new byte[2 * 1024 * 1024];
+        var rnd = new Random();
+        rnd.NextBytes(byteArray);
+
+        var fileContent = new MemoryStream(byteArray);
+
+        //Upload the file by chunks
+        var files = await DMclient.Helper.UploadFileAsync(bucketName, uniqueFileName, fileContent, chuncSize);
+
+        Assert.IsNotNull(files);
+
+        //Might take few seconds to be really deleted on the server
+        await DMclient.OssApi.Oss.V2.Buckets[bucketName].DeleteAsync();
+    }
     [TestMethod]
     public async Task ShouldCreateTwoVersionsOfFileInACC()
     {
