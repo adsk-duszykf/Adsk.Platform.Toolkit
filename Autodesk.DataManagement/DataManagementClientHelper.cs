@@ -162,21 +162,32 @@ public class DataManagementClientHelper
     /// <exception cref="FileNotFoundException">Thrown when file is not found. File name included in the exception</exception>
     public async Task<(FolderPath PathData, FileItem FileData)> GetFileItemByPathAsync(string filePath)
     {
-        string[] folders = filePath.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+        string[] pathElements = filePath.Split(separator, StringSplitOptions.RemoveEmptyEntries);
 
-        var subFolderPath = string.Join(separator.First(), folders.SkipLast(1).ToArray());
+        var subFolderPath = string.Join(separator.First(), pathElements.SkipLast(1).ToArray());
+        var fileName = pathElements.Last();
 
-        var folder = await GetFolderByPathAsync(subFolderPath);
+        FileItem file;
+        FolderPath folder;
 
-        //Search for the file
-        var fileName = folders.Last();
-        var projectId = FixProjectId(folder.Project.Id);
-        var parentFolderId = folder.Folders.Last().Id;
+        try
+        {
+            folder = await GetFolderByPathAsync(subFolderPath);
 
-        var fileItems = GetFileItemByFolderIdAsync(projectId, parentFolderId);
+            //Search for the file
+            var projectId = FixProjectId(folder.Project.Id);
+            var parentFolderId = folder.Folders.Last().Id;
 
-        var file = await fileItems.FirstOrDefault(f => string.Equals(f.Data.Attributes?.DisplayName, fileName, StringComparison.InvariantCultureIgnoreCase))
-                    ?? throw new FileNotFoundException($"File '{fileName}' not found in folder '{subFolderPath}'", filePath);
+            var fileItems = GetFileItemByFolderIdAsync(projectId, parentFolderId);
+
+            file = await fileItems.FirstOrDefault(f => string.Equals(f.Data.Attributes?.DisplayName, fileName, StringComparison.InvariantCultureIgnoreCase))
+                        ?? throw new FileNotFoundException($"File '{fileName}' not found in folder '{subFolderPath}'", filePath);
+        }
+        catch (Exception ex)
+        {
+            throw new FileNotFoundException($"File '{fileName}' not found in folder '{subFolderPath}'", filePath, ex);
+        }
+
 
         return (folder, file);
     }
@@ -364,12 +375,13 @@ public class DataManagementClientHelper
     /// <param name="projectName"></param>
     /// <returns></returns>
     /// <exception cref="InvalidOperationException"></exception>
+    /// /// <exception cref="ArgumentException">Thrown if the hub na</exception>
     public async Task<(string hubId, List<IdNameMap> projects)> GetProjectIdsByNameAsync(string hubName, string projectName)
     {
         var hubs = await GetHubsByNameAsync(hubName);
 
         if (hubs.Count == 0)
-            throw new InvalidOperationException($"Hub '{hubName}' not found");
+            throw new ArgumentException($"Hub '{hubName}' not found");
 
         if (hubs.Count > 1)
             throw new InvalidOperationException($"'{hubs.Count}' hubs found with the name '{hubName}'. This method assumes the 'hubName' is unique");
