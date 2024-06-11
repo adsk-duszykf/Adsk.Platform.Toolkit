@@ -4,6 +4,8 @@ This toolkit provides a collection of .NET libraries, featuring a [Fluent API](h
 
 ## Helper functions
 
+Reduce the number of API calls and simplify the code by using the helper functions. The helper functions are designed to cover common scenarios combining multiple API calls.
+
 Example:
 **Get the file id by the file path**
 
@@ -23,6 +25,15 @@ Console.WriteLine($"File ID: {file.Id}");
 
 ## Fluent API
 
+The Fluent API is derived from the API specifications and provides a more intuitive way to interact with the APS services. The Fluent API is designed to be easy to use and understand, making it easier to work with the APS services in C#.
+
+The Fluent API reflects the Rest API endpoint structure. Here is an example showing the contrast between the Rest API endpoint and the Fluent API:
+
+````csharp
+//https://developer.api.autodesk.com / project / v1 / hubs  (GET)
+                   client.DataMgtApi . Project . V1 . Hubs . GetAsync()
+````
+
 Example: **Get the hub ids**
 
 ```csharp
@@ -41,7 +52,7 @@ var hubIds = hubs?.Data?.Select(h => h?.Id ?? "")?.ToArray() ?? [];
 Console.WriteLine($"Hubs: {string.Join(';', hubIds)}");  
 ```
 
-The repository contains a C# SDK for several APS services, including:
+## Services available in the toolkit:
 
 | Service | SDK | Helper functions | Package |
 |--|--|--|--|
@@ -50,6 +61,7 @@ The repository contains a C# SDK for several APS services, including:
 | Model Derivative | Stable | [Yes](https://adsk-duszykf.github.io/Adsk.Platform.Toolkit/api/Autodesk.ModelDerivative.Helpers.ModelDerivativeClientHelper.html) | [Adsk.Platform.ModelDerivative](https://www.nuget.org/packages/Adsk.Platform.ModelDerivative) |
 | ACC Model Properties | Stable | [Yes](https://adsk-duszykf.github.io/Adsk.Platform.Toolkit/api/Autodesk.ACC.ModelProperties.Helpers.ModelPropertiesClientHelper.html) | [Adsk.Platform.ACC.ModelProperties](https://www.nuget.org/packages/Adsk.Platform.ACC.ModelProperties) |
 | ACC File Management *(Custom Attributes only)* | Stable | [Yes](https://adsk-duszykf.github.io/Adsk.Platform.Toolkit/api/Autodesk.ACC.FileManagement.Helpers.FileManagementClientHelper.html) | [Adsk.Platform.ACC.FileManagement](https://www.nuget.org/packages/Adsk.Platform.ACC.ModelProperties) |
+| ACC RFIs | Stable | [Yes](xref:Autodesk.ACC.FileManagement.Helpers.RFIsClientHelper) | [Adsk.Platform.ACC.RFIs](https://www.nuget.org/packages/Adsk.Platform.ACC.ModelProperties) |
 | ACC/BIM360 Account Admin | In development | No | [Adsk.Platform.ACC.AccountAdmin](https://www.nuget.org/packages/Adsk.Platform.ACC.AccountAdmin) |
 | ACC Cost Management | In development | No | [Adsk.Platform.ACC.CostManagement](https://www.nuget.org/packages/Adsk.Platform.ACC.CostManagement) |
 | ACC Assets | In development | No | - |
@@ -64,12 +76,7 @@ This object contains 2 properties:
 
 The Fluent API reflects the Rest API endpoint structure:
 
-````csharp
-//https://developer.api.autodesk.com / project / v1 / hubs  (GET)
-                   client.DataMgtApi . Project . V1 . Hubs . GetAsync()
-````
-
-For more details about the SDK structure, see the [Kiota documentation](https://learn.microsoft.com/en-us/openapi/kiota/request-builders)
+The fluent API is generated with [Kiota](https://learn.microsoft.com/en-us/openapi/kiota/request-builders). Look at its documentation to understand it in depth.
 
 For code examples look at the files `{service}ClientHelper.cs`.
 
