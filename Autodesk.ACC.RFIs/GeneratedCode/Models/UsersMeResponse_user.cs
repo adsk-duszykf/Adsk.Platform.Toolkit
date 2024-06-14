@@ -8,10 +8,8 @@ namespace Autodesk.ACC.RFIs.Models {
     /// <summary>
     /// User data object
     /// </summary>
-    public class UsersMeResponse_user : IAdditionalDataHolder, IParsable 
+    public class UsersMeResponse_user : IParsable 
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The Autodesk ID of the user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -30,13 +28,6 @@ namespace Autodesk.ACC.RFIs.Models {
 #endif
         /// <summary>The type of user. </summary>
         public UsersMeResponse_user_role? Role { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="UsersMeResponse_user"/> and sets the default values.
-        /// </summary>
-        public UsersMeResponse_user()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -70,7 +61,6 @@ namespace Autodesk.ACC.RFIs.Models {
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
             writer.WriteEnumValue<UsersMeResponse_user_role>("role", Role);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

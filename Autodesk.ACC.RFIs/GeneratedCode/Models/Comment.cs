@@ -5,10 +5,8 @@ using System.IO;
 using System.Linq;
 using System;
 namespace Autodesk.ACC.RFIs.Models {
-    public class Comment : IAdditionalDataHolder, IParsable 
+    public class Comment : IParsable 
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The content of the comment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -47,13 +45,6 @@ namespace Autodesk.ACC.RFIs.Models {
         public Comment_source? Source { get; set; }
         /// <summary>The timestamp of the date and time the comment was updated, in the following format: ``YYYY-MM-DDThh:mm:ss.sz``.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="Comment"/> and sets the default values.
-        /// </summary>
-        public Comment()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -95,7 +86,6 @@ namespace Autodesk.ACC.RFIs.Models {
             writer.WriteStringValue("rfiId", RfiId);
             writer.WriteEnumValue<Comment_source>("source", Source);
             writer.WriteDateTimeOffsetValue("updatedAt", UpdatedAt);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

@@ -8,17 +8,8 @@ namespace Autodesk.ACC.RFIs.Models {
     /// <summary>
     /// The schedule impact status of the RFI. Possible values: ``null``, ``Yes``, ``No``, ``Unknown``.
     /// </summary>
-    public class RfiScheduleImpact : IAdditionalDataHolder, IParsable 
+    public class RfiScheduleImpact : IParsable 
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="RfiScheduleImpact"/> and sets the default values.
-        /// </summary>
-        public RfiScheduleImpact()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -46,7 +37,6 @@ namespace Autodesk.ACC.RFIs.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

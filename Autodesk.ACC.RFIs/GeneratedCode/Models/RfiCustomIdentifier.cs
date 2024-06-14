@@ -8,17 +8,8 @@ namespace Autodesk.ACC.RFIs.Models {
     /// <summary>
     /// The custom identifier of the RFI (required in case that status is set to open).
     /// </summary>
-    public class RfiCustomIdentifier : IAdditionalDataHolder, IParsable 
+    public class RfiCustomIdentifier : IParsable 
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="RfiCustomIdentifier"/> and sets the default values.
-        /// </summary>
-        public RfiCustomIdentifier()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -46,7 +37,6 @@ namespace Autodesk.ACC.RFIs.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

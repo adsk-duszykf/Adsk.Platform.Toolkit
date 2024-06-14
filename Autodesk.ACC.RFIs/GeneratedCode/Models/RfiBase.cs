@@ -5,10 +5,8 @@ using System.IO;
 using System.Linq;
 using System;
 namespace Autodesk.ACC.RFIs.Models {
-    public class RfiBase : IAdditionalDataHolder, IParsable 
+    public class RfiBase : IParsable 
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The date and time the RFI was answered, in the following format: YYYY-MM-DDThh:mm:ss.sz.</summary>
         public DateTimeOffset? AnsweredAt { get; set; }
         /// <summary>The Autodesk ID of the user who answered the RFI. To check the name of the user, call `GET projects/users` `BIM 360&lt;/en/docs/bim360/v1/reference/http/admin-v1-projects-projectId-users-GET&gt;`_ `ACC&lt;/en/docs/acc/v1/reference/http/admin-v1-projects-projectId-users-GET&gt;`_.</summary>
@@ -306,13 +304,6 @@ namespace Autodesk.ACC.RFIs.Models {
         public string UpdatedBy { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="RfiBase"/> and sets the default values.
-        /// </summary>
-        public RfiBase()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
-        /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="RfiBase"/></returns>
@@ -431,7 +422,6 @@ namespace Autodesk.ACC.RFIs.Models {
             writer.WriteStringValue("title", Title);
             writer.WriteDateTimeOffsetValue("updatedAt", UpdatedAt);
             writer.WriteStringValue("updatedBy", UpdatedBy);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

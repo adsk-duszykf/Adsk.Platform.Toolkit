@@ -8,17 +8,8 @@ namespace Autodesk.ACC.RFIs.Models {
     /// <summary>
     /// A description of the location of the RFI in the construction project.
     /// </summary>
-    public class RfiLocationDescription : IAdditionalDataHolder, IParsable 
+    public class RfiLocationDescription : IParsable 
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="RfiLocationDescription"/> and sets the default values.
-        /// </summary>
-        public RfiLocationDescription()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -46,7 +37,6 @@ namespace Autodesk.ACC.RFIs.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

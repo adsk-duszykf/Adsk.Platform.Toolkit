@@ -5,10 +5,8 @@ using System.IO;
 using System.Linq;
 using System;
 namespace Autodesk.ACC.RFIs.Models {
-    public class CreateAttachmentRequestDefinition : IAdditionalDataHolder, IParsable 
+    public class CreateAttachmentRequestDefinition : IParsable 
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; set; }
         /// <summary>The name of the attachment.</summary>
@@ -42,7 +40,6 @@ namespace Autodesk.ACC.RFIs.Models {
         /// </summary>
         public CreateAttachmentRequestDefinition()
         {
-            AdditionalData = new Dictionary<string, object>();
             UrnType = CreateAttachmentRequestDefinition_urnType.Oss;
         }
         /// <summary>
@@ -82,7 +79,6 @@ namespace Autodesk.ACC.RFIs.Models {
             writer.WriteStringValue("syncToken", SyncToken);
             writer.WriteStringValue("urn", Urn);
             writer.WriteEnumValue<CreateAttachmentRequestDefinition_urnType>("urnType", UrnType);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

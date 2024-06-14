@@ -8,10 +8,8 @@ namespace Autodesk.ACC.RFIs.Models {
     /// <summary>
     /// The RFIs workflow data object for the user
     /// </summary>
-    public class UsersMeResponse_workflow : IAdditionalDataHolder, IParsable 
+    public class UsersMeResponse_workflow : IParsable 
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>A list of workflow roles assigned to the user.``projectSC`` corresponds to the creator workflow role``projectGC`` corresponds to the manager workflow role``projectCM`` corresponds to the reviewer 1 workflow role (only available in an ``EU`` workflow)``projectArch`` corresponds to the reveiwer 1 workflow role in a ``US`` workflow, or to the reveiwer 2 workflow role in an ``EU`` workflowFor information about workflow roles, see the `RFIs help documentation` `BIM 360&lt;https://help.autodesk.com/view/BIM360D/ENU/?guid=GUID-EB858EFA-DFEB-47EF-B9B3-1CE75BBE48F3&gt;`_ `ACC&lt;https://help.autodesk.com/view/BUILD/ENU/?guid=RFI_Statuses&gt;`_.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -22,13 +20,6 @@ namespace Autodesk.ACC.RFIs.Models {
 #endif
         /// <summary>The type of RFI workflow for the project. Possible values: ``US``, ``EU``.``US`` corresponds to the RFI workflow with one reviewer.``EU`` corresponds to the RFI workflow with two reviewers.Note that currently you cannot use the RFIs API to select an RFI workflow. For information about selecting an RFI workflow for a project, see the `RFIs help documentation` `BIM360&lt;https://help.autodesk.com/view/BIM360D/ENU/?guid=GUID-787338BF-1189-4170-8629-7FA240F4BED4&gt;`_ `ACC&lt;https://help.autodesk.com/view/BUILD/ENU/?guid=RFI_Workflow_Setup&gt;`_.</summary>
         public UsersMeResponse_workflow_type? Type { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="UsersMeResponse_workflow"/> and sets the default values.
-        /// </summary>
-        public UsersMeResponse_workflow()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -60,7 +51,6 @@ namespace Autodesk.ACC.RFIs.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfEnumValues<UsersMeResponse_workflow_roles>("roles", Roles);
             writer.WriteEnumValue<UsersMeResponse_workflow_type>("type", Type);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

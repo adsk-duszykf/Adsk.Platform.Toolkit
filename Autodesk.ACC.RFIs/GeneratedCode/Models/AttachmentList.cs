@@ -5,10 +5,8 @@ using System.IO;
 using System.Linq;
 using System;
 namespace Autodesk.ACC.RFIs.Models {
-    public class AttachmentList : IAdditionalDataHolder, IParsable 
+    public class AttachmentList : IParsable 
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The pagination object.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -25,13 +23,6 @@ namespace Autodesk.ACC.RFIs.Models {
 #else
         public List<Attachment> Results { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="AttachmentList"/> and sets the default values.
-        /// </summary>
-        public AttachmentList()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -63,7 +54,6 @@ namespace Autodesk.ACC.RFIs.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<PaginationDefinition>("pagination", Pagination);
             writer.WriteCollectionOfObjectValues<Attachment>("results", Results);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

@@ -8,10 +8,8 @@ namespace Autodesk.ACC.RFIs.Models {
     /// <summary>
     /// The list of attributes and statuses available  for the user.
     /// </summary>
-    public class Rfi_permittedActions_updateRfi : IAdditionalDataHolder, IParsable 
+    public class Rfi_permittedActions_updateRfi : IParsable 
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The list of statuses the user is permitted to transition an RFI to, without the wfType distinction (us + emea).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -38,13 +36,6 @@ namespace Autodesk.ACC.RFIs.Models {
 #endif
         /// <summary>whether or not the user may fill custom attributes in the new rfi</summary>
         public bool? UseCustomAttributes { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="Rfi_permittedActions_updateRfi"/> and sets the default values.
-        /// </summary>
-        public Rfi_permittedActions_updateRfi()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -80,7 +71,6 @@ namespace Autodesk.ACC.RFIs.Models {
             writer.WriteCollectionOfObjectValues<PermittedRfiAttribute>("permittedAttributes", PermittedAttributes);
             writer.WriteCollectionOfObjectValues<PermittedRfiStatus>("permittedStatuses", PermittedStatuses);
             writer.WriteBoolValue("useCustomAttributes", UseCustomAttributes);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

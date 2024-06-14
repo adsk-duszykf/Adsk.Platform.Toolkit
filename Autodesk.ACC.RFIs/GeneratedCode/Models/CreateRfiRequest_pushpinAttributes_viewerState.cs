@@ -8,17 +8,8 @@ namespace Autodesk.ACC.RFIs.Models {
     /// <summary>
     /// The viewer state object.
     /// </summary>
-    public class CreateRfiRequest_pushpinAttributes_viewerState : IAdditionalDataHolder, IParsable 
+    public class CreateRfiRequest_pushpinAttributes_viewerState : IParsable 
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="CreateRfiRequest_pushpinAttributes_viewerState"/> and sets the default values.
-        /// </summary>
-        public CreateRfiRequest_pushpinAttributes_viewerState()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -46,7 +37,6 @@ namespace Autodesk.ACC.RFIs.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

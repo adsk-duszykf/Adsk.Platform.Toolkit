@@ -5,10 +5,8 @@ using System.IO;
 using System.Linq;
 using System;
 namespace Autodesk.ACC.RFIs.Models {
-    public class CreateCommentRequestDefinition : IAdditionalDataHolder, IParsable 
+    public class CreateCommentRequestDefinition : IParsable 
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The content of the comment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -27,13 +25,6 @@ namespace Autodesk.ACC.RFIs.Models {
 #else
         public string SyncToken { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="CreateCommentRequestDefinition"/> and sets the default values.
-        /// </summary>
-        public CreateCommentRequestDefinition()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -67,7 +58,6 @@ namespace Autodesk.ACC.RFIs.Models {
             writer.WriteStringValue("body", Body);
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("syncToken", SyncToken);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

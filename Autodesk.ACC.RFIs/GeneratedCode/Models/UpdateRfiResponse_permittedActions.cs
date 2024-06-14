@@ -8,10 +8,8 @@ namespace Autodesk.ACC.RFIs.Models {
     /// <summary>
     /// The list of actions that are permitted for the user.
     /// </summary>
-    public class UpdateRfiResponse_permittedActions : IAdditionalDataHolder, IParsable 
+    public class UpdateRfiResponse_permittedActions : IParsable 
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>``true`` if the user can create an attachment for the RFI.``false`` if the user cannot create an attachment for the RFI.</summary>
         public bool? CreateAttachment { get; set; }
         /// <summary>``true`` if the user can create a comment for the RFI.``false`` if the user cannot create a comment for the RFI.</summary>
@@ -32,13 +30,6 @@ namespace Autodesk.ACC.RFIs.Models {
 #else
         public UpdateRfiResponse_permittedActions_updateRfi UpdateRfi { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="UpdateRfiResponse_permittedActions"/> and sets the default values.
-        /// </summary>
-        public UpdateRfiResponse_permittedActions()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -80,7 +71,6 @@ namespace Autodesk.ACC.RFIs.Models {
             writer.WriteBoolValue("removeDocumentReference", RemoveDocumentReference);
             writer.WriteBoolValue("togglePushpinVisibility", TogglePushpinVisibility);
             writer.WriteObjectValue<UpdateRfiResponse_permittedActions_updateRfi>("updateRfi", UpdateRfi);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

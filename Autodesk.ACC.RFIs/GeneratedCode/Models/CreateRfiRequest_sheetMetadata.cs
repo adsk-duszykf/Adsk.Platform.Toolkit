@@ -8,17 +8,8 @@ namespace Autodesk.ACC.RFIs.Models {
     /// <summary>
     /// BIM 360: Data about the document associated with the RFI. Only relevant for pushpin RFIs. For more information, see the `RFI pushpin tutorials. &lt;/en/docs/bim360/v1/tutorials/create-pushpin/&gt;`_ACC: Not relevant.
     /// </summary>
-    public class CreateRfiRequest_sheetMetadata : IAdditionalDataHolder, IParsable 
+    public class CreateRfiRequest_sheetMetadata : IParsable 
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="CreateRfiRequest_sheetMetadata"/> and sets the default values.
-        /// </summary>
-        public CreateRfiRequest_sheetMetadata()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -46,7 +37,6 @@ namespace Autodesk.ACC.RFIs.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

@@ -5,10 +5,8 @@ using System.IO;
 using System.Linq;
 using System;
 namespace Autodesk.ACC.RFIs.Models {
-    public class CreateRfiRequest : IAdditionalDataHolder, IParsable 
+    public class CreateRfiRequest : IParsable 
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The assignedTo property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -226,13 +224,6 @@ namespace Autodesk.ACC.RFIs.Models {
         public string VirtualFolderUrn { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="CreateRfiRequest"/> and sets the default values.
-        /// </summary>
-        public CreateRfiRequest()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
-        /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="CreateRfiRequest"/></returns>
@@ -319,7 +310,6 @@ namespace Autodesk.ACC.RFIs.Models {
             writer.WriteStringValue("syncToken", SyncToken);
             writer.WriteStringValue("title", Title);
             writer.WriteStringValue("virtualFolderUrn", VirtualFolderUrn);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

@@ -8,10 +8,8 @@ namespace Autodesk.ACC.RFIs.Models {
     /// <summary>
     /// BIM360: Data about the RFI pushpin. Only relevant for pushpin RFIs. For more details, see the pushpin tutorials. `&lt;/en/docs/bim360/v1/tutorials/create-pushpin/&gt;`_ACC: Not relevant.
     /// </summary>
-    public class CreateRfiRequest_pushpinAttributes : IAdditionalDataHolder, IParsable 
+    public class CreateRfiRequest_pushpinAttributes : IParsable 
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The version of the attributes.</summary>
         public int? AttributesVersion { get; set; }
         /// <summary>An external ID; typically used when the RFI was created in another system.</summary>
@@ -48,13 +46,6 @@ namespace Autodesk.ACC.RFIs.Models {
 #else
         public CreateRfiRequest_pushpinAttributes_viewerState ViewerState { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="CreateRfiRequest_pushpinAttributes"/> and sets the default values.
-        /// </summary>
-        public CreateRfiRequest_pushpinAttributes()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -94,7 +85,6 @@ namespace Autodesk.ACC.RFIs.Models {
             writer.WriteStringValue("objectId", ObjectId);
             writer.WriteEnumValue<CreateRfiRequest_pushpinAttributes_type>("type", Type);
             writer.WriteObjectValue<CreateRfiRequest_pushpinAttributes_viewerState>("viewerState", ViewerState);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

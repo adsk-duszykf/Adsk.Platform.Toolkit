@@ -8,10 +8,8 @@ namespace Autodesk.ACC.RFIs.Models {
     /// <summary>
     /// Permitted RFI status
     /// </summary>
-    public class PermittedRfiStatus : IAdditionalDataHolder, IParsable 
+    public class PermittedRfiStatus : IParsable 
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The maxAssignees property</summary>
         public int? MaxAssignees { get; set; }
         /// <summary>The list of attributes that are permitted when updating/creating an RFI.</summary>
@@ -32,13 +30,6 @@ namespace Autodesk.ACC.RFIs.Models {
 #endif
         /// <summary>The status of the RFI. Note that the possible statuses of the RFI depend on the workflow type assigned to the RFI.For a default workflow with a single reviewer (``US``), you can potentially use the following statuses: ``draft``, ``submitted``, ``open``, ``answered``, ``rejected``, ``closed``, ``void``.For a workflow with an additional reviewer (``EMEA``), you can potentially use the following statuses: ``draft``, ``submitted``, ``openRev1``, ``openRev2``, ``rejectedRev1``, ``rejectedManager``, ``answeredRev1``, ``answeredManager``, ``closed``, ``void``.For more information about different workflows and statuses, see the `RFIs help documentation` `BIM360&lt;https://help.autodesk.com/view/BIM360D/ENU/?guid=GUID-787338BF-1189-4170-8629-7FA240F4BED4&gt;`_ `ACC&lt;https://help.autodesk.com/view/BUILD/ENU/?guid=RFI_Workflow_Setup&gt;`_.To check the workflow type of an RFI, call `GET users/me` `BIM 360&lt;/en/docs/bim360/v1/reference/http/rfis-v2-users-me-GET/&gt;`_ `ACC&lt;/en/docs/acc/v1/reference/http/rfis-v2-users-me-GET/&gt;`_ and check ``workflow.type``.To check which statuses the user can potentially open the RFI with, call `GET rfis/:id` `BIM 360&lt;/en/docs/bim360/v1/reference/http/rfis-v2-rfis-id-GET&gt;`_ `ACC&lt;/en/docs/acc/v1/reference/http/rfis-v2-rfis-id-GET&gt;`_.</summary>
         public RfiStatus? Status { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="PermittedRfiStatus"/> and sets the default values.
-        /// </summary>
-        public PermittedRfiStatus()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -74,7 +65,6 @@ namespace Autodesk.ACC.RFIs.Models {
             writer.WriteCollectionOfObjectValues<PermittedRfiAttribute>("permittedAttributes", PermittedAttributes);
             writer.WriteCollectionOfObjectValues<PermittedRfiAttribute>("requiredAttributes", RequiredAttributes);
             writer.WriteEnumValue<RfiStatus>("status", Status);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

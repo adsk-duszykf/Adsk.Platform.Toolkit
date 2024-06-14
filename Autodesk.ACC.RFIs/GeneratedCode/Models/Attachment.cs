@@ -8,10 +8,8 @@ namespace Autodesk.ACC.RFIs.Models {
     /// <summary>
     /// The attachment object.
     /// </summary>
-    public class Attachment : IAdditionalDataHolder, IParsable 
+    public class Attachment : IParsable 
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The type of attachment.</summary>
         public Attachment_attachmentType? AttachmentType { get; set; }
         /// <summary>The timestamp of the date and time the attachment was created, in the following format: ``YYYY-MM-DDThh:mm:ss.sz``.</summary>
@@ -81,13 +79,6 @@ namespace Autodesk.ACC.RFIs.Models {
         /// <summary>The type of attachment URN. Possible values:``dm`` - for a BIM 360 Document Management file``oss`` - for a local file</summary>
         public Attachment_urnType? UrnType { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Attachment"/> and sets the default values.
-        /// </summary>
-        public Attachment()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
-        /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="Attachment"/></returns>
@@ -139,7 +130,6 @@ namespace Autodesk.ACC.RFIs.Models {
             writer.WriteStringValue("url", Url);
             writer.WriteStringValue("urn", Urn);
             writer.WriteEnumValue<Attachment_urnType>("urnType", UrnType);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

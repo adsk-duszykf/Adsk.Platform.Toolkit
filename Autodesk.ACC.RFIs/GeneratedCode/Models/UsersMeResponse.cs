@@ -5,10 +5,8 @@ using System.IO;
 using System.Linq;
 using System;
 namespace Autodesk.ACC.RFIs.Models {
-    public class UsersMeResponse : IAdditionalDataHolder, IParsable 
+    public class UsersMeResponse : IParsable 
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The ID of the rfi type.</summary>
         public Guid? DefaultRfiType { get; set; }
         /// <summary>The maintenanceEndDate property</summary>
@@ -43,13 +41,6 @@ namespace Autodesk.ACC.RFIs.Models {
 #else
         public UsersMeResponse_workflow Workflow { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="UsersMeResponse"/> and sets the default values.
-        /// </summary>
-        public UsersMeResponse()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -87,7 +78,6 @@ namespace Autodesk.ACC.RFIs.Models {
             writer.WriteObjectValue<UsersMeResponse_permittedActions>("permittedActions", PermittedActions);
             writer.WriteObjectValue<UsersMeResponse_user>("user", User);
             writer.WriteObjectValue<UsersMeResponse_workflow>("workflow", Workflow);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

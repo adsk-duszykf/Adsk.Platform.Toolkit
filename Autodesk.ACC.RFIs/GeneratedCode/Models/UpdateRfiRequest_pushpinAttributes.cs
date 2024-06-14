@@ -8,10 +8,8 @@ namespace Autodesk.ACC.RFIs.Models {
     /// <summary>
     /// BIM360: Data about the pushpin RFI. Only relevant for pushpin RFIs. For more details, see the `RFI pushpin tutorials. &lt;/en/docs/bim360/v1/tutorials/create-pushpin/&gt;`_ACC: Not relevant.
     /// </summary>
-    public class UpdateRfiRequest_pushpinAttributes : IAdditionalDataHolder, IParsable 
+    public class UpdateRfiRequest_pushpinAttributes : IParsable 
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The location object.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -22,13 +20,6 @@ namespace Autodesk.ACC.RFIs.Models {
 #endif
         /// <summary>The type of the pushpin.</summary>
         public UpdateRfiRequest_pushpinAttributes_type? Type { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="UpdateRfiRequest_pushpinAttributes"/> and sets the default values.
-        /// </summary>
-        public UpdateRfiRequest_pushpinAttributes()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -60,7 +51,6 @@ namespace Autodesk.ACC.RFIs.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<UpdateRfiRequest_pushpinAttributes_location>("location", Location);
             writer.WriteEnumValue<UpdateRfiRequest_pushpinAttributes_type>("type", Type);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

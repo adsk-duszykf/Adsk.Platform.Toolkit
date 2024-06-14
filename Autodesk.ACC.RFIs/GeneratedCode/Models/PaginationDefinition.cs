@@ -8,23 +8,14 @@ namespace Autodesk.ACC.RFIs.Models {
     /// <summary>
     /// The pagination object.
     /// </summary>
-    public class PaginationDefinition : IAdditionalDataHolder, IParsable 
+    public class PaginationDefinition : IParsable 
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The number of items per page.</summary>
         public int? Limit { get; set; }
         /// <summary>The page number that the results begin from.</summary>
         public int? Offset { get; set; }
         /// <summary>The number of items in the response.</summary>
         public int? TotalResults { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="PaginationDefinition"/> and sets the default values.
-        /// </summary>
-        public PaginationDefinition()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -58,7 +49,6 @@ namespace Autodesk.ACC.RFIs.Models {
             writer.WriteIntValue("limit", Limit);
             writer.WriteIntValue("offset", Offset);
             writer.WriteIntValue("totalResults", TotalResults);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }
