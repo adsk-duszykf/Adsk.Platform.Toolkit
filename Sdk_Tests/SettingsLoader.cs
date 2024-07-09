@@ -2,10 +2,6 @@
 
 namespace Sdk_Tests
 {
-    internal class SettingsLoader
-    {
-
-    }
     internal class Settings
     {
         public string RECORDED_ENDPOINTS_FOLDER_PATH { get; set; } = string.Empty;
@@ -16,6 +12,7 @@ namespace Sdk_Tests
         public string PROJECT_ID { get; set; } = string.Empty;
         public string FOLDER_ID { get; set; } = string.Empty;
         public string FILE_URN { get; set; } = string.Empty;
+        public string MODEL_GUID { get; set; } = string.Empty;
         public string SAMPLE_FILE_PATH { get; set; } = string.Empty;
         public string REFRESH_TOKEN_FILE { get; set; } = string.Empty;
         public string THREE_LEGGED_APS_CLIENT_ID { get; set; } = string.Empty;

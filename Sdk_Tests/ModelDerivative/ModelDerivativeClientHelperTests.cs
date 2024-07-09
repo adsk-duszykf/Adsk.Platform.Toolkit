@@ -2,6 +2,7 @@
 using Autodesk.Authentication.Helpers.Models;
 using Autodesk.ModelDerivative;
 using Autodesk.ModelDerivative.Helpers.Models;
+using Microsoft.Kiota.Abstractions.Serialization;
 using Sdk_Tests;
 
 namespace Tests.ModelDerivative;
@@ -35,11 +36,28 @@ public class ModelDerivativeClientHelperTests
     [TestMethod]
     public async Task ShouldReturnObjectTree()
     {
-        var objectTree = await MDclient.Helper.GetObjectTree(config.FILE_URN);
+        var objectTree = await MDclient.Helper.GetObjectTreeAsync(config.FILE_URN);
 
         Assert.IsNotNull(objectTree);
     }
+    [TestMethod]
+    public async Task ShouldReturSpecificProperties()
+    {
 
+        var query = new UntypedObject(new Dictionary<string, UntypedNode> {
+            { "$in",new UntypedArray(
+                        [
+                            new UntypedString("objectid"),
+                            new UntypedInteger(1)
+                        ])
+            }
+        });
+
+        var properties = await MDclient.Helper.GetSpecificPropertiesAsync(
+            config.FILE_URN, query);
+
+        Assert.IsNotNull(properties);
+    }
     private ModelDerivativeClient InitializeDMclient()
     {
 

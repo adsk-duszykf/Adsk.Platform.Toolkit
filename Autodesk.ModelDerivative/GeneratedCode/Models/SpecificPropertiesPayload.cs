@@ -10,10 +10,10 @@ namespace Autodesk.ModelDerivative.Models {
         /// <summary>The fields property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public SpecificPropertiesPayload_fields? Fields { get; set; }
+        public List<string>? Fields { get; set; }
 #nullable restore
 #else
-        public SpecificPropertiesPayload_fields Fields { get; set; }
+        public List<string> Fields { get; set; }
 #endif
         /// <summary>The pagination property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -28,10 +28,10 @@ namespace Autodesk.ModelDerivative.Models {
         /// <summary>The query property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Query { get; set; }
+        public UntypedNode? Query { get; set; }
 #nullable restore
 #else
-        public string Query { get; set; }
+        public UntypedNode Query { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -51,10 +51,10 @@ namespace Autodesk.ModelDerivative.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"fields", n => { Fields = n.GetObjectValue<SpecificPropertiesPayload_fields>(SpecificPropertiesPayload_fields.CreateFromDiscriminatorValue); } },
+                {"fields", n => { Fields = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
                 {"pagination", n => { Pagination = n.GetObjectValue<SpecificPropertiesPayload_pagination>(SpecificPropertiesPayload_pagination.CreateFromDiscriminatorValue); } },
                 {"payload", n => { Payload = n.GetEnumValue<SpecificPropertiesPayload_payload>(); } },
-                {"query", n => { Query = n.GetStringValue(); } },
+                {"query", n => { Query = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -64,10 +64,10 @@ namespace Autodesk.ModelDerivative.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<SpecificPropertiesPayload_fields>("fields", Fields);
+            writer.WriteCollectionOfPrimitiveValues<string>("fields", Fields);
             writer.WriteObjectValue<SpecificPropertiesPayload_pagination>("pagination", Pagination);
             writer.WriteEnumValue<SpecificPropertiesPayload_payload>("payload", Payload);
-            writer.WriteStringValue("query", Query);
+            writer.WriteObjectValue<UntypedNode>("query", Query);
         }
     }
 }

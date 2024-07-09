@@ -1,7 +1,11 @@
+using System.Net;
 using System.Text;
+using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
+using Autodesk.ModelDerivative.Helpers.Models;
 using Autodesk.ModelDerivative.Models;
 using Microsoft.Kiota.Abstractions;
+using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Http.HttpClientLibrary.Middleware.Options;
 
 namespace Autodesk.ModelDerivative.Helpers;
@@ -22,25 +26,15 @@ public class ModelDerivativeClientHelper
     /// </summary>
     /// <param name="fileVersionUrn">FileUrn like: 'urn:adsk.wipprod:fs.file:vf.Efx_JwkDQkuOHB21T2k30w?version=1' or encoded in Base64 safe-URL</param>
     /// <param name="modelGuid">Optional: ModelGuid of the view to use. If not set, the first view is used</param>
-    /// <returns></returns>
-    public async Task<ObjectTree?> GetObjectTree(string fileVersionUrn, string? modelGuid = null)
+    /// <param name="timeout">Default: 5 minutes</param>
+    /// <returns>The model tree</returns>
+    /// <exception cref="InvalidOperationException">Unable to retrieve the tree before the <paramref name="timeout"/></exception>"
+    /// <remarks>The server location is defined with the client instantiation</remarks>
+    public async Task<ObjectTree?> GetObjectTreeAsync(string fileVersionUrn, string? modelGuid = null, int timeout = 3000)
     {
-        var fileUrnToBase64 = fileVersionUrn;
-        //Check if fileVersionUrn is Base64 safe encoded
-        //bool isBase64Safe = false;
-        var isBase64Safe = IsBase64UrlSafeString(fileVersionUrn);
+        var fileUrnToBase64 = ToBase64UrlSafeString(fileVersionUrn);
 
-        if (isBase64Safe == false)
-        {
-            fileUrnToBase64 = ToBase64UrlSafeString(fileVersionUrn);
-        }
-
-        if (string.IsNullOrEmpty(modelGuid))
-        {
-            var views = await Api.Designdata[fileUrnToBase64].Metadata.GetAsync();
-            modelGuid = views?.Data?.Metadata?.FirstOrDefault()?.Guid
-                            ?? throw new InvalidOperationException("No view found.");
-        }
+        modelGuid ??= await GetDefaultModelGuid(modelGuid, fileUrnToBase64);
 
         var getTreee = async () =>
         {
@@ -63,10 +57,21 @@ public class ModelDerivativeClientHelper
 
         // For large models, the response is 202 Accepted, and the tree is not ready yet.
         // We need to wait and retry until the tree is ready.
-        while (result.response.StatusCode == System.Net.HttpStatusCode.Created)
+        var duration = 0;
+        var delay = 1000; //in milliseconds
+        timeout *= 1000; //convert to milliseconds
+
+        while (duration < timeout && result.response.StatusCode == System.Net.HttpStatusCode.Created)
         {
-            await Task.Delay(5000);
+            await Task.Delay(delay);
             result = await getTreee();
+            duration += delay;
+        }
+
+        // If the tree is not ready after the timeout, we throw an exception.
+        if (result.response.StatusCode == System.Net.HttpStatusCode.Accepted)
+        {
+            throw new TimeoutException("The tree is not ready yet.");
         }
 
         // Once the tree is ready, we can retrieve the data.
@@ -79,6 +84,115 @@ public class ModelDerivativeClientHelper
 
         return objectTree;
 
+    }
+
+    private async Task<string?> GetDefaultModelGuid(string? modelGuid, string fileUrnToBase64)
+    {
+        var views = await Api.Designdata[fileUrnToBase64].Metadata.GetAsync();
+
+        modelGuid = views?.Data?.Metadata?.FirstOrDefault()?.Guid
+                        ?? throw new InvalidOperationException("No view found.");
+        return modelGuid;
+    }
+
+    /// <summary>
+    /// Return a specific set of properties of a specific set of objects in the model 
+    /// </summary>
+    /// <param name="fileVersionUrn">FileUrn like: 'urn:adsk.wipprod:fs.file:vf.Efx_JwkDQkuOHB21T2k30w?version=1' or encoded in Base64 safe-URL</param>
+    /// <param name="modelGuid">Optional: ModelGuid of the view to use. If not set, the first view is used</param>
+    /// <param name="query">Filter the objects to return</param>
+    /// <param name="fields">Filter the properties to return</param>
+    /// <param name="timeout">Default: 5 minutes</param>
+    /// <returns>Properties of objects in the model</returns>
+    /// <exception cref="InvalidOperationException">Unable to retrieve the tree before the <paramref name="timeout"/></exception>"
+    /// <remarks>The server location is defined with the client instantiation</remarks>
+    public async Task<ParsedSpecificProperties?> GetSpecificPropertiesAsync(string fileVersionUrn, UntypedObject query, List<string>? fields = null, string? modelGuid = null, int timeout = 3000)
+    {
+        var fileUrnToBase64 = ToBase64UrlSafeString(fileVersionUrn);
+
+        modelGuid ??= await GetDefaultModelGuid(modelGuid, fileUrnToBase64);
+
+        HttpStatusCode statusCode = HttpStatusCode.Accepted;
+
+        //Loop until the response is the service ends the processing
+        var duration = 0;
+        var delay = 1000; //in milliseconds
+        timeout *= 1000; //convert to milliseconds
+        while (duration < timeout && statusCode == HttpStatusCode.Accepted)
+        {
+            var responseHandler = new NativeResponseHandler();
+
+            await Api.Designdata[fileUrnToBase64].Metadata[modelGuid].PropertiesQuery.PostAsync(
+                new()
+                {
+                    Query = query,
+                    Fields = fields
+                },
+                r =>
+                {
+                    r.Options.Add(new ResponseHandlerOption() { ResponseHandler = responseHandler });
+                });
+
+            if (responseHandler.Value is HttpResponseMessage newStatusCode)
+            {
+                statusCode = newStatusCode.StatusCode;
+            }
+
+            if (statusCode == HttpStatusCode.Accepted)
+            {
+                await Task.Delay(1000);
+            }
+
+            duration += delay;
+        }
+
+        // If the data are not ready after the timeout, we throw an exception.
+        if (statusCode == HttpStatusCode.Accepted)
+        {
+            throw new TimeoutException("The specific properties are not ready yet.");
+        }
+
+        //Once the response is not Accepted, we can retrieve the data
+        var props = await Api.Designdata[fileUrnToBase64].Metadata[modelGuid].PropertiesQuery.PostAsync(
+                            new()
+                            {
+                                Query = query,
+                                Fields = fields
+                            }
+                            );
+
+        var data = ParseData(props);
+
+        return data;
+
+    }
+
+    private static ParsedSpecificProperties ParseData(SpecificProperties? props)
+    {
+        var data = new ParsedSpecificProperties
+        {
+            Type = props?.Data?.Type ?? string.Empty
+
+        };
+
+        foreach (var item in props?.Data?.Collection ?? [])
+        {
+            if (item.Properties is null) continue;
+
+            var propsAsString = KiotaJsonSerializer.SerializeAsString(item.Properties);
+
+            var newCollection = new ParsedSpecificProperties.ObjectCollection()
+            {
+                ObjectId = (int)(item.Objectid ?? -1),
+                Name = item.Name ?? string.Empty,
+                ExternalId = item.ExternalId ?? string.Empty,
+                Properties = JsonNode.Parse(propsAsString, new() { PropertyNameCaseInsensitive = false }) ?? new JsonObject()
+            };
+
+            data.Collections.Add(newCollection);
+        }
+
+        return data;
     }
 
     public static bool IsBase64UrlSafeString(string input)
@@ -103,8 +217,20 @@ public class ModelDerivativeClientHelper
 
         return Regex.IsMatch(input, pattern);
     }
-    public static string ToBase64UrlSafeString(string input)
+
+    /// <summary>
+    /// Returns a Base64 URL-safe encoded string
+    /// </summary>
+    /// <param name="input">Input string to convert</param>
+    /// <param name="forceConversion">Optional: If 'true' doesn't check if the string is a compatible Base64 string; Default: False</param>
+    /// <returns></returns>
+    public static string ToBase64UrlSafeString(string input, bool forceConversion = false)
     {
+        if (forceConversion == false && IsBase64UrlSafeString(input))
+        {
+            return input;
+        }
+
         byte[] bytesToEncode = Encoding.UTF8.GetBytes(input);
 
         string base64Encoded = Convert.ToBase64String(bytesToEncode);

@@ -28,10 +28,10 @@ namespace Autodesk.ModelDerivative.Models {
         /// <summary>The properties property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public SpecificProperties_data_collection_properties? Properties { get; set; }
+        public UntypedNode? Properties { get; set; }
 #nullable restore
 #else
-        public SpecificProperties_data_collection_properties Properties { get; set; }
+        public UntypedNode Properties { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -54,7 +54,7 @@ namespace Autodesk.ModelDerivative.Models {
                 {"externalId", n => { ExternalId = n.GetStringValue(); } },
                 {"name", n => { Name = n.GetStringValue(); } },
                 {"objectid", n => { Objectid = n.GetDoubleValue(); } },
-                {"properties", n => { Properties = n.GetObjectValue<SpecificProperties_data_collection_properties>(SpecificProperties_data_collection_properties.CreateFromDiscriminatorValue); } },
+                {"properties", n => { Properties = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -67,7 +67,7 @@ namespace Autodesk.ModelDerivative.Models {
             writer.WriteStringValue("externalId", ExternalId);
             writer.WriteStringValue("name", Name);
             writer.WriteDoubleValue("objectid", Objectid);
-            writer.WriteObjectValue<SpecificProperties_data_collection_properties>("properties", Properties);
+            writer.WriteObjectValue<UntypedNode>("properties", Properties);
         }
     }
 }
