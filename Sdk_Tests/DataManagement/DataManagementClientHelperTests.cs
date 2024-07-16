@@ -1,6 +1,7 @@
 ﻿using Autodesk.Authentication;
 using Autodesk.Authentication.Helpers.Models;
 using Autodesk.DataManagement;
+using Autodesk.DataManagement.Helpers.Models;
 using Sdk_Tests;
 
 namespace Tests.DataManagement;
@@ -116,6 +117,23 @@ public class DataManagementClientHelperTests
 
     }
 
+    [TestMethod]
+    public async Task ShouldReturnFilesWithinFolderRecursively()
+    {
+        var folderPath = Path.GetDirectoryName(config.SAMPLE_FILE_PATH) ?? throw new ArgumentException($"'{nameof(config.SAMPLE_FILE_PATH)}' is invalid");
+        var filesEnumerator = DMclient.Helper.GetFilesByFolderPathAsync(folderPath, true);
+
+        var files = new List<(FolderPath, FileItem)>();
+        var filesCount = 0;
+        await foreach (var file in filesEnumerator)
+        {
+            files.Add(file);
+            filesCount++;
+        }
+
+        Assert.IsTrue(filesCount > 0);
+
+    }
     [TestMethod]
     public async Task ShouldUploadFileInBucketWithMultiParts()
     {

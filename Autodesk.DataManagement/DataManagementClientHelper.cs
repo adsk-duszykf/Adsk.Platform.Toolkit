@@ -124,32 +124,70 @@ public class DataManagementClientHelper
     }
 
     /// <summary>
-    /// Return the ids of the files in a folder
+    /// Return the files in a folder
     /// </summary>
     /// <param name="folderPath"></param>
     /// <returns>List of file ids</returns>
-    public async Task<(FolderPath Folder, List<FileItem> Files)> GetAllFilesByFolderPathAsync(string folderPath)
+    public async Task<(FolderPath Folder, List<FileItem> Files)> GetAllFilesByFolderPathAsync(string folderPath, bool recursive = false)
     {
-        var files = await GetFilesByFolderPathAsync(folderPath).GetAll();
+        var files = await GetFilesByFolderPathAsync(folderPath, recursive).GetAll();
 
         return (files.First().Folder, files.Select(f => f.File).ToList());
     }
 
+
     /// <summary>
-    /// Return the files in a folder
+    /// Return the files in a folder (optional recursively)
     /// </summary>
     /// <param name="folderPath"></param>
-    /// <returns>Stream of file</returns>
-    public async IAsyncEnumerable<(FolderPath Folder, FileItem File)> GetFilesByFolderPathAsync(string folderPath)
+    /// <param name="recursive">Optional: 'true' returns files within the sub folders. Default: 'false'</param>
+    /// <returns></returns>
+    public async IAsyncEnumerable<(FolderPath Folder, FileItem File)> GetFilesByFolderPathAsync(string folderPath, bool recursive = false)
     {
 
         var folder = await GetFolderByPathAsync(folderPath);
 
-        var files = GetFileItemByFolderIdAsync(folder.Project.Id, folder.Folders.Last().Id);
+        var files = GetFilesInFoldersAsync(folder, recursive);
 
         await foreach (var item in files)
         {
-            yield return (folder, item);
+            yield return item;
+        }
+
+    }
+
+    private async IAsyncEnumerable<(FolderPath Folder, FileItem File)> GetFilesInFoldersAsync(FolderPath parentFolder, bool recursive = false)
+    {
+        var projectId = parentFolder.Project.Id;
+        var parentFolderId = parentFolder.Folders.Last().Id;
+
+        var files = GetFileItemByFolderIdAsync(projectId, parentFolderId);
+
+        await foreach (var item in files)
+        {
+            yield return (parentFolder, item);
+        }
+
+        if (!recursive)
+            yield break;
+
+
+        var subFolders = GetSubFoldersAsync(projectId, parentFolderId);
+
+        await foreach (var subFolder in subFolders)
+        {
+            var folder = new FolderPath
+            {
+                Hub = parentFolder.Hub,
+                Project = parentFolder.Project,
+                Folders = [.. parentFolder.Folders, subFolder]
+            };
+
+            await foreach (var item in GetFilesInFoldersAsync(folder, recursive))
+            {
+                yield return item;
+            }
+
         }
 
     }
@@ -180,7 +218,7 @@ public class DataManagementClientHelper
 
             var fileItems = GetFileItemByFolderIdAsync(projectId, parentFolderId);
 
-            file = await fileItems.FirstOrDefault(f => string.Equals(f.Data.Attributes?.DisplayName, fileName, StringComparison.InvariantCultureIgnoreCase))
+            file = await fileItems.FirstOrDefault(f => string.Equals(f.Included.Attributes?.Name, fileName, StringComparison.InvariantCultureIgnoreCase))
                         ?? throw new FileNotFoundException($"File '{fileName}' not found in folder '{subFolderPath}'", filePath);
         }
         catch (Exception ex)
@@ -828,12 +866,12 @@ public class DataManagementClientHelper
 
             var fileIds = folderContents?.Data?.Select(c =>
             {
-                if (c.Attributes?.DisplayName is null || c?.Id is null)
+                if (c.Attributes?.Name is null || c?.Id is null)
                     throw new InvalidOperationException("Invalid file");
 
                 var parentFolderId = c.Relationships?.Parent?.Data?.Id;
 
-                return new FileVersion(parentFolderId, c.Attributes.DisplayName, c?.Relationships?.Tip?.Data?.Id ?? throw new InvalidOperationException("File Version urn is null"));
+                return new FileVersion(parentFolderId, c.Attributes.Name, c?.Relationships?.Tip?.Data?.Id ?? throw new InvalidOperationException("File Version urn is null"));
             }) ??
                                 throw new InvalidOperationException("Folder contents is null");
 
