@@ -4,8 +4,8 @@ The `Adsk.Platform.DataManagement` toolkit provides a set of APIs to interact wi
 
 ## Documentation
 
-- [API Reference](xref:Autodesk.Authentication): Strongly typed API
-- [Helpers](xref:Autodesk.Authentication.Helpers.AuthenticationClientHelper): Set of helper methods
+More information can be found [here](https://adsk-duszykf.github.io/Adsk.Platform.Toolkit/docs/Authentication/README.html).
+
 
 ## Installation
 

@@ -45,15 +45,6 @@ public static class HttpClient
                  , maxRequests, timeWindow)
         };
 
-        /*            var httpHandlerStack = new ErrorHandler
-                    {
-                        InnerHandler = new HttpClientHandler()
-                        {
-                            AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
-
-                        }
-                    };*/
-
         return httpHandlerStack;
 
     }

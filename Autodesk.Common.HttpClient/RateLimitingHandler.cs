@@ -2,18 +2,11 @@
 
 namespace Autodesk.Common.HttpClientLibrary;
 
-public class RateLimitingHandler : DelegatingHandler
+public class RateLimitingHandler(HttpMessageHandler innerHandler, int maxRequests, TimeSpan? timeWindow = null) : DelegatingHandler(innerHandler)
 {
-    private readonly ConcurrentDictionary<string, RateLimiter> _rateLimiters;
-    private readonly int _maxRequests;
-    private readonly TimeSpan? _timeWindows;
-
-    public RateLimitingHandler(HttpMessageHandler innerHandler, int maxRequests, TimeSpan? timeWindow = null) : base(innerHandler)
-    {
-        _rateLimiters = new ConcurrentDictionary<string, RateLimiter>();
-        _maxRequests = maxRequests;
-        _timeWindows = timeWindow;
-    }
+    private readonly ConcurrentDictionary<string, RateLimiter> _rateLimiters = new();
+    private readonly int _maxRequests = maxRequests;
+    private readonly TimeSpan? _timeWindows = timeWindow;
 
     protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
     {
