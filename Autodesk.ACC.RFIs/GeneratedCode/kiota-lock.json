@@ -1,14 +1,15 @@
 {
-  "descriptionHash": "914C4713B95559D553FCD4BAB6E0335FEE201AFDE1B2DFF0745CA255D9875CB7C133095B685A80B7E6CC623CF026CC90C9521DEB0BEF8878DA740F07F58264B4",
-  "descriptionLocation": "..\\..\\..\\private\\Autodesk.ACC.RFI\\OpenAPI\\Autodesk.RFI.yaml",
+  "descriptionHash": "E43E8E24BF73B858B9C1A16CB7B243476B9B032EE99A296CF7E2B481E2E64A4A23309D6FC869B946BCFF94AF38E5F220D7B184418D25AA74C310DF246E979C9F",
+  "descriptionLocation": "../../../private/Autodesk.ACC.RFI/OpenAPI/Autodesk.RFI.yaml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.13.0",
+  "kiotaVersion": "1.16.0",
   "clientClassName": "BaseRFIsClient",
   "clientNamespaceName": "Autodesk.ACC.RFIs",
   "language": "CSharp",
   "usesBackingStore": false,
   "excludeBackwardCompatible": false,
   "includeAdditionalData": false,
+  "disableSSLValidation": false,
   "serializers": [
     "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",
     "Microsoft.Kiota.Serialization.Text.TextSerializationWriterFactory",

@@ -49,14 +49,15 @@ public class RFIsClientHelperTests
 
         var authClient = new AuthenticationClient(authProxyClient);
 
-        var scope = new List<AuthenticationScope>
+        var scope = new List<string>
         {
-            AuthenticationScope.BucketCreate,
-            AuthenticationScope.BucketDelete,
-            AuthenticationScope.DataRead,
-            AuthenticationScope.DataCreate,
-            AuthenticationScope.DataWrite,
-            AuthenticationScope.DataSearch
+            AuthenticationScopeDefaults.BucketCreate,
+            AuthenticationScopeDefaults.BucketDelete,
+            AuthenticationScopeDefaults.DataRead,
+            AuthenticationScopeDefaults.DataCreate,
+            AuthenticationScopeDefaults.DataWrite,
+            AuthenticationScopeDefaults.DataSearch
+
         };
 
         async Task<string> getAccessToken()
