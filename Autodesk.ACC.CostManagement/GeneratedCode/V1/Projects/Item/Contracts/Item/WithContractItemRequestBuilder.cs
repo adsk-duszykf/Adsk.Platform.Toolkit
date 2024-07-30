@@ -2,32 +2,34 @@
 using Autodesk.ACC.CostManagement.Models;
 using Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Item.ScheduleOfValues.Import;
 using Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Item.ScheduleOfValues;
+using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Item {
+namespace Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \v1\projects\{projectId}\contracts\{contractId}
     /// </summary>
-    public class WithContractItemRequestBuilder : BaseRequestBuilder 
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class WithContractItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The scheduleOfValues property</summary>
-        public ScheduleOfValuesRequestBuilder ScheduleOfValues
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Item.ScheduleOfValues.ScheduleOfValuesRequestBuilder ScheduleOfValues
         {
-            get => new ScheduleOfValuesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Item.ScheduleOfValues.ScheduleOfValuesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The scheduleOfValuesImport property</summary>
-        public ScheduleOfValuesImportRequestBuilder ScheduleOfValuesImport
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Item.ScheduleOfValues.Import.ScheduleOfValuesImportRequestBuilder ScheduleOfValuesImport
         {
-            get => new ScheduleOfValuesImportRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Item.ScheduleOfValues.Import.ScheduleOfValuesImportRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithContractItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Item.WithContractItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -35,7 +37,7 @@ namespace Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Item {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithContractItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Item.WithContractItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -47,12 +49,12 @@ namespace Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Item {
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="DefinedError">When receiving a 400 status code</exception>
-        /// <exception cref="Error">When receiving a 401 status code</exception>
-        /// <exception cref="Error">When receiving a 403 status code</exception>
-        /// <exception cref="Error">When receiving a 404 status code</exception>
-        /// <exception cref="Error">When receiving a 500 status code</exception>
-        /// <exception cref="Error">When receiving a 503 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.DefinedError">When receiving a 400 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 500 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -65,82 +67,82 @@ namespace Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Item {
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"400", DefinedError.CreateFromDiscriminatorValue},
-                {"401", Error.CreateFromDiscriminatorValue},
-                {"403", Error.CreateFromDiscriminatorValue},
-                {"404", Error.CreateFromDiscriminatorValue},
-                {"500", Error.CreateFromDiscriminatorValue},
-                {"503", Error.CreateFromDiscriminatorValue},
+                { "400", global::Autodesk.ACC.CostManagement.Models.DefinedError.CreateFromDiscriminatorValue },
+                { "401", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "403", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "404", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "500", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "503", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Gets a contract specified by ID.
         /// </summary>
-        /// <returns>A <see cref="Contract"/></returns>
+        /// <returns>A <see cref="global::Autodesk.ACC.CostManagement.Models.Contract"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="DefinedError">When receiving a 400 status code</exception>
-        /// <exception cref="Error">When receiving a 401 status code</exception>
-        /// <exception cref="Error">When receiving a 403 status code</exception>
-        /// <exception cref="Error">When receiving a 404 status code</exception>
-        /// <exception cref="Error">When receiving a 500 status code</exception>
-        /// <exception cref="Error">When receiving a 503 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.DefinedError">When receiving a 400 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 500 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Contract?> GetAsync(Action<RequestConfiguration<WithContractItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.ACC.CostManagement.Models.Contract?> GetAsync(Action<RequestConfiguration<global::Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Item.WithContractItemRequestBuilder.WithContractItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Contract> GetAsync(Action<RequestConfiguration<WithContractItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.ACC.CostManagement.Models.Contract> GetAsync(Action<RequestConfiguration<global::Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Item.WithContractItemRequestBuilder.WithContractItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"400", DefinedError.CreateFromDiscriminatorValue},
-                {"401", Error.CreateFromDiscriminatorValue},
-                {"403", Error.CreateFromDiscriminatorValue},
-                {"404", Error.CreateFromDiscriminatorValue},
-                {"500", Error.CreateFromDiscriminatorValue},
-                {"503", Error.CreateFromDiscriminatorValue},
+                { "400", global::Autodesk.ACC.CostManagement.Models.DefinedError.CreateFromDiscriminatorValue },
+                { "401", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "403", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "404", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "500", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "503", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Contract>(requestInfo, Contract.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Autodesk.ACC.CostManagement.Models.Contract>(requestInfo, global::Autodesk.ACC.CostManagement.Models.Contract.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Updates a contract
         /// </summary>
-        /// <returns>A <see cref="Contract"/></returns>
+        /// <returns>A <see cref="global::Autodesk.ACC.CostManagement.Models.Contract"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="DefinedError">When receiving a 400 status code</exception>
-        /// <exception cref="Error">When receiving a 401 status code</exception>
-        /// <exception cref="Error">When receiving a 403 status code</exception>
-        /// <exception cref="Error">When receiving a 404 status code</exception>
-        /// <exception cref="Error">When receiving a 500 status code</exception>
-        /// <exception cref="Error">When receiving a 503 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.DefinedError">When receiving a 400 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 500 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Contract?> PatchAsync(ContractUpdate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.ACC.CostManagement.Models.Contract?> PatchAsync(global::Autodesk.ACC.CostManagement.Models.ContractUpdate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Contract> PatchAsync(ContractUpdate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.ACC.CostManagement.Models.Contract> PatchAsync(global::Autodesk.ACC.CostManagement.Models.ContractUpdate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"400", DefinedError.CreateFromDiscriminatorValue},
-                {"401", Error.CreateFromDiscriminatorValue},
-                {"403", Error.CreateFromDiscriminatorValue},
-                {"404", Error.CreateFromDiscriminatorValue},
-                {"500", Error.CreateFromDiscriminatorValue},
-                {"503", Error.CreateFromDiscriminatorValue},
+                { "400", global::Autodesk.ACC.CostManagement.Models.DefinedError.CreateFromDiscriminatorValue },
+                { "401", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "403", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "404", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "500", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "503", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Contract>(requestInfo, Contract.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Autodesk.ACC.CostManagement.Models.Contract>(requestInfo, global::Autodesk.ACC.CostManagement.Models.Contract.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Deletes a contract item specified by ID.
@@ -156,7 +158,7 @@ namespace Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Item {
         public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.DELETE, "{+baseurl}/v1/projects/{projectId}/contracts/{contractId}", PathParameters);
+            var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -168,11 +170,11 @@ namespace Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WithContractItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Item.WithContractItemRequestBuilder.WithContractItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WithContractItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Item.WithContractItemRequestBuilder.WithContractItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -188,15 +190,15 @@ namespace Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPatchRequestInformation(ContractUpdate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Autodesk.ACC.CostManagement.Models.ContractUpdate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPatchRequestInformation(ContractUpdate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Autodesk.ACC.CostManagement.Models.ContractUpdate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.PATCH, "{+baseurl}/v1/projects/{projectId}/contracts/{contractId}", PathParameters);
+            var requestInfo = new RequestInformation(Method.PATCH, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
@@ -205,23 +207,25 @@ namespace Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Item {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="WithContractItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Item.WithContractItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public WithContractItemRequestBuilder WithUrl(string rawUrl)
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Item.WithContractItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new WithContractItemRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Item.WithContractItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class WithContractItemRequestBuilderDeleteRequestConfiguration : RequestConfiguration<DefaultQueryParameters> 
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class WithContractItemRequestBuilderDeleteRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
         {
         }
         /// <summary>
         /// Gets a contract specified by ID.
         /// </summary>
-        public class WithContractItemRequestBuilderGetQueryParameters 
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class WithContractItemRequestBuilderGetQueryParameters 
         {
             /// <summary>Include nested resources in the response. For example, ``include=budgets`` to include related budgets to each contract. ``include=attributes`` will return custom attributes which represents the &quot;properties&quot; in the response. Possible values: ``budgets``, ``attributes``.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -238,14 +242,16 @@ namespace Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Item {
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class WithContractItemRequestBuilderGetRequestConfiguration : RequestConfiguration<WithContractItemRequestBuilderGetQueryParameters> 
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class WithContractItemRequestBuilderGetRequestConfiguration : RequestConfiguration<global::Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Item.WithContractItemRequestBuilder.WithContractItemRequestBuilderGetQueryParameters>
         {
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class WithContractItemRequestBuilderPatchRequestConfiguration : RequestConfiguration<DefaultQueryParameters> 
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class WithContractItemRequestBuilderPatchRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
         {
         }
     }

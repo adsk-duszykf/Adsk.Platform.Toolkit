@@ -126,652 +126,654 @@ using Autodesk.ACC.CostManagement.V1.Projects.Item.WorkflowConditions;
 using Autodesk.ACC.CostManagement.V1.Projects.Item.WorkflowDecisions;
 using Autodesk.ACC.CostManagement.V1.Projects.Item.WorkflowDefinitions;
 using Autodesk.ACC.CostManagement.V1.Projects.Item.Workflows;
+using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Autodesk.ACC.CostManagement.V1.Projects.Item {
+namespace Autodesk.ACC.CostManagement.V1.Projects.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \v1\projects\{projectId}
     /// </summary>
-    public class WithProjectItemRequestBuilder : BaseRequestBuilder 
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class WithProjectItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The accountCompanies property</summary>
-        public AccountCompaniesRequestBuilder AccountCompanies
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.AccountCompanies.AccountCompaniesRequestBuilder AccountCompanies
         {
-            get => new AccountCompaniesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.AccountCompanies.AccountCompaniesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The accountUsers property</summary>
-        public AccountUsersRequestBuilder AccountUsers
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.AccountUsers.AccountUsersRequestBuilder AccountUsers
         {
-            get => new AccountUsersRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.AccountUsers.AccountUsersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The activities property</summary>
-        public ActivitiesRequestBuilder Activities
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Activities.ActivitiesRequestBuilder Activities
         {
-            get => new ActivitiesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Activities.ActivitiesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The actualCosts property</summary>
-        public ActualCostsRequestBuilder ActualCosts
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ActualCosts.ActualCostsRequestBuilder ActualCosts
         {
-            get => new ActualCostsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ActualCosts.ActualCostsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The attachmentFolders property</summary>
-        public AttachmentFoldersRequestBuilder AttachmentFolders
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.AttachmentFolders.AttachmentFoldersRequestBuilder AttachmentFolders
         {
-            get => new AttachmentFoldersRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.AttachmentFolders.AttachmentFoldersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The attachments property</summary>
-        public AttachmentsRequestBuilder Attachments
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Attachments.AttachmentsRequestBuilder Attachments
         {
-            get => new AttachmentsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Attachments.AttachmentsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The attachmentsBatchCreate property</summary>
-        public AttachmentsBatchCreateRequestBuilder AttachmentsBatchCreate
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Attachments.BatchCreate.AttachmentsBatchCreateRequestBuilder AttachmentsBatchCreate
         {
-            get => new AttachmentsBatchCreateRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Attachments.BatchCreate.AttachmentsBatchCreateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The billingPeriods property</summary>
-        public BillingPeriodsRequestBuilder BillingPeriods
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.BillingPeriods.BillingPeriodsRequestBuilder BillingPeriods
         {
-            get => new BillingPeriodsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.BillingPeriods.BillingPeriodsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The billingPeriodsBatchUpdate property</summary>
-        public BillingPeriodsBatchUpdateRequestBuilder BillingPeriodsBatchUpdate
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.BillingPeriodsBatchUpdate.BillingPeriodsBatchUpdateRequestBuilder BillingPeriodsBatchUpdate
         {
-            get => new BillingPeriodsBatchUpdateRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.BillingPeriodsBatchUpdate.BillingPeriodsBatchUpdateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The budgets property</summary>
-        public BudgetsRequestBuilder Budgets
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Budgets.BudgetsRequestBuilder Budgets
         {
-            get => new BudgetsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Budgets.BudgetsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The budgetsBatchUpdate property</summary>
-        public BudgetsBatchUpdateRequestBuilder BudgetsBatchUpdate
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Budgets.BatchUpdate.BudgetsBatchUpdateRequestBuilder BudgetsBatchUpdate
         {
-            get => new BudgetsBatchUpdateRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Budgets.BatchUpdate.BudgetsBatchUpdateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The budgetsContractsLink property</summary>
-        public BudgetsContractsLinkRequestBuilder BudgetsContractsLink
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.BudgetsContracts.Link.BudgetsContractsLinkRequestBuilder BudgetsContractsLink
         {
-            get => new BudgetsContractsLinkRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.BudgetsContracts.Link.BudgetsContractsLinkRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The budgetsImport property</summary>
-        public BudgetsImportRequestBuilder BudgetsImport
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Budgets.Import.BudgetsImportRequestBuilder BudgetsImport
         {
-            get => new BudgetsImportRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Budgets.Import.BudgetsImportRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The budgetsSearch property</summary>
-        public BudgetsSearchRequestBuilder BudgetsSearch
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Budgets.Search.BudgetsSearchRequestBuilder BudgetsSearch
         {
-            get => new BudgetsSearchRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Budgets.Search.BudgetsSearchRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The budgetsSync property</summary>
-        public BudgetsSyncRequestBuilder BudgetsSync
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Budgets.Sync.BudgetsSyncRequestBuilder BudgetsSync
         {
-            get => new BudgetsSyncRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Budgets.Sync.BudgetsSyncRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The budgetTransfers property</summary>
-        public BudgetTransfersRequestBuilder BudgetTransfers
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.BudgetTransfers.BudgetTransfersRequestBuilder BudgetTransfers
         {
-            get => new BudgetTransfersRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.BudgetTransfers.BudgetTransfersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The budgetTransfersBatchCreate property</summary>
-        public BudgetTransfersBatchCreateRequestBuilder BudgetTransfersBatchCreate
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.BudgetTransfers.BatchCreate.BudgetTransfersBatchCreateRequestBuilder BudgetTransfersBatchCreate
         {
-            get => new BudgetTransfersBatchCreateRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.BudgetTransfers.BatchCreate.BudgetTransfersBatchCreateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The calendarConfigurations property</summary>
-        public CalendarConfigurationsRequestBuilder CalendarConfigurations
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.CalendarConfigurations.CalendarConfigurationsRequestBuilder CalendarConfigurations
         {
-            get => new CalendarConfigurationsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.CalendarConfigurations.CalendarConfigurationsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The calendarItems property</summary>
-        public CalendarItemsRequestBuilder CalendarItems
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.CalendarItems.CalendarItemsRequestBuilder CalendarItems
         {
-            get => new CalendarItemsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.CalendarItems.CalendarItemsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The changeOrders property</summary>
-        public ChangeOrdersRequestBuilder ChangeOrders
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.ChangeOrdersRequestBuilder ChangeOrders
         {
-            get => new ChangeOrdersRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.ChangeOrdersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The changeOrdersAttach property</summary>
-        public ChangeOrdersAttachRequestBuilder ChangeOrdersAttach
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Attach.ChangeOrdersAttachRequestBuilder ChangeOrdersAttach
         {
-            get => new ChangeOrdersAttachRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Attach.ChangeOrdersAttachRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The changeOrdersBatchPricing property</summary>
-        public ChangeOrdersBatchPricingRequestBuilder ChangeOrdersBatchPricing
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.BatchPricing.ChangeOrdersBatchPricingRequestBuilder ChangeOrdersBatchPricing
         {
-            get => new ChangeOrdersBatchPricingRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.BatchPricing.ChangeOrdersBatchPricingRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The changeOrdersBatchUpdate property</summary>
-        public ChangeOrdersBatchUpdateRequestBuilder ChangeOrdersBatchUpdate
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.BatchUpdate.ChangeOrdersBatchUpdateRequestBuilder ChangeOrdersBatchUpdate
         {
-            get => new ChangeOrdersBatchUpdateRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.BatchUpdate.ChangeOrdersBatchUpdateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The changeOrdersClearMarkup property</summary>
-        public ChangeOrdersClearMarkupRequestBuilder ChangeOrdersClearMarkup
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.ClearMarkup.ChangeOrdersClearMarkupRequestBuilder ChangeOrdersClearMarkup
         {
-            get => new ChangeOrdersClearMarkupRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.ClearMarkup.ChangeOrdersClearMarkupRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The changeOrdersDetach property</summary>
-        public ChangeOrdersDetachRequestBuilder ChangeOrdersDetach
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Detach.ChangeOrdersDetachRequestBuilder ChangeOrdersDetach
         {
-            get => new ChangeOrdersDetachRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Detach.ChangeOrdersDetachRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The changeOrdersGenerate property</summary>
-        public ChangeOrdersGenerateRequestBuilder ChangeOrdersGenerate
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrdersGenerate.ChangeOrdersGenerateRequestBuilder ChangeOrdersGenerate
         {
-            get => new ChangeOrdersGenerateRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrdersGenerate.ChangeOrdersGenerateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The changeOrdersIgnoreMarkup property</summary>
-        public ChangeOrdersIgnoreMarkupRequestBuilder ChangeOrdersIgnoreMarkup
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.IgnoreMarkup.ChangeOrdersIgnoreMarkupRequestBuilder ChangeOrdersIgnoreMarkup
         {
-            get => new ChangeOrdersIgnoreMarkupRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.IgnoreMarkup.ChangeOrdersIgnoreMarkupRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The comments property</summary>
-        public CommentsRequestBuilder Comments
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Comments.CommentsRequestBuilder Comments
         {
-            get => new CommentsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Comments.CommentsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The commentsBatchCreate property</summary>
-        public CommentsBatchCreateRequestBuilder CommentsBatchCreate
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.CommentsBatchCreate.CommentsBatchCreateRequestBuilder CommentsBatchCreate
         {
-            get => new CommentsBatchCreateRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.CommentsBatchCreate.CommentsBatchCreateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The companyFolders property</summary>
-        public CompanyFoldersRequestBuilder CompanyFolders
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.CompanyFolders.CompanyFoldersRequestBuilder CompanyFolders
         {
-            get => new CompanyFoldersRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.CompanyFolders.CompanyFoldersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The complianceDefinitions property</summary>
-        public ComplianceDefinitionsRequestBuilder ComplianceDefinitions
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ComplianceDefinitions.ComplianceDefinitionsRequestBuilder ComplianceDefinitions
         {
-            get => new ComplianceDefinitionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ComplianceDefinitions.ComplianceDefinitionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The complianceDefinitionsReorder property</summary>
-        public ComplianceDefinitionsReorderRequestBuilder ComplianceDefinitionsReorder
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ComplianceDefinitions.Reorder.ComplianceDefinitionsReorderRequestBuilder ComplianceDefinitionsReorder
         {
-            get => new ComplianceDefinitionsReorderRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ComplianceDefinitions.Reorder.ComplianceDefinitionsReorderRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The complianceRequirements property</summary>
-        public ComplianceRequirementsRequestBuilder ComplianceRequirements
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ComplianceRequirements.ComplianceRequirementsRequestBuilder ComplianceRequirements
         {
-            get => new ComplianceRequirementsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ComplianceRequirements.ComplianceRequirementsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The complianceRequirementsAddContent property</summary>
-        public ComplianceRequirementsAddContentRequestBuilder ComplianceRequirementsAddContent
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ComplianceRequirements.AddContent.ComplianceRequirementsAddContentRequestBuilder ComplianceRequirementsAddContent
         {
-            get => new ComplianceRequirementsAddContentRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ComplianceRequirements.AddContent.ComplianceRequirementsAddContentRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The complianceRequirementsRemoveContent property</summary>
-        public ComplianceRequirementsRemoveContentRequestBuilder ComplianceRequirementsRemoveContent
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ComplianceRequirements.RemoveContent.ComplianceRequirementsRemoveContentRequestBuilder ComplianceRequirementsRemoveContent
         {
-            get => new ComplianceRequirementsRemoveContentRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ComplianceRequirements.RemoveContent.ComplianceRequirementsRemoveContentRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The componentTemplates property</summary>
-        public ComponentTemplatesRequestBuilder ComponentTemplates
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ComponentTemplates.ComponentTemplatesRequestBuilder ComponentTemplates
         {
-            get => new ComponentTemplatesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ComponentTemplates.ComponentTemplatesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The contracts property</summary>
-        public ContractsRequestBuilder Contracts
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.ContractsRequestBuilder Contracts
         {
-            get => new ContractsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.ContractsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The contractsBatchCreate property</summary>
-        public ContractsBatchCreateRequestBuilder ContractsBatchCreate
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.BatchCreate.ContractsBatchCreateRequestBuilder ContractsBatchCreate
         {
-            get => new ContractsBatchCreateRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.BatchCreate.ContractsBatchCreateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The contractsCreateFromCostItems property</summary>
-        public ContractsCreateFromCostItemsRequestBuilder ContractsCreateFromCostItems
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.CreateFromCostItems.ContractsCreateFromCostItemsRequestBuilder ContractsCreateFromCostItems
         {
-            get => new ContractsCreateFromCostItemsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.CreateFromCostItems.ContractsCreateFromCostItemsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The contractsImport property</summary>
-        public ContractsImportRequestBuilder ContractsImport
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Import.ContractsImportRequestBuilder ContractsImport
         {
-            get => new ContractsImportRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Import.ContractsImportRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The contractsSearch property</summary>
-        public ContractsSearchRequestBuilder ContractsSearch
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Search.ContractsSearchRequestBuilder ContractsSearch
         {
-            get => new ContractsSearchRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Search.ContractsSearchRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The contractsSync property</summary>
-        public ContractsSyncRequestBuilder ContractsSync
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Sync.ContractsSyncRequestBuilder ContractsSync
         {
-            get => new ContractsSyncRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Contracts.Sync.ContractsSyncRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The costItems property</summary>
-        public CostItemsRequestBuilder CostItems
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.CostItemsRequestBuilder CostItems
         {
-            get => new CostItemsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.CostItemsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The costItemsAttach property</summary>
-        public CostItemsAttachRequestBuilder CostItemsAttach
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.Attach.CostItemsAttachRequestBuilder CostItemsAttach
         {
-            get => new CostItemsAttachRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.Attach.CostItemsAttachRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The costItemsBatchCreate property</summary>
-        public CostItemsBatchCreateRequestBuilder CostItemsBatchCreate
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.BatchCreate.CostItemsBatchCreateRequestBuilder CostItemsBatchCreate
         {
-            get => new CostItemsBatchCreateRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.BatchCreate.CostItemsBatchCreateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The costItemsCopyFrom property</summary>
-        public CostItemsCopyFromRequestBuilder CostItemsCopyFrom
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.CopyFrom.CostItemsCopyFromRequestBuilder CostItemsCopyFrom
         {
-            get => new CostItemsCopyFromRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.CopyFrom.CostItemsCopyFromRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The costItemsDetach property</summary>
-        public CostItemsDetachRequestBuilder CostItemsDetach
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.Detach.CostItemsDetachRequestBuilder CostItemsDetach
         {
-            get => new CostItemsDetachRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.Detach.CostItemsDetachRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The customColumns property</summary>
-        public CustomColumnsRequestBuilder CustomColumns
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.CustomColumns.CustomColumnsRequestBuilder CustomColumns
         {
-            get => new CustomColumnsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.CustomColumns.CustomColumnsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The defaultValues property</summary>
-        public DefaultValuesRequestBuilder DefaultValues
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.DefaultValues.DefaultValuesRequestBuilder DefaultValues
         {
-            get => new DefaultValuesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.DefaultValues.DefaultValuesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The distributionColumns property</summary>
-        public DistributionColumnsRequestBuilder DistributionColumns
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.DistributionColumns.DistributionColumnsRequestBuilder DistributionColumns
         {
-            get => new DistributionColumnsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.DistributionColumns.DistributionColumnsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The distributionItems property</summary>
-        public DistributionItemsRequestBuilder DistributionItems
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.DistributionItems.DistributionItemsRequestBuilder DistributionItems
         {
-            get => new DistributionItemsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.DistributionItems.DistributionItemsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The distributionItemsBatchCreate property</summary>
-        public DistributionItemsBatchCreateRequestBuilder DistributionItemsBatchCreate
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.DistributionItems.BatchCreate.DistributionItemsBatchCreateRequestBuilder DistributionItemsBatchCreate
         {
-            get => new DistributionItemsBatchCreateRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.DistributionItems.BatchCreate.DistributionItemsBatchCreateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The distributionItemsBatchUpdate property</summary>
-        public DistributionItemsBatchUpdateRequestBuilder DistributionItemsBatchUpdate
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.DistributionItems.BatchUpdate.DistributionItemsBatchUpdateRequestBuilder DistributionItemsBatchUpdate
         {
-            get => new DistributionItemsBatchUpdateRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.DistributionItems.BatchUpdate.DistributionItemsBatchUpdateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The distributions property</summary>
-        public DistributionsRequestBuilder Distributions
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Distributions.DistributionsRequestBuilder Distributions
         {
-            get => new DistributionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Distributions.DistributionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The distributionsBatchCreate property</summary>
-        public DistributionsBatchCreateRequestBuilder DistributionsBatchCreate
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Distributions.BatchCreate.DistributionsBatchCreateRequestBuilder DistributionsBatchCreate
         {
-            get => new DistributionsBatchCreateRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Distributions.BatchCreate.DistributionsBatchCreateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The documentPackages property</summary>
-        public DocumentPackagesRequestBuilder DocumentPackages
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.DocumentPackages.DocumentPackagesRequestBuilder DocumentPackages
         {
-            get => new DocumentPackagesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.DocumentPackages.DocumentPackagesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The documentPackagesMerge property</summary>
-        public DocumentPackagesMergeRequestBuilder DocumentPackagesMerge
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.DocumentPackages.Merge.DocumentPackagesMergeRequestBuilder DocumentPackagesMerge
         {
-            get => new DocumentPackagesMergeRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.DocumentPackages.Merge.DocumentPackagesMergeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The documentPackagesRecent property</summary>
-        public DocumentPackagesRecentRequestBuilder DocumentPackagesRecent
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.DocumentPackages.Recent.DocumentPackagesRecentRequestBuilder DocumentPackagesRecent
         {
-            get => new DocumentPackagesRecentRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.DocumentPackages.Recent.DocumentPackagesRecentRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The documents property</summary>
-        public DocumentsRequestBuilder Documents
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Documents.DocumentsRequestBuilder Documents
         {
-            get => new DocumentsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Documents.DocumentsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The documentTemplates property</summary>
-        public DocumentTemplatesRequestBuilder DocumentTemplates
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.DocumentTemplates.DocumentTemplatesRequestBuilder DocumentTemplates
         {
-            get => new DocumentTemplatesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.DocumentTemplates.DocumentTemplatesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The documentTemplatesBatchCreate property</summary>
-        public DocumentTemplatesBatchCreateRequestBuilder DocumentTemplatesBatchCreate
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.DocumentTemplates.BatchCreate.DocumentTemplatesBatchCreateRequestBuilder DocumentTemplatesBatchCreate
         {
-            get => new DocumentTemplatesBatchCreateRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.DocumentTemplates.BatchCreate.DocumentTemplatesBatchCreateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The emailNotifications property</summary>
-        public EmailNotificationsRequestBuilder EmailNotifications
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.EmailNotifications.EmailNotificationsRequestBuilder EmailNotifications
         {
-            get => new EmailNotificationsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.EmailNotifications.EmailNotificationsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The emailNotificationsBatchSend property</summary>
-        public EmailNotificationsBatchSendRequestBuilder EmailNotificationsBatchSend
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.EmailNotificationsBatchSend.EmailNotificationsBatchSendRequestBuilder EmailNotificationsBatchSend
         {
-            get => new EmailNotificationsBatchSendRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.EmailNotificationsBatchSend.EmailNotificationsBatchSendRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The exchangeRates property</summary>
-        public ExchangeRatesRequestBuilder ExchangeRates
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ExchangeRates.ExchangeRatesRequestBuilder ExchangeRates
         {
-            get => new ExchangeRatesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ExchangeRates.ExchangeRatesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The expenses property</summary>
-        public ExpensesRequestBuilder Expenses
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Expenses.ExpensesRequestBuilder Expenses
         {
-            get => new ExpensesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Expenses.ExpensesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The expensesBatchCreate property</summary>
-        public ExpensesBatchCreateRequestBuilder ExpensesBatchCreate
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ExpensesBatchCreate.ExpensesBatchCreateRequestBuilder ExpensesBatchCreate
         {
-            get => new ExpensesBatchCreateRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ExpensesBatchCreate.ExpensesBatchCreateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The expensesBatchUpdate property</summary>
-        public ExpensesBatchUpdateRequestBuilder ExpensesBatchUpdate
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ExpensesBatchUpdate.ExpensesBatchUpdateRequestBuilder ExpensesBatchUpdate
         {
-            get => new ExpensesBatchUpdateRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ExpensesBatchUpdate.ExpensesBatchUpdateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The exports property</summary>
-        public ExportsRequestBuilder Exports
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Exports.ExportsRequestBuilder Exports
         {
-            get => new ExportsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Exports.ExportsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The externalRelationships property</summary>
-        public ExternalRelationshipsRequestBuilder ExternalRelationships
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ExternalRelationships.ExternalRelationshipsRequestBuilder ExternalRelationships
         {
-            get => new ExternalRelationshipsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ExternalRelationships.ExternalRelationshipsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The externalRelationshipsBatchCreate property</summary>
-        public ExternalRelationshipsBatchCreateRequestBuilder ExternalRelationshipsBatchCreate
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ExternalRelationships.BatchCreate.ExternalRelationshipsBatchCreateRequestBuilder ExternalRelationshipsBatchCreate
         {
-            get => new ExternalRelationshipsBatchCreateRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ExternalRelationships.BatchCreate.ExternalRelationshipsBatchCreateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The externalRelationshipsSearch property</summary>
-        public ExternalRelationshipsSearchRequestBuilder ExternalRelationshipsSearch
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ExternalRelationships.Search.ExternalRelationshipsSearchRequestBuilder ExternalRelationshipsSearch
         {
-            get => new ExternalRelationshipsSearchRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ExternalRelationships.Search.ExternalRelationshipsSearchRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The externalRelationshipsUpdate property</summary>
-        public ExternalRelationshipsUpdateRequestBuilder ExternalRelationshipsUpdate
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ExternalRelationships.Update.ExternalRelationshipsUpdateRequestBuilder ExternalRelationshipsUpdate
         {
-            get => new ExternalRelationshipsUpdateRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ExternalRelationships.Update.ExternalRelationshipsUpdateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The filters property</summary>
-        public FiltersRequestBuilder Filters
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Filters.FiltersRequestBuilder Filters
         {
-            get => new FiltersRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Filters.FiltersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The forecastAdjustments property</summary>
-        public ForecastAdjustmentsRequestBuilder ForecastAdjustments
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ForecastAdjustments.ForecastAdjustmentsRequestBuilder ForecastAdjustments
         {
-            get => new ForecastAdjustmentsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ForecastAdjustments.ForecastAdjustmentsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The mainContracts property</summary>
-        public MainContractsRequestBuilder MainContracts
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.MainContracts.MainContractsRequestBuilder MainContracts
         {
-            get => new MainContractsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.MainContracts.MainContractsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The mainContractsImport property</summary>
-        public MainContractsImportRequestBuilder MainContractsImport
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.MainContracts.Import.MainContractsImportRequestBuilder MainContractsImport
         {
-            get => new MainContractsImportRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.MainContracts.Import.MainContractsImportRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The markupFormulas property</summary>
-        public MarkupFormulasRequestBuilder MarkupFormulas
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.MarkupFormulas.MarkupFormulasRequestBuilder MarkupFormulas
         {
-            get => new MarkupFormulasRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.MarkupFormulas.MarkupFormulasRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The markupFormulasApply property</summary>
-        public MarkupFormulasApplyRequestBuilder MarkupFormulasApply
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.MarkupFormulasApply.MarkupFormulasApplyRequestBuilder MarkupFormulasApply
         {
-            get => new MarkupFormulasApplyRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.MarkupFormulasApply.MarkupFormulasApplyRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The markupFormulasReapply property</summary>
-        public MarkupFormulasReapplyRequestBuilder MarkupFormulasReapply
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.MarkupFormulasReapply.MarkupFormulasReapplyRequestBuilder MarkupFormulasReapply
         {
-            get => new MarkupFormulasReapplyRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.MarkupFormulasReapply.MarkupFormulasReapplyRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The markups property</summary>
-        public MarkupsRequestBuilder Markups
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Markups.MarkupsRequestBuilder Markups
         {
-            get => new MarkupsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Markups.MarkupsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The metadata property</summary>
-        public MetadataRequestBuilder Metadata
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Metadata.MetadataRequestBuilder Metadata
         {
-            get => new MetadataRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Metadata.MetadataRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The milestones property</summary>
-        public MilestonesRequestBuilder Milestones
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Milestones.MilestonesRequestBuilder Milestones
         {
-            get => new MilestonesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Milestones.MilestonesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The milestonesBatchCreate property</summary>
-        public MilestonesBatchCreateRequestBuilder MilestonesBatchCreate
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Milestones.BatchCreate.MilestonesBatchCreateRequestBuilder MilestonesBatchCreate
         {
-            get => new MilestonesBatchCreateRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Milestones.BatchCreate.MilestonesBatchCreateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The milestonesBatchUpdate property</summary>
-        public MilestonesBatchUpdateRequestBuilder MilestonesBatchUpdate
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Milestones.BatchUpdate.MilestonesBatchUpdateRequestBuilder MilestonesBatchUpdate
         {
-            get => new MilestonesBatchUpdateRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Milestones.BatchUpdate.MilestonesBatchUpdateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The optionsPath property</summary>
-        public OptionsRequestBuilder OptionsPath
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Options.OptionsRequestBuilder OptionsPath
         {
-            get => new OptionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Options.OptionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The overbilling property</summary>
-        public OverbillingRequestBuilder Overbilling
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Overbilling.OverbillingRequestBuilder Overbilling
         {
-            get => new OverbillingRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Overbilling.OverbillingRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The paymentItems property</summary>
-        public PaymentItemsRequestBuilder PaymentItems
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.PaymentItems.PaymentItemsRequestBuilder PaymentItems
         {
-            get => new PaymentItemsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.PaymentItems.PaymentItemsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The paymentReferences property</summary>
-        public PaymentReferencesRequestBuilder PaymentReferences
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.PaymentReferences.PaymentReferencesRequestBuilder PaymentReferences
         {
-            get => new PaymentReferencesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.PaymentReferences.PaymentReferencesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The payments property</summary>
-        public PaymentsRequestBuilder Payments
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Payments.PaymentsRequestBuilder Payments
         {
-            get => new PaymentsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Payments.PaymentsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The paymentsBatchCreate property</summary>
-        public PaymentsBatchCreateRequestBuilder PaymentsBatchCreate
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.PaymentsBatchCreate.PaymentsBatchCreateRequestBuilder PaymentsBatchCreate
         {
-            get => new PaymentsBatchCreateRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.PaymentsBatchCreate.PaymentsBatchCreateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The paymentsBatchUpdate property</summary>
-        public PaymentsBatchUpdateRequestBuilder PaymentsBatchUpdate
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.PaymentsBatchUpdate.PaymentsBatchUpdateRequestBuilder PaymentsBatchUpdate
         {
-            get => new PaymentsBatchUpdateRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.PaymentsBatchUpdate.PaymentsBatchUpdateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The performanceTrackingItemInstances property</summary>
-        public PerformanceTrackingItemInstancesRequestBuilder PerformanceTrackingItemInstances
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.PerformanceTrackingItemInstances.PerformanceTrackingItemInstancesRequestBuilder PerformanceTrackingItemInstances
         {
-            get => new PerformanceTrackingItemInstancesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.PerformanceTrackingItemInstances.PerformanceTrackingItemInstancesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The performanceTrackingItems property</summary>
-        public PerformanceTrackingItemsRequestBuilder PerformanceTrackingItems
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.PerformanceTrackingItems.PerformanceTrackingItemsRequestBuilder PerformanceTrackingItems
         {
-            get => new PerformanceTrackingItemsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.PerformanceTrackingItems.PerformanceTrackingItemsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The permissions property</summary>
-        public PermissionsRequestBuilder Permissions
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Permissions.PermissionsRequestBuilder Permissions
         {
-            get => new PermissionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Permissions.PermissionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The projectBaseValue property</summary>
-        public ProjectBaseValueRequestBuilder ProjectBaseValue
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ProjectBaseValue.ProjectBaseValueRequestBuilder ProjectBaseValue
         {
-            get => new ProjectBaseValueRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ProjectBaseValue.ProjectBaseValueRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The properties property</summary>
-        public PropertiesRequestBuilder Properties
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Properties.PropertiesRequestBuilder Properties
         {
-            get => new PropertiesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Properties.PropertiesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The propertyValuesBatchUpdate property</summary>
-        public PropertyValuesBatchUpdateRequestBuilder PropertyValuesBatchUpdate
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.PropertyValuesBatchUpdate.PropertyValuesBatchUpdateRequestBuilder PropertyValuesBatchUpdate
         {
-            get => new PropertyValuesBatchUpdateRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.PropertyValuesBatchUpdate.PropertyValuesBatchUpdateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The purge property</summary>
-        public PurgeRequestBuilder Purge
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Purge.PurgeRequestBuilder Purge
         {
-            get => new PurgeRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Purge.PurgeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The relationshipsAuthorize property</summary>
-        public RelationshipsAuthorizeRequestBuilder RelationshipsAuthorize
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.RelationshipsAuthorize.RelationshipsAuthorizeRequestBuilder RelationshipsAuthorize
         {
-            get => new RelationshipsAuthorizeRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.RelationshipsAuthorize.RelationshipsAuthorizeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The savedViews property</summary>
-        public SavedViewsRequestBuilder SavedViews
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.SavedViews.SavedViewsRequestBuilder SavedViews
         {
-            get => new SavedViewsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.SavedViews.SavedViewsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The scheduleOfValues property</summary>
-        public ScheduleOfValuesRequestBuilder ScheduleOfValues
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ScheduleOfValues.ScheduleOfValuesRequestBuilder ScheduleOfValues
         {
-            get => new ScheduleOfValuesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ScheduleOfValues.ScheduleOfValuesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The scheduleOfValuesImport property</summary>
-        public ScheduleOfValuesImportRequestBuilder ScheduleOfValuesImport
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ScheduleOfValues.Import.ScheduleOfValuesImportRequestBuilder ScheduleOfValuesImport
         {
-            get => new ScheduleOfValuesImportRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ScheduleOfValues.Import.ScheduleOfValuesImportRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The scheduleOfValuesSearch property</summary>
-        public ScheduleOfValuesSearchRequestBuilder ScheduleOfValuesSearch
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ScheduleOfValues.Search.ScheduleOfValuesSearchRequestBuilder ScheduleOfValuesSearch
         {
-            get => new ScheduleOfValuesSearchRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ScheduleOfValues.Search.ScheduleOfValuesSearchRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The scheduleOfValuesSync property</summary>
-        public ScheduleOfValuesSyncRequestBuilder ScheduleOfValuesSync
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ScheduleOfValues.Sync.ScheduleOfValuesSyncRequestBuilder ScheduleOfValuesSync
         {
-            get => new ScheduleOfValuesSyncRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ScheduleOfValues.Sync.ScheduleOfValuesSyncRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The segments property</summary>
-        public SegmentsRequestBuilder Segments
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Segments.SegmentsRequestBuilder Segments
         {
-            get => new SegmentsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Segments.SegmentsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The segmentValues property</summary>
-        public SegmentValuesRequestBuilder SegmentValues
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.SegmentValues.SegmentValuesRequestBuilder SegmentValues
         {
-            get => new SegmentValuesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.SegmentValues.SegmentValuesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The settings property</summary>
-        public SettingsRequestBuilder Settings
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Settings.SettingsRequestBuilder Settings
         {
-            get => new SettingsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Settings.SettingsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The signnow property</summary>
-        public SignnowRequestBuilder Signnow
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Signnow.SignnowRequestBuilder Signnow
         {
-            get => new SignnowRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Signnow.SignnowRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The status property</summary>
-        public StatusRequestBuilder Status
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Status.StatusRequestBuilder Status
         {
-            get => new StatusRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Status.StatusRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The statuses property</summary>
-        public StatusesRequestBuilder Statuses
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Statuses.StatusesRequestBuilder Statuses
         {
-            get => new StatusesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Statuses.StatusesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The taxes property</summary>
-        public TaxesRequestBuilder Taxes
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Taxes.TaxesRequestBuilder Taxes
         {
-            get => new TaxesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Taxes.TaxesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The taxFormulas property</summary>
-        public TaxFormulasRequestBuilder TaxFormulas
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.TaxFormulas.TaxFormulasRequestBuilder TaxFormulas
         {
-            get => new TaxFormulasRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.TaxFormulas.TaxFormulasRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The taxItems property</summary>
-        public TaxItemsRequestBuilder TaxItems
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.TaxItems.TaxItemsRequestBuilder TaxItems
         {
-            get => new TaxItemsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.TaxItems.TaxItemsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The taxItemsActivate property</summary>
-        public TaxItemsActivateRequestBuilder TaxItemsActivate
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.TaxItems.Activate.TaxItemsActivateRequestBuilder TaxItemsActivate
         {
-            get => new TaxItemsActivateRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.TaxItems.Activate.TaxItemsActivateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The taxItemsDeactivate property</summary>
-        public TaxItemsDeactivateRequestBuilder TaxItemsDeactivate
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.TaxItems.Deactivate.TaxItemsDeactivateRequestBuilder TaxItemsDeactivate
         {
-            get => new TaxItemsDeactivateRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.TaxItems.Deactivate.TaxItemsDeactivateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The templates property</summary>
-        public TemplatesRequestBuilder Templates
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Templates.TemplatesRequestBuilder Templates
         {
-            get => new TemplatesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Templates.TemplatesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The terminologies property</summary>
-        public TerminologiesRequestBuilder Terminologies
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Terminologies.TerminologiesRequestBuilder Terminologies
         {
-            get => new TerminologiesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Terminologies.TerminologiesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The timeSheets property</summary>
-        public TimeSheetsRequestBuilder TimeSheets
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.TimeSheets.TimeSheetsRequestBuilder TimeSheets
         {
-            get => new TimeSheetsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.TimeSheets.TimeSheetsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The units property</summary>
-        public UnitsRequestBuilder Units
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Units.UnitsRequestBuilder Units
         {
-            get => new UnitsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Units.UnitsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The webhookAuthorize property</summary>
-        public WebhookAuthorizeRequestBuilder WebhookAuthorize
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.WebhookAuthorize.WebhookAuthorizeRequestBuilder WebhookAuthorize
         {
-            get => new WebhookAuthorizeRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.WebhookAuthorize.WebhookAuthorizeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The workflowApprovals property</summary>
-        public WorkflowApprovalsRequestBuilder WorkflowApprovals
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.WorkflowApprovals.WorkflowApprovalsRequestBuilder WorkflowApprovals
         {
-            get => new WorkflowApprovalsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.WorkflowApprovals.WorkflowApprovalsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The workflowConditions property</summary>
-        public WorkflowConditionsRequestBuilder WorkflowConditions
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.WorkflowConditions.WorkflowConditionsRequestBuilder WorkflowConditions
         {
-            get => new WorkflowConditionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.WorkflowConditions.WorkflowConditionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The workflowConditionsReorder property</summary>
-        public WorkflowConditionsReorderRequestBuilder WorkflowConditionsReorder
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.WorkflowConditions.Reorder.WorkflowConditionsReorderRequestBuilder WorkflowConditionsReorder
         {
-            get => new WorkflowConditionsReorderRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.WorkflowConditions.Reorder.WorkflowConditionsReorderRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The workflowDecisions property</summary>
-        public WorkflowDecisionsRequestBuilder WorkflowDecisions
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.WorkflowDecisions.WorkflowDecisionsRequestBuilder WorkflowDecisions
         {
-            get => new WorkflowDecisionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.WorkflowDecisions.WorkflowDecisionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The workflowDefinitions property</summary>
-        public WorkflowDefinitionsRequestBuilder WorkflowDefinitions
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.WorkflowDefinitions.WorkflowDefinitionsRequestBuilder WorkflowDefinitions
         {
-            get => new WorkflowDefinitionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.WorkflowDefinitions.WorkflowDefinitionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The workflows property</summary>
-        public WorkflowsRequestBuilder Workflows
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.Workflows.WorkflowsRequestBuilder Workflows
         {
-            get => new WorkflowsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.Workflows.WorkflowsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithProjectItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.ACC.CostManagement.V1.Projects.Item.WithProjectItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -779,7 +781,7 @@ namespace Autodesk.ACC.CostManagement.V1.Projects.Item {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithProjectItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.ACC.CostManagement.V1.Projects.Item.WithProjectItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -791,12 +793,12 @@ namespace Autodesk.ACC.CostManagement.V1.Projects.Item {
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="DefinedError">When receiving a 400 status code</exception>
-        /// <exception cref="Error">When receiving a 401 status code</exception>
-        /// <exception cref="Error">When receiving a 403 status code</exception>
-        /// <exception cref="Error">When receiving a 404 status code</exception>
-        /// <exception cref="Error">When receiving a 500 status code</exception>
-        /// <exception cref="Error">When receiving a 503 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.DefinedError">When receiving a 400 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 500 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -809,47 +811,47 @@ namespace Autodesk.ACC.CostManagement.V1.Projects.Item {
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"400", DefinedError.CreateFromDiscriminatorValue},
-                {"401", Error.CreateFromDiscriminatorValue},
-                {"403", Error.CreateFromDiscriminatorValue},
-                {"404", Error.CreateFromDiscriminatorValue},
-                {"500", Error.CreateFromDiscriminatorValue},
-                {"503", Error.CreateFromDiscriminatorValue},
+                { "400", global::Autodesk.ACC.CostManagement.Models.DefinedError.CreateFromDiscriminatorValue },
+                { "401", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "403", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "404", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "500", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "503", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Gets the container&apos;s status
         /// </summary>
-        /// <returns>A <see cref="Container"/></returns>
+        /// <returns>A <see cref="global::Autodesk.ACC.CostManagement.Models.Container"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="DefinedError">When receiving a 400 status code</exception>
-        /// <exception cref="Error">When receiving a 401 status code</exception>
-        /// <exception cref="Error">When receiving a 403 status code</exception>
-        /// <exception cref="Error">When receiving a 404 status code</exception>
-        /// <exception cref="Error">When receiving a 500 status code</exception>
-        /// <exception cref="Error">When receiving a 503 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.DefinedError">When receiving a 400 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 500 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Container?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.ACC.CostManagement.Models.Container?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Container> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.ACC.CostManagement.Models.Container> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"400", DefinedError.CreateFromDiscriminatorValue},
-                {"401", Error.CreateFromDiscriminatorValue},
-                {"403", Error.CreateFromDiscriminatorValue},
-                {"404", Error.CreateFromDiscriminatorValue},
-                {"500", Error.CreateFromDiscriminatorValue},
-                {"503", Error.CreateFromDiscriminatorValue},
+                { "400", global::Autodesk.ACC.CostManagement.Models.DefinedError.CreateFromDiscriminatorValue },
+                { "401", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "403", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "404", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "500", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "503", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Container>(requestInfo, Container.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Autodesk.ACC.CostManagement.Models.Container>(requestInfo, global::Autodesk.ACC.CostManagement.Models.Container.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Deletes a container. Internal only.
@@ -892,24 +894,26 @@ namespace Autodesk.ACC.CostManagement.V1.Projects.Item {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="WithProjectItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Autodesk.ACC.CostManagement.V1.Projects.Item.WithProjectItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public WithProjectItemRequestBuilder WithUrl(string rawUrl)
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.WithProjectItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new WithProjectItemRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Autodesk.ACC.CostManagement.V1.Projects.Item.WithProjectItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class WithProjectItemRequestBuilderDeleteRequestConfiguration : RequestConfiguration<DefaultQueryParameters> 
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class WithProjectItemRequestBuilderDeleteRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
         {
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class WithProjectItemRequestBuilderGetRequestConfiguration : RequestConfiguration<DefaultQueryParameters> 
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class WithProjectItemRequestBuilderGetRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
         {
         }
     }

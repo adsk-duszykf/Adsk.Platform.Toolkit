@@ -1,14 +1,15 @@
 {
-  "descriptionHash": "84C3FB0C46C7B39814F361B4CD07CA021C1D7E27841C3BA4BE2D97B8CB23EAC172ED0AC3F17D5E44D95D8EF1295AD5C93D7C6843023356FB2EFAFB9712A591B8",
-  "descriptionLocation": "..\\..\\..\\private\\Autodesk.ACC.CostManagement\\OpenAPI\\cost.yaml",
+  "descriptionHash": "BBB454F86B293B03FEF5D02ABA2B2431607AADCC3EF734C2E046837E8092EE062156E7AAC70C7E2DBAE7EC9488C26E8FBB441E6BB849B99D1CFF06084B441980",
+  "descriptionLocation": "../../../private/Autodesk.ACC.CostManagement/OpenAPI/cost.yaml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.13.0",
+  "kiotaVersion": "1.16.0",
   "clientClassName": "BaseCostManagementClient",
   "clientNamespaceName": "Autodesk.ACC.CostManagement",
   "language": "CSharp",
   "usesBackingStore": false,
   "excludeBackwardCompatible": false,
   "includeAdditionalData": true,
+  "disableSSLValidation": false,
   "serializers": [
     "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",
     "Microsoft.Kiota.Serialization.Text.TextSerializationWriterFactory",

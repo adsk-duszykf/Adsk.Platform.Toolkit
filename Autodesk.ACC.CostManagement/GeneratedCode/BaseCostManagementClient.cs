@@ -10,32 +10,33 @@ using Microsoft.Kiota.Serialization.Multipart;
 using Microsoft.Kiota.Serialization.Text;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Autodesk.ACC.CostManagement {
+namespace Autodesk.ACC.CostManagement
+{
     /// <summary>
     /// The main entry point of the SDK, exposes the configuration and the fluent API.
     /// </summary>
-    public class BaseCostManagementClient : BaseRequestBuilder 
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class BaseCostManagementClient : BaseRequestBuilder
     {
         /// <summary>The accounts property</summary>
-        public AccountsRequestBuilder Accounts
+        public global::Autodesk.ACC.CostManagement.Accounts.AccountsRequestBuilder Accounts
         {
-            get => new AccountsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.Accounts.AccountsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The projects property</summary>
-        public ProjectsRequestBuilder Projects
+        public global::Autodesk.ACC.CostManagement.Projects.ProjectsRequestBuilder Projects
         {
-            get => new ProjectsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.Projects.ProjectsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The v1 property</summary>
-        public V1RequestBuilder V1
+        public global::Autodesk.ACC.CostManagement.V1.V1RequestBuilder V1
         {
-            get => new V1RequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.V1RequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="BaseCostManagementClient"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.ACC.CostManagement.BaseCostManagementClient"/> and sets the default values.
         /// </summary>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         public BaseCostManagementClient(IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}", new Dictionary<string, object>())

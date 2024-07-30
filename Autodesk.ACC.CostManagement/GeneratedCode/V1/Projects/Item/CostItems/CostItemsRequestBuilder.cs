@@ -2,39 +2,41 @@
 using Autodesk.ACC.CostManagement.Models;
 using Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.Item;
 using Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.Summary;
+using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems {
+namespace Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems
+{
     /// <summary>
     /// Builds and executes requests for operations under \v1\projects\{projectId}\cost-items
     /// </summary>
-    public class CostItemsRequestBuilder : BaseRequestBuilder 
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class CostItemsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The summary property</summary>
-        public SummaryRequestBuilder Summary
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.Summary.SummaryRequestBuilder Summary
         {
-            get => new SummaryRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.Summary.SummaryRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Autodesk.ACC.CostManagement.v1.projects.item.costItems.item collection</summary>
         /// <param name="position">The ID of the cost item.</param>
-        /// <returns>A <see cref="WithCostItemItemRequestBuilder"/></returns>
-        public WithCostItemItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.Item.WithCostItemItemRequestBuilder"/></returns>
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.Item.WithCostItemItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("costItemId", position);
-                return new WithCostItemItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.Item.WithCostItemItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="CostItemsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.CostItemsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -42,7 +44,7 @@ namespace Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="CostItemsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.CostItemsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -52,70 +54,70 @@ namespace Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems {
         /// <summary>
         /// Lists all the cost items in a specified project.
         /// </summary>
-        /// <returns>A <see cref="CostItemListResponse"/></returns>
+        /// <returns>A <see cref="global::Autodesk.ACC.CostManagement.Models.CostItemListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="DefinedError">When receiving a 400 status code</exception>
-        /// <exception cref="Error">When receiving a 401 status code</exception>
-        /// <exception cref="Error">When receiving a 403 status code</exception>
-        /// <exception cref="Error">When receiving a 404 status code</exception>
-        /// <exception cref="Error">When receiving a 500 status code</exception>
-        /// <exception cref="Error">When receiving a 503 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.DefinedError">When receiving a 400 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 500 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<CostItemListResponse?> GetAsync(Action<RequestConfiguration<CostItemsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.ACC.CostManagement.Models.CostItemListResponse?> GetAsync(Action<RequestConfiguration<global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.CostItemsRequestBuilder.CostItemsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<CostItemListResponse> GetAsync(Action<RequestConfiguration<CostItemsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.ACC.CostManagement.Models.CostItemListResponse> GetAsync(Action<RequestConfiguration<global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.CostItemsRequestBuilder.CostItemsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"400", DefinedError.CreateFromDiscriminatorValue},
-                {"401", Error.CreateFromDiscriminatorValue},
-                {"403", Error.CreateFromDiscriminatorValue},
-                {"404", Error.CreateFromDiscriminatorValue},
-                {"500", Error.CreateFromDiscriminatorValue},
-                {"503", Error.CreateFromDiscriminatorValue},
+                { "400", global::Autodesk.ACC.CostManagement.Models.DefinedError.CreateFromDiscriminatorValue },
+                { "401", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "403", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "404", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "500", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "503", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<CostItemListResponse>(requestInfo, CostItemListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Autodesk.ACC.CostManagement.Models.CostItemListResponse>(requestInfo, global::Autodesk.ACC.CostManagement.Models.CostItemListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create a new cost item in a specific project.
         /// </summary>
-        /// <returns>A <see cref="CostItem"/></returns>
+        /// <returns>A <see cref="global::Autodesk.ACC.CostManagement.Models.CostItem"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="DefinedError">When receiving a 400 status code</exception>
-        /// <exception cref="Error">When receiving a 401 status code</exception>
-        /// <exception cref="Error">When receiving a 403 status code</exception>
-        /// <exception cref="Error">When receiving a 404 status code</exception>
-        /// <exception cref="Error">When receiving a 500 status code</exception>
-        /// <exception cref="Error">When receiving a 503 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.DefinedError">When receiving a 400 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 500 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<CostItem?> PostAsync(CostItemCreate body, Action<RequestConfiguration<CostItemsRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.ACC.CostManagement.Models.CostItem?> PostAsync(global::Autodesk.ACC.CostManagement.Models.CostItemCreate body, Action<RequestConfiguration<global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.CostItemsRequestBuilder.CostItemsRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<CostItem> PostAsync(CostItemCreate body, Action<RequestConfiguration<CostItemsRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.ACC.CostManagement.Models.CostItem> PostAsync(global::Autodesk.ACC.CostManagement.Models.CostItemCreate body, Action<RequestConfiguration<global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.CostItemsRequestBuilder.CostItemsRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"400", DefinedError.CreateFromDiscriminatorValue},
-                {"401", Error.CreateFromDiscriminatorValue},
-                {"403", Error.CreateFromDiscriminatorValue},
-                {"404", Error.CreateFromDiscriminatorValue},
-                {"500", Error.CreateFromDiscriminatorValue},
-                {"503", Error.CreateFromDiscriminatorValue},
+                { "400", global::Autodesk.ACC.CostManagement.Models.DefinedError.CreateFromDiscriminatorValue },
+                { "401", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "403", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "404", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "500", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "503", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<CostItem>(requestInfo, CostItem.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Autodesk.ACC.CostManagement.Models.CostItem>(requestInfo, global::Autodesk.ACC.CostManagement.Models.CostItem.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Lists all the cost items in a specified project.
@@ -124,11 +126,11 @@ namespace Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<CostItemsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.CostItemsRequestBuilder.CostItemsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<CostItemsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.CostItemsRequestBuilder.CostItemsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -144,15 +146,15 @@ namespace Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(CostItemCreate body, Action<RequestConfiguration<CostItemsRequestBuilderPostQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Autodesk.ACC.CostManagement.Models.CostItemCreate body, Action<RequestConfiguration<global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.CostItemsRequestBuilder.CostItemsRequestBuilderPostQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(CostItemCreate body, Action<RequestConfiguration<CostItemsRequestBuilderPostQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Autodesk.ACC.CostManagement.Models.CostItemCreate body, Action<RequestConfiguration<global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.CostItemsRequestBuilder.CostItemsRequestBuilderPostQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.POST, "{+baseurl}/v1/projects/{projectId}/cost-items{?scope*}", PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
@@ -161,16 +163,17 @@ namespace Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="CostItemsRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.CostItemsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public CostItemsRequestBuilder WithUrl(string rawUrl)
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.CostItemsRequestBuilder WithUrl(string rawUrl)
         {
-            return new CostItemsRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.CostItemsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Lists all the cost items in a specified project.
         /// </summary>
-        public class CostItemsRequestBuilderGetQueryParameters 
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class CostItemsRequestBuilderGetQueryParameters 
         {
             /// <summary>The ID of the budget. Separate multiple IDs with commas. For example, ``filter[budgetId]=id1,id2``, or filter these items that are not linked to any budget  ``filter[budgetId]=blank``.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -314,7 +317,7 @@ namespace Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems {
 #endif
             /// <summary>The scope of the cost item, usually by change order type.</summary>
             [QueryParameter("scope")]
-            public GetScopeQueryParameterType? ScopeAsGetScopeQueryParameterType { get; set; }
+            public global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.GetScopeQueryParameterType? ScopeAsGetScopeQueryParameterType { get; set; }
             /// <summary>The sort order for items. Each attribute can be sorted in either ``asc`` (default) or ``desc`` order. For example, ``sort=name, updatedAt desc`` or ``sort=name + updatedAt desc`` sorts the results first by name in ascending order, then by date updated in descending order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -330,13 +333,15 @@ namespace Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems {
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class CostItemsRequestBuilderGetRequestConfiguration : RequestConfiguration<CostItemsRequestBuilderGetQueryParameters> 
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class CostItemsRequestBuilderGetRequestConfiguration : RequestConfiguration<global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.CostItemsRequestBuilder.CostItemsRequestBuilderGetQueryParameters>
         {
         }
         /// <summary>
         /// Create a new cost item in a specific project.
         /// </summary>
-        public class CostItemsRequestBuilderPostQueryParameters 
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class CostItemsRequestBuilderPostQueryParameters 
         {
             /// <summary>The scope of the cost item, usually by change order type.</summary>
             [Obsolete("This property is deprecated, use ScopeAsPostScopeQueryParameterType instead")]
@@ -351,13 +356,14 @@ namespace Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems {
 #endif
             /// <summary>The scope of the cost item, usually by change order type.</summary>
             [QueryParameter("scope")]
-            public PostScopeQueryParameterType? ScopeAsPostScopeQueryParameterType { get; set; }
+            public global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.PostScopeQueryParameterType? ScopeAsPostScopeQueryParameterType { get; set; }
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class CostItemsRequestBuilderPostRequestConfiguration : RequestConfiguration<CostItemsRequestBuilderPostQueryParameters> 
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class CostItemsRequestBuilderPostRequestConfiguration : RequestConfiguration<global::Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.CostItemsRequestBuilder.CostItemsRequestBuilderPostQueryParameters>
         {
         }
     }

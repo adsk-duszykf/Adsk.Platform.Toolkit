@@ -2,52 +2,54 @@
 using Autodesk.ACC.CostManagement.Models;
 using Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item.Definition;
 using Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item.Item;
+using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item {
+namespace Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \v1\projects\{projectId}\change-orders\{changeOrder}
     /// </summary>
-    public class WithChangeOrderItemRequestBuilder : BaseRequestBuilder 
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class WithChangeOrderItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The definition property</summary>
-        public DefinitionRequestBuilder Definition
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item.Definition.DefinitionRequestBuilder Definition
         {
-            get => new DefinitionRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item.Definition.DefinitionRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Autodesk.ACC.CostManagement.v1.projects.item.changeOrders.item.item collection</summary>
         /// <param name="position">The change order&apos;s ID.</param>
-        /// <returns>A <see cref="ChangeOrderItemRequestBuilder"/></returns>
-        public ChangeOrderItemRequestBuilder this[Guid position]
+        /// <returns>A <see cref="global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item.Item.ChangeOrderItemRequestBuilder"/></returns>
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item.Item.ChangeOrderItemRequestBuilder this[Guid position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("id", position);
-                return new ChangeOrderItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item.Item.ChangeOrderItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>Gets an item from the Autodesk.ACC.CostManagement.v1.projects.item.changeOrders.item.item collection</summary>
         /// <param name="position">The change order&apos;s ID.</param>
-        /// <returns>A <see cref="ChangeOrderItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item.Item.ChangeOrderItemRequestBuilder"/></returns>
         [Obsolete("This indexer is deprecated and will be removed in the next major version. Use the one with the typed parameter instead.")]
-        public ChangeOrderItemRequestBuilder this[string position]
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item.Item.ChangeOrderItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 if (!string.IsNullOrWhiteSpace(position)) urlTplParams.Add("id", position);
-                return new ChangeOrderItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item.Item.ChangeOrderItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithChangeOrderItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item.WithChangeOrderItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -55,7 +57,7 @@ namespace Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithChangeOrderItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item.WithChangeOrderItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -65,105 +67,105 @@ namespace Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item {
         /// <summary>
         /// Gets a list of change orders by a specified change order type such as PCO, RFQ, and so on.
         /// </summary>
-        /// <returns>A <see cref="FormInstanceListResponse"/></returns>
+        /// <returns>A <see cref="global::Autodesk.ACC.CostManagement.Models.FormInstanceListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="DefinedError">When receiving a 400 status code</exception>
-        /// <exception cref="Error">When receiving a 401 status code</exception>
-        /// <exception cref="Error">When receiving a 403 status code</exception>
-        /// <exception cref="Error">When receiving a 404 status code</exception>
-        /// <exception cref="Error">When receiving a 500 status code</exception>
-        /// <exception cref="Error">When receiving a 503 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.DefinedError">When receiving a 400 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 500 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<FormInstanceListResponse?> GetAsync(Action<RequestConfiguration<WithChangeOrderItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.ACC.CostManagement.Models.FormInstanceListResponse?> GetAsync(Action<RequestConfiguration<global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item.WithChangeOrderItemRequestBuilder.WithChangeOrderItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<FormInstanceListResponse> GetAsync(Action<RequestConfiguration<WithChangeOrderItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.ACC.CostManagement.Models.FormInstanceListResponse> GetAsync(Action<RequestConfiguration<global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item.WithChangeOrderItemRequestBuilder.WithChangeOrderItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"400", DefinedError.CreateFromDiscriminatorValue},
-                {"401", Error.CreateFromDiscriminatorValue},
-                {"403", Error.CreateFromDiscriminatorValue},
-                {"404", Error.CreateFromDiscriminatorValue},
-                {"500", Error.CreateFromDiscriminatorValue},
-                {"503", Error.CreateFromDiscriminatorValue},
+                { "400", global::Autodesk.ACC.CostManagement.Models.DefinedError.CreateFromDiscriminatorValue },
+                { "401", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "403", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "404", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "500", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "503", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<FormInstanceListResponse>(requestInfo, FormInstanceListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Autodesk.ACC.CostManagement.Models.FormInstanceListResponse>(requestInfo, global::Autodesk.ACC.CostManagement.Models.FormInstanceListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Updates the display name of the change order in the Project.
         /// </summary>
-        /// <returns>A <see cref="FormDefinition"/></returns>
+        /// <returns>A <see cref="global::Autodesk.ACC.CostManagement.Models.FormDefinition"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="DefinedError">When receiving a 400 status code</exception>
-        /// <exception cref="Error">When receiving a 401 status code</exception>
-        /// <exception cref="Error">When receiving a 403 status code</exception>
-        /// <exception cref="Error">When receiving a 404 status code</exception>
-        /// <exception cref="Error">When receiving a 500 status code</exception>
-        /// <exception cref="Error">When receiving a 503 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.DefinedError">When receiving a 400 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 500 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<FormDefinition?> PatchAsync(WithChangeOrderPatchRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.ACC.CostManagement.Models.FormDefinition?> PatchAsync(global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item.WithChangeOrderPatchRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<FormDefinition> PatchAsync(WithChangeOrderPatchRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.ACC.CostManagement.Models.FormDefinition> PatchAsync(global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item.WithChangeOrderPatchRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"400", DefinedError.CreateFromDiscriminatorValue},
-                {"401", Error.CreateFromDiscriminatorValue},
-                {"403", Error.CreateFromDiscriminatorValue},
-                {"404", Error.CreateFromDiscriminatorValue},
-                {"500", Error.CreateFromDiscriminatorValue},
-                {"503", Error.CreateFromDiscriminatorValue},
+                { "400", global::Autodesk.ACC.CostManagement.Models.DefinedError.CreateFromDiscriminatorValue },
+                { "401", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "403", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "404", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "500", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "503", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<FormDefinition>(requestInfo, FormDefinition.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Autodesk.ACC.CostManagement.Models.FormDefinition>(requestInfo, global::Autodesk.ACC.CostManagement.Models.FormDefinition.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create a new change order (typically a PCO) to initiate a change.
         /// </summary>
-        /// <returns>A <see cref="FormInstance"/></returns>
+        /// <returns>A <see cref="global::Autodesk.ACC.CostManagement.Models.FormInstance"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="DefinedError">When receiving a 400 status code</exception>
-        /// <exception cref="Error">When receiving a 401 status code</exception>
-        /// <exception cref="Error">When receiving a 403 status code</exception>
-        /// <exception cref="Error">When receiving a 404 status code</exception>
-        /// <exception cref="Error">When receiving a 500 status code</exception>
-        /// <exception cref="Error">When receiving a 503 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.DefinedError">When receiving a 400 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 500 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.CostManagement.Models.Error">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<FormInstance?> PostAsync(FormInstanceCreate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.ACC.CostManagement.Models.FormInstance?> PostAsync(global::Autodesk.ACC.CostManagement.Models.FormInstanceCreate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<FormInstance> PostAsync(FormInstanceCreate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.ACC.CostManagement.Models.FormInstance> PostAsync(global::Autodesk.ACC.CostManagement.Models.FormInstanceCreate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"400", DefinedError.CreateFromDiscriminatorValue},
-                {"401", Error.CreateFromDiscriminatorValue},
-                {"403", Error.CreateFromDiscriminatorValue},
-                {"404", Error.CreateFromDiscriminatorValue},
-                {"500", Error.CreateFromDiscriminatorValue},
-                {"503", Error.CreateFromDiscriminatorValue},
+                { "400", global::Autodesk.ACC.CostManagement.Models.DefinedError.CreateFromDiscriminatorValue },
+                { "401", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "403", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "404", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "500", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
+                { "503", global::Autodesk.ACC.CostManagement.Models.Error.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<FormInstance>(requestInfo, FormInstance.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Autodesk.ACC.CostManagement.Models.FormInstance>(requestInfo, global::Autodesk.ACC.CostManagement.Models.FormInstance.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Gets a list of change orders by a specified change order type such as PCO, RFQ, and so on.
@@ -172,11 +174,11 @@ namespace Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WithChangeOrderItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item.WithChangeOrderItemRequestBuilder.WithChangeOrderItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WithChangeOrderItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item.WithChangeOrderItemRequestBuilder.WithChangeOrderItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -192,15 +194,15 @@ namespace Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPatchRequestInformation(WithChangeOrderPatchRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item.WithChangeOrderPatchRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPatchRequestInformation(WithChangeOrderPatchRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item.WithChangeOrderPatchRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.PATCH, "{+baseurl}/v1/projects/{projectId}/change-orders/{changeOrder}", PathParameters);
+            var requestInfo = new RequestInformation(Method.PATCH, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
@@ -214,15 +216,15 @@ namespace Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(FormInstanceCreate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Autodesk.ACC.CostManagement.Models.FormInstanceCreate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(FormInstanceCreate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Autodesk.ACC.CostManagement.Models.FormInstanceCreate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.POST, "{+baseurl}/v1/projects/{projectId}/change-orders/{changeOrder}", PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
@@ -231,16 +233,17 @@ namespace Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="WithChangeOrderItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item.WithChangeOrderItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public WithChangeOrderItemRequestBuilder WithUrl(string rawUrl)
+        public global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item.WithChangeOrderItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new WithChangeOrderItemRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item.WithChangeOrderItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Gets a list of change orders by a specified change order type such as PCO, RFQ, and so on.
         /// </summary>
-        public class WithChangeOrderItemRequestBuilderGetQueryParameters 
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class WithChangeOrderItemRequestBuilderGetQueryParameters 
         {
             /// <summary>The status code. Separate multiple codes with commas. For example, ``filter[budgetStatus]=draft,open``.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -389,21 +392,24 @@ namespace Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item {
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class WithChangeOrderItemRequestBuilderGetRequestConfiguration : RequestConfiguration<WithChangeOrderItemRequestBuilderGetQueryParameters> 
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class WithChangeOrderItemRequestBuilderGetRequestConfiguration : RequestConfiguration<global::Autodesk.ACC.CostManagement.V1.Projects.Item.ChangeOrders.Item.WithChangeOrderItemRequestBuilder.WithChangeOrderItemRequestBuilderGetQueryParameters>
         {
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class WithChangeOrderItemRequestBuilderPatchRequestConfiguration : RequestConfiguration<DefaultQueryParameters> 
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class WithChangeOrderItemRequestBuilderPatchRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
         {
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class WithChangeOrderItemRequestBuilderPostRequestConfiguration : RequestConfiguration<DefaultQueryParameters> 
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class WithChangeOrderItemRequestBuilderPostRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
         {
         }
     }
