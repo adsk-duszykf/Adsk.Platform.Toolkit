@@ -22,7 +22,7 @@ namespace Tests
             {AdskService.ACC_RFIs, "https://developer.api.autodesk.com/bim360/rfis"},
         };
 
-        public static HttpClient CreateProxyHttpClient(AdskService service, HttpClient? httpClient = null)
+        public static System.Net.Http.HttpClient CreateProxyHttpClient(AdskService service, System.Net.Http.HttpClient? httpClient = null)
         {
 
             var handler = new Autodesk.Common.HttpClientLibrary.ErrorHandler
