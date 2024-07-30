@@ -2,7 +2,7 @@
 using Autodesk.Authentication.Helpers.Models;
 using Sdk_Tests;
 
-namespace Tests;
+namespace Tests.HttpClient;
 [TestClass]
 public class HttpClientTest
 {
@@ -33,7 +33,7 @@ public class HttpClientTest
 
         try
         {
-            await AuthClient.Helper.GetTwoLeggedToken(config.APS_CLIENT_ID, string.Empty, [AuthenticationScope.DataWrite, AuthenticationScope.DataRead]);
+            await AuthClient.Helper.GetTwoLeggedToken(config.APS_CLIENT_ID, string.Empty, [AuthenticationScopeDefaults.DataWrite, AuthenticationScopeDefaults.DataRead]);
         }
         catch (HttpRequestException ex)
         {
