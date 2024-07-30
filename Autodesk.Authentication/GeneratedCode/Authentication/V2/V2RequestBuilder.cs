@@ -5,50 +5,52 @@ using Autodesk.Authentication.Authentication.V2.Keys;
 using Autodesk.Authentication.Authentication.V2.Logout;
 using Autodesk.Authentication.Authentication.V2.Revoke;
 using Autodesk.Authentication.Authentication.V2.Token;
+using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Autodesk.Authentication.Authentication.V2 {
+namespace Autodesk.Authentication.Authentication.V2
+{
     /// <summary>
     /// Builds and executes requests for operations under \authentication\v2
     /// </summary>
-    public class V2RequestBuilder : BaseRequestBuilder 
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class V2RequestBuilder : BaseRequestBuilder
     {
         /// <summary>The authorize property</summary>
-        public AuthorizeRequestBuilder Authorize
+        public global::Autodesk.Authentication.Authentication.V2.Authorize.AuthorizeRequestBuilder Authorize
         {
-            get => new AuthorizeRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.Authentication.Authentication.V2.Authorize.AuthorizeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The introspect property</summary>
-        public IntrospectRequestBuilder Introspect
+        public global::Autodesk.Authentication.Authentication.V2.Introspect.IntrospectRequestBuilder Introspect
         {
-            get => new IntrospectRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.Authentication.Authentication.V2.Introspect.IntrospectRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The keys property</summary>
-        public KeysRequestBuilder Keys
+        public global::Autodesk.Authentication.Authentication.V2.Keys.KeysRequestBuilder Keys
         {
-            get => new KeysRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.Authentication.Authentication.V2.Keys.KeysRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The logout property</summary>
-        public LogoutRequestBuilder Logout
+        public global::Autodesk.Authentication.Authentication.V2.Logout.LogoutRequestBuilder Logout
         {
-            get => new LogoutRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.Authentication.Authentication.V2.Logout.LogoutRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The revoke property</summary>
-        public RevokeRequestBuilder Revoke
+        public global::Autodesk.Authentication.Authentication.V2.Revoke.RevokeRequestBuilder Revoke
         {
-            get => new RevokeRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.Authentication.Authentication.V2.Revoke.RevokeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The token property</summary>
-        public TokenRequestBuilder Token
+        public global::Autodesk.Authentication.Authentication.V2.Token.TokenRequestBuilder Token
         {
-            get => new TokenRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.Authentication.Authentication.V2.Token.TokenRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="V2RequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.Authentication.Authentication.V2.V2RequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -56,7 +58,7 @@ namespace Autodesk.Authentication.Authentication.V2 {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="V2RequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.Authentication.Authentication.V2.V2RequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

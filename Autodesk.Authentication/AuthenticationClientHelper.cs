@@ -48,7 +48,7 @@ public class AuthenticationClientHelper
     /// </summary>
     /// <param name="threeLeggedToken">3L Access token</param>
     /// <returns>User info</returns>
-    public async Task<SDKmodels.UserInfo?> GetUserInfoAsync(string threeLeggedToken)
+    public async Task<UserInfo?> GetUserInfoAsync(string threeLeggedToken)
     {
         var userInfoUrl = @"https://api.userprofile.autodesk.com/userinfo";
 
@@ -63,7 +63,7 @@ public class AuthenticationClientHelper
         var response = await httpClient.SendAsync(req);
         response.EnsureSuccessStatusCode();
 
-        var userInfo = await response.Content.ReadFromJsonAsync<SDKmodels.UserInfo>();
+        var userInfo = await response.Content.ReadFromJsonAsync<UserInfo>();
 
         return userInfo;
 

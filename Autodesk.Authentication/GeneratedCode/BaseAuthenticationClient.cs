@@ -9,27 +9,28 @@ using Microsoft.Kiota.Serialization.Multipart;
 using Microsoft.Kiota.Serialization.Text;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Autodesk.Authentication {
+namespace Autodesk.Authentication
+{
     /// <summary>
     /// The main entry point of the SDK, exposes the configuration and the fluent API.
     /// </summary>
-    public class BaseAuthenticationClient : BaseRequestBuilder 
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class BaseAuthenticationClient : BaseRequestBuilder
     {
         /// <summary>The authentication property</summary>
-        public AuthenticationRequestBuilder Authentication
+        public global::Autodesk.Authentication.Authentication.AuthenticationRequestBuilder Authentication
         {
-            get => new AuthenticationRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.Authentication.Authentication.AuthenticationRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The wellKnown property</summary>
-        public WellKnownRequestBuilder WellKnown
+        public global::Autodesk.Authentication.WellKnown.WellKnownRequestBuilder WellKnown
         {
-            get => new WellKnownRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.Authentication.WellKnown.WellKnownRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="BaseAuthenticationClient"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.Authentication.BaseAuthenticationClient"/> and sets the default values.
         /// </summary>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         public BaseAuthenticationClient(IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}", new Dictionary<string, object>())
