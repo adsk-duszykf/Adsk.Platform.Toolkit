@@ -2,42 +2,44 @@
 using Autodesk.ModelDerivative.Designdata.Formats;
 using Autodesk.ModelDerivative.Designdata.Item;
 using Autodesk.ModelDerivative.Designdata.Job;
+using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Autodesk.ModelDerivative.Designdata {
+namespace Autodesk.ModelDerivative.Designdata
+{
     /// <summary>
     /// Builds and executes requests for operations under \designdata
     /// </summary>
-    public class DesigndataRequestBuilder : BaseRequestBuilder 
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class DesigndataRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The formats property</summary>
-        public FormatsRequestBuilder Formats
+        public global::Autodesk.ModelDerivative.Designdata.Formats.FormatsRequestBuilder Formats
         {
-            get => new FormatsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ModelDerivative.Designdata.Formats.FormatsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The job property</summary>
-        public JobRequestBuilder Job
+        public global::Autodesk.ModelDerivative.Designdata.Job.JobRequestBuilder Job
         {
-            get => new JobRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ModelDerivative.Designdata.Job.JobRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Autodesk.ModelDerivative.designdata.item collection</summary>
         /// <param name="position">The Base64 (URL Safe) encoded design URN</param>
-        /// <returns>A <see cref="WithUrnItemRequestBuilder"/></returns>
-        public WithUrnItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Autodesk.ModelDerivative.Designdata.Item.WithUrnItemRequestBuilder"/></returns>
+        public global::Autodesk.ModelDerivative.Designdata.Item.WithUrnItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("urn", position);
-                return new WithUrnItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new global::Autodesk.ModelDerivative.Designdata.Item.WithUrnItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="DesigndataRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.ModelDerivative.Designdata.DesigndataRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -45,7 +47,7 @@ namespace Autodesk.ModelDerivative.Designdata {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="DesigndataRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.ModelDerivative.Designdata.DesigndataRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

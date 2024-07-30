@@ -8,22 +8,23 @@ using Microsoft.Kiota.Serialization.Multipart;
 using Microsoft.Kiota.Serialization.Text;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Autodesk.ModelDerivative {
+namespace Autodesk.ModelDerivative
+{
     /// <summary>
     /// The main entry point of the SDK, exposes the configuration and the fluent API.
     /// </summary>
-    public class BaseModelDerivativeClient : BaseRequestBuilder 
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class BaseModelDerivativeClient : BaseRequestBuilder
     {
         /// <summary>The designdata property</summary>
-        public DesigndataRequestBuilder Designdata
+        public global::Autodesk.ModelDerivative.Designdata.DesigndataRequestBuilder Designdata
         {
-            get => new DesigndataRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ModelDerivative.Designdata.DesigndataRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="BaseModelDerivativeClient"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.ModelDerivative.BaseModelDerivativeClient"/> and sets the default values.
         /// </summary>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         public BaseModelDerivativeClient(IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}", new Dictionary<string, object>())

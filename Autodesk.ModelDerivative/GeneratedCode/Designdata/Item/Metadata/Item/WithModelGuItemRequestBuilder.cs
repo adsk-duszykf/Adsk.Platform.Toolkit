@@ -2,32 +2,34 @@
 using Autodesk.ModelDerivative.Designdata.Item.Metadata.Item.Properties;
 using Autodesk.ModelDerivative.Designdata.Item.Metadata.Item.PropertiesQuery;
 using Autodesk.ModelDerivative.Models;
+using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Autodesk.ModelDerivative.Designdata.Item.Metadata.Item {
+namespace Autodesk.ModelDerivative.Designdata.Item.Metadata.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \designdata\{urn}\metadata\{modelGuid}
     /// </summary>
-    public class WithModelGuItemRequestBuilder : BaseRequestBuilder 
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class WithModelGuItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The properties property</summary>
-        public PropertiesRequestBuilder Properties
+        public global::Autodesk.ModelDerivative.Designdata.Item.Metadata.Item.Properties.PropertiesRequestBuilder Properties
         {
-            get => new PropertiesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ModelDerivative.Designdata.Item.Metadata.Item.Properties.PropertiesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The propertiesQuery property</summary>
-        public PropertiesQueryRequestBuilder PropertiesQuery
+        public global::Autodesk.ModelDerivative.Designdata.Item.Metadata.Item.PropertiesQuery.PropertiesQueryRequestBuilder PropertiesQuery
         {
-            get => new PropertiesQueryRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ModelDerivative.Designdata.Item.Metadata.Item.PropertiesQuery.PropertiesQueryRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithModelGuItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.ModelDerivative.Designdata.Item.Metadata.Item.WithModelGuItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -35,7 +37,7 @@ namespace Autodesk.ModelDerivative.Designdata.Item.Metadata.Item {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithModelGuItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.ModelDerivative.Designdata.Item.Metadata.Item.WithModelGuItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -45,41 +47,41 @@ namespace Autodesk.ModelDerivative.Designdata.Item.Metadata.Item {
         /// <summary>
         /// Returns a hierarchical list of objects (object tree) in the model view specified by the modelGuid URI parameter.Before you call this endpoint you must call GET {urn}/metadata to obtain the ID (modelGuid) of the model view you want to get the object tree of.Most design applications like Fusion 360 and Inventor contain only one model view per design. However, some applications like Revit allow multiple model views (e.g., HVAC, architecture, perspective) per design.Note You can retrieve metadata only from a design that has been translated to SVF or SVF2.
         /// </summary>
-        /// <returns>A <see cref="ObjectTree"/></returns>
+        /// <returns>A <see cref="global::Autodesk.ModelDerivative.Models.ObjectTree"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ObjectTree400Error">When receiving a 400 status code</exception>
-        /// <exception cref="ObjectTree401Error">When receiving a 401 status code</exception>
-        /// <exception cref="ObjectTree403Error">When receiving a 403 status code</exception>
-        /// <exception cref="ObjectTree404Error">When receiving a 404 status code</exception>
-        /// <exception cref="ObjectTree406Error">When receiving a 406 status code</exception>
-        /// <exception cref="ObjectTree409Error">When receiving a 409 status code</exception>
-        /// <exception cref="ObjectTree413Error">When receiving a 413 status code</exception>
-        /// <exception cref="ObjectTree429Error">When receiving a 429 status code</exception>
-        /// <exception cref="ObjectTree500Error">When receiving a 500 status code</exception>
+        /// <exception cref="global::Autodesk.ModelDerivative.Models.ObjectTree400Error">When receiving a 400 status code</exception>
+        /// <exception cref="global::Autodesk.ModelDerivative.Models.ObjectTree401Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::Autodesk.ModelDerivative.Models.ObjectTree403Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Autodesk.ModelDerivative.Models.ObjectTree404Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Autodesk.ModelDerivative.Models.ObjectTree406Error">When receiving a 406 status code</exception>
+        /// <exception cref="global::Autodesk.ModelDerivative.Models.ObjectTree409Error">When receiving a 409 status code</exception>
+        /// <exception cref="global::Autodesk.ModelDerivative.Models.ObjectTree413Error">When receiving a 413 status code</exception>
+        /// <exception cref="global::Autodesk.ModelDerivative.Models.ObjectTree429Error">When receiving a 429 status code</exception>
+        /// <exception cref="global::Autodesk.ModelDerivative.Models.ObjectTree500Error">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<ObjectTree?> GetAsync(Action<RequestConfiguration<WithModelGuItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.ModelDerivative.Models.ObjectTree?> GetAsync(Action<RequestConfiguration<global::Autodesk.ModelDerivative.Designdata.Item.Metadata.Item.WithModelGuItemRequestBuilder.WithModelGuItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<ObjectTree> GetAsync(Action<RequestConfiguration<WithModelGuItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.ModelDerivative.Models.ObjectTree> GetAsync(Action<RequestConfiguration<global::Autodesk.ModelDerivative.Designdata.Item.Metadata.Item.WithModelGuItemRequestBuilder.WithModelGuItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"400", ObjectTree400Error.CreateFromDiscriminatorValue},
-                {"401", ObjectTree401Error.CreateFromDiscriminatorValue},
-                {"403", ObjectTree403Error.CreateFromDiscriminatorValue},
-                {"404", ObjectTree404Error.CreateFromDiscriminatorValue},
-                {"406", ObjectTree406Error.CreateFromDiscriminatorValue},
-                {"409", ObjectTree409Error.CreateFromDiscriminatorValue},
-                {"413", ObjectTree413Error.CreateFromDiscriminatorValue},
-                {"429", ObjectTree429Error.CreateFromDiscriminatorValue},
-                {"500", ObjectTree500Error.CreateFromDiscriminatorValue},
+                { "400", global::Autodesk.ModelDerivative.Models.ObjectTree400Error.CreateFromDiscriminatorValue },
+                { "401", global::Autodesk.ModelDerivative.Models.ObjectTree401Error.CreateFromDiscriminatorValue },
+                { "403", global::Autodesk.ModelDerivative.Models.ObjectTree403Error.CreateFromDiscriminatorValue },
+                { "404", global::Autodesk.ModelDerivative.Models.ObjectTree404Error.CreateFromDiscriminatorValue },
+                { "406", global::Autodesk.ModelDerivative.Models.ObjectTree406Error.CreateFromDiscriminatorValue },
+                { "409", global::Autodesk.ModelDerivative.Models.ObjectTree409Error.CreateFromDiscriminatorValue },
+                { "413", global::Autodesk.ModelDerivative.Models.ObjectTree413Error.CreateFromDiscriminatorValue },
+                { "429", global::Autodesk.ModelDerivative.Models.ObjectTree429Error.CreateFromDiscriminatorValue },
+                { "500", global::Autodesk.ModelDerivative.Models.ObjectTree500Error.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<ObjectTree>(requestInfo, ObjectTree.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Autodesk.ModelDerivative.Models.ObjectTree>(requestInfo, global::Autodesk.ModelDerivative.Models.ObjectTree.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns a hierarchical list of objects (object tree) in the model view specified by the modelGuid URI parameter.Before you call this endpoint you must call GET {urn}/metadata to obtain the ID (modelGuid) of the model view you want to get the object tree of.Most design applications like Fusion 360 and Inventor contain only one model view per design. However, some applications like Revit allow multiple model views (e.g., HVAC, architecture, perspective) per design.Note You can retrieve metadata only from a design that has been translated to SVF or SVF2.
@@ -88,11 +90,11 @@ namespace Autodesk.ModelDerivative.Designdata.Item.Metadata.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WithModelGuItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Autodesk.ModelDerivative.Designdata.Item.Metadata.Item.WithModelGuItemRequestBuilder.WithModelGuItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WithModelGuItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Autodesk.ModelDerivative.Designdata.Item.Metadata.Item.WithModelGuItemRequestBuilder.WithModelGuItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -103,16 +105,17 @@ namespace Autodesk.ModelDerivative.Designdata.Item.Metadata.Item {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="WithModelGuItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Autodesk.ModelDerivative.Designdata.Item.Metadata.Item.WithModelGuItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public WithModelGuItemRequestBuilder WithUrl(string rawUrl)
+        public global::Autodesk.ModelDerivative.Designdata.Item.Metadata.Item.WithModelGuItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new WithModelGuItemRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Autodesk.ModelDerivative.Designdata.Item.Metadata.Item.WithModelGuItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Returns a hierarchical list of objects (object tree) in the model view specified by the modelGuid URI parameter.Before you call this endpoint you must call GET {urn}/metadata to obtain the ID (modelGuid) of the model view you want to get the object tree of.Most design applications like Fusion 360 and Inventor contain only one model view per design. However, some applications like Revit allow multiple model views (e.g., HVAC, architecture, perspective) per design.Note You can retrieve metadata only from a design that has been translated to SVF or SVF2.
         /// </summary>
-        public class WithModelGuItemRequestBuilderGetQueryParameters 
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class WithModelGuItemRequestBuilderGetQueryParameters 
         {
             /// <summary>true: Forcibly gets large resources even if they exceed the expected maximum size (20 MB). If the resource is larger than 800 MB, the server behaves as though forceget is false. In such a case, use the objectid query string parameter to download resources by Object ID one object at a time. Alternatively, you can use POST {urn}/metadata/{modelGuid}/properties:query to fetch only the properties you are interested in. false: (Default) Does not get resources if they exceed the expected maximum size (20 MB).</summary>
             [QueryParameter("forceget")]
@@ -135,7 +138,8 @@ namespace Autodesk.ModelDerivative.Designdata.Item.Metadata.Item {
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class WithModelGuItemRequestBuilderGetRequestConfiguration : RequestConfiguration<WithModelGuItemRequestBuilderGetQueryParameters> 
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class WithModelGuItemRequestBuilderGetRequestConfiguration : RequestConfiguration<global::Autodesk.ModelDerivative.Designdata.Item.Metadata.Item.WithModelGuItemRequestBuilder.WithModelGuItemRequestBuilderGetQueryParameters>
         {
         }
     }

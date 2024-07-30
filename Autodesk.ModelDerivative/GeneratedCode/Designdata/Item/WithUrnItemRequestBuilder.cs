@@ -3,40 +3,42 @@ using Autodesk.ModelDerivative.Designdata.Item.Manifest;
 using Autodesk.ModelDerivative.Designdata.Item.Metadata;
 using Autodesk.ModelDerivative.Designdata.Item.References;
 using Autodesk.ModelDerivative.Designdata.Item.Thumbnail;
+using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Autodesk.ModelDerivative.Designdata.Item {
+namespace Autodesk.ModelDerivative.Designdata.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \designdata\{urn}
     /// </summary>
-    public class WithUrnItemRequestBuilder : BaseRequestBuilder 
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class WithUrnItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The manifest property</summary>
-        public ManifestRequestBuilder Manifest
+        public global::Autodesk.ModelDerivative.Designdata.Item.Manifest.ManifestRequestBuilder Manifest
         {
-            get => new ManifestRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ModelDerivative.Designdata.Item.Manifest.ManifestRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The metadata property</summary>
-        public MetadataRequestBuilder Metadata
+        public global::Autodesk.ModelDerivative.Designdata.Item.Metadata.MetadataRequestBuilder Metadata
         {
-            get => new MetadataRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ModelDerivative.Designdata.Item.Metadata.MetadataRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The references property</summary>
-        public ReferencesRequestBuilder References
+        public global::Autodesk.ModelDerivative.Designdata.Item.References.ReferencesRequestBuilder References
         {
-            get => new ReferencesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ModelDerivative.Designdata.Item.References.ReferencesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The thumbnail property</summary>
-        public ThumbnailRequestBuilder Thumbnail
+        public global::Autodesk.ModelDerivative.Designdata.Item.Thumbnail.ThumbnailRequestBuilder Thumbnail
         {
-            get => new ThumbnailRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ModelDerivative.Designdata.Item.Thumbnail.ThumbnailRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithUrnItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.ModelDerivative.Designdata.Item.WithUrnItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -44,7 +46,7 @@ namespace Autodesk.ModelDerivative.Designdata.Item {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithUrnItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.ModelDerivative.Designdata.Item.WithUrnItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
