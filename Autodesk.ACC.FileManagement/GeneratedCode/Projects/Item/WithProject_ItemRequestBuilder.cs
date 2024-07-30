@@ -2,35 +2,37 @@
 using Autodesk.ACC.FileManagement.Projects.Item.Folders;
 using Autodesk.ACC.FileManagement.Projects.Item.Versions;
 using Autodesk.ACC.FileManagement.Projects.Item.VersionsBatchGet;
+using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Autodesk.ACC.FileManagement.Projects.Item {
+namespace Autodesk.ACC.FileManagement.Projects.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \projects\{project_id}
     /// </summary>
-    public class WithProject_ItemRequestBuilder : BaseRequestBuilder 
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class WithProject_ItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The folders property</summary>
-        public FoldersRequestBuilder Folders
+        public global::Autodesk.ACC.FileManagement.Projects.Item.Folders.FoldersRequestBuilder Folders
         {
-            get => new FoldersRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.FileManagement.Projects.Item.Folders.FoldersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The versions property</summary>
-        public VersionsRequestBuilder Versions
+        public global::Autodesk.ACC.FileManagement.Projects.Item.Versions.VersionsRequestBuilder Versions
         {
-            get => new VersionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.FileManagement.Projects.Item.Versions.VersionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The versionsBatchGet property</summary>
-        public VersionsBatchGetRequestBuilder VersionsBatchGet
+        public global::Autodesk.ACC.FileManagement.Projects.Item.VersionsBatchGet.VersionsBatchGetRequestBuilder VersionsBatchGet
         {
-            get => new VersionsBatchGetRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.FileManagement.Projects.Item.VersionsBatchGet.VersionsBatchGetRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithProject_ItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.ACC.FileManagement.Projects.Item.WithProject_ItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -38,7 +40,7 @@ namespace Autodesk.ACC.FileManagement.Projects.Item {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithProject_ItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.ACC.FileManagement.Projects.Item.WithProject_ItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

@@ -8,22 +8,23 @@ using Microsoft.Kiota.Serialization.Multipart;
 using Microsoft.Kiota.Serialization.Text;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Autodesk.ACC.FileManagement {
+namespace Autodesk.ACC.FileManagement
+{
     /// <summary>
     /// The main entry point of the SDK, exposes the configuration and the fluent API.
     /// </summary>
-    public class BaseFileManagementClient : BaseRequestBuilder 
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class BaseFileManagementClient : BaseRequestBuilder
     {
         /// <summary>The projects property</summary>
-        public ProjectsRequestBuilder Projects
+        public global::Autodesk.ACC.FileManagement.Projects.ProjectsRequestBuilder Projects
         {
-            get => new ProjectsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.FileManagement.Projects.ProjectsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="BaseFileManagementClient"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.ACC.FileManagement.BaseFileManagementClient"/> and sets the default values.
         /// </summary>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         public BaseFileManagementClient(IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}", new Dictionary<string, object>())
