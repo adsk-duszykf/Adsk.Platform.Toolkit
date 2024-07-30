@@ -5,47 +5,49 @@ using Autodesk.DataManagement.Data.V1.Projects.Item.Folders.Item.Refs;
 using Autodesk.DataManagement.Data.V1.Projects.Item.Folders.Item.Relationships;
 using Autodesk.DataManagement.Data.V1.Projects.Item.Folders.Item.Search;
 using Autodesk.DataManagement.Models;
+using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Autodesk.DataManagement.Data.V1.Projects.Item.Folders.Item {
+namespace Autodesk.DataManagement.Data.V1.Projects.Item.Folders.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \data\v1\projects\{project_id}\folders\{folder_id}
     /// </summary>
-    public class WithFolder_ItemRequestBuilder : BaseRequestBuilder 
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class WithFolder_ItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The contents property</summary>
-        public ContentsRequestBuilder Contents
+        public global::Autodesk.DataManagement.Data.V1.Projects.Item.Folders.Item.Contents.ContentsRequestBuilder Contents
         {
-            get => new ContentsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.Data.V1.Projects.Item.Folders.Item.Contents.ContentsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The parent property</summary>
-        public ParentRequestBuilder Parent
+        public global::Autodesk.DataManagement.Data.V1.Projects.Item.Folders.Item.Parent.ParentRequestBuilder Parent
         {
-            get => new ParentRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.Data.V1.Projects.Item.Folders.Item.Parent.ParentRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The refs property</summary>
-        public RefsRequestBuilder Refs
+        public global::Autodesk.DataManagement.Data.V1.Projects.Item.Folders.Item.Refs.RefsRequestBuilder Refs
         {
-            get => new RefsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.Data.V1.Projects.Item.Folders.Item.Refs.RefsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The relationships property</summary>
-        public RelationshipsRequestBuilder Relationships
+        public global::Autodesk.DataManagement.Data.V1.Projects.Item.Folders.Item.Relationships.RelationshipsRequestBuilder Relationships
         {
-            get => new RelationshipsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.Data.V1.Projects.Item.Folders.Item.Relationships.RelationshipsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The search property</summary>
-        public SearchRequestBuilder Search
+        public global::Autodesk.DataManagement.Data.V1.Projects.Item.Folders.Item.Search.SearchRequestBuilder Search
         {
-            get => new SearchRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.Data.V1.Projects.Item.Folders.Item.Search.SearchRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithFolder_ItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.DataManagement.Data.V1.Projects.Item.Folders.Item.WithFolder_ItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -53,7 +55,7 @@ namespace Autodesk.DataManagement.Data.V1.Projects.Item.Folders.Item {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithFolder_ItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.DataManagement.Data.V1.Projects.Item.Folders.Item.WithFolder_ItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -63,60 +65,60 @@ namespace Autodesk.DataManagement.Data.V1.Projects.Item.Folders.Item {
         /// <summary>
         /// Returns the folder by ID for any folder within a given project. All folders or sub-folders within a project are associated with their own unique ID, including the root folder.New! Autodesk Construction Cloud platform (ACC). Note that this endpoint is compatible with ACC projects. For more information about the Autodesk Construction Cloud APIs, see the Autodesk Construction Cloud documentation.
         /// </summary>
-        /// <returns>A <see cref="Folder"/></returns>
+        /// <returns>A <see cref="global::Autodesk.DataManagement.Models.Folder"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="Folder400Error">When receiving a 400 status code</exception>
-        /// <exception cref="Folder403Error">When receiving a 403 status code</exception>
-        /// <exception cref="Folder404Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Autodesk.DataManagement.Models.Folder400Error">When receiving a 400 status code</exception>
+        /// <exception cref="global::Autodesk.DataManagement.Models.Folder403Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Autodesk.DataManagement.Models.Folder404Error">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Folder?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.DataManagement.Models.Folder?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Folder> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.DataManagement.Models.Folder> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"400", Folder400Error.CreateFromDiscriminatorValue},
-                {"403", Folder403Error.CreateFromDiscriminatorValue},
-                {"404", Folder404Error.CreateFromDiscriminatorValue},
+                { "400", global::Autodesk.DataManagement.Models.Folder400Error.CreateFromDiscriminatorValue },
+                { "403", global::Autodesk.DataManagement.Models.Folder403Error.CreateFromDiscriminatorValue },
+                { "404", global::Autodesk.DataManagement.Models.Folder404Error.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Folder>(requestInfo, Folder.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Autodesk.DataManagement.Models.Folder>(requestInfo, global::Autodesk.DataManagement.Models.Folder.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Modifies folder names. You can also use this endpoint to delete and restore BIM 360 Docs folders by using the hidden attribute, or move BIM 360 Docs folders by using parent relationships.Note that you cannot permanently delete BIM 360 Docs folders. They are tagged as hidden folders and are removed from the BIM 360 Docs UI and from regular Data Management API responses until you restore them. You can use the hidden filter (filter[hidden]=true) to get a list of deleted folders with the GET projects/:project_id/folders/:folder_id/contents endpoint.Note that to access BIM 360 Docs folders using the Data Management API you need to provision your app in the BIM 360 Account Administrator portal. For more details, see the Manage Access to Docs tutorial.New! Autodesk Construction Cloud platform (ACC). Note that this endpoint is compatible with ACC projects. For more information about the Autodesk Construction Cloud APIs, see the Autodesk Construction Cloud documentation.
         /// </summary>
-        /// <returns>A <see cref="Folder"/></returns>
+        /// <returns>A <see cref="global::Autodesk.DataManagement.Models.Folder"/></returns>
         /// <param name="body">Modifies folder names</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="Folder400Error">When receiving a 400 status code</exception>
-        /// <exception cref="Folder403Error">When receiving a 403 status code</exception>
-        /// <exception cref="Folder404Error">When receiving a 404 status code</exception>
-        /// <exception cref="Folder423Error">When receiving a 423 status code</exception>
+        /// <exception cref="global::Autodesk.DataManagement.Models.Folder400Error">When receiving a 400 status code</exception>
+        /// <exception cref="global::Autodesk.DataManagement.Models.Folder403Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Autodesk.DataManagement.Models.Folder404Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Autodesk.DataManagement.Models.Folder423Error">When receiving a 423 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Folder?> PatchAsync(ModifyFolder body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.DataManagement.Models.Folder?> PatchAsync(global::Autodesk.DataManagement.Models.ModifyFolder body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Folder> PatchAsync(ModifyFolder body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.DataManagement.Models.Folder> PatchAsync(global::Autodesk.DataManagement.Models.ModifyFolder body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"400", Folder400Error.CreateFromDiscriminatorValue},
-                {"403", Folder403Error.CreateFromDiscriminatorValue},
-                {"404", Folder404Error.CreateFromDiscriminatorValue},
-                {"423", Folder423Error.CreateFromDiscriminatorValue},
+                { "400", global::Autodesk.DataManagement.Models.Folder400Error.CreateFromDiscriminatorValue },
+                { "403", global::Autodesk.DataManagement.Models.Folder403Error.CreateFromDiscriminatorValue },
+                { "404", global::Autodesk.DataManagement.Models.Folder404Error.CreateFromDiscriminatorValue },
+                { "423", global::Autodesk.DataManagement.Models.Folder423Error.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Folder>(requestInfo, Folder.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Autodesk.DataManagement.Models.Folder>(requestInfo, global::Autodesk.DataManagement.Models.Folder.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns the folder by ID for any folder within a given project. All folders or sub-folders within a project are associated with their own unique ID, including the root folder.New! Autodesk Construction Cloud platform (ACC). Note that this endpoint is compatible with ACC projects. For more information about the Autodesk Construction Cloud APIs, see the Autodesk Construction Cloud documentation.
@@ -145,11 +147,11 @@ namespace Autodesk.DataManagement.Data.V1.Projects.Item.Folders.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPatchRequestInformation(ModifyFolder body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Autodesk.DataManagement.Models.ModifyFolder body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPatchRequestInformation(ModifyFolder body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Autodesk.DataManagement.Models.ModifyFolder body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -162,24 +164,26 @@ namespace Autodesk.DataManagement.Data.V1.Projects.Item.Folders.Item {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="WithFolder_ItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Autodesk.DataManagement.Data.V1.Projects.Item.Folders.Item.WithFolder_ItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public WithFolder_ItemRequestBuilder WithUrl(string rawUrl)
+        public global::Autodesk.DataManagement.Data.V1.Projects.Item.Folders.Item.WithFolder_ItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new WithFolder_ItemRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Autodesk.DataManagement.Data.V1.Projects.Item.Folders.Item.WithFolder_ItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class WithFolder_ItemRequestBuilderGetRequestConfiguration : RequestConfiguration<DefaultQueryParameters> 
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class WithFolder_ItemRequestBuilderGetRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
         {
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class WithFolder_ItemRequestBuilderPatchRequestConfiguration : RequestConfiguration<DefaultQueryParameters> 
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class WithFolder_ItemRequestBuilderPatchRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
         {
         }
     }

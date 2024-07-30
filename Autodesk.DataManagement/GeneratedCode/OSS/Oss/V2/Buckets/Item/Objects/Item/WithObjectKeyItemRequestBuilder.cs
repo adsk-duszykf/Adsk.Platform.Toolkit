@@ -4,47 +4,49 @@ using Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Item.Details;
 using Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Item.Signed;
 using Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Item.Signeds3download;
 using Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Item.Signeds3upload;
+using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Item {
+namespace Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \oss\v2\buckets\{bucketKey}\objects\{objectKey}
     /// </summary>
-    public class WithObjectKeyItemRequestBuilder : BaseRequestBuilder 
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class WithObjectKeyItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The copyto property</summary>
-        public CopytoRequestBuilder Copyto
+        public global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Item.Copyto.CopytoRequestBuilder Copyto
         {
-            get => new CopytoRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Item.Copyto.CopytoRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The details property</summary>
-        public DetailsRequestBuilder Details
+        public global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Item.Details.DetailsRequestBuilder Details
         {
-            get => new DetailsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Item.Details.DetailsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The signed property</summary>
-        public SignedRequestBuilder Signed
+        public global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Item.Signed.SignedRequestBuilder Signed
         {
-            get => new SignedRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Item.Signed.SignedRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The signeds3download property</summary>
-        public Signeds3downloadRequestBuilder Signeds3download
+        public global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Item.Signeds3download.Signeds3downloadRequestBuilder Signeds3download
         {
-            get => new Signeds3downloadRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Item.Signeds3download.Signeds3downloadRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The signeds3upload property</summary>
-        public Signeds3uploadRequestBuilder Signeds3upload
+        public global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Item.Signeds3upload.Signeds3uploadRequestBuilder Signeds3upload
         {
-            get => new Signeds3uploadRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Item.Signeds3upload.Signeds3uploadRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithObjectKeyItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Item.WithObjectKeyItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -52,7 +54,7 @@ namespace Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Item {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithObjectKeyItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Item.WithObjectKeyItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -98,17 +100,18 @@ namespace Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Item {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="WithObjectKeyItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Item.WithObjectKeyItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public WithObjectKeyItemRequestBuilder WithUrl(string rawUrl)
+        public global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Item.WithObjectKeyItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new WithObjectKeyItemRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Item.WithObjectKeyItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class WithObjectKeyItemRequestBuilderDeleteRequestConfiguration : RequestConfiguration<DefaultQueryParameters> 
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class WithObjectKeyItemRequestBuilderDeleteRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
         {
         }
     }

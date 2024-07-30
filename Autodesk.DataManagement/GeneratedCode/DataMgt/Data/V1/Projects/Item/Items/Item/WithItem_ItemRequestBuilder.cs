@@ -5,47 +5,49 @@ using Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item.Relationships;
 using Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item.Tip;
 using Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item.Versions;
 using Autodesk.DataManagement.Models;
+using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item {
+namespace Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \data\v1\projects\{project_id}\items\{item_id}
     /// </summary>
-    public class WithItem_ItemRequestBuilder : BaseRequestBuilder 
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class WithItem_ItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The parent property</summary>
-        public ParentRequestBuilder Parent
+        public global::Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item.Parent.ParentRequestBuilder Parent
         {
-            get => new ParentRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item.Parent.ParentRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The refs property</summary>
-        public RefsRequestBuilder Refs
+        public global::Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item.Refs.RefsRequestBuilder Refs
         {
-            get => new RefsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item.Refs.RefsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The relationships property</summary>
-        public RelationshipsRequestBuilder Relationships
+        public global::Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item.Relationships.RelationshipsRequestBuilder Relationships
         {
-            get => new RelationshipsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item.Relationships.RelationshipsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The tip property</summary>
-        public TipRequestBuilder Tip
+        public global::Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item.Tip.TipRequestBuilder Tip
         {
-            get => new TipRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item.Tip.TipRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The versions property</summary>
-        public VersionsRequestBuilder Versions
+        public global::Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item.Versions.VersionsRequestBuilder Versions
         {
-            get => new VersionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item.Versions.VersionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithItem_ItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item.WithItem_ItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -53,7 +55,7 @@ namespace Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithItem_ItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item.WithItem_ItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -63,60 +65,60 @@ namespace Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item {
         /// <summary>
         /// Retrieves metadata for a specified item. Items represent word documents, fusion design files, drawings, spreadsheets, etc.Notes:The tip version for the item is included in the included array of the payload.To retrieve metadata for multiple items, see the ListItems command.New! Autodesk Construction Cloud platform (ACC). Note that this endpoint is compatible with ACC projects. For more information about the Autodesk Construction Cloud APIs, see the Autodesk Construction Cloud documentation.
         /// </summary>
-        /// <returns>A <see cref="Autodesk.DataManagement.Models.Item"/></returns>
+        /// <returns>A <see cref="global::Autodesk.DataManagement.Models.Item"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="Item400Error">When receiving a 400 status code</exception>
-        /// <exception cref="Item403Error">When receiving a 403 status code</exception>
-        /// <exception cref="Item404Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Autodesk.DataManagement.Models.Item400Error">When receiving a 400 status code</exception>
+        /// <exception cref="global::Autodesk.DataManagement.Models.Item403Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Autodesk.DataManagement.Models.Item404Error">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Autodesk.DataManagement.Models.Item?> GetAsync(Action<RequestConfiguration<WithItem_ItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.DataManagement.Models.Item?> GetAsync(Action<RequestConfiguration<global::Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item.WithItem_ItemRequestBuilder.WithItem_ItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Autodesk.DataManagement.Models.Item> GetAsync(Action<RequestConfiguration<WithItem_ItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.DataManagement.Models.Item> GetAsync(Action<RequestConfiguration<global::Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item.WithItem_ItemRequestBuilder.WithItem_ItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"400", Item400Error.CreateFromDiscriminatorValue},
-                {"403", Item403Error.CreateFromDiscriminatorValue},
-                {"404", Item404Error.CreateFromDiscriminatorValue},
+                { "400", global::Autodesk.DataManagement.Models.Item400Error.CreateFromDiscriminatorValue },
+                { "403", global::Autodesk.DataManagement.Models.Item403Error.CreateFromDiscriminatorValue },
+                { "404", global::Autodesk.DataManagement.Models.Item404Error.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Autodesk.DataManagement.Models.Item>(requestInfo, Autodesk.DataManagement.Models.Item.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Autodesk.DataManagement.Models.Item>(requestInfo, global::Autodesk.DataManagement.Models.Item.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Updates the properties of the given item_id object.New! Autodesk Construction Cloud platform (ACC). Note that this endpoint is compatible with ACC projects. For more information about the Autodesk Construction Cloud APIs, see the Autodesk Construction Cloud documentation.
         /// </summary>
-        /// <returns>A <see cref="Autodesk.DataManagement.Models.Item"/></returns>
+        /// <returns>A <see cref="global::Autodesk.DataManagement.Models.Item"/></returns>
         /// <param name="body">Describe the item to be patched.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="Item400Error">When receiving a 400 status code</exception>
-        /// <exception cref="Item403Error">When receiving a 403 status code</exception>
-        /// <exception cref="Item404Error">When receiving a 404 status code</exception>
-        /// <exception cref="Item423Error">When receiving a 423 status code</exception>
+        /// <exception cref="global::Autodesk.DataManagement.Models.Item400Error">When receiving a 400 status code</exception>
+        /// <exception cref="global::Autodesk.DataManagement.Models.Item403Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Autodesk.DataManagement.Models.Item404Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Autodesk.DataManagement.Models.Item423Error">When receiving a 423 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Autodesk.DataManagement.Models.Item?> PatchAsync(ItemRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.DataManagement.Models.Item?> PatchAsync(global::Autodesk.DataManagement.Models.ItemRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Autodesk.DataManagement.Models.Item> PatchAsync(ItemRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.DataManagement.Models.Item> PatchAsync(global::Autodesk.DataManagement.Models.ItemRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"400", Item400Error.CreateFromDiscriminatorValue},
-                {"403", Item403Error.CreateFromDiscriminatorValue},
-                {"404", Item404Error.CreateFromDiscriminatorValue},
-                {"423", Item423Error.CreateFromDiscriminatorValue},
+                { "400", global::Autodesk.DataManagement.Models.Item400Error.CreateFromDiscriminatorValue },
+                { "403", global::Autodesk.DataManagement.Models.Item403Error.CreateFromDiscriminatorValue },
+                { "404", global::Autodesk.DataManagement.Models.Item404Error.CreateFromDiscriminatorValue },
+                { "423", global::Autodesk.DataManagement.Models.Item423Error.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Autodesk.DataManagement.Models.Item>(requestInfo, Autodesk.DataManagement.Models.Item.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Autodesk.DataManagement.Models.Item>(requestInfo, global::Autodesk.DataManagement.Models.Item.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieves metadata for a specified item. Items represent word documents, fusion design files, drawings, spreadsheets, etc.Notes:The tip version for the item is included in the included array of the payload.To retrieve metadata for multiple items, see the ListItems command.New! Autodesk Construction Cloud platform (ACC). Note that this endpoint is compatible with ACC projects. For more information about the Autodesk Construction Cloud APIs, see the Autodesk Construction Cloud documentation.
@@ -125,11 +127,11 @@ namespace Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WithItem_ItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item.WithItem_ItemRequestBuilder.WithItem_ItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WithItem_ItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item.WithItem_ItemRequestBuilder.WithItem_ItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -145,15 +147,15 @@ namespace Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPatchRequestInformation(ItemRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Autodesk.DataManagement.Models.ItemRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPatchRequestInformation(ItemRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Autodesk.DataManagement.Models.ItemRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.PATCH, "{+baseurl}/data/v1/projects/{project_id}/items/{item_id}", PathParameters);
+            var requestInfo = new RequestInformation(Method.PATCH, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/vnd.api+json", body);
@@ -162,16 +164,17 @@ namespace Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="WithItem_ItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item.WithItem_ItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public WithItem_ItemRequestBuilder WithUrl(string rawUrl)
+        public global::Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item.WithItem_ItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new WithItem_ItemRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item.WithItem_ItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Retrieves metadata for a specified item. Items represent word documents, fusion design files, drawings, spreadsheets, etc.Notes:The tip version for the item is included in the included array of the payload.To retrieve metadata for multiple items, see the ListItems command.New! Autodesk Construction Cloud platform (ACC). Note that this endpoint is compatible with ACC projects. For more information about the Autodesk Construction Cloud APIs, see the Autodesk Construction Cloud documentation.
         /// </summary>
-        public class WithItem_ItemRequestBuilderGetQueryParameters 
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class WithItem_ItemRequestBuilderGetQueryParameters 
         {
             /// <summary>Specify whether to return pathInProject attribute in response for BIM 360 Docs projects. pathInProject is the relative path of the item starting from project’s root folder. true: response will include pathInProject attribute for BIM 360 Docs projects.  false (default): response will not include pathInProject attribute for BIM 360 Docs projects.</summary>
             [QueryParameter("includePathInProject")]
@@ -181,14 +184,16 @@ namespace Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item {
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class WithItem_ItemRequestBuilderGetRequestConfiguration : RequestConfiguration<WithItem_ItemRequestBuilderGetQueryParameters> 
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class WithItem_ItemRequestBuilderGetRequestConfiguration : RequestConfiguration<global::Autodesk.DataManagement.Data.V1.Projects.Item.Items.Item.WithItem_ItemRequestBuilder.WithItem_ItemRequestBuilderGetQueryParameters>
         {
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class WithItem_ItemRequestBuilderPatchRequestConfiguration : RequestConfiguration<DefaultQueryParameters> 
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class WithItem_ItemRequestBuilderPatchRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
         {
         }
     }

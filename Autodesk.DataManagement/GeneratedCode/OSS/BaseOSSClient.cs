@@ -8,22 +8,23 @@ using Microsoft.Kiota.Serialization.Multipart;
 using Microsoft.Kiota.Serialization.Text;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Autodesk.DataManagement.OSS {
+namespace Autodesk.DataManagement.OSS
+{
     /// <summary>
     /// The main entry point of the SDK, exposes the configuration and the fluent API.
     /// </summary>
-    public class BaseOSSClient : BaseRequestBuilder 
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class BaseOSSClient : BaseRequestBuilder
     {
         /// <summary>The oss property</summary>
-        public OssRequestBuilder Oss
+        public global::Autodesk.DataManagement.OSS.Oss.OssRequestBuilder Oss
         {
-            get => new OssRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.OSS.Oss.OssRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="BaseOSSClient"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.DataManagement.OSS.BaseOSSClient"/> and sets the default values.
         /// </summary>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         public BaseOSSClient(IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}", new Dictionary<string, object>())

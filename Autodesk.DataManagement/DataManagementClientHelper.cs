@@ -864,20 +864,25 @@ public class DataManagementClientHelper
 
             var folderContents = await _dataMgtClient.Projects[projectId].Folders[folderId].Contents.WithUrl(searchWithFiltersURI).GetAsync();
 
-            var fileIds = folderContents?.Data?.Select(c =>
+            var tmpFileIds = folderContents?.Data?.Select(c =>
             {
-                if (c.Attributes?.Name is null || c?.Id is null)
+                if (c?.Id is null)
                     throw new InvalidOperationException("Invalid file");
 
                 var parentFolderId = c.Relationships?.Parent?.Data?.Id;
 
-                return new FileVersion(parentFolderId, c.Attributes.Name, c?.Relationships?.Tip?.Data?.Id ?? throw new InvalidOperationException("File Version urn is null"));
+                var file = folderContents?.Included?.FirstOrDefault(v => v.Relationships?.Item?.Data?.Id == c.Id);
+                if (file?.Attributes?.Name is null)
+                    throw new InvalidOperationException("Invalid file");
+
+                return new FileVersion(parentFolderId, file.Attributes.Name, c?.Relationships?.Tip?.Data?.Id ?? throw new InvalidOperationException("File Version urn is null"));
             }) ??
                                 throw new InvalidOperationException("Folder contents is null");
 
+
             isLastPage = folderContents?.Links?.Next is null;
 
-            return fileIds?.ToList() ?? [];
+            return tmpFileIds?.ToList() ?? [];
         }
     }
 

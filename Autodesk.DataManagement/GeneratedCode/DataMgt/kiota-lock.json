@@ -1,14 +1,15 @@
 {
   "descriptionHash": "D22354FE2279E7E3021D5A504786228F77785858510841F89820BDF1428E8A1D38A00F9CAD0337E1A74D0D13AEFCE0449F8032FE6FC9FC9687293DE42F2244CD",
-  "descriptionLocation": "..\\..\\..\\..\\private\\Autodesk.DataManagement\\OpenAPI\\datamanagement.yaml",
+  "descriptionLocation": "../../../../private/Autodesk.DataManagement/OpenAPI/datamanagement.yaml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.13.0",
+  "kiotaVersion": "1.16.0",
   "clientClassName": "BaseDataManagementClient",
   "clientNamespaceName": "Autodesk.DataManagement",
   "language": "CSharp",
   "usesBackingStore": false,
   "excludeBackwardCompatible": false,
   "includeAdditionalData": false,
+  "disableSSLValidation": false,
   "serializers": [
     "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",
     "Microsoft.Kiota.Serialization.Text.TextSerializationWriterFactory",

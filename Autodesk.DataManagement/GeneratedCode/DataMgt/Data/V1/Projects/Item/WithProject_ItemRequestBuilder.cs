@@ -6,55 +6,57 @@ using Autodesk.DataManagement.Data.V1.Projects.Item.Items;
 using Autodesk.DataManagement.Data.V1.Projects.Item.Jobs;
 using Autodesk.DataManagement.Data.V1.Projects.Item.Storage;
 using Autodesk.DataManagement.Data.V1.Projects.Item.Versions;
+using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Autodesk.DataManagement.Data.V1.Projects.Item {
+namespace Autodesk.DataManagement.Data.V1.Projects.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \data\v1\projects\{project_id}
     /// </summary>
-    public class WithProject_ItemRequestBuilder : BaseRequestBuilder 
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class WithProject_ItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The commands property</summary>
-        public CommandsRequestBuilder Commands
+        public global::Autodesk.DataManagement.Data.V1.Projects.Item.Commands.CommandsRequestBuilder Commands
         {
-            get => new CommandsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.Data.V1.Projects.Item.Commands.CommandsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The downloads property</summary>
-        public DownloadsRequestBuilder Downloads
+        public global::Autodesk.DataManagement.Data.V1.Projects.Item.Downloads.DownloadsRequestBuilder Downloads
         {
-            get => new DownloadsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.Data.V1.Projects.Item.Downloads.DownloadsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The folders property</summary>
-        public FoldersRequestBuilder Folders
+        public global::Autodesk.DataManagement.Data.V1.Projects.Item.Folders.FoldersRequestBuilder Folders
         {
-            get => new FoldersRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.Data.V1.Projects.Item.Folders.FoldersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The items property</summary>
-        public ItemsRequestBuilder Items
+        public global::Autodesk.DataManagement.Data.V1.Projects.Item.Items.ItemsRequestBuilder Items
         {
-            get => new ItemsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.Data.V1.Projects.Item.Items.ItemsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The jobs property</summary>
-        public JobsRequestBuilder Jobs
+        public global::Autodesk.DataManagement.Data.V1.Projects.Item.Jobs.JobsRequestBuilder Jobs
         {
-            get => new JobsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.Data.V1.Projects.Item.Jobs.JobsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The storage property</summary>
-        public StorageRequestBuilder Storage
+        public global::Autodesk.DataManagement.Data.V1.Projects.Item.Storage.StorageRequestBuilder Storage
         {
-            get => new StorageRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.Data.V1.Projects.Item.Storage.StorageRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The versions property</summary>
-        public VersionsRequestBuilder Versions
+        public global::Autodesk.DataManagement.Data.V1.Projects.Item.Versions.VersionsRequestBuilder Versions
         {
-            get => new VersionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.Data.V1.Projects.Item.Versions.VersionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithProject_ItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.DataManagement.Data.V1.Projects.Item.WithProject_ItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -62,7 +64,7 @@ namespace Autodesk.DataManagement.Data.V1.Projects.Item {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithProject_ItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.DataManagement.Data.V1.Projects.Item.WithProject_ItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

@@ -5,47 +5,49 @@ using Autodesk.DataManagement.Data.V1.Projects.Item.Versions.Item.Item;
 using Autodesk.DataManagement.Data.V1.Projects.Item.Versions.Item.Refs;
 using Autodesk.DataManagement.Data.V1.Projects.Item.Versions.Item.Relationships;
 using Autodesk.DataManagement.Models;
+using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Autodesk.DataManagement.Data.V1.Projects.Item.Versions.Item {
+namespace Autodesk.DataManagement.Data.V1.Projects.Item.Versions.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \data\v1\projects\{project_id}\versions\{version_id}
     /// </summary>
-    public class WithVersion_ItemRequestBuilder : BaseRequestBuilder 
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class WithVersion_ItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The downloadFormats property</summary>
-        public DownloadFormatsRequestBuilder DownloadFormats
+        public global::Autodesk.DataManagement.Data.V1.Projects.Item.Versions.Item.DownloadFormats.DownloadFormatsRequestBuilder DownloadFormats
         {
-            get => new DownloadFormatsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.Data.V1.Projects.Item.Versions.Item.DownloadFormats.DownloadFormatsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The downloads property</summary>
-        public DownloadsRequestBuilder Downloads
+        public global::Autodesk.DataManagement.Data.V1.Projects.Item.Versions.Item.Downloads.DownloadsRequestBuilder Downloads
         {
-            get => new DownloadsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.Data.V1.Projects.Item.Versions.Item.Downloads.DownloadsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The item property</summary>
-        public ItemRequestBuilder Item
+        public global::Autodesk.DataManagement.Data.V1.Projects.Item.Versions.Item.Item.ItemRequestBuilder Item
         {
-            get => new ItemRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.Data.V1.Projects.Item.Versions.Item.Item.ItemRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The refs property</summary>
-        public RefsRequestBuilder Refs
+        public global::Autodesk.DataManagement.Data.V1.Projects.Item.Versions.Item.Refs.RefsRequestBuilder Refs
         {
-            get => new RefsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.Data.V1.Projects.Item.Versions.Item.Refs.RefsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The relationships property</summary>
-        public RelationshipsRequestBuilder Relationships
+        public global::Autodesk.DataManagement.Data.V1.Projects.Item.Versions.Item.Relationships.RelationshipsRequestBuilder Relationships
         {
-            get => new RelationshipsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.Data.V1.Projects.Item.Versions.Item.Relationships.RelationshipsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithVersion_ItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.DataManagement.Data.V1.Projects.Item.Versions.Item.WithVersion_ItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -53,7 +55,7 @@ namespace Autodesk.DataManagement.Data.V1.Projects.Item.Versions.Item {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithVersion_ItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.DataManagement.Data.V1.Projects.Item.Versions.Item.WithVersion_ItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -63,60 +65,60 @@ namespace Autodesk.DataManagement.Data.V1.Projects.Item.Versions.Item {
         /// <summary>
         /// Returns the version with the given version_id.New! Autodesk Construction Cloud platform (ACC). Note that this endpoint is compatible with ACC projects. For more information about the Autodesk Construction Cloud APIs, see the Autodesk Construction Cloud documentation.
         /// </summary>
-        /// <returns>A <see cref="VersionObject"/></returns>
+        /// <returns>A <see cref="global::Autodesk.DataManagement.Models.VersionObject"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="Version400Error">When receiving a 400 status code</exception>
-        /// <exception cref="Version403Error">When receiving a 403 status code</exception>
-        /// <exception cref="Version404Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Autodesk.DataManagement.Models.Version400Error">When receiving a 400 status code</exception>
+        /// <exception cref="global::Autodesk.DataManagement.Models.Version403Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Autodesk.DataManagement.Models.Version404Error">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<VersionObject?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.DataManagement.Models.VersionObject?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<VersionObject> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.DataManagement.Models.VersionObject> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"400", Version400Error.CreateFromDiscriminatorValue},
-                {"403", Version403Error.CreateFromDiscriminatorValue},
-                {"404", Version404Error.CreateFromDiscriminatorValue},
+                { "400", global::Autodesk.DataManagement.Models.Version400Error.CreateFromDiscriminatorValue },
+                { "403", global::Autodesk.DataManagement.Models.Version403Error.CreateFromDiscriminatorValue },
+                { "404", global::Autodesk.DataManagement.Models.Version404Error.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<VersionObject>(requestInfo, VersionObject.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Autodesk.DataManagement.Models.VersionObject>(requestInfo, global::Autodesk.DataManagement.Models.VersionObject.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Updates the properties of the given version_id object.
         /// </summary>
-        /// <returns>A <see cref="VersionObject"/></returns>
+        /// <returns>A <see cref="global::Autodesk.DataManagement.Models.VersionObject"/></returns>
         /// <param name="body">Describe the version to be patched.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="Version400Error">When receiving a 400 status code</exception>
-        /// <exception cref="Version403Error">When receiving a 403 status code</exception>
-        /// <exception cref="Version404Error">When receiving a 404 status code</exception>
-        /// <exception cref="Version423Error">When receiving a 423 status code</exception>
+        /// <exception cref="global::Autodesk.DataManagement.Models.Version400Error">When receiving a 400 status code</exception>
+        /// <exception cref="global::Autodesk.DataManagement.Models.Version403Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Autodesk.DataManagement.Models.Version404Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Autodesk.DataManagement.Models.Version423Error">When receiving a 423 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<VersionObject?> PatchAsync(VersionRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.DataManagement.Models.VersionObject?> PatchAsync(global::Autodesk.DataManagement.Models.VersionRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<VersionObject> PatchAsync(VersionRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.DataManagement.Models.VersionObject> PatchAsync(global::Autodesk.DataManagement.Models.VersionRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"400", Version400Error.CreateFromDiscriminatorValue},
-                {"403", Version403Error.CreateFromDiscriminatorValue},
-                {"404", Version404Error.CreateFromDiscriminatorValue},
-                {"423", Version423Error.CreateFromDiscriminatorValue},
+                { "400", global::Autodesk.DataManagement.Models.Version400Error.CreateFromDiscriminatorValue },
+                { "403", global::Autodesk.DataManagement.Models.Version403Error.CreateFromDiscriminatorValue },
+                { "404", global::Autodesk.DataManagement.Models.Version404Error.CreateFromDiscriminatorValue },
+                { "423", global::Autodesk.DataManagement.Models.Version423Error.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<VersionObject>(requestInfo, VersionObject.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Autodesk.DataManagement.Models.VersionObject>(requestInfo, global::Autodesk.DataManagement.Models.VersionObject.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns the version with the given version_id.New! Autodesk Construction Cloud platform (ACC). Note that this endpoint is compatible with ACC projects. For more information about the Autodesk Construction Cloud APIs, see the Autodesk Construction Cloud documentation.
@@ -145,11 +147,11 @@ namespace Autodesk.DataManagement.Data.V1.Projects.Item.Versions.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPatchRequestInformation(VersionRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Autodesk.DataManagement.Models.VersionRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPatchRequestInformation(VersionRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Autodesk.DataManagement.Models.VersionRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -162,24 +164,26 @@ namespace Autodesk.DataManagement.Data.V1.Projects.Item.Versions.Item {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="WithVersion_ItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Autodesk.DataManagement.Data.V1.Projects.Item.Versions.Item.WithVersion_ItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public WithVersion_ItemRequestBuilder WithUrl(string rawUrl)
+        public global::Autodesk.DataManagement.Data.V1.Projects.Item.Versions.Item.WithVersion_ItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new WithVersion_ItemRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Autodesk.DataManagement.Data.V1.Projects.Item.Versions.Item.WithVersion_ItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class WithVersion_ItemRequestBuilderGetRequestConfiguration : RequestConfiguration<DefaultQueryParameters> 
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class WithVersion_ItemRequestBuilderGetRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
         {
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class WithVersion_ItemRequestBuilderPatchRequestConfiguration : RequestConfiguration<DefaultQueryParameters> 
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class WithVersion_ItemRequestBuilderPatchRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
         {
         }
     }

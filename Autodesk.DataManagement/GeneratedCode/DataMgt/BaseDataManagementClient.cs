@@ -10,32 +10,33 @@ using Microsoft.Kiota.Serialization.Multipart;
 using Microsoft.Kiota.Serialization.Text;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Autodesk.DataManagement {
+namespace Autodesk.DataManagement
+{
     /// <summary>
     /// The main entry point of the SDK, exposes the configuration and the fluent API.
     /// </summary>
-    public class BaseDataManagementClient : BaseRequestBuilder 
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class BaseDataManagementClient : BaseRequestBuilder
     {
         /// <summary>The data property</summary>
-        public DataRequestBuilder Data
+        public global::Autodesk.DataManagement.Data.DataRequestBuilder Data
         {
-            get => new DataRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.Data.DataRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The project property</summary>
-        public ProjectRequestBuilder Project
+        public global::Autodesk.DataManagement.Project.ProjectRequestBuilder Project
         {
-            get => new ProjectRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.Project.ProjectRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The projects property</summary>
-        public ProjectsRequestBuilder Projects
+        public global::Autodesk.DataManagement.Projects.ProjectsRequestBuilder Projects
         {
-            get => new ProjectsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.Projects.ProjectsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="BaseDataManagementClient"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.DataManagement.BaseDataManagementClient"/> and sets the default values.
         /// </summary>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         public BaseDataManagementClient(IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}", new Dictionary<string, object>())

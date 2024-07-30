@@ -1,14 +1,15 @@
 {
   "descriptionHash": "9742A262F6B097B136ECD5846102D1B791146AC8E311AF91FEE6F8F0C87654FE99FB4721EAF5AB89C5F8F36E472341C8945FB8C739971856E4E21148B5976D8C",
-  "descriptionLocation": "..\\..\\..\\..\\private\\Autodesk.DataManagement\\OpenAPI\\oss.yaml",
+  "descriptionLocation": "../../../../private/Autodesk.DataManagement/OpenAPI/oss.yaml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.13.0",
+  "kiotaVersion": "1.16.0",
   "clientClassName": "BaseOSSClient",
   "clientNamespaceName": "Autodesk.DataManagement.OSS",
   "language": "CSharp",
   "usesBackingStore": false,
   "excludeBackwardCompatible": false,
   "includeAdditionalData": false,
+  "disableSSLValidation": false,
   "serializers": [
     "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",
     "Microsoft.Kiota.Serialization.Text.TextSerializationWriterFactory",

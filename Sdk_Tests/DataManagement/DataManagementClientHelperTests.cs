@@ -139,7 +139,13 @@ public class DataManagementClientHelperTests
     {
         var bucketName = Guid.NewGuid().ToString();
 
-        var newBucket = await DMclient.OssApi.Oss.V2.Buckets.PostAsync(new Autodesk.DataManagement.OSS.Models.Create_buckets_payload() { PolicyKey = Autodesk.DataManagement.OSS.Models.Create_buckets_payload_policyKey.Transient, BucketKey = bucketName });
+        var newBucket = await DMclient.OssApi.Oss.V2.Buckets.PostAsync(
+            new Autodesk.DataManagement.OSS.Models.Create_buckets_payload()
+            {
+                PolicyKey = Autodesk.DataManagement.OSS.Models.Create_buckets_payload_policyKey.Transient,
+                BucketKey = bucketName
+            },
+            r => { r.Headers.Add("x-ads-region", "US"); });
 
         //Create a random file content
         var uniqueFileName = $"{Guid.NewGuid()}.txt";
@@ -167,7 +173,13 @@ public class DataManagementClientHelperTests
     {
         var bucketName = Guid.NewGuid().ToString();
 
-        var newBucket = await DMclient.OssApi.Oss.V2.Buckets.PostAsync(new Autodesk.DataManagement.OSS.Models.Create_buckets_payload() { PolicyKey = Autodesk.DataManagement.OSS.Models.Create_buckets_payload_policyKey.Transient, BucketKey = bucketName });
+        var newBucket = await DMclient.OssApi.Oss.V2.Buckets.PostAsync(
+            new Autodesk.DataManagement.OSS.Models.Create_buckets_payload()
+            {
+                PolicyKey = Autodesk.DataManagement.OSS.Models.Create_buckets_payload_policyKey.Transient,
+                BucketKey = bucketName
+            },
+            r => { r.Headers.Add("x-ads-region", "US"); });
 
         //Create a random file content
         var uniqueFileName = $"{Guid.NewGuid()}.txt";
@@ -258,14 +270,14 @@ public class DataManagementClientHelperTests
         var authClient = new AuthenticationClient(authProxyClient);
 
 
-        var scope = new List<AuthenticationScope>
+        var scope = new List<string>
         {
-            AuthenticationScope.BucketCreate,
-            AuthenticationScope.BucketDelete,
-            AuthenticationScope.DataRead,
-            AuthenticationScope.DataCreate,
-            AuthenticationScope.DataWrite,
-            AuthenticationScope.DataSearch
+            AuthenticationScopeDefaults.BucketCreate,
+            AuthenticationScopeDefaults.BucketDelete,
+            AuthenticationScopeDefaults.DataRead,
+            AuthenticationScopeDefaults.DataCreate,
+            AuthenticationScopeDefaults.DataWrite,
+            AuthenticationScopeDefaults.DataSearch
         };
 
         async Task<string> getAccessToken()

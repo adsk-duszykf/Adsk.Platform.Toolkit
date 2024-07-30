@@ -4,49 +4,51 @@ using Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Batchcompleteuploa
 using Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Batchsigneds3download;
 using Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Batchsigneds3upload;
 using Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Item;
+using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects {
+namespace Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects
+{
     /// <summary>
     /// Builds and executes requests for operations under \oss\v2\buckets\{bucketKey}\objects
     /// </summary>
-    public class ObjectsRequestBuilder : BaseRequestBuilder 
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class ObjectsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The batchcompleteupload property</summary>
-        public BatchcompleteuploadRequestBuilder Batchcompleteupload
+        public global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Batchcompleteupload.BatchcompleteuploadRequestBuilder Batchcompleteupload
         {
-            get => new BatchcompleteuploadRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Batchcompleteupload.BatchcompleteuploadRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The batchsigneds3download property</summary>
-        public Batchsigneds3downloadRequestBuilder Batchsigneds3download
+        public global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Batchsigneds3download.Batchsigneds3downloadRequestBuilder Batchsigneds3download
         {
-            get => new Batchsigneds3downloadRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Batchsigneds3download.Batchsigneds3downloadRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The batchsigneds3upload property</summary>
-        public Batchsigneds3uploadRequestBuilder Batchsigneds3upload
+        public global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Batchsigneds3upload.Batchsigneds3uploadRequestBuilder Batchsigneds3upload
         {
-            get => new Batchsigneds3uploadRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Batchsigneds3upload.Batchsigneds3uploadRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Autodesk.DataManagement.OSS.oss.v2.buckets.item.objects.item collection</summary>
         /// <param name="position">URL-encoded key of the object to delete.</param>
-        /// <returns>A <see cref="WithObjectKeyItemRequestBuilder"/></returns>
-        public WithObjectKeyItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Item.WithObjectKeyItemRequestBuilder"/></returns>
+        public global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Item.WithObjectKeyItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("objectKey", position);
-                return new WithObjectKeyItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.Item.WithObjectKeyItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="ObjectsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.ObjectsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -54,7 +56,7 @@ namespace Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="ObjectsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.ObjectsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -64,20 +66,20 @@ namespace Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects {
         /// <summary>
         /// List objects in a bucket. It is only available to the bucket creator.
         /// </summary>
-        /// <returns>A <see cref="Bucket_objects"/></returns>
+        /// <returns>A <see cref="global::Autodesk.DataManagement.OSS.Models.Bucket_objects"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Bucket_objects?> GetAsync(Action<RequestConfiguration<ObjectsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.DataManagement.OSS.Models.Bucket_objects?> GetAsync(Action<RequestConfiguration<global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.ObjectsRequestBuilder.ObjectsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Bucket_objects> GetAsync(Action<RequestConfiguration<ObjectsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.DataManagement.OSS.Models.Bucket_objects> GetAsync(Action<RequestConfiguration<global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.ObjectsRequestBuilder.ObjectsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<Bucket_objects>(requestInfo, Bucket_objects.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Autodesk.DataManagement.OSS.Models.Bucket_objects>(requestInfo, global::Autodesk.DataManagement.OSS.Models.Bucket_objects.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List objects in a bucket. It is only available to the bucket creator.
@@ -86,11 +88,11 @@ namespace Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<ObjectsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.ObjectsRequestBuilder.ObjectsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<ObjectsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.ObjectsRequestBuilder.ObjectsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -101,16 +103,17 @@ namespace Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="ObjectsRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.ObjectsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public ObjectsRequestBuilder WithUrl(string rawUrl)
+        public global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.ObjectsRequestBuilder WithUrl(string rawUrl)
         {
-            return new ObjectsRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.ObjectsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// List objects in a bucket. It is only available to the bucket creator.
         /// </summary>
-        public class ObjectsRequestBuilderGetQueryParameters 
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class ObjectsRequestBuilderGetQueryParameters 
         {
             /// <summary>Provides a way to filter the based on object key name</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -140,7 +143,8 @@ namespace Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects {
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class ObjectsRequestBuilderGetRequestConfiguration : RequestConfiguration<ObjectsRequestBuilderGetQueryParameters> 
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class ObjectsRequestBuilderGetRequestConfiguration : RequestConfiguration<global::Autodesk.DataManagement.OSS.Oss.V2.Buckets.Item.Objects.ObjectsRequestBuilder.ObjectsRequestBuilderGetQueryParameters>
         {
         }
     }
