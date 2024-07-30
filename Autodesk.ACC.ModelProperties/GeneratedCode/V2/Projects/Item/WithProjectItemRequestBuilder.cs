@@ -4,45 +4,47 @@ using Autodesk.ACC.ModelProperties.V2.Projects.Item.Diffs;
 using Autodesk.ACC.ModelProperties.V2.Projects.Item.DiffsBatchStatus;
 using Autodesk.ACC.ModelProperties.V2.Projects.Item.Indexes;
 using Autodesk.ACC.ModelProperties.V2.Projects.Item.IndexesBatchStatus;
+using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Autodesk.ACC.ModelProperties.V2.Projects.Item {
+namespace Autodesk.ACC.ModelProperties.V2.Projects.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \v2\projects\{projectId}
     /// </summary>
-    public class WithProjectItemRequestBuilder : BaseRequestBuilder 
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class WithProjectItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The customProperties property</summary>
-        public CustomPropertiesRequestBuilder CustomProperties
+        public global::Autodesk.ACC.ModelProperties.V2.Projects.Item.CustomProperties.CustomPropertiesRequestBuilder CustomProperties
         {
-            get => new CustomPropertiesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.ModelProperties.V2.Projects.Item.CustomProperties.CustomPropertiesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The diffs property</summary>
-        public DiffsRequestBuilder Diffs
+        public global::Autodesk.ACC.ModelProperties.V2.Projects.Item.Diffs.DiffsRequestBuilder Diffs
         {
-            get => new DiffsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.ModelProperties.V2.Projects.Item.Diffs.DiffsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The diffsBatchStatus property</summary>
-        public DiffsBatchStatusRequestBuilder DiffsBatchStatus
+        public global::Autodesk.ACC.ModelProperties.V2.Projects.Item.DiffsBatchStatus.DiffsBatchStatusRequestBuilder DiffsBatchStatus
         {
-            get => new DiffsBatchStatusRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.ModelProperties.V2.Projects.Item.DiffsBatchStatus.DiffsBatchStatusRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The indexes property</summary>
-        public IndexesRequestBuilder Indexes
+        public global::Autodesk.ACC.ModelProperties.V2.Projects.Item.Indexes.IndexesRequestBuilder Indexes
         {
-            get => new IndexesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.ModelProperties.V2.Projects.Item.Indexes.IndexesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The indexesBatchStatus property</summary>
-        public IndexesBatchStatusRequestBuilder IndexesBatchStatus
+        public global::Autodesk.ACC.ModelProperties.V2.Projects.Item.IndexesBatchStatus.IndexesBatchStatusRequestBuilder IndexesBatchStatus
         {
-            get => new IndexesBatchStatusRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.ModelProperties.V2.Projects.Item.IndexesBatchStatus.IndexesBatchStatusRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithProjectItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.ACC.ModelProperties.V2.Projects.Item.WithProjectItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -50,7 +52,7 @@ namespace Autodesk.ACC.ModelProperties.V2.Projects.Item {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithProjectItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.ACC.ModelProperties.V2.Projects.Item.WithProjectItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

@@ -8,22 +8,23 @@ using Microsoft.Kiota.Serialization.Multipart;
 using Microsoft.Kiota.Serialization.Text;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Autodesk.ACC.ModelProperties {
+namespace Autodesk.ACC.ModelProperties
+{
     /// <summary>
     /// The main entry point of the SDK, exposes the configuration and the fluent API.
     /// </summary>
-    public class BaseModelPropertiesClient : BaseRequestBuilder 
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class BaseModelPropertiesClient : BaseRequestBuilder
     {
         /// <summary>The v2 property</summary>
-        public V2RequestBuilder V2
+        public global::Autodesk.ACC.ModelProperties.V2.V2RequestBuilder V2
         {
-            get => new V2RequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.ModelProperties.V2.V2RequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="BaseModelPropertiesClient"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.ACC.ModelProperties.BaseModelPropertiesClient"/> and sets the default values.
         /// </summary>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         public BaseModelPropertiesClient(IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}", new Dictionary<string, object>())

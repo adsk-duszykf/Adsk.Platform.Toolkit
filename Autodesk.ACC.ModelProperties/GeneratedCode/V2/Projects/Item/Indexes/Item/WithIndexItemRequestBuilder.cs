@@ -4,42 +4,44 @@ using Autodesk.ACC.ModelProperties.V2.Projects.Item.Indexes.Item.Fields;
 using Autodesk.ACC.ModelProperties.V2.Projects.Item.Indexes.Item.Manifest;
 using Autodesk.ACC.ModelProperties.V2.Projects.Item.Indexes.Item.Properties;
 using Autodesk.ACC.ModelProperties.V2.Projects.Item.Indexes.Item.Queries;
+using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Autodesk.ACC.ModelProperties.V2.Projects.Item.Indexes.Item {
+namespace Autodesk.ACC.ModelProperties.V2.Projects.Item.Indexes.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \v2\projects\{projectId}\indexes\{indexId}
     /// </summary>
-    public class WithIndexItemRequestBuilder : BaseRequestBuilder 
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class WithIndexItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The fields property</summary>
-        public FieldsRequestBuilder Fields
+        public global::Autodesk.ACC.ModelProperties.V2.Projects.Item.Indexes.Item.Fields.FieldsRequestBuilder Fields
         {
-            get => new FieldsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.ModelProperties.V2.Projects.Item.Indexes.Item.Fields.FieldsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The manifest property</summary>
-        public ManifestRequestBuilder Manifest
+        public global::Autodesk.ACC.ModelProperties.V2.Projects.Item.Indexes.Item.Manifest.ManifestRequestBuilder Manifest
         {
-            get => new ManifestRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.ModelProperties.V2.Projects.Item.Indexes.Item.Manifest.ManifestRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The properties property</summary>
-        public PropertiesRequestBuilder Properties
+        public global::Autodesk.ACC.ModelProperties.V2.Projects.Item.Indexes.Item.Properties.PropertiesRequestBuilder Properties
         {
-            get => new PropertiesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.ModelProperties.V2.Projects.Item.Indexes.Item.Properties.PropertiesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The queries property</summary>
-        public QueriesRequestBuilder Queries
+        public global::Autodesk.ACC.ModelProperties.V2.Projects.Item.Indexes.Item.Queries.QueriesRequestBuilder Queries
         {
-            get => new QueriesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Autodesk.ACC.ModelProperties.V2.Projects.Item.Indexes.Item.Queries.QueriesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithIndexItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.ACC.ModelProperties.V2.Projects.Item.Indexes.Item.WithIndexItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -47,7 +49,7 @@ namespace Autodesk.ACC.ModelProperties.V2.Projects.Item.Indexes.Item {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithIndexItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.ACC.ModelProperties.V2.Projects.Item.Indexes.Item.WithIndexItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -57,27 +59,27 @@ namespace Autodesk.ACC.ModelProperties.V2.Projects.Item.Indexes.Item {
         /// <summary>
         /// Retrieve the indexing status for the given index ID.Depending on the state different properties might be present or missing.E.g., if the indexing job is not finished yet, the manifest, fields, andproperties links might be missing, but the retryAt property will be present.Or if the processing failed for some reason, the errors property will containsome information.Once the final result of the indexing job has been determined (either finished or failed),the status is assumed to be immutable and the response will set a long expiration HTTP headerfor efficient client side caching.
         /// </summary>
-        /// <returns>A <see cref="IndexJobStatus"/></returns>
+        /// <returns>A <see cref="global::Autodesk.ACC.ModelProperties.Models.IndexJobStatus"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ResourceError">When receiving a 401 status code</exception>
-        /// <exception cref="ResourceError">When receiving a 404 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.ModelProperties.Models.ResourceError">When receiving a 401 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.ModelProperties.Models.ResourceError">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<IndexJobStatus?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.ACC.ModelProperties.Models.IndexJobStatus?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<IndexJobStatus> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.ACC.ModelProperties.Models.IndexJobStatus> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"401", ResourceError.CreateFromDiscriminatorValue},
-                {"404", ResourceError.CreateFromDiscriminatorValue},
+                { "401", global::Autodesk.ACC.ModelProperties.Models.ResourceError.CreateFromDiscriminatorValue },
+                { "404", global::Autodesk.ACC.ModelProperties.Models.ResourceError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<IndexJobStatus>(requestInfo, IndexJobStatus.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Autodesk.ACC.ModelProperties.Models.IndexJobStatus>(requestInfo, global::Autodesk.ACC.ModelProperties.Models.IndexJobStatus.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieve the indexing status for the given index ID.Depending on the state different properties might be present or missing.E.g., if the indexing job is not finished yet, the manifest, fields, andproperties links might be missing, but the retryAt property will be present.Or if the processing failed for some reason, the errors property will containsome information.Once the final result of the indexing job has been determined (either finished or failed),the status is assumed to be immutable and the response will set a long expiration HTTP headerfor efficient client side caching.
@@ -101,17 +103,18 @@ namespace Autodesk.ACC.ModelProperties.V2.Projects.Item.Indexes.Item {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="WithIndexItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Autodesk.ACC.ModelProperties.V2.Projects.Item.Indexes.Item.WithIndexItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public WithIndexItemRequestBuilder WithUrl(string rawUrl)
+        public global::Autodesk.ACC.ModelProperties.V2.Projects.Item.Indexes.Item.WithIndexItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new WithIndexItemRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Autodesk.ACC.ModelProperties.V2.Projects.Item.Indexes.Item.WithIndexItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class WithIndexItemRequestBuilderGetRequestConfiguration : RequestConfiguration<DefaultQueryParameters> 
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class WithIndexItemRequestBuilderGetRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
         {
         }
     }
