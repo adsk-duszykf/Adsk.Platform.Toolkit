@@ -31,7 +31,7 @@ namespace Tests.Authentication
         {
             Settings config = Settings.Load();
 
-            var authToken = await AuthClient.Helper.GetTwoLeggedToken(config.APS_CLIENT_ID, config.APS_CLIENT_SECRET, [AuthenticationScope.DataWrite, AuthenticationScope.DataRead]);
+            var authToken = await AuthClient.Helper.GetTwoLeggedToken(config.APS_CLIENT_ID, config.APS_CLIENT_SECRET, [AuthenticationScopeDefaults.DataWrite, AuthenticationScopeDefaults.DataRead]);
 
             Assert.IsNotNull(authToken);
 

@@ -144,7 +144,6 @@ public class AuthenticationClientHelper
         return newToken ?? throw new InvalidOperationException("Token is null");
 
     }
-
     /// <summary>
     /// Create an auto refreshing 2 legged token
     /// </summary>
@@ -153,6 +152,33 @@ public class AuthenticationClientHelper
     /// <param name="scopes"></param>
     /// <param name="authTokenStore">Used for storing the generated token. The token will be reused until it expires. At that point it will be regenerated</param>
     /// <returns>Function returning a 2L AccessToken</returns>
+    public Func<Task<string>> CreateTwoLeggedAutoRefreshToken(string clientId, string clientSecret, IEnumerable<string> scopes, ITokenStore authTokenStore)
+    {
+        return async () =>
+        {
+            var currentToken = authTokenStore.Get();
+
+            var isExpired = currentToken is null || currentToken?.ExpiresAt.Subtract(DateTime.UtcNow).TotalSeconds < 10;
+
+            if (isExpired)
+            {
+                var newToken = await GetTwoLeggedToken(clientId, clientSecret, scopes);
+                currentToken = new AuthTokenExtended(newToken);
+                authTokenStore.Set(currentToken);
+            }
+
+            return currentToken?.AccessToken ?? string.Empty;
+        };
+    }
+    /// <summary>
+    /// Create an auto refreshing 2 legged token
+    /// </summary>
+    /// <param name="clientId"></param>
+    /// <param name="clientSecret"></param>
+    /// <param name="scopes"></param>
+    /// <param name="authTokenStore">Used for storing the generated token. The token will be reused until it expires. At that point it will be regenerated</param>
+    /// <returns>Function returning a 2L AccessToken</returns>
+    [Obsolete("Use CreateTwoLeggedAutoRefreshToken(string clientId, string clientSecret, IEnumerable<string> scopes, ITokenStore authTokenStore) instead")]
     public Func<Task<string>> CreateTwoLeggedAutoRefreshToken(string clientId, string clientSecret, IEnumerable<AuthenticationScope> scopes, ITokenStore authTokenStore)
     {
         return async () =>
@@ -171,7 +197,6 @@ public class AuthenticationClientHelper
             return currentToken?.AccessToken ?? string.Empty;
         };
     }
-
     /// <summary>
     /// Create a 2 legged token
     /// </summary>
@@ -179,6 +204,33 @@ public class AuthenticationClientHelper
     /// <param name="clientSecret">Autodesk App Secret</param>
     /// <param name="scopes">List of scopes</param>
     /// <returns>Fresh 2 legged token with expiration date calculated</returns>
+    public async Task<AuthTokenExtended> GetTwoLeggedToken(string clientId, string clientSecret, IEnumerable<string> scopes)
+    {
+
+        var body = new TokenPostRequestBody()
+        {
+            GrantType = SDKmodels.Granttype.Client_credentials,
+            Scope = CreateScopeString(scopes)
+        };
+
+        var authString = CreateAuthorizationString(clientId, clientSecret);
+
+        var result = await Api.Authentication.V2.Token.PostAsync(body, r =>
+        {
+            r.Headers.Add("Authorization", authString);
+        });
+
+
+        return new AuthTokenExtended(result);
+    }
+    /// <summary>
+    /// Create a 2 legged token
+    /// </summary>
+    /// <param name="clientId">Autodesk App Id</param>
+    /// <param name="clientSecret">Autodesk App Secret</param>
+    /// <param name="scopes">List of scopes</param>
+    /// <returns>Fresh 2 legged token with expiration date calculated</returns>
+    [Obsolete("Use GetTwoLeggedToken(string clientId, string clientSecret, IEnumerable<string> scopes) instead")]
     public async Task<AuthTokenExtended> GetTwoLeggedToken(string clientId, string clientSecret, IEnumerable<AuthenticationScope> scopes)
     {
 
@@ -236,6 +288,10 @@ public class AuthenticationClientHelper
         }));
     }
 
+    public static string CreateScopeString(IEnumerable<string> scopes)
+    {
+        return string.Join(" ", scopes);
+    }
 }
 
 internal static class EnumExtensions

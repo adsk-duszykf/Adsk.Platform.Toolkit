@@ -29,7 +29,7 @@ var authClient = new AuthenticationClient();
  AuthTokenExtended authToken = await authClient.Helper.GetTwoLeggedToken(
 	APS_CLIENT_ID, 
 	APS_CLIENT_SECRET, 
-	[AuthenticationScope.DataWrite, AuthenticationScope.DataRead]);
+	[AuthenticationScopeDefaults.DataWrite, AuthenticationScopeDefaults.DataRead]);
 
 ````
 
@@ -49,7 +49,7 @@ public async Task<Hubs> GetHub()
 
     async Task<string> getAccessToken()
     {
-        var token = await authClient.Helper.GetTwoLeggedToken(APS_CLIENT_ID, APS_CLIENT_SECRET, [ AuthenticationScope.DataRead]);
+        var token = await authClient.Helper.GetTwoLeggedToken(APS_CLIENT_ID, APS_CLIENT_SECRET, [ AuthenticationScopeDefaults.DataWrite]);
 
         return token?.AccessToken is null ? throw new InvalidOperationException() : token.AccessToken;
     }
