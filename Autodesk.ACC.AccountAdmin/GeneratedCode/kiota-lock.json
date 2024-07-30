@@ -1,14 +1,15 @@
 {
-  "descriptionHash": "C78A27281AAF62C2E9D9B4DECC84A436D61FB68751BFA005E6EBA5EE4D33824C7903D6CEDC942A833B8326FBCA1415B256FFBE5363B62E773730DC712767D3DC",
-  "descriptionLocation": "D:\\_GitHub\\Autodesk\\aps.Kiota.SDK-c#\\public\\Autodesk.ACC.AccountAdmin\\OpenAPI\\Autodesk.ACC.AccountAdmin.yaml",
+  "descriptionHash": "91AB39A4503FC3DAF281FF7D152F8A45A31306569494EA7987D0929F3BD9C26897B0E132C3BC6AD824F3C25A3B30AEA80A12D6B2646ABEE3BC5A16E3C3A8C751",
+  "descriptionLocation": "../../../private/Autodesk.ACC.AccountAdmin/OpenAPI/Autodesk.ACC.AccountAdmin.yaml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.7.0",
+  "kiotaVersion": "1.16.0",
   "clientClassName": "BaseAccountAdminClient",
   "clientNamespaceName": "Autodesk.ACC.AccountAdmin",
   "language": "CSharp",
   "usesBackingStore": false,
   "excludeBackwardCompatible": false,
   "includeAdditionalData": false,
+  "disableSSLValidation": false,
   "serializers": [
     "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",
     "Microsoft.Kiota.Serialization.Text.TextSerializationWriterFactory",

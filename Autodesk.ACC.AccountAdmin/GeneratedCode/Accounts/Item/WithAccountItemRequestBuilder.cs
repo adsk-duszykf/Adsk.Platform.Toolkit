@@ -4,50 +4,60 @@ using Autodesk.ACC.AccountAdmin.Accounts.Item.CompaniesImport;
 using Autodesk.ACC.AccountAdmin.Accounts.Item.Projects;
 using Autodesk.ACC.AccountAdmin.Accounts.Item.Users;
 using Autodesk.ACC.AccountAdmin.Accounts.Item.UsersImport;
+using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Autodesk.ACC.AccountAdmin.Accounts.Item {
+namespace Autodesk.ACC.AccountAdmin.Accounts.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \accounts\{accountId}
     /// </summary>
-    public class WithAccountItemRequestBuilder : BaseRequestBuilder {
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class WithAccountItemRequestBuilder : BaseRequestBuilder
+    {
         /// <summary>The companies property</summary>
-        public CompaniesRequestBuilder Companies { get =>
-            new CompaniesRequestBuilder(PathParameters, RequestAdapter);
+        public global::Autodesk.ACC.AccountAdmin.Accounts.Item.Companies.CompaniesRequestBuilder Companies
+        {
+            get => new global::Autodesk.ACC.AccountAdmin.Accounts.Item.Companies.CompaniesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The companiesImport property</summary>
-        public CompaniesImportRequestBuilder CompaniesImport { get =>
-            new CompaniesImportRequestBuilder(PathParameters, RequestAdapter);
+        public global::Autodesk.ACC.AccountAdmin.Accounts.Item.CompaniesImport.CompaniesImportRequestBuilder CompaniesImport
+        {
+            get => new global::Autodesk.ACC.AccountAdmin.Accounts.Item.CompaniesImport.CompaniesImportRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The projects property</summary>
-        public ProjectsRequestBuilder Projects { get =>
-            new ProjectsRequestBuilder(PathParameters, RequestAdapter);
+        public global::Autodesk.ACC.AccountAdmin.Accounts.Item.Projects.ProjectsRequestBuilder Projects
+        {
+            get => new global::Autodesk.ACC.AccountAdmin.Accounts.Item.Projects.ProjectsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The users property</summary>
-        public UsersRequestBuilder Users { get =>
-            new UsersRequestBuilder(PathParameters, RequestAdapter);
+        public global::Autodesk.ACC.AccountAdmin.Accounts.Item.Users.UsersRequestBuilder Users
+        {
+            get => new global::Autodesk.ACC.AccountAdmin.Accounts.Item.Users.UsersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The usersImport property</summary>
-        public UsersImportRequestBuilder UsersImport { get =>
-            new UsersImportRequestBuilder(PathParameters, RequestAdapter);
+        public global::Autodesk.ACC.AccountAdmin.Accounts.Item.UsersImport.UsersImportRequestBuilder UsersImport
+        {
+            get => new global::Autodesk.ACC.AccountAdmin.Accounts.Item.UsersImport.UsersImportRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new WithAccountItemRequestBuilder and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.ACC.AccountAdmin.Accounts.Item.WithAccountItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithAccountItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{accountId}", pathParameters) {
+        public WithAccountItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{accountId}", pathParameters)
+        {
         }
         /// <summary>
-        /// Instantiates a new WithAccountItemRequestBuilder and sets the default values.
+        /// Instantiates a new <see cref="global::Autodesk.ACC.AccountAdmin.Accounts.Item.WithAccountItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithAccountItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{accountId}", rawUrl) {
+        public WithAccountItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{accountId}", rawUrl)
+        {
         }
     }
 }
