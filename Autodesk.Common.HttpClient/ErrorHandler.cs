@@ -15,30 +15,21 @@ public class ErrorHandler : DelegatingHandler
     {
         var result = await base.SendAsync(request, cancellationToken);
 
-        try
+        if (result.IsSuccessStatusCode == false && IsHandledError(result) == false)
         {
-            result.EnsureSuccessStatusCode();
-
-        }
-        catch (HttpRequestException ex)
-        {
-            if (ShouldRetry(ex.StatusCode) || IsRedirect(ex.StatusCode))
-            {
-                return result;
-            }
-
             var message = await result.Content.ReadAsStringAsync(cancellationToken);
 
-            if (string.IsNullOrEmpty(message))
-            {
-                message = ex.Message;
-            }
-
-            throw new HttpRequestException(ex.HttpRequestError, message);
-
+            throw new HttpRequestException(message, null, result.StatusCode);
         }
 
         return result;
+
+    }
+
+    private static bool IsHandledError(HttpResponseMessage result)
+    {
+        var statusCode = result.StatusCode;
+        return ShouldRetry(statusCode) || IsRedirect(statusCode);
     }
 
     private static bool ShouldRetry(HttpStatusCode? statusCode)
@@ -47,7 +38,7 @@ public class ErrorHandler : DelegatingHandler
         {
             HttpStatusCode.ServiceUnavailable => true,
             HttpStatusCode.GatewayTimeout => true,
-            (HttpStatusCode)429 => true,
+            HttpStatusCode.TooManyRequests => true,
             _ => false
         };
     }
