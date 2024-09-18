@@ -97,7 +97,7 @@ namespace Tests
                         {
                             Url = ServiceRootUrls[service],
 
-                            SaveMapping = true,
+                            //SaveMapping = true,
                             SaveMappingToFile = true,
                             ExcludedHeaders = ["Authorization"],
                             ReplaceSettings = new ProxyUrlReplaceSettings

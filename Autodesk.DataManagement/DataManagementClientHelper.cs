@@ -669,7 +669,8 @@ public class DataManagementClientHelper
 
         var items = GetFileItemByFolderIdAsync(projectId, folderId);
 
-        var fileItem = await items.FirstOrDefault(i => string.Equals(i.Data.Attributes?.Name, fileName, StringComparison.InvariantCultureIgnoreCase));
+
+        var fileItem = await items.FirstOrDefault(i => string.Equals(i.Included.Attributes?.Name, fileName, StringComparison.InvariantCultureIgnoreCase));
 
         var versionId = string.Empty;
         var fileItemId = string.Empty;
