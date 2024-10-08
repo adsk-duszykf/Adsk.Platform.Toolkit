@@ -45,10 +45,7 @@ Func<Task<string>> GetAccessToken()
 {
     var authClient = new AuthenticationClient();
 
-    var scope = new List<AuthenticationScope>
-        {
-            AuthenticationScope.DataRead,
-        };
+    IEnumerable<string> scope = [AuthenticationScopeDefaults.DataRead];
 
     return async () =>
     {

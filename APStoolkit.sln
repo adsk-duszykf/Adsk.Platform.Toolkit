@@ -53,13 +53,13 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Documentation", "Documentat
 		SlnRelativePath = "Documentation\"
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samples", "Samples\Samples.csproj", "{A81DA2EF-5919-4551-8701-F68B5A688853}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleConsoleApp", "Samples\SampleConsoleApp.csproj", "{A81DA2EF-5919-4551-8701-F68B5A688853}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autodesk.ACC.FileManagement", "Autodesk.ACC.FileManagement\Autodesk.ACC.FileManagement.csproj", "{A46EF087-9934-4F90-82AA-E76A9C4F1A79}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CommonUtils", "CommonUtils\CommonUtils.shproj", "{CC48C5D2-463D-439C-B642-690476FCE018}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autodesk.ACC.RFIs", "Autodesk.ACC.RFIs\Autodesk.ACC.RFIs.csproj", "{FE33DB50-9218-4165-BF57-42839AD2B83B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autodesk.ACC.RFIs", "Autodesk.ACC.RFIs\Autodesk.ACC.RFIs.csproj", "{FE33DB50-9218-4165-BF57-42839AD2B83B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
