@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.DataManagement.OSS.Models
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>Indicates the status of the object. `complete` indicates a raw upload or merged resumable upload; `chunked` indicates an unmerged resumable upload where the user  provide `public-resource-fallback`=`false`; `fallback` indicates an unmerged resumable  upload where the user provides `public-resource-fallback`=`true`.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Signeds3download_response_status
     {
         [EnumMember(Value = "complete")]

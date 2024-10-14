@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.DataManagement.OSS.Models
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>[Data retention policy](https://developer.autodesk.com/en/docs/data/v2/overview/retention-policy/)Acceptable values: `transient`, `temporary` or `persistent`</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Create_buckets_payload_policyKey
     {
         [EnumMember(Value = "transient")]
