@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.ModelDerivative.Models
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>Specifies the materials to apply to the generated SVF derivatives. Available options are:- auto - (Default) Use the current setting of the default view of the input file.- basic - Use basic materials.- autodesk - Use Autodesk materials.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum JobPayloadFormat_advanced_materialMode
     {
         [EnumMember(Value = "auto")]

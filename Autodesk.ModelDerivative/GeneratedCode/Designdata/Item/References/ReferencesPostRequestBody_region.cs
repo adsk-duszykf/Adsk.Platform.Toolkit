@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.ModelDerivative.Designdata.Item.References
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>Region in which to store references. Possible values: US, EMEA. By default, it is set to US.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ReferencesPostRequestBody_region
     {
         [EnumMember(Value = "US")]

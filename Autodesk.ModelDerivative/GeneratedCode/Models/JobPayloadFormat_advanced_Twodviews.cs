@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.ModelDerivative.Models
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>The format that 2D views must be rendered to. Available options are:- legacy - (Default) Render to a model derivative specific file format.- pdf - Render to the PDF file format. This option applies only to Revit 2022 files and newer.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum JobPayloadFormat_advanced_Twodviews
     {
         [EnumMember(Value = "legacy")]

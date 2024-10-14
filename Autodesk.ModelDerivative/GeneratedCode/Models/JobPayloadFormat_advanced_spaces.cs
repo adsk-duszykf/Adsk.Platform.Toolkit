@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.ModelDerivative.Models
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>Specifies how spaces are translated. Available options are:- hide - (default) spaces are translated but are not visible by default.- show - spaces are translated and are visible by default.- skip - spaces are not translated.Note These options are applicable only when conversionMethod is set to modern or v3.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum JobPayloadFormat_advanced_spaces
     {
         [EnumMember(Value = "hide")]
