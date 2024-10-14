@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.ACC.AccountAdmin.Models
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>The status of the product in the project. Valid values are `activating`, `activationFailed`, `active`, `available`, `deactivating`, `deactivationFailed` and `inactive`.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Projects_status
     {
         [EnumMember(Value = "activating")]

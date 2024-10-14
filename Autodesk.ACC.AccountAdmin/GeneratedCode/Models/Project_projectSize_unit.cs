@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.ACC.AccountAdmin.Models
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>The unit of measure of the project size for this project.  Allowed values are `sq. ft`, `sq. meters`, `sq. km`, `sq. miles`, `acres`, `ft`, `meters`, `km` and `miles`.  Defaults to `sq. ft`.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Project_projectSize_unit
     {
         [EnumMember(Value = "sq. ft")]

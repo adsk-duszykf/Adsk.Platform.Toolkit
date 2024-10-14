@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.ACC.AccountAdmin.Models
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>The name of the service. Valid values are `projectAdministration`, `documentManagement`, `quantification`, `projectManagement`, `costManagement`, `designCollaboration`, `fieldManagement`, `assets`, `workshopxr`, `insight`, `modelCoordination`, `field`, `glue` and `plan`.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Project_services_serviceName
     {
         [EnumMember(Value = "projectAdministration")]

@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.ACC.AccountAdmin.Models
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>User&apos;s phone type. Can be `home`, `mobile` or `office`.  Defaults to `mobile`.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum AccountUser_phone_phoneType
     {
         [EnumMember(Value = "mobile")]

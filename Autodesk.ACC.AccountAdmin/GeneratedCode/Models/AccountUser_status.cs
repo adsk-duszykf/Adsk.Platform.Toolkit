@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.ACC.AccountAdmin.Models
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>The status of this account user.  Valid values are `active`, `not_invited`, `pending`, `disabled`, and `deleted`.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum AccountUser_status
     {
         [EnumMember(Value = "active")]

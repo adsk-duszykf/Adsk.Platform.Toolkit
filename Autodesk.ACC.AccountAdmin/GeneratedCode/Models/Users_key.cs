@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.ACC.AccountAdmin.Models
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>The key of the product. Valid values are `accountAdministration`, `assets`, `autoSpecs`, `build`, `capitalPlanning`, `cost`, `costManagement`, `designCollaboration`, `docs`, `documentManagement`, `field`, `fieldManagement`, `financials`, `glue`, `workshopxr`, `insight`, `modelCoordination`, `plan`, `projectAdministration`, `projectHome`, `projectManagement`, `quantification`, `takeoff`.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Users_key
     {
         [EnumMember(Value = "accountAdministration")]
