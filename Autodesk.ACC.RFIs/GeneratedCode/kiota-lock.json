@@ -1,9 +1,10 @@
 {
-  "descriptionHash": "04CE6F2C651019DD3977E5CEDB86F066811A3D47A59C5EAF8337FBCD85DD0A4B18A8B0E55E0C43B2D759389584FF21555EB1385DA1BBF4459C20492FBC735601",
+  "descriptionHash": "18414A88D8F14A18775B71C11B286D14EDF6FFF34439CD087DE2C72F187C8B17DD43657D4FD45643763989E79C586BBAFC715EB256FCAA02E049264E9CDC2E5C",
   "descriptionLocation": "../../../private/Autodesk.ACC.RFI/OpenAPI/Autodesk.RFI.yaml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.16.0",
+  "kiotaVersion": "1.19.1",
   "clientClassName": "BaseRFIsClient",
+  "typeAccessModifier": "Public",
   "clientNamespaceName": "Autodesk.ACC.RFIs",
   "language": "CSharp",
   "usesBackingStore": false,

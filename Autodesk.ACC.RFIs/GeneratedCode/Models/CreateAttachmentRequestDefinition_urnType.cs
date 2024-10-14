@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.ACC.RFIs.Models
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>The type of attachment. We currently only support adding attachments from BIM 360 Document Management. Possible value: ``dm``.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum CreateAttachmentRequestDefinition_urnType
     {
         [EnumMember(Value = "oss")]

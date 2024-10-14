@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.ACC.RFIs.Models
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>The type of attachment URN. Possible values:``dm`` - for a BIM 360 Document Management file``oss`` - for a local file</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Attachment_urnType
     {
         [EnumMember(Value = "oss")]
