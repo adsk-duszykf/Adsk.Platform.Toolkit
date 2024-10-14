@@ -1,4 +1,5 @@
-﻿using Autodesk.DataManagement.Data.V1;
+﻿using System.Diagnostics;
+using Autodesk.DataManagement.Data.V1;
 using Autodesk.DataManagement.Data.V1.Projects.Item.Folders.Item.Contents;
 using Autodesk.DataManagement.Helpers.Models;
 using Autodesk.DataManagement.Models;
@@ -45,6 +46,57 @@ public class DataManagementClientHelper
 
         return projectDetails?.Data?.Relationships?.Rfis?.Data?.Id
                 ?? throw new InvalidOperationException("RFIs container not found");
+    }
+
+    /// <summary>
+    /// Delete a file item (all versions) from Docs
+    /// </summary>
+    /// <param name="projectId">Project Id. Prefix 'b.' handled automatically</param>
+    /// <param name="fileItemUrn">File Item Urn like '</param>
+    /// <returns>The deleted file</returns>
+    /// <remarks>File is not really deleted but marked as "deleted" and can be restored</remarks>
+    public async Task<(string fileItemId, string versionId)> DeleteFileAsync(string projectId, string fileItemUrn)
+    {
+        projectId = FixProjectId(projectId);
+
+        var result = await DataMgtApi.Data.V1.Projects[projectId].Versions
+            .PostAsync(
+            new()
+            {
+                Jsonapi = new()
+                {
+                    Version = "1.0"
+                },
+                Data = new()
+                {
+                    Type = "versions",
+                    Attributes = new()
+                    {
+                        Extension = new()
+                        {
+                            Type = "versions:autodesk.core:Deleted",
+                            Version = "1.0"
+                        },
+                    },
+                    Relationships = new()
+                    {
+                        Item = new()
+                        {
+                            Data = new()
+                            {
+                                Type = "items",
+                                Id = fileItemUrn
+                            }
+                        }
+                    }
+                }
+            });
+
+        return (
+
+                result?.Included?.FirstOrDefault()?.Id ?? throw new UnreachableException("Version 'id' is not defined"),
+                result?.Data?.Id ?? throw new UnreachableException("Item 'id' is not defined")
+                );
     }
 
     /// <summary>

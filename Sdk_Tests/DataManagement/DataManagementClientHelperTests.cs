@@ -201,7 +201,7 @@ public class DataManagementClientHelperTests
         await DMclient.OssApi.Oss.V2.Buckets[bucketName].DeleteAsync();
     }
     [TestMethod]
-    public async Task ShouldCreateTwoVersionsOfFileInACC()
+    public async Task ShouldCreateTwoVersionsOfFileAndDeleteIt()
     {
         //Create a random file content
         var uniqueFileName = $"{Guid.NewGuid()}.txt";
@@ -216,7 +216,7 @@ public class DataManagementClientHelperTests
         var (fileItemId, versionId) = await DMclient.Helper.UploadFileAsync(config.PROJECT_ID, config.FOLDER_ID, uniqueFileName, fileContent, 50000);
 
         Assert.IsNotNull(fileItemId);
-        Assert.IsNotNull(versionId);
+        Assert.IsTrue(versionId.EndsWith("1"));
 
         //Upload a new version of the file by chunks
         rnd.NextBytes(byteArray);
@@ -224,42 +224,13 @@ public class DataManagementClientHelperTests
         (fileItemId, versionId) = await DMclient.Helper.UploadFileAsync(config.PROJECT_ID, config.FOLDER_ID, uniqueFileName, fileContent, 50000);
 
         Assert.IsNotNull(fileItemId);
-        Assert.IsNotNull(versionId);
+        Assert.IsTrue(versionId.EndsWith("2"));
 
         //Might take few seconds to be really deleted on the server
-        var projectId = DMclient.Helper.FixProjectId(config.PROJECT_ID);
-        await DMclient.DataMgtApi.Data.V1.Projects[projectId].Versions
-            .PostAsync(
-            new()
-            {
-                Jsonapi = new()
-                {
-                    Version = "1.0"
-                },
-                Data = new()
-                {
-                    Type = "versions",
-                    Attributes = new()
-                    {
-                        Extension = new()
-                        {
-                            Type = "versions:autodesk.core:Deleted",
-                            Version = "1.0"
-                        },
-                    },
-                    Relationships = new()
-                    {
-                        Item = new()
-                        {
-                            Data = new()
-                            {
-                                Type = "items",
-                                Id = fileItemId
-                            }
-                        }
-                    }
-                }
-            });
+        var result = await DMclient.Helper.DeleteFileAsync(config.PROJECT_ID, fileItemId);
+
+        //ACC doesn't delete the file but create a new version marked "deleted"
+        Assert.IsTrue(result.versionId.EndsWith("3"));
     }
 
     private static DataManagementClient InitializeDMclient()
