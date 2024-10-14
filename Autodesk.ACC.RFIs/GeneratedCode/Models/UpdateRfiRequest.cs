@@ -160,13 +160,7 @@ namespace Autodesk.ACC.RFIs.Models
         /// <summary>The status of the RFI. Note that the possible statuses of the RFI depend on the workflow type assigned to the RFI.For a default workflow with a single reviewer (``US``), you can potentially use the following statuses: ``draft``, ``submitted``, ``open``, ``answered``, ``rejected``, ``closed``, ``void``.For a workflow with an additional reviewer (``EMEA``), you can potentially use the following statuses: ``draft``, ``submitted``, ``openRev1``, ``openRev2``, ``rejectedRev1``, ``rejectedManager``, ``answeredRev1``, ``answeredManager``, ``closed``, ``void``.For more information about different workflows and statuses, see the `RFIs help documentation` `BIM360&lt;https://help.autodesk.com/view/BIM360D/ENU/?guid=GUID-787338BF-1189-4170-8629-7FA240F4BED4&gt;`_ `ACC&lt;https://help.autodesk.com/view/BUILD/ENU/?guid=RFI_Workflow_Setup&gt;`_.To check the workflow type of an RFI, call `GET users/me` `BIM 360&lt;/en/docs/bim360/v1/reference/http/rfis-v2-users-me-GET/&gt;`_ `ACC&lt;/en/docs/acc/v1/reference/http/rfis-v2-users-me-GET/&gt;`_ and check ``workflow.type``.To check which statuses the user can potentially open the RFI with, call `GET rfis/:id` `BIM 360&lt;/en/docs/bim360/v1/reference/http/rfis-v2-rfis-id-GET&gt;`_ `ACC&lt;/en/docs/acc/v1/reference/http/rfis-v2-rfis-id-GET&gt;`_.</summary>
         public global::Autodesk.ACC.RFIs.Models.RfiStatus? OldStatus { get; set; }
         /// <summary>The priority status of the RFI. Possible values: ``null``, ``High``, ``Normal``, ``Low``.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Autodesk.ACC.RFIs.Models.RfiPriority? Priority { get; set; }
-#nullable restore
-#else
-        public global::Autodesk.ACC.RFIs.Models.RfiPriority Priority { get; set; }
-#endif
         /// <summary>BIM360: Data about the pushpin RFI. Only relevant for pushpin RFIs. For more details, see the `RFI pushpin tutorials. &lt;/en/docs/bim360/v1/tutorials/create-pushpin/&gt;`_ACC: Not relevant.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -257,7 +251,7 @@ namespace Autodesk.ACC.RFIs.Models
                 { "location", n => { Location = n.GetObjectValue<global::Autodesk.ACC.RFIs.Models.RfiUpdateLocation>(global::Autodesk.ACC.RFIs.Models.RfiUpdateLocation.CreateFromDiscriminatorValue); } },
                 { "officialResponse", n => { OfficialResponse = n.GetStringValue(); } },
                 { "oldStatus", n => { OldStatus = n.GetEnumValue<global::Autodesk.ACC.RFIs.Models.RfiStatus>(); } },
-                { "priority", n => { Priority = n.GetObjectValue<global::Autodesk.ACC.RFIs.Models.RfiPriority>(global::Autodesk.ACC.RFIs.Models.RfiPriority.CreateFromDiscriminatorValue); } },
+                { "priority", n => { Priority = n.GetEnumValue<global::Autodesk.ACC.RFIs.Models.RfiPriority>(); } },
                 { "pushpinAttributes", n => { PushpinAttributes = n.GetObjectValue<global::Autodesk.ACC.RFIs.Models.UpdateRfiRequest_pushpinAttributes>(global::Autodesk.ACC.RFIs.Models.UpdateRfiRequest_pushpinAttributes.CreateFromDiscriminatorValue); } },
                 { "reference", n => { Reference = n.GetStringValue(); } },
                 { "rfiTypeId", n => { RfiTypeId = n.GetGuidValue(); } },
@@ -295,7 +289,7 @@ namespace Autodesk.ACC.RFIs.Models
             writer.WriteObjectValue<global::Autodesk.ACC.RFIs.Models.RfiUpdateLocation>("location", Location);
             writer.WriteStringValue("officialResponse", OfficialResponse);
             writer.WriteEnumValue<global::Autodesk.ACC.RFIs.Models.RfiStatus>("oldStatus", OldStatus);
-            writer.WriteObjectValue<global::Autodesk.ACC.RFIs.Models.RfiPriority>("priority", Priority);
+            writer.WriteEnumValue<global::Autodesk.ACC.RFIs.Models.RfiPriority>("priority", Priority);
             writer.WriteObjectValue<global::Autodesk.ACC.RFIs.Models.UpdateRfiRequest_pushpinAttributes>("pushpinAttributes", PushpinAttributes);
             writer.WriteStringValue("reference", Reference);
             writer.WriteGuidValue("rfiTypeId", RfiTypeId);

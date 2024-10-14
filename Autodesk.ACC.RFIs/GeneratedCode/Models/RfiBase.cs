@@ -220,13 +220,7 @@ namespace Autodesk.ACC.RFIs.Models
         public string OfficialResponse { get; set; }
 #endif
         /// <summary>The priority status of the RFI. Possible values: ``null``, ``High``, ``Normal``, ``Low``.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Autodesk.ACC.RFIs.Models.RfiPriority? Priority { get; set; }
-#nullable restore
-#else
-        public global::Autodesk.ACC.RFIs.Models.RfiPriority Priority { get; set; }
-#endif
         /// <summary>The ID of the project.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -357,7 +351,7 @@ namespace Autodesk.ACC.RFIs.Models
                 { "location", n => { Location = n.GetObjectValue<global::Autodesk.ACC.RFIs.Models.RfiLocation>(global::Autodesk.ACC.RFIs.Models.RfiLocation.CreateFromDiscriminatorValue); } },
                 { "managerId", n => { ManagerId = n.GetStringValue(); } },
                 { "officialResponse", n => { OfficialResponse = n.GetStringValue(); } },
-                { "priority", n => { Priority = n.GetObjectValue<global::Autodesk.ACC.RFIs.Models.RfiPriority>(global::Autodesk.ACC.RFIs.Models.RfiPriority.CreateFromDiscriminatorValue); } },
+                { "priority", n => { Priority = n.GetEnumValue<global::Autodesk.ACC.RFIs.Models.RfiPriority>(); } },
                 { "projectId", n => { ProjectId = n.GetStringValue(); } },
                 { "pushpinAttributes", n => { PushpinAttributes = n.GetObjectValue<global::Autodesk.ACC.RFIs.Models.RfiBase_pushpinAttributes>(global::Autodesk.ACC.RFIs.Models.RfiBase_pushpinAttributes.CreateFromDiscriminatorValue); } },
                 { "reference", n => { Reference = n.GetStringValue(); } },
@@ -412,7 +406,7 @@ namespace Autodesk.ACC.RFIs.Models
             writer.WriteObjectValue<global::Autodesk.ACC.RFIs.Models.RfiLocation>("location", Location);
             writer.WriteStringValue("managerId", ManagerId);
             writer.WriteStringValue("officialResponse", OfficialResponse);
-            writer.WriteObjectValue<global::Autodesk.ACC.RFIs.Models.RfiPriority>("priority", Priority);
+            writer.WriteEnumValue<global::Autodesk.ACC.RFIs.Models.RfiPriority>("priority", Priority);
             writer.WriteStringValue("projectId", ProjectId);
             writer.WriteObjectValue<global::Autodesk.ACC.RFIs.Models.RfiBase_pushpinAttributes>("pushpinAttributes", PushpinAttributes);
             writer.WriteStringValue("reference", Reference);

@@ -152,13 +152,7 @@ namespace Autodesk.ACC.RFIs.Models
         public global::Autodesk.ACC.RFIs.Models.RfiLocation Location { get; set; }
 #endif
         /// <summary>The priority status of the RFI. Possible values: ``null``, ``High``, ``Normal``, ``Low``.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Autodesk.ACC.RFIs.Models.RfiPriority? Priority { get; set; }
-#nullable restore
-#else
-        public global::Autodesk.ACC.RFIs.Models.RfiPriority Priority { get; set; }
-#endif
         /// <summary>BIM360: Data about the RFI pushpin. Only relevant for pushpin RFIs. For more details, see the pushpin tutorials. `&lt;/en/docs/bim360/v1/tutorials/create-pushpin/&gt;`_ACC: Not relevant.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -264,7 +258,7 @@ namespace Autodesk.ACC.RFIs.Models
                 { "linkedDocument", n => { LinkedDocument = n.GetStringValue(); } },
                 { "linkedDocumentVersion", n => { LinkedDocumentVersion = n.GetIntValue(); } },
                 { "location", n => { Location = n.GetObjectValue<global::Autodesk.ACC.RFIs.Models.RfiLocation>(global::Autodesk.ACC.RFIs.Models.RfiLocation.CreateFromDiscriminatorValue); } },
-                { "priority", n => { Priority = n.GetObjectValue<global::Autodesk.ACC.RFIs.Models.RfiPriority>(global::Autodesk.ACC.RFIs.Models.RfiPriority.CreateFromDiscriminatorValue); } },
+                { "priority", n => { Priority = n.GetEnumValue<global::Autodesk.ACC.RFIs.Models.RfiPriority>(); } },
                 { "pushpinAttributes", n => { PushpinAttributes = n.GetObjectValue<global::Autodesk.ACC.RFIs.Models.CreateRfiRequest_pushpinAttributes>(global::Autodesk.ACC.RFIs.Models.CreateRfiRequest_pushpinAttributes.CreateFromDiscriminatorValue); } },
                 { "reference", n => { Reference = n.GetStringValue(); } },
                 { "rfiTypeId", n => { RfiTypeId = n.GetGuidValue(); } },
@@ -303,7 +297,7 @@ namespace Autodesk.ACC.RFIs.Models
             writer.WriteStringValue("linkedDocument", LinkedDocument);
             writer.WriteIntValue("linkedDocumentVersion", LinkedDocumentVersion);
             writer.WriteObjectValue<global::Autodesk.ACC.RFIs.Models.RfiLocation>("location", Location);
-            writer.WriteObjectValue<global::Autodesk.ACC.RFIs.Models.RfiPriority>("priority", Priority);
+            writer.WriteEnumValue<global::Autodesk.ACC.RFIs.Models.RfiPriority>("priority", Priority);
             writer.WriteObjectValue<global::Autodesk.ACC.RFIs.Models.CreateRfiRequest_pushpinAttributes>("pushpinAttributes", PushpinAttributes);
             writer.WriteStringValue("reference", Reference);
             writer.WriteGuidValue("rfiTypeId", RfiTypeId);
