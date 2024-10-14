@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <PackageId>Adsk.Platform.ACC.FileManagement</PackageId>
     <Title>$(AssemblyName)</Title>
-    <Description>Autodesk Platform: ACC File Management Toolkit</Description>
+    <Description>Autodesk Platform: ACC File Management Service SDK and tools</Description>    
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 

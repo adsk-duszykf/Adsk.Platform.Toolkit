@@ -8,7 +8,7 @@
     <Title>$(AssemblyName)</Title>
     <Authors>DuszykF</Authors>
     <Company>Autodesk</Company>
-    <Description>Autodesk Platform: Authentication Service SDK</Description>
+    <Description>Autodesk Platform: Authentication Service SDK and tools</Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     
     <Version>1.0.1</Version>

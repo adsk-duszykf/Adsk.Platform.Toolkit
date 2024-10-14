@@ -7,7 +7,7 @@
     <RootNamespace>Autodesk.DataManagement</RootNamespace>
     <Title>$(AssemblyName)</Title>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Description>Autodesk Platform: Data Management Service SDK</Description>
+    <Description>Autodesk Platform: Data Management Service SDK and tools</Description>
     
     <Version>1.0.0</Version>
     

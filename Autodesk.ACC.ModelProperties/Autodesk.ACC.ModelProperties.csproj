@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Title>$(AssemblyName)</Title>
-    <Description>Autodesk Platform: Model Properties Service SDK</Description>
+    <Description>Autodesk Platform: ACC Model Properties Service SDK and tools</Description>
 
     <Version>1.0.0</Version>
 

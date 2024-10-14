@@ -5,6 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageId>Adsk.Platform.ACC.CostManagement</PackageId>
+    <Description>Autodesk Platform: ACC Cost Service SDK and tools</Description>
     <PackageProjectUrl>https://aps.autodesk.com/en/docs/acc/v1/reference/http/cost-actions-POST/</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
