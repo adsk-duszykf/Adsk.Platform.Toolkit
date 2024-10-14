@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.ACC.CostManagement.Models
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>Current status of the email.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum EmailNotificationResponse_status
     {
         [EnumMember(Value = "Pending")]

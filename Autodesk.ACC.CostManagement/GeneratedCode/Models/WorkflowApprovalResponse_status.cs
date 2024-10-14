@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.ACC.CostManagement.Models
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>Current status of the workflow approval. Possible values: ``Initiating``, ``Open``, ``Completed``, ``Terminated``.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum WorkflowApprovalResponse_status
     {
         [EnumMember(Value = "Initiating")]

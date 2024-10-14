@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.ACC.CostManagement.Models
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>The aggregate type of the payment. Possible values: `workCompleted`, `workCompletedPercentage`.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Payment_aggregateBy
     {
         [EnumMember(Value = "workCompleted")]

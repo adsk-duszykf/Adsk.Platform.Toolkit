@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.ACC.CostManagement.Models
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>The scope of the change order. Possible values are ``out``, ``in``, ``tbd`` , ``budgetOnly``and ``contingency``.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum FormInstanceCreate_scope
     {
         [EnumMember(Value = "out")]

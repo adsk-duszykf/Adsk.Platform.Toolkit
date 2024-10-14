@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.ACC.CostManagement.Models
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>Type of the tax formula item.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum TaxFormulaItem_type
     {
         [EnumMember(Value = "subtotal-revise")]

@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.ACC.CostManagement.Models
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>The type of the item with which the item is associated. Possible values: ``Budget``, ``Contract``, ``FormInstance``, ``CostItem``, ``Payment``, ``MainContract``, ``BudgetPayment``.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum CalendarConfiguration_sourceType
     {
         [EnumMember(Value = "Budget")]

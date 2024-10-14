@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.ACC.CostManagement.Models
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>The scope of the budget. Possible values are ``budgetOnly`` and ``budgetAndCost``.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum BudgetSync_current_data_scope
     {
         [EnumMember(Value = "budgetOnly")]

@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.ACC.CostManagement.V1.Projects.Item.BudgetTransfers.Item
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>Lock state used by ERP integration, default value is ``null``.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum BudgetTransfersPatchRequestBody_integrationState
     {
         [EnumMember(Value = "locked")]

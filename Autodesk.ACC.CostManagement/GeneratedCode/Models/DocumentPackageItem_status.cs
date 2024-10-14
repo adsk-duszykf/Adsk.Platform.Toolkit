@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.ACC.CostManagement.Models
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>Current status of the document. Possible values: ``Pending``, ``InProgress``, ``Complete``, ``Fail``, ``PendingSign``, ``Signed``.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum DocumentPackageItem_status
     {
         [EnumMember(Value = "Pending")]

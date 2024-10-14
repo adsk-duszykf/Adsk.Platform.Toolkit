@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.ACC.CostManagement.V1.Projects.Item.CostItems.Item.SubCostItemsCopy
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
     public enum SubCostItemsCopyPostRequestBody_to
     #pragma warning restore CS1591

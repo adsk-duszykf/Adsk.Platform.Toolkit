@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.ACC.CostManagement.Models
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>The status of the expense. Possible values: ``draft``, ``pending``, ``revise``, ``rejected``, ``approved``, ``paid``.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Expense_status
     {
         [EnumMember(Value = "draft")]

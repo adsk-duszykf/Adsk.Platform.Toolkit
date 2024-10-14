@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.ACC.CostManagement.Models
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>Document: a document generated from a DocumentTemplate; Upload: upload from a local file; DocsFile: a file attached from BIM 360 Docs; Attachment: move an attachment from Attachments to Document Pacakge</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum DocumentPackageItem_type
     {
         [EnumMember(Value = "Document")]

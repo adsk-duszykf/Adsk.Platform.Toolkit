@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.ACC.CostManagement.Models
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>The object ID of the payment item is associated to. For example, &apos;SCO&apos;, &apos;OCO&apos;, &apos;SOV&apos;, &apos;CostItem&apos;, &apos;SubCostItem&apos; and &apos;MaterialsOnSite&apos;.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum PaymentSummary_paymentItemAssociationType
     {
         [EnumMember(Value = "SCO")]

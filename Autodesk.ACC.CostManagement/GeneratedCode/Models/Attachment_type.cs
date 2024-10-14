@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.ACC.CostManagement.Models
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>The type of attachment. Possible values: ``Upload``, ``DocsFile``. ``Upload`` is a locally uploaded file and ``DocsFile`` is a file referenced from BIM 360 Docs.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Attachment_type
     {
         [EnumMember(Value = "Upload")]
