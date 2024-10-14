@@ -103,13 +103,7 @@ namespace Autodesk.ACC.RFIs.Models
         public List<string> CoReviewersRoles { get; set; }
 #endif
         /// <summary>The cost impact status of the RFI. Possible values: ``null``, ``Yes``, ``No``, ``Unknown``.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Autodesk.ACC.RFIs.Models.RfiCostImpact? CostImpact { get; set; }
-#nullable restore
-#else
-        public global::Autodesk.ACC.RFIs.Models.RfiCostImpact CostImpact { get; set; }
-#endif
         /// <summary>The date and time the RFI was created, in the following format: YYYY-MM-DDThh:mm:ss.sz.</summary>
         public DateTimeOffset? CreatedAt { get; set; }
         /// <summary>The Autodesk ID of the user who created the RFI. To check the name of the user, call `GET projects/users` `BIM 360&lt;/en/docs/bim360/v1/reference/http/admin-v1-projects-projectId-users-GET&gt;`_ `ACC&lt;/en/docs/acc/v1/reference/http/admin-v1-projects-projectId-users-GET&gt;`_.</summary>
@@ -277,13 +271,7 @@ namespace Autodesk.ACC.RFIs.Models
         /// <summary>The ID of the rfi type.</summary>
         public Guid? RfiTypeId { get; set; }
         /// <summary>The schedule impact status of the RFI. Possible values: ``null``, ``Yes``, ``No``, ``Unknown``.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Autodesk.ACC.RFIs.Models.RfiScheduleImpact? ScheduleImpact { get; set; }
-#nullable restore
-#else
-        public global::Autodesk.ACC.RFIs.Models.RfiScheduleImpact ScheduleImpact { get; set; }
-#endif
         /// <summary>The status of the RFI. Note that the possible statuses of the RFI depend on the workflow type assigned to the RFI.For a default workflow with a single reviewer (``US``), you can potentially use the following statuses: ``draft``, ``submitted``, ``open``, ``answered``, ``rejected``, ``closed``, ``void``.For a workflow with an additional reviewer (``EMEA``), you can potentially use the following statuses: ``draft``, ``submitted``, ``openRev1``, ``openRev2``, ``rejectedRev1``, ``rejectedManager``, ``answeredRev1``, ``answeredManager``, ``closed``, ``void``.For more information about different workflows and statuses, see the `RFIs help documentation` `BIM360&lt;https://help.autodesk.com/view/BIM360D/ENU/?guid=GUID-787338BF-1189-4170-8629-7FA240F4BED4&gt;`_ `ACC&lt;https://help.autodesk.com/view/BUILD/ENU/?guid=RFI_Workflow_Setup&gt;`_.To check the workflow type of an RFI, call `GET users/me` `BIM 360&lt;/en/docs/bim360/v1/reference/http/rfis-v2-users-me-GET/&gt;`_ `ACC&lt;/en/docs/acc/v1/reference/http/rfis-v2-users-me-GET/&gt;`_ and check ``workflow.type``.To check which statuses the user can potentially open the RFI with, call `GET rfis/:id` `BIM 360&lt;/en/docs/bim360/v1/reference/http/rfis-v2-rfis-id-GET&gt;`_ `ACC&lt;/en/docs/acc/v1/reference/http/rfis-v2-rfis-id-GET&gt;`_.</summary>
         public global::Autodesk.ACC.RFIs.Models.RfiStatus? Status { get; set; }
         /// <summary>The suggested answer for the RFI.</summary>
@@ -345,7 +333,7 @@ namespace Autodesk.ACC.RFIs.Models
                 { "commentsCount", n => { CommentsCount = n.GetIntValue(); } },
                 { "constructionManagerId", n => { ConstructionManagerId = n.GetStringValue(); } },
                 { "containerId", n => { ContainerId = n.GetStringValue(); } },
-                { "costImpact", n => { CostImpact = n.GetObjectValue<global::Autodesk.ACC.RFIs.Models.RfiCostImpact>(global::Autodesk.ACC.RFIs.Models.RfiCostImpact.CreateFromDiscriminatorValue); } },
+                { "costImpact", n => { CostImpact = n.GetEnumValue<global::Autodesk.ACC.RFIs.Models.RfiCostImpact>(); } },
                 { "createdAt", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "createdBy", n => { CreatedBy = n.GetStringValue(); } },
                 { "customAttributes", n => { CustomAttributes = n.GetCollectionOfEnumValues<global::Autodesk.ACC.RFIs.Models.Rfis>()?.AsList(); } },
@@ -372,7 +360,7 @@ namespace Autodesk.ACC.RFIs.Models
                 { "respondedBy", n => { RespondedBy = n.GetStringValue(); } },
                 { "reviewerId", n => { ReviewerId = n.GetStringValue(); } },
                 { "rfiTypeId", n => { RfiTypeId = n.GetGuidValue(); } },
-                { "scheduleImpact", n => { ScheduleImpact = n.GetObjectValue<global::Autodesk.ACC.RFIs.Models.RfiScheduleImpact>(global::Autodesk.ACC.RFIs.Models.RfiScheduleImpact.CreateFromDiscriminatorValue); } },
+                { "scheduleImpact", n => { ScheduleImpact = n.GetEnumValue<global::Autodesk.ACC.RFIs.Models.RfiScheduleImpact>(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Autodesk.ACC.RFIs.Models.RfiStatus>(); } },
                 { "suggestedAnswer", n => { SuggestedAnswer = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
@@ -402,7 +390,7 @@ namespace Autodesk.ACC.RFIs.Models
             writer.WriteCollectionOfPrimitiveValues<string>("coReviewers", CoReviewers);
             writer.WriteCollectionOfPrimitiveValues<string>("coReviewersCompanies", CoReviewersCompanies);
             writer.WriteCollectionOfPrimitiveValues<string>("coReviewersRoles", CoReviewersRoles);
-            writer.WriteObjectValue<global::Autodesk.ACC.RFIs.Models.RfiCostImpact>("costImpact", CostImpact);
+            writer.WriteEnumValue<global::Autodesk.ACC.RFIs.Models.RfiCostImpact>("costImpact", CostImpact);
             writer.WriteDateTimeOffsetValue("createdAt", CreatedAt);
             writer.WriteStringValue("createdBy", CreatedBy);
             writer.WriteCollectionOfEnumValues<global::Autodesk.ACC.RFIs.Models.Rfis>("customAttributes", CustomAttributes);
@@ -429,7 +417,7 @@ namespace Autodesk.ACC.RFIs.Models
             writer.WriteStringValue("respondedBy", RespondedBy);
             writer.WriteStringValue("reviewerId", ReviewerId);
             writer.WriteGuidValue("rfiTypeId", RfiTypeId);
-            writer.WriteObjectValue<global::Autodesk.ACC.RFIs.Models.RfiScheduleImpact>("scheduleImpact", ScheduleImpact);
+            writer.WriteEnumValue<global::Autodesk.ACC.RFIs.Models.RfiScheduleImpact>("scheduleImpact", ScheduleImpact);
             writer.WriteEnumValue<global::Autodesk.ACC.RFIs.Models.RfiStatus>("status", Status);
             writer.WriteStringValue("suggestedAnswer", SuggestedAnswer);
             writer.WriteStringValue("title", Title);

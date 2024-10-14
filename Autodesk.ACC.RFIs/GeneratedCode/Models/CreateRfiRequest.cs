@@ -52,30 +52,8 @@ namespace Autodesk.ACC.RFIs.Models
 #else
         public List<string> CoReviewers { get; set; }
 #endif
-        /// <summary>Add members who can contribute to the RFI response. For more information about who can add co-reviewers and the type of permission level they are assigned, see the `RFIs help BIM360&lt;https://help.autodesk.com/view/BIM360D/ENU/?guid=GUID-FCF34AF9-3A9E-4226-AED7-4538924F70A2&gt;`_ `ACC&lt;https://help.autodesk.com/view/BUILD/ENU/?guid=RFI_Permissions&gt;`_ documentation.Note that although you can only add co-reviewers in the UI when the RFI is in open status, you can use the endpoint to also set up co-reviewers in other statuses.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<string>? CoReviewersCompanies { get; set; }
-#nullable restore
-#else
-        public List<string> CoReviewersCompanies { get; set; }
-#endif
-        /// <summary>Add members who can contribute to the RFI response. For more information about who can add co-reviewers and the type of permission level they are assigned, see the `RFIs help BIM360&lt;https://help.autodesk.com/view/BIM360D/ENU/?guid=GUID-FCF34AF9-3A9E-4226-AED7-4538924F70A2&gt;`_ `ACC&lt;https://help.autodesk.com/view/BUILD/ENU/?guid=RFI_Permissions&gt;`_ documentation.Note that although you can only add co-reviewers in the UI when the RFI is in open status, you can use the endpoint to also set up co-reviewers in other statuses.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<string>? CoReviewersRoles { get; set; }
-#nullable restore
-#else
-        public List<string> CoReviewersRoles { get; set; }
-#endif
         /// <summary>The cost impact status of the RFI. Possible values: ``null``, ``Yes``, ``No``, ``Unknown``.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Autodesk.ACC.RFIs.Models.RfiCostImpact? CostImpact { get; set; }
-#nullable restore
-#else
-        public global::Autodesk.ACC.RFIs.Models.RfiCostImpact CostImpact { get; set; }
-#endif
         /// <summary>Custom attributes values</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -124,6 +102,8 @@ namespace Autodesk.ACC.RFIs.Models
 #else
         public List<string> DistributionListRoles { get; set; }
 #endif
+        /// <summary>The due date of the RFI.</summary>
+        public DateTimeOffset? DueDate { get; set; }
         /// <summary>Optional. Used where the API client needs to set the RFI ID in advance.</summary>
         public Guid? Id { get; set; }
         /// <summary>The RFI lbs (Location Breakdown Structure) ids.</summary>
@@ -162,6 +142,14 @@ namespace Autodesk.ACC.RFIs.Models
 #else
         public global::Autodesk.ACC.RFIs.Models.CreateRfiRequest_pushpinAttributes PushpinAttributes { get; set; }
 #endif
+        /// <summary>The question of the RFI.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Question { get; set; }
+#nullable restore
+#else
+        public string Question { get; set; }
+#endif
         /// <summary>An external ID; typically used when the RFI was created in another system.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -173,13 +161,7 @@ namespace Autodesk.ACC.RFIs.Models
         /// <summary>The ID of the rfi type.</summary>
         public Guid? RfiTypeId { get; set; }
         /// <summary>The schedule impact status of the RFI. Possible values: ``null``, ``Yes``, ``No``, ``Unknown``.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Autodesk.ACC.RFIs.Models.RfiScheduleImpact? ScheduleImpact { get; set; }
-#nullable restore
-#else
-        public global::Autodesk.ACC.RFIs.Models.RfiScheduleImpact ScheduleImpact { get; set; }
-#endif
         /// <summary>BIM 360: Data about the document associated with the RFI. Only relevant for pushpin RFIs. For more information, see the `RFI pushpin tutorials. &lt;/en/docs/bim360/v1/tutorials/create-pushpin/&gt;`_ACC: Not relevant.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -244,16 +226,15 @@ namespace Autodesk.ACC.RFIs.Models
                 { "attachmentsAttributes", n => { AttachmentsAttributes = n.GetCollectionOfObjectValues<global::Autodesk.ACC.RFIs.Models.CreateAttachmentRequestDefinition>(global::Autodesk.ACC.RFIs.Models.CreateAttachmentRequestDefinition.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "category", n => { Category = n.GetCollectionOfEnumValues<global::Autodesk.ACC.RFIs.Models.Rfis>()?.AsList(); } },
                 { "coReviewers", n => { CoReviewers = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "coReviewersCompanies", n => { CoReviewersCompanies = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "coReviewersRoles", n => { CoReviewersRoles = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "commentsAttributes", n => { CommentsAttributes = n.GetCollectionOfObjectValues<global::Autodesk.ACC.RFIs.Models.CreateRfiRequest_commentsAttributes>(global::Autodesk.ACC.RFIs.Models.CreateRfiRequest_commentsAttributes.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "costImpact", n => { CostImpact = n.GetObjectValue<global::Autodesk.ACC.RFIs.Models.RfiCostImpact>(global::Autodesk.ACC.RFIs.Models.RfiCostImpact.CreateFromDiscriminatorValue); } },
+                { "costImpact", n => { CostImpact = n.GetEnumValue<global::Autodesk.ACC.RFIs.Models.RfiCostImpact>(); } },
                 { "customAttributes", n => { CustomAttributes = n.GetCollectionOfEnumValues<global::Autodesk.ACC.RFIs.Models.Rfis>()?.AsList(); } },
                 { "customIdentifier", n => { CustomIdentifier = n.GetStringValue(); } },
                 { "discipline", n => { Discipline = n.GetCollectionOfEnumValues<global::Autodesk.ACC.RFIs.Models.Rfis>()?.AsList(); } },
                 { "distributionList", n => { DistributionList = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "distributionListCompanies", n => { DistributionListCompanies = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "distributionListRoles", n => { DistributionListRoles = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "dueDate", n => { DueDate = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "lbsIds", n => { LbsIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "linkedDocument", n => { LinkedDocument = n.GetStringValue(); } },
@@ -261,9 +242,10 @@ namespace Autodesk.ACC.RFIs.Models
                 { "location", n => { Location = n.GetObjectValue<global::Autodesk.ACC.RFIs.Models.RfiLocation>(global::Autodesk.ACC.RFIs.Models.RfiLocation.CreateFromDiscriminatorValue); } },
                 { "priority", n => { Priority = n.GetEnumValue<global::Autodesk.ACC.RFIs.Models.RfiPriority>(); } },
                 { "pushpinAttributes", n => { PushpinAttributes = n.GetObjectValue<global::Autodesk.ACC.RFIs.Models.CreateRfiRequest_pushpinAttributes>(global::Autodesk.ACC.RFIs.Models.CreateRfiRequest_pushpinAttributes.CreateFromDiscriminatorValue); } },
+                { "question", n => { Question = n.GetStringValue(); } },
                 { "reference", n => { Reference = n.GetStringValue(); } },
                 { "rfiTypeId", n => { RfiTypeId = n.GetGuidValue(); } },
-                { "scheduleImpact", n => { ScheduleImpact = n.GetObjectValue<global::Autodesk.ACC.RFIs.Models.RfiScheduleImpact>(global::Autodesk.ACC.RFIs.Models.RfiScheduleImpact.CreateFromDiscriminatorValue); } },
+                { "scheduleImpact", n => { ScheduleImpact = n.GetEnumValue<global::Autodesk.ACC.RFIs.Models.RfiScheduleImpact>(); } },
                 { "sheetMetadata", n => { SheetMetadata = n.GetObjectValue<global::Autodesk.ACC.RFIs.Models.CreateRfiRequest_sheetMetadata>(global::Autodesk.ACC.RFIs.Models.CreateRfiRequest_sheetMetadata.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetEnumValue<global::Autodesk.ACC.RFIs.Models.RfiStatus>(); } },
                 { "suggestedAnswer", n => { SuggestedAnswer = n.GetStringValue(); } },
@@ -284,15 +266,14 @@ namespace Autodesk.ACC.RFIs.Models
             writer.WriteCollectionOfEnumValues<global::Autodesk.ACC.RFIs.Models.Rfis>("category", Category);
             writer.WriteCollectionOfObjectValues<global::Autodesk.ACC.RFIs.Models.CreateRfiRequest_commentsAttributes>("commentsAttributes", CommentsAttributes);
             writer.WriteCollectionOfPrimitiveValues<string>("coReviewers", CoReviewers);
-            writer.WriteCollectionOfPrimitiveValues<string>("coReviewersCompanies", CoReviewersCompanies);
-            writer.WriteCollectionOfPrimitiveValues<string>("coReviewersRoles", CoReviewersRoles);
-            writer.WriteObjectValue<global::Autodesk.ACC.RFIs.Models.RfiCostImpact>("costImpact", CostImpact);
+            writer.WriteEnumValue<global::Autodesk.ACC.RFIs.Models.RfiCostImpact>("costImpact", CostImpact);
             writer.WriteCollectionOfEnumValues<global::Autodesk.ACC.RFIs.Models.Rfis>("customAttributes", CustomAttributes);
             writer.WriteStringValue("customIdentifier", CustomIdentifier);
             writer.WriteCollectionOfEnumValues<global::Autodesk.ACC.RFIs.Models.Rfis>("discipline", Discipline);
             writer.WriteCollectionOfPrimitiveValues<string>("distributionList", DistributionList);
             writer.WriteCollectionOfPrimitiveValues<string>("distributionListCompanies", DistributionListCompanies);
             writer.WriteCollectionOfPrimitiveValues<string>("distributionListRoles", DistributionListRoles);
+            writer.WriteDateTimeOffsetValue("dueDate", DueDate);
             writer.WriteGuidValue("id", Id);
             writer.WriteCollectionOfPrimitiveValues<string>("lbsIds", LbsIds);
             writer.WriteStringValue("linkedDocument", LinkedDocument);
@@ -300,9 +281,10 @@ namespace Autodesk.ACC.RFIs.Models
             writer.WriteObjectValue<global::Autodesk.ACC.RFIs.Models.RfiLocation>("location", Location);
             writer.WriteEnumValue<global::Autodesk.ACC.RFIs.Models.RfiPriority>("priority", Priority);
             writer.WriteObjectValue<global::Autodesk.ACC.RFIs.Models.CreateRfiRequest_pushpinAttributes>("pushpinAttributes", PushpinAttributes);
+            writer.WriteStringValue("question", Question);
             writer.WriteStringValue("reference", Reference);
             writer.WriteGuidValue("rfiTypeId", RfiTypeId);
-            writer.WriteObjectValue<global::Autodesk.ACC.RFIs.Models.RfiScheduleImpact>("scheduleImpact", ScheduleImpact);
+            writer.WriteEnumValue<global::Autodesk.ACC.RFIs.Models.RfiScheduleImpact>("scheduleImpact", ScheduleImpact);
             writer.WriteObjectValue<global::Autodesk.ACC.RFIs.Models.CreateRfiRequest_sheetMetadata>("sheetMetadata", SheetMetadata);
             writer.WriteEnumValue<global::Autodesk.ACC.RFIs.Models.RfiStatus>("status", Status);
             writer.WriteStringValue("suggestedAnswer", SuggestedAnswer);

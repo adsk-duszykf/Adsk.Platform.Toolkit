@@ -69,13 +69,7 @@ namespace Autodesk.ACC.RFIs.Models
         public List<string> CoReviewersRoles { get; set; }
 #endif
         /// <summary>The cost impact status of the RFI. Possible values: ``null``, ``Yes``, ``No``, ``Unknown``.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Autodesk.ACC.RFIs.Models.RfiCostImpact? CostImpact { get; set; }
-#nullable restore
-#else
-        public global::Autodesk.ACC.RFIs.Models.RfiCostImpact CostImpact { get; set; }
-#endif
         /// <summary>Custom attributes values</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -181,13 +175,7 @@ namespace Autodesk.ACC.RFIs.Models
         /// <summary>The ID of the rfi type.</summary>
         public Guid? RfiTypeId { get; set; }
         /// <summary>The schedule impact status of the RFI. Possible values: ``null``, ``Yes``, ``No``, ``Unknown``.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Autodesk.ACC.RFIs.Models.RfiScheduleImpact? ScheduleImpact { get; set; }
-#nullable restore
-#else
-        public global::Autodesk.ACC.RFIs.Models.RfiScheduleImpact ScheduleImpact { get; set; }
-#endif
         /// <summary>The status of the RFI. Note that the possible statuses of the RFI depend on the workflow type assigned to the RFI.For a default workflow with a single reviewer (``US``), you can potentially use the following statuses: ``draft``, ``submitted``, ``open``, ``answered``, ``rejected``, ``closed``, ``void``.For a workflow with an additional reviewer (``EMEA``), you can potentially use the following statuses: ``draft``, ``submitted``, ``openRev1``, ``openRev2``, ``rejectedRev1``, ``rejectedManager``, ``answeredRev1``, ``answeredManager``, ``closed``, ``void``.For more information about different workflows and statuses, see the `RFIs help documentation` `BIM360&lt;https://help.autodesk.com/view/BIM360D/ENU/?guid=GUID-787338BF-1189-4170-8629-7FA240F4BED4&gt;`_ `ACC&lt;https://help.autodesk.com/view/BUILD/ENU/?guid=RFI_Workflow_Setup&gt;`_.To check the workflow type of an RFI, call `GET users/me` `BIM 360&lt;/en/docs/bim360/v1/reference/http/rfis-v2-users-me-GET/&gt;`_ `ACC&lt;/en/docs/acc/v1/reference/http/rfis-v2-users-me-GET/&gt;`_ and check ``workflow.type``.To check which statuses the user can potentially open the RFI with, call `GET rfis/:id` `BIM 360&lt;/en/docs/bim360/v1/reference/http/rfis-v2-rfis-id-GET&gt;`_ `ACC&lt;/en/docs/acc/v1/reference/http/rfis-v2-rfis-id-GET&gt;`_.</summary>
         public global::Autodesk.ACC.RFIs.Models.RfiStatus? Status { get; set; }
         /// <summary>The suggested answer for the RFI.</summary>
@@ -239,7 +227,7 @@ namespace Autodesk.ACC.RFIs.Models
                 { "coReviewersRoles", n => { CoReviewersRoles = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "commentSyncToken", n => { CommentSyncToken = n.GetStringValue(); } },
                 { "commentsAttributes", n => { CommentsAttributes = n.GetCollectionOfObjectValues<global::Autodesk.ACC.RFIs.Models.UpdateRfiRequest_commentsAttributes>(global::Autodesk.ACC.RFIs.Models.UpdateRfiRequest_commentsAttributes.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "costImpact", n => { CostImpact = n.GetObjectValue<global::Autodesk.ACC.RFIs.Models.RfiCostImpact>(global::Autodesk.ACC.RFIs.Models.RfiCostImpact.CreateFromDiscriminatorValue); } },
+                { "costImpact", n => { CostImpact = n.GetEnumValue<global::Autodesk.ACC.RFIs.Models.RfiCostImpact>(); } },
                 { "customAttributes", n => { CustomAttributes = n.GetCollectionOfEnumValues<global::Autodesk.ACC.RFIs.Models.WithRfi>()?.AsList(); } },
                 { "customIdentifier", n => { CustomIdentifier = n.GetStringValue(); } },
                 { "discipline", n => { Discipline = n.GetCollectionOfEnumValues<global::Autodesk.ACC.RFIs.Models.WithRfi>()?.AsList(); } },
@@ -256,7 +244,7 @@ namespace Autodesk.ACC.RFIs.Models
                 { "pushpinAttributes", n => { PushpinAttributes = n.GetObjectValue<global::Autodesk.ACC.RFIs.Models.UpdateRfiRequest_pushpinAttributes>(global::Autodesk.ACC.RFIs.Models.UpdateRfiRequest_pushpinAttributes.CreateFromDiscriminatorValue); } },
                 { "reference", n => { Reference = n.GetStringValue(); } },
                 { "rfiTypeId", n => { RfiTypeId = n.GetGuidValue(); } },
-                { "scheduleImpact", n => { ScheduleImpact = n.GetObjectValue<global::Autodesk.ACC.RFIs.Models.RfiScheduleImpact>(global::Autodesk.ACC.RFIs.Models.RfiScheduleImpact.CreateFromDiscriminatorValue); } },
+                { "scheduleImpact", n => { ScheduleImpact = n.GetEnumValue<global::Autodesk.ACC.RFIs.Models.RfiScheduleImpact>(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Autodesk.ACC.RFIs.Models.RfiStatus>(); } },
                 { "suggestedAnswer", n => { SuggestedAnswer = n.GetStringValue(); } },
                 { "syncToken", n => { SyncToken = n.GetStringValue(); } },
@@ -277,7 +265,7 @@ namespace Autodesk.ACC.RFIs.Models
             writer.WriteCollectionOfPrimitiveValues<string>("coReviewers", CoReviewers);
             writer.WriteCollectionOfPrimitiveValues<string>("coReviewersCompanies", CoReviewersCompanies);
             writer.WriteCollectionOfPrimitiveValues<string>("coReviewersRoles", CoReviewersRoles);
-            writer.WriteObjectValue<global::Autodesk.ACC.RFIs.Models.RfiCostImpact>("costImpact", CostImpact);
+            writer.WriteEnumValue<global::Autodesk.ACC.RFIs.Models.RfiCostImpact>("costImpact", CostImpact);
             writer.WriteCollectionOfEnumValues<global::Autodesk.ACC.RFIs.Models.WithRfi>("customAttributes", CustomAttributes);
             writer.WriteStringValue("customIdentifier", CustomIdentifier);
             writer.WriteCollectionOfEnumValues<global::Autodesk.ACC.RFIs.Models.WithRfi>("discipline", Discipline);
@@ -294,7 +282,7 @@ namespace Autodesk.ACC.RFIs.Models
             writer.WriteObjectValue<global::Autodesk.ACC.RFIs.Models.UpdateRfiRequest_pushpinAttributes>("pushpinAttributes", PushpinAttributes);
             writer.WriteStringValue("reference", Reference);
             writer.WriteGuidValue("rfiTypeId", RfiTypeId);
-            writer.WriteObjectValue<global::Autodesk.ACC.RFIs.Models.RfiScheduleImpact>("scheduleImpact", ScheduleImpact);
+            writer.WriteEnumValue<global::Autodesk.ACC.RFIs.Models.RfiScheduleImpact>("scheduleImpact", ScheduleImpact);
             writer.WriteEnumValue<global::Autodesk.ACC.RFIs.Models.RfiStatus>("status", Status);
             writer.WriteStringValue("suggestedAnswer", SuggestedAnswer);
             writer.WriteStringValue("syncToken", SyncToken);
