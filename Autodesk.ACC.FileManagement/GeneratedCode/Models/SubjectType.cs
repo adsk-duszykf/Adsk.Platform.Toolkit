@@ -3,22 +3,21 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.ACC.FileManagement.Models
 {
+    /// <summary>The type of subject. Possible value</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public enum AttributeUpdated_results_type
-    #pragma warning restore CS1591
+    public enum SubjectType
     {
-        [EnumMember(Value = "string")]
+        [EnumMember(Value = "USER")]
         #pragma warning disable CS1591
-        String,
+        USER,
         #pragma warning restore CS1591
-        [EnumMember(Value = "date")]
+        [EnumMember(Value = "ROLE")]
         #pragma warning disable CS1591
-        Date,
+        ROLE,
         #pragma warning restore CS1591
-        [EnumMember(Value = "array")]
+        [EnumMember(Value = "COMPANY")]
         #pragma warning disable CS1591
-        Array,
+        COMPANY,
         #pragma warning restore CS1591
     }
 }

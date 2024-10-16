@@ -1,9 +1,10 @@
 {
-  "descriptionHash": "09AA6B4679F1E1A0594077625194D9D2E5A1B86077335C9091639FCF7324330B9A695421CC7BD7492D6AED20011247E5B486EBF7D7CCD46F9C323D6BD0C2722F",
+  "descriptionHash": "3A464D5E6993832B6A615125C2B72116DFE8B0BFC08FE1E792A1EF8964F4175E2E0A10B9E4F453DA52DDAB57692CDFF8E8C70FBB6A4CB66BA77B7F32C6884FB5",
   "descriptionLocation": "../../../private/Autodesk.ACC.FileManagement/OpenAPI/Autodesk.ACC.FileManagement.yaml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.16.0",
+  "kiotaVersion": "1.19.1",
   "clientClassName": "BaseFileManagementClient",
+  "typeAccessModifier": "Public",
   "clientNamespaceName": "Autodesk.ACC.FileManagement",
   "language": "CSharp",
   "usesBackingStore": false,
@@ -37,7 +38,12 @@
     "/projects/{projectId-id}/versions",
     "/projects/{projectId-id}/versions/{versions_id-id}",
     "/projects/{projectId-id}/versions/{versions_id-id}/custom-attributes:batch-update",
-    "/projects/{projectId-id}/versions:batch-get"
+    "/projects/{projectId-id}/versions:batch-get",
+    "/projects/{project_id}/folders/{folder_id}/permissions:",
+    "/projects/{project_id}/folders/{folder_id}/permissions:batch-create",
+    "/projects/{project_id}/folders/{folder_id}/permissions:batch-update",
+    "/projects/{project_id}/folders/{folder_id}/permissions:batch-delete",
+    "/projects/{projectId}/naming-standards/{id}"
   ],
   "excludePatterns": [],
   "disabledValidationRules": []

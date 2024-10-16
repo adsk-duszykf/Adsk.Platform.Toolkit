@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace Autodesk.ACC.FileManagement.Projects.Item.Folders.Item.CustomAttributeDefinitions
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>The type of attribute. Possible values string (text field), date, array (drop-list).</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum CustomAttributeDefinitionsPostRequestBody_type
     {
         [EnumMember(Value = "string")]
