@@ -16,7 +16,7 @@ namespace Autodesk.ACC.FileManagement.Projects.Item.Folders
     public partial class FoldersRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Autodesk.ACC.FileManagement.projects.item.folders.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The ID (URN) of the folder.</param>
         /// <returns>A <see cref="global::Autodesk.ACC.FileManagement.Projects.Item.Folders.Item.WithFolder_ItemRequestBuilder"/></returns>
         public global::Autodesk.ACC.FileManagement.Projects.Item.Folders.Item.WithFolder_ItemRequestBuilder this[string position]
         {

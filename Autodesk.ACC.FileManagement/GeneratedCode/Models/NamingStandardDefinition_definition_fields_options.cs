@@ -9,18 +9,34 @@ namespace Autodesk.ACC.FileManagement.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class Empty : IParsable
+    public partial class NamingStandardDefinition_definition_fields_options : IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>Description of the option.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Description { get; set; }
+#nullable restore
+#else
+        public string Description { get; set; }
+#endif
+        /// <summary>Value of the option.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Value { get; set; }
+#nullable restore
+#else
+        public string Value { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Autodesk.ACC.FileManagement.Models.Empty"/></returns>
+        /// <returns>A <see cref="global::Autodesk.ACC.FileManagement.Models.NamingStandardDefinition_definition_fields_options"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Autodesk.ACC.FileManagement.Models.Empty CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Autodesk.ACC.FileManagement.Models.NamingStandardDefinition_definition_fields_options CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new global::Autodesk.ACC.FileManagement.Models.Empty();
+            return new global::Autodesk.ACC.FileManagement.Models.NamingStandardDefinition_definition_fields_options();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -30,6 +46,8 @@ namespace Autodesk.ACC.FileManagement.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "description", n => { Description = n.GetStringValue(); } },
+                { "value", n => { Value = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -39,6 +57,8 @@ namespace Autodesk.ACC.FileManagement.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("description", Description);
+            writer.WriteStringValue("value", Value);
         }
     }
 }
