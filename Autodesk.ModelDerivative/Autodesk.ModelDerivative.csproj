@@ -12,8 +12,6 @@
     <Version>1.0.0</Version>
 
     <PackageId>Adsk.Platform.ModelDerivative</PackageId>
-
-    <PackageProjectUrl>https://aps.autodesk.com/en/docs/model-derivative/v2/developers_guide/overview/</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

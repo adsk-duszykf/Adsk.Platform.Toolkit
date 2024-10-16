@@ -7,6 +7,8 @@
     <PackageId>Adsk.Platform.HttpClient</PackageId>
     <AssemblyName>$(MSBuildProjectName)</AssemblyName>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Title>$(AssemblyName)</Title>
+    <Description>Resilient HttpClient serving the Adsk Toolkit SDKs</Description>
   </PropertyGroup>
 
   <ItemGroup>

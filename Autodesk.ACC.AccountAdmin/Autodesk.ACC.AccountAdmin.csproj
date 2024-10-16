@@ -7,7 +7,6 @@
     <PackageId>Adsk.Platform.ACC.AccountAdmin</PackageId>
     <Description>Autodesk Platform: ACC Account service SDK and tools</Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageProjectUrl>https://aps.autodesk.com/en/docs/acc/v1/reference/http/admin-accounts-accountidprojects-GET/</PackageProjectUrl>
 
   </PropertyGroup>
 
