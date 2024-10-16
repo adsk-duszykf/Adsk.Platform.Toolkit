@@ -10,7 +10,7 @@ public class FileManagementClient
     /// <param name="httpClient">Optional: Override the default HttpClient used for performing API calls</param>
     public FileManagementClient(Func<Task<string>> getAccessToken, HttpClient? httpClient = null)
     {
-        var adapter = Common.HttpClientLibrary.HttpClient.CreateAdapter(getAccessToken, httpClient);
+        var adapter = Common.HttpClientLibrary.HttpClientFactory.CreateAdapter(getAccessToken, httpClient);
 
         Api = new BaseFileManagementClient(adapter);
         Helper = new FileManagementClientHelper(Api);

@@ -6,7 +6,7 @@ public class ModelPropertiesClient
 {
     public ModelPropertiesClient(Func<Task<string>> getAccessToken, HttpClient? httpClient = null)
     {
-        var adapter = Autodesk.Common.HttpClientLibrary.HttpClient.CreateAdapter(getAccessToken, httpClient);
+        var adapter = Autodesk.Common.HttpClientLibrary.HttpClientFactory.CreateAdapter(getAccessToken, httpClient);
         Api = new BaseModelPropertiesClient(adapter);
         Helper = new ModelPropertiesClientHelper(Api);
 

@@ -3,7 +3,7 @@ using Microsoft.Kiota.Abstractions.Authentication;
 using Microsoft.Kiota.Http.HttpClientLibrary;
 
 namespace Autodesk.Common.HttpClientLibrary;
-public static class HttpClient
+public static class HttpClientFactory
 {
     /// <summary>
     /// Creates a new HttpClient with an error handler and a decompression handler.
@@ -35,18 +35,23 @@ public static class HttpClient
     {
 
         var httpHandlerStack = new ErrorHandler
-        {
-            InnerHandler = new RateLimitingHandler(
+        (
+            innerHandler: new RateLimitingHandler(
                  new HttpClientHandler()
                  {
                      AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
 
                  }
                  , maxRequests, timeWindow)
-        };
+        );
 
         return httpHandlerStack;
 
     }
-}
+    public static IList<Type> GetDefaultHandlerTypes()
+    {
+        var nativeDefaultHanlders = KiotaClientFactory.GetDefaultHandlerTypes();
 
+        return [.. nativeDefaultHanlders, typeof(ErrorHandler)];
+    }
+}

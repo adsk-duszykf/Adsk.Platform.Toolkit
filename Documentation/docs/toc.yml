@@ -17,9 +17,11 @@
   href: ACC/ModelProperties/index.md
 - name: RFIs
   href: ACC/RFIs/index.md
-- name: Advanced
+- name: How To
+- name: .Net Core Web API with the SDK
+  href: HowTo/dotnetCoreWebAPI.md
 - name: Customizing the SDK (Advanced)
-  href: Advanced/index.md
+  href: HowTo/customizeSDK.md
 
 
 

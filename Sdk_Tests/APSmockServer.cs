@@ -26,12 +26,12 @@ namespace Tests
         {
 
             var handler = new Autodesk.Common.HttpClientLibrary.ErrorHandler
-            {
-                InnerHandler = new HttpClientHandler
+            (
+                innerHandler: new HttpClientHandler
                 {
                     AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
                 }
-            };
+            );
 
             httpClient ??= new(handler);
 

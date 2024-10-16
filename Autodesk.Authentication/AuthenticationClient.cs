@@ -7,7 +7,7 @@ public class AuthenticationClient
 {
     public AuthenticationClient(HttpClient? httpClient = null)
     {
-        httpClient ??= Autodesk.Common.HttpClientLibrary.HttpClient.Create();
+        httpClient ??= Autodesk.Common.HttpClientLibrary.HttpClientFactory.Create();
 
         var adapter = new HttpClientRequestAdapter(
             authenticationProvider: new AnonymousAuthenticationProvider(),

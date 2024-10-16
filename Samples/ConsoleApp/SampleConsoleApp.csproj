@@ -18,9 +18,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Autodesk.ACC.ModelProperties\Autodesk.ACC.ModelProperties.csproj" />
-    <ProjectReference Include="..\Autodesk.Authentication\Autodesk.Authentication.csproj" />
-    <ProjectReference Include="..\Autodesk.DataManagement\Autodesk.DataManagement.csproj" />
+    <ProjectReference Include="..\..\Autodesk.ACC.ModelProperties\Autodesk.ACC.ModelProperties.csproj" />
+    <ProjectReference Include="..\..\Autodesk.Authentication\Autodesk.Authentication.csproj" />
+    <ProjectReference Include="..\..\Autodesk.DataManagement\Autodesk.DataManagement.csproj" />
   </ItemGroup>
 
 </Project>

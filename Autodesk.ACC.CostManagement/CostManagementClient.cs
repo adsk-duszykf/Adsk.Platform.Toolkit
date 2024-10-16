@@ -5,7 +5,7 @@ public class CostManagementClient
 {
     public CostManagementClient(Func<Task<string>> getAccessToken, HttpClient? httpClient = null)
     {
-        var adapter = Common.HttpClientLibrary.HttpClient.CreateAdapter(getAccessToken, httpClient);
+        var adapter = Common.HttpClientLibrary.HttpClientFactory.CreateAdapter(getAccessToken, httpClient);
 
         Api = new BaseCostManagementClient(adapter);
         Helper = new CostManagementClientHelper(Api);

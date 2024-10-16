@@ -19,8 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DocFx", "DocFx", "{B7325FD9-B98A-4C89-9DAE-C2E17811AFA0}"
 	ProjectSection(SolutionItems) = preProject
-		docfx.json = docfx.json
-		Documentation\filterConfig.yml = Documentation\filterConfig.yml
+		Documentation\docfx.json = Documentation\docfx.json
 		Documentation\toc.yml = Documentation\toc.yml
 	EndProjectSection
 EndProject
@@ -53,13 +52,15 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Documentation", "Documentat
 		SlnRelativePath = "Documentation\"
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleConsoleApp", "Samples\SampleConsoleApp.csproj", "{A81DA2EF-5919-4551-8701-F68B5A688853}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autodesk.ACC.FileManagement", "Autodesk.ACC.FileManagement\Autodesk.ACC.FileManagement.csproj", "{A46EF087-9934-4F90-82AA-E76A9C4F1A79}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CommonUtils", "CommonUtils\CommonUtils.shproj", "{CC48C5D2-463D-439C-B642-690476FCE018}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autodesk.ACC.RFIs", "Autodesk.ACC.RFIs\Autodesk.ACC.RFIs.csproj", "{FE33DB50-9218-4165-BF57-42839AD2B83B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleConsoleApp", "Samples\ConsoleApp\SampleConsoleApp.csproj", "{C58157B3-BA3B-470F-A91A-0C128EB8F0D7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleWebAPI", "Samples\WebAPI\SampleWebAPI.csproj", "{90034404-7070-46FC-92BD-430A663FE808}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,10 +102,6 @@ Global
 		{01C677CB-BC24-4116-8A32-F357BA679A0D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7070175C-2F17-4EBD-8C78-7B9F53C06050}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7070175C-2F17-4EBD-8C78-7B9F53C06050}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{A81DA2EF-5919-4551-8701-F68B5A688853}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A81DA2EF-5919-4551-8701-F68B5A688853}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A81DA2EF-5919-4551-8701-F68B5A688853}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A81DA2EF-5919-4551-8701-F68B5A688853}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A46EF087-9934-4F90-82AA-E76A9C4F1A79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A46EF087-9934-4F90-82AA-E76A9C4F1A79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A46EF087-9934-4F90-82AA-E76A9C4F1A79}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -113,6 +110,14 @@ Global
 		{FE33DB50-9218-4165-BF57-42839AD2B83B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE33DB50-9218-4165-BF57-42839AD2B83B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE33DB50-9218-4165-BF57-42839AD2B83B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C58157B3-BA3B-470F-A91A-0C128EB8F0D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C58157B3-BA3B-470F-A91A-0C128EB8F0D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C58157B3-BA3B-470F-A91A-0C128EB8F0D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C58157B3-BA3B-470F-A91A-0C128EB8F0D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90034404-7070-46FC-92BD-430A663FE808}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90034404-7070-46FC-92BD-430A663FE808}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90034404-7070-46FC-92BD-430A663FE808}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90034404-7070-46FC-92BD-430A663FE808}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

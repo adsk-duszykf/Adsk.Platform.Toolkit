@@ -7,9 +7,12 @@ namespace Autodesk.Common.HttpClientLibrary;
 /// </summary>
 public class ErrorHandler : DelegatingHandler
 {
-    public ErrorHandler()
+
+    public ErrorHandler(HttpMessageHandler? innerHandler = null)
     {
-        InnerHandler = new HttpClientHandler();
+        if (innerHandler is null) return;
+
+        InnerHandler = innerHandler;
     }
     protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
     {

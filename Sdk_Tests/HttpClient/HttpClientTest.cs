@@ -50,7 +50,7 @@ public class HttpClientTest
     public async Task ShouldSlowerDownByRateLimit()
     {
         var requestTimeWindow = TimeSpan.FromMilliseconds(1000);
-        var httpClient = Autodesk.Common.HttpClientLibrary.HttpClient.Create((10, requestTimeWindow));
+        var httpClient = Autodesk.Common.HttpClientLibrary.HttpClientFactory.Create((10, requestTimeWindow));
 
         var startingAt = DateTime.Now;
 
@@ -76,7 +76,7 @@ public class HttpClientTest
     public async Task ShouldIgnoreRateLimit()
     {
         var requestTimeWindow = TimeSpan.FromSeconds(1);
-        var httpClient = Autodesk.Common.HttpClientLibrary.HttpClient.Create();
+        var httpClient = Autodesk.Common.HttpClientLibrary.HttpClientFactory.Create();
 
         var startingAt = DateTime.Now;
 
@@ -98,7 +98,7 @@ public class HttpClientTest
     }
     private AuthenticationClient InitializeAuthClient()
     {
-        var httpClient = Autodesk.Common.HttpClientLibrary.HttpClient.Create();
+        var httpClient = Autodesk.Common.HttpClientLibrary.HttpClientFactory.Create();
 
         var authProxyClient = APSmockServer.CreateProxyHttpClient(AdskService.Authentication, httpClient);
 

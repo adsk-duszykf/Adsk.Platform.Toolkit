@@ -6,7 +6,7 @@ public class ModelDerivativeClient
 {
     public ModelDerivativeClient(Location serverLocation, Func<Task<string>> getAccessToken, HttpClient? httpClient = null)
     {
-        var adapter = Autodesk.Common.HttpClientLibrary.HttpClient.CreateAdapter(getAccessToken, httpClient);
+        var adapter = Autodesk.Common.HttpClientLibrary.HttpClientFactory.CreateAdapter(getAccessToken, httpClient);
 
         //Only override the BaseUrl if it is not set for testing purposes
         //Tests method could set the BaseUrl to a mock server

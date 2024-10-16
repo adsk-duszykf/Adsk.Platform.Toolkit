@@ -1,7 +1,5 @@
 ﻿using Autodesk.DataManagement.Helpers;
 using Autodesk.DataManagement.OSS;
-using Microsoft.Kiota.Abstractions.Authentication;
-using Microsoft.Kiota.Http.HttpClientLibrary;
 
 namespace Autodesk.DataManagement;
 public class DataManagementClient
@@ -13,7 +11,7 @@ public class DataManagementClient
     /// <param name="httpClient">Optional: Override the default HttpClient used for performing API calls</param>
     public DataManagementClient(Func<Task<string>> getAccessToken, HttpClient? httpClient = null)
     {
-        var adapter = Autodesk.Common.HttpClientLibrary.HttpClient.CreateAdapter(getAccessToken, httpClient);
+        var adapter = Autodesk.Common.HttpClientLibrary.HttpClientFactory.CreateAdapter(getAccessToken, httpClient);
         DataMgtApi = new BaseDataManagementClient(adapter);
         OssApi = new BaseOSSClient(adapter);
         Helper = new DataManagementClientHelper(DataMgtApi, OssApi);
