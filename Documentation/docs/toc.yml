@@ -17,6 +17,8 @@
   href: ACC/ModelProperties/index.md
 - name: RFIs
   href: ACC/RFIs/index.md
+- name: Issues
+  href: ACC/Issues/index.md
 - name: How To
 - name: .Net Core Web API with the SDK
   href: HowTo/dotnetCoreWebAPI.md

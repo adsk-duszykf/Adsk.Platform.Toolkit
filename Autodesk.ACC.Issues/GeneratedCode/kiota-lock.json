@@ -1,0 +1,46 @@
+{
+  "descriptionHash": "654A7CCB23973D9ED2D816EBAA2F400885C89DCA39690CBA612F747FFF907D7DE44BFA3F523C293F0DB4D63DF54EA7D29771183DA3DE1C64F0BD1832E98DF666",
+  "descriptionLocation": "../../../private/Autodesk.ACC.Issues/OpenAPI/issues.yaml",
+  "lockFileVersion": "1.0.0",
+  "kiotaVersion": "1.19.1",
+  "clientClassName": "BaseIssuesClient",
+  "typeAccessModifier": "Public",
+  "clientNamespaceName": "Autodesk.ACC.Issues",
+  "language": "CSharp",
+  "usesBackingStore": false,
+  "excludeBackwardCompatible": false,
+  "includeAdditionalData": false,
+  "disableSSLValidation": false,
+  "serializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Text.TextSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Form.FormSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Multipart.MultipartSerializationWriterFactory"
+  ],
+  "deserializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Text.TextParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Form.FormParseNodeFactory"
+  ],
+  "structuredMimeTypes": [
+    "application/json",
+    "text/plain;q=0.9",
+    "application/x-www-form-urlencoded;q=0.2",
+    "multipart/form-data;q=0.1"
+  ],
+  "includePatterns": [
+    "/projects/{projectId}/issue-attribute-definitions#GET",
+    "/projects/{projectId}/issue-types#GET",
+    "/projects/{projectId}/users/me#GET",
+    "/projects/{projectId}/issue-attribute-mappings#GET",
+    "/projects/{projectId}/issue-root-cause-categories#GET",
+    "/projects/{projectId}/issues#GET",
+    "/projects/{projectId}/issues#POST",
+    "/projects/{projectId}/issues/{issueId}#GET",
+    "/projects/{projectId}/issues/{issueId}#PATCH",
+    "/projects/{projectId}/issues/{issueId}/comments#GET",
+    "/projects/{projectId}/issues/{issueId}/comments#POST"
+  ],
+  "excludePatterns": [],
+  "disabledValidationRules": []
+}

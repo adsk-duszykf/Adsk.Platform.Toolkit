@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PackageId>Adsk.Platform.ACC.Issues</PackageId>
+    <Title>$(AssemblyName)</Title>
+    <Description>Autodesk Platform: ACC Issues Service SDK and tools</Description>    
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Kiota.Authentication.Azure" Version="1.13.1" />
+    <PackageReference Include="Microsoft.Kiota.Bundle" Version="1.13.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Autodesk.Common.HttpClient\Autodesk.Common.HttpClientLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="README.md">
+      <PackagePath>\</PackagePath>
+      <Pack>True</Pack>
+    </None>
+  </ItemGroup>
+
+  <Import Project="..\CommonUtils\CommonUtils.projitems" Label="Shared" />
+
+</Project>
