@@ -95,7 +95,7 @@ namespace Autodesk.ACC.FileManagement.Models
         /// <summary>The revisionNumber property</summary>
         public int? RevisionNumber { get; set; }
         /// <summary>The storageSize property</summary>
-        public int? StorageSize { get; set; }
+        public double? StorageSize { get; set; }
         /// <summary>The storageUrn property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -152,7 +152,7 @@ namespace Autodesk.ACC.FileManagement.Models
                 { "number", n => { Number = n.GetStringValue(); } },
                 { "processState", n => { ProcessState = n.GetEnumValue<global::Autodesk.ACC.FileManagement.Models.CustomAttributesValues_results_processState>(); } },
                 { "revisionNumber", n => { RevisionNumber = n.GetIntValue(); } },
-                { "storageSize", n => { StorageSize = n.GetIntValue(); } },
+                { "storageSize", n => { StorageSize = n.GetDoubleValue(); } },
                 { "storageUrn", n => { StorageUrn = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "urn", n => { Urn = n.GetStringValue(); } },
@@ -179,7 +179,7 @@ namespace Autodesk.ACC.FileManagement.Models
             writer.WriteStringValue("number", Number);
             writer.WriteEnumValue<global::Autodesk.ACC.FileManagement.Models.CustomAttributesValues_results_processState>("processState", ProcessState);
             writer.WriteIntValue("revisionNumber", RevisionNumber);
-            writer.WriteIntValue("storageSize", StorageSize);
+            writer.WriteDoubleValue("storageSize", StorageSize);
             writer.WriteStringValue("storageUrn", StorageUrn);
             writer.WriteStringValue("title", Title);
             writer.WriteStringValue("urn", Urn);

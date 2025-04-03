@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "B74653FEBB99121998BC714D382A1EFE1DA5D87FBDEEAF347513A0619BAB16AAE7D080E1C06163268BBBA4F86FF98CAA304CD9726CA4616B5003A6C8F891BA2D",
+  "descriptionHash": "77CB01758EB334ADF742F985B5181BE674003AE40C4DE48EC26647A1C3401DAF75649627833F0061E8D0D24F18EEE642978E7FB8FF0ECE8927FB441F08950177",
   "descriptionLocation": "../../../private/Autodesk.ACC.FileManagement/OpenAPI/Autodesk.ACC.FileManagement.yaml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.19.1",
+  "kiotaVersion": "1.20.0",
   "clientClassName": "BaseFileManagementClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "Autodesk.ACC.FileManagement",
