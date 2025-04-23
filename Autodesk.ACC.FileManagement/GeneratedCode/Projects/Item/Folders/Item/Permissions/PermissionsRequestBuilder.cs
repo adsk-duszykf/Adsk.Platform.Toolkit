@@ -36,20 +36,21 @@ namespace Autodesk.ACC.FileManagement.Projects.Item.Folders.Item.Permissions
         /// <summary>
         /// Retrieves information about the permissions assigned to users, roles and companies for a BIM 360 Document Management folder, including details about the name and the status.
         /// </summary>
-        /// <returns>A <see cref="global::Autodesk.ACC.FileManagement.Models.FolderPermission"/></returns>
+        /// <returns>A List&lt;global::Autodesk.ACC.FileManagement.Models.FolderPermission&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Autodesk.ACC.FileManagement.Models.FolderPermission?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Autodesk.ACC.FileManagement.Models.FolderPermission>?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Autodesk.ACC.FileManagement.Models.FolderPermission> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Autodesk.ACC.FileManagement.Models.FolderPermission>> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Autodesk.ACC.FileManagement.Models.FolderPermission>(requestInfo, global::Autodesk.ACC.FileManagement.Models.FolderPermission.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Autodesk.ACC.FileManagement.Models.FolderPermission>(requestInfo, global::Autodesk.ACC.FileManagement.Models.FolderPermission.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return collectionResult?.AsList();
         }
         /// <summary>
         /// Retrieves information about the permissions assigned to users, roles and companies for a BIM 360 Document Management folder, including details about the name and the status.
