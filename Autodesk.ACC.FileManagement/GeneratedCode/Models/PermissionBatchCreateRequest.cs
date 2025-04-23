@@ -15,10 +15,10 @@ namespace Autodesk.ACC.FileManagement.Models
         /// <summary>Permitted actions for the user, role, or company. The permission action group is different in BIM 360 Document Management and ACC Build File</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Autodesk.ACC.FileManagement.Models.PermissionsBatchUpdate?>? Actions { get; set; }
+        public List<global::Autodesk.ACC.FileManagement.Models.PermissionsBatchCreate?>? Actions { get; set; }
 #nullable restore
 #else
-        public List<global::Autodesk.ACC.FileManagement.Models.PermissionsBatchUpdate?> Actions { get; set; }
+        public List<global::Autodesk.ACC.FileManagement.Models.PermissionsBatchCreate?> Actions { get; set; }
 #endif
         /// <summary>The Autodesk ID of the user, role or company.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -56,7 +56,7 @@ namespace Autodesk.ACC.FileManagement.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "actions", n => { Actions = n.GetCollectionOfEnumValues<global::Autodesk.ACC.FileManagement.Models.PermissionsBatchUpdate>()?.AsList(); } },
+                { "actions", n => { Actions = n.GetCollectionOfEnumValues<global::Autodesk.ACC.FileManagement.Models.PermissionsBatchCreate>()?.AsList(); } },
                 { "autodeskId", n => { AutodeskId = n.GetStringValue(); } },
                 { "subjectId", n => { SubjectId = n.GetStringValue(); } },
                 { "subjectType", n => { SubjectType = n.GetEnumValue<global::Autodesk.ACC.FileManagement.Models.SubjectType>(); } },
@@ -69,7 +69,7 @@ namespace Autodesk.ACC.FileManagement.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfEnumValues<global::Autodesk.ACC.FileManagement.Models.PermissionsBatchUpdate>("actions", Actions);
+            writer.WriteCollectionOfEnumValues<global::Autodesk.ACC.FileManagement.Models.PermissionsBatchCreate>("actions", Actions);
             writer.WriteStringValue("autodeskId", AutodeskId);
             writer.WriteStringValue("subjectId", SubjectId);
             writer.WriteEnumValue<global::Autodesk.ACC.FileManagement.Models.SubjectType>("subjectType", SubjectType);

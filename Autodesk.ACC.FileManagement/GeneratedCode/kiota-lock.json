@@ -1,5 +1,5 @@
 {
-  "descriptionHash": "77CB01758EB334ADF742F985B5181BE674003AE40C4DE48EC26647A1C3401DAF75649627833F0061E8D0D24F18EEE642978E7FB8FF0ECE8927FB441F08950177",
+  "descriptionHash": "5145334900A59B2E6C6F83D1B823EB346DD764FEF86F6E55C977CDE75D2929410E1A7AD952E6126F77950B5DF21369F0F05425824E66674E41DB9C68895F24BE",
   "descriptionLocation": "../../../private/Autodesk.ACC.FileManagement/OpenAPI/Autodesk.ACC.FileManagement.yaml",
   "lockFileVersion": "1.0.0",
   "kiotaVersion": "1.20.0",
@@ -39,7 +39,7 @@
     "/projects/{projectId-id}/versions/{versions_id-id}",
     "/projects/{projectId-id}/versions/{versions_id-id}/custom-attributes:batch-update",
     "/projects/{projectId-id}/versions:batch-get",
-    "/projects/{project_id}/folders/{folder_id}/permissions:",
+    "/projects/{project_id}/folders/{folder_id}/permissions",
     "/projects/{project_id}/folders/{folder_id}/permissions:batch-create",
     "/projects/{project_id}/folders/{folder_id}/permissions:batch-update",
     "/projects/{project_id}/folders/{folder_id}/permissions:batch-delete",
