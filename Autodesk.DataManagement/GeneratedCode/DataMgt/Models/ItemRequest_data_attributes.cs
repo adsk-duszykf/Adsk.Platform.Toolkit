@@ -20,6 +20,14 @@ namespace Autodesk.DataManagement.Models
 #else
         public string DisplayName { get; set; }
 #endif
+        /// <summary>The extension property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Autodesk.DataManagement.Models.ItemRequest_data_attributes_extension? Extension { get; set; }
+#nullable restore
+#else
+        public global::Autodesk.DataManagement.Models.ItemRequest_data_attributes_extension Extension { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -39,6 +47,7 @@ namespace Autodesk.DataManagement.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "displayName", n => { DisplayName = n.GetStringValue(); } },
+                { "extension", n => { Extension = n.GetObjectValue<global::Autodesk.DataManagement.Models.ItemRequest_data_attributes_extension>(global::Autodesk.DataManagement.Models.ItemRequest_data_attributes_extension.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -49,6 +58,7 @@ namespace Autodesk.DataManagement.Models
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("displayName", DisplayName);
+            writer.WriteObjectValue<global::Autodesk.DataManagement.Models.ItemRequest_data_attributes_extension>("extension", Extension);
         }
     }
 }

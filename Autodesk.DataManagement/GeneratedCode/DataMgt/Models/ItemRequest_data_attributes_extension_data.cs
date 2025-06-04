@@ -9,7 +9,7 @@ namespace Autodesk.DataManagement.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class VersionRequest_data_attributes_extension_data : IParsable
+    public partial class ItemRequest_data_attributes_extension_data : IParsable
     #pragma warning restore CS1591
     {
         /// <summary>The description property</summary>
@@ -23,12 +23,12 @@ namespace Autodesk.DataManagement.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Autodesk.DataManagement.Models.VersionRequest_data_attributes_extension_data"/></returns>
+        /// <returns>A <see cref="global::Autodesk.DataManagement.Models.ItemRequest_data_attributes_extension_data"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Autodesk.DataManagement.Models.VersionRequest_data_attributes_extension_data CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Autodesk.DataManagement.Models.ItemRequest_data_attributes_extension_data CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new global::Autodesk.DataManagement.Models.VersionRequest_data_attributes_extension_data();
+            return new global::Autodesk.DataManagement.Models.ItemRequest_data_attributes_extension_data();
         }
         /// <summary>
         /// The deserialization information for the current model
