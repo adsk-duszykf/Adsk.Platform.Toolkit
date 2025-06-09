@@ -39,7 +39,7 @@ namespace Autodesk.ACC.AccountAdmin.Projects.Item.Users.Item
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Autodesk.ACC.AccountAdmin.Models.ValidationError">When receiving a 400 status code</exception>
-        /// <exception cref="global::Autodesk.ACC.AccountAdmin.Models.Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.AccountAdmin.Models.WithUser401Error">When receiving a 401 status code</exception>
         /// <exception cref="global::Autodesk.ACC.AccountAdmin.Models.Error">When receiving a 403 status code</exception>
         /// <exception cref="global::Autodesk.ACC.AccountAdmin.Models.Error">When receiving a 404 status code</exception>
         /// <exception cref="global::Autodesk.ACC.AccountAdmin.Models.Error">When receiving a 410 status code</exception>
@@ -59,7 +59,7 @@ namespace Autodesk.ACC.AccountAdmin.Projects.Item.Users.Item
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "400", global::Autodesk.ACC.AccountAdmin.Models.ValidationError.CreateFromDiscriminatorValue },
-                { "401", global::Autodesk.ACC.AccountAdmin.Models.Error.CreateFromDiscriminatorValue },
+                { "401", global::Autodesk.ACC.AccountAdmin.Models.WithUser401Error.CreateFromDiscriminatorValue },
                 { "403", global::Autodesk.ACC.AccountAdmin.Models.Error.CreateFromDiscriminatorValue },
                 { "404", global::Autodesk.ACC.AccountAdmin.Models.Error.CreateFromDiscriminatorValue },
                 { "410", global::Autodesk.ACC.AccountAdmin.Models.Error.CreateFromDiscriminatorValue },
@@ -76,7 +76,7 @@ namespace Autodesk.ACC.AccountAdmin.Projects.Item.Users.Item
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Autodesk.ACC.AccountAdmin.Models.ValidationError">When receiving a 400 status code</exception>
-        /// <exception cref="global::Autodesk.ACC.AccountAdmin.Models.Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.AccountAdmin.Models.ProjectUserResponse401Error">When receiving a 401 status code</exception>
         /// <exception cref="global::Autodesk.ACC.AccountAdmin.Models.Error">When receiving a 403 status code</exception>
         /// <exception cref="global::Autodesk.ACC.AccountAdmin.Models.Error">When receiving a 404 status code</exception>
         /// <exception cref="global::Autodesk.ACC.AccountAdmin.Models.Error">When receiving a 406 status code</exception>
@@ -97,7 +97,7 @@ namespace Autodesk.ACC.AccountAdmin.Projects.Item.Users.Item
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "400", global::Autodesk.ACC.AccountAdmin.Models.ValidationError.CreateFromDiscriminatorValue },
-                { "401", global::Autodesk.ACC.AccountAdmin.Models.Error.CreateFromDiscriminatorValue },
+                { "401", global::Autodesk.ACC.AccountAdmin.Models.ProjectUserResponse401Error.CreateFromDiscriminatorValue },
                 { "403", global::Autodesk.ACC.AccountAdmin.Models.Error.CreateFromDiscriminatorValue },
                 { "404", global::Autodesk.ACC.AccountAdmin.Models.Error.CreateFromDiscriminatorValue },
                 { "406", global::Autodesk.ACC.AccountAdmin.Models.Error.CreateFromDiscriminatorValue },
@@ -111,12 +111,12 @@ namespace Autodesk.ACC.AccountAdmin.Projects.Item.Users.Item
         /// <summary>
         /// Private Use - Update the user in a project.
         /// </summary>
-        /// <returns>A <see cref="global::Autodesk.ACC.AccountAdmin.Projects.Item.Users.Item.ProjectUserResponse"/></returns>
+        /// <returns>A <see cref="global::Autodesk.ACC.AccountAdmin.Projects.Item.Users.Item.WithUserPatchResponse"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Autodesk.ACC.AccountAdmin.Models.ValidationError">When receiving a 400 status code</exception>
-        /// <exception cref="global::Autodesk.ACC.AccountAdmin.Models.Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.AccountAdmin.Models.WithUser401Error">When receiving a 401 status code</exception>
         /// <exception cref="global::Autodesk.ACC.AccountAdmin.Models.Error">When receiving a 403 status code</exception>
         /// <exception cref="global::Autodesk.ACC.AccountAdmin.Models.Error">When receiving a 404 status code</exception>
         /// <exception cref="global::Autodesk.ACC.AccountAdmin.Models.Error">When receiving a 410 status code</exception>
@@ -125,11 +125,11 @@ namespace Autodesk.ACC.AccountAdmin.Projects.Item.Users.Item
         /// <exception cref="global::Autodesk.ACC.AccountAdmin.Models.Error">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Autodesk.ACC.AccountAdmin.Projects.Item.Users.Item.ProjectUserResponse?> PatchAsync(global::Autodesk.ACC.AccountAdmin.Models.ProjectUser body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.ACC.AccountAdmin.Projects.Item.Users.Item.WithUserPatchResponse?> PatchAsWithUserPatchResponseAsync(global::Autodesk.ACC.AccountAdmin.Models.ProjectUser body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Autodesk.ACC.AccountAdmin.Projects.Item.Users.Item.ProjectUserResponse> PatchAsync(global::Autodesk.ACC.AccountAdmin.Models.ProjectUser body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Autodesk.ACC.AccountAdmin.Projects.Item.Users.Item.WithUserPatchResponse> PatchAsWithUserPatchResponseAsync(global::Autodesk.ACC.AccountAdmin.Models.ProjectUser body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -137,7 +137,7 @@ namespace Autodesk.ACC.AccountAdmin.Projects.Item.Users.Item
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "400", global::Autodesk.ACC.AccountAdmin.Models.ValidationError.CreateFromDiscriminatorValue },
-                { "401", global::Autodesk.ACC.AccountAdmin.Models.Error.CreateFromDiscriminatorValue },
+                { "401", global::Autodesk.ACC.AccountAdmin.Models.WithUser401Error.CreateFromDiscriminatorValue },
                 { "403", global::Autodesk.ACC.AccountAdmin.Models.Error.CreateFromDiscriminatorValue },
                 { "404", global::Autodesk.ACC.AccountAdmin.Models.Error.CreateFromDiscriminatorValue },
                 { "410", global::Autodesk.ACC.AccountAdmin.Models.Error.CreateFromDiscriminatorValue },
@@ -145,7 +145,47 @@ namespace Autodesk.ACC.AccountAdmin.Projects.Item.Users.Item
                 { "500", global::Autodesk.ACC.AccountAdmin.Models.Error.CreateFromDiscriminatorValue },
                 { "503", global::Autodesk.ACC.AccountAdmin.Models.Error.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Autodesk.ACC.AccountAdmin.Projects.Item.Users.Item.ProjectUserResponse>(requestInfo, global::Autodesk.ACC.AccountAdmin.Projects.Item.Users.Item.ProjectUserResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Autodesk.ACC.AccountAdmin.Projects.Item.Users.Item.WithUserPatchResponse>(requestInfo, global::Autodesk.ACC.AccountAdmin.Projects.Item.Users.Item.WithUserPatchResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
+        /// Private Use - Update the user in a project.
+        /// </summary>
+        /// <returns>A <see cref="global::Autodesk.ACC.AccountAdmin.Projects.Item.Users.Item.WithUserResponse"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Autodesk.ACC.AccountAdmin.Models.ValidationError">When receiving a 400 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.AccountAdmin.Models.WithUser401Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.AccountAdmin.Models.Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.AccountAdmin.Models.Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.AccountAdmin.Models.Error">When receiving a 410 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.AccountAdmin.Models.Error">When receiving a 415 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.AccountAdmin.Models.Error">When receiving a 500 status code</exception>
+        /// <exception cref="global::Autodesk.ACC.AccountAdmin.Models.Error">When receiving a 503 status code</exception>
+        [Obsolete("This method is obsolete. Use PatchAsWithUserPatchResponseAsync instead.")]
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<global::Autodesk.ACC.AccountAdmin.Projects.Item.Users.Item.WithUserResponse?> PatchAsync(global::Autodesk.ACC.AccountAdmin.Models.ProjectUser body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<global::Autodesk.ACC.AccountAdmin.Projects.Item.Users.Item.WithUserResponse> PatchAsync(global::Autodesk.ACC.AccountAdmin.Models.ProjectUser body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            _ = body ?? throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "400", global::Autodesk.ACC.AccountAdmin.Models.ValidationError.CreateFromDiscriminatorValue },
+                { "401", global::Autodesk.ACC.AccountAdmin.Models.WithUser401Error.CreateFromDiscriminatorValue },
+                { "403", global::Autodesk.ACC.AccountAdmin.Models.Error.CreateFromDiscriminatorValue },
+                { "404", global::Autodesk.ACC.AccountAdmin.Models.Error.CreateFromDiscriminatorValue },
+                { "410", global::Autodesk.ACC.AccountAdmin.Models.Error.CreateFromDiscriminatorValue },
+                { "415", global::Autodesk.ACC.AccountAdmin.Models.Error.CreateFromDiscriminatorValue },
+                { "500", global::Autodesk.ACC.AccountAdmin.Models.Error.CreateFromDiscriminatorValue },
+                { "503", global::Autodesk.ACC.AccountAdmin.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Autodesk.ACC.AccountAdmin.Projects.Item.Users.Item.WithUserResponse>(requestInfo, global::Autodesk.ACC.AccountAdmin.Projects.Item.Users.Item.WithUserResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Private Use - Remove a user from the project.

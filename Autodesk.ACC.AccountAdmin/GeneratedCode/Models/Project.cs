@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
+using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -18,36 +19,36 @@ namespace Autodesk.ACC.AccountAdmin.Models
         /// <summary>The address line 1 for this project.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? AddressLine1 { get; set; }
+        public string? AddressLine1 { get; set; }
 #nullable restore
 #else
-        public UntypedNode AddressLine1 { get; set; }
+        public string AddressLine1 { get; set; }
 #endif
         /// <summary>The address line 2 for this project.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? AddressLine2 { get; set; }
+        public string? AddressLine2 { get; set; }
 #nullable restore
 #else
-        public UntypedNode AddressLine2 { get; set; }
+        public string AddressLine2 { get; set; }
 #endif
         /// <summary>This is the Autodesk identifier of the permissions group to which all admin users on the project belong.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? AdminGroupId { get; private set; }
+        public string? AdminGroupId { get; private set; }
 #nullable restore
 #else
-        public UntypedNode AdminGroupId { get; private set; }
+        public string AdminGroupId { get; private set; }
 #endif
         /// <summary>The identifier of the business unit this project is associated with.</summary>
         public Guid? BusinessUnitId { get; set; }
         /// <summary>The city in which this project is located.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? City { get; set; }
+        public string? City { get; set; }
 #nullable restore
 #else
-        public UntypedNode City { get; set; }
+        public string City { get; set; }
 #endif
         /// <summary>Indicates total number of companies for this project</summary>
         public int? CompanyCount { get; set; }
@@ -70,20 +71,20 @@ namespace Autodesk.ACC.AccountAdmin.Models
         /// <summary>The country in which this project is located. Only valid country names and ISO 3166-1 alpha-2 codes will be accepted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Country { get; set; }
+        public string? Country { get; set; }
 #nullable restore
 #else
-        public UntypedNode Country { get; set; }
+        public string Country { get; set; }
 #endif
         /// <summary>The timestamp when this project was created.</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The current phase of this project.  Provided is a predefined list of preferred values however any value will be accepted. Predefined values are `Concept`, `Design`, `Bidding`, `Planning`, `Preconstruction`, `Construction`, `Commissioning`, `Warranty`, `Complete`, `Facility Management`, `Operation`, `Strategic Definition`, `Preparation and Brief`, `Concept Design`, `Developed Design`, `Technical Design`, `Construction`, `Handover and Close Out` and `In Use`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? CurrentPhase { get; set; }
+        public string? CurrentPhase { get; set; }
 #nullable restore
 #else
-        public UntypedNode CurrentPhase { get; set; }
+        public string CurrentPhase { get; set; }
 #endif
         /// <summary>The delivery method of this project.  Provided is a predefined list of preferred values however any value will be accepted. Predefined values are `Construction Management (CM) at Risk`, `Design-Bid`, `Design-Bid-Build`, `Design-Build-Operate` and `IPD`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -94,13 +95,7 @@ namespace Autodesk.ACC.AccountAdmin.Models
         public string DeliveryMethod { get; set; }
 #endif
         /// <summary>The estimated end date for this project.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public UntypedNode? EndDate { get; set; }
-#nullable restore
-#else
-        public UntypedNode EndDate { get; set; }
-#endif
+        public Date? EndDate { get; set; }
         /// <summary>The internally generated identifier for this project.</summary>
         public Guid? Id { get; private set; }
         /// <summary>The url of the project image.</summary>
@@ -122,38 +117,32 @@ namespace Autodesk.ACC.AccountAdmin.Models
         public string JobNumber { get; set; }
 #endif
         /// <summary>The timestamp of the last time someone logged into this project.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public UntypedNode? LastSignIn { get; private set; }
-#nullable restore
-#else
-        public UntypedNode LastSignIn { get; private set; }
-#endif
+        public DateTimeOffset? LastSignIn { get; private set; }
         /// <summary>The latitude of this project.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Latitude { get; set; }
+        public string? Latitude { get; set; }
 #nullable restore
 #else
-        public UntypedNode Latitude { get; set; }
+        public string Latitude { get; set; }
 #endif
         /// <summary>The longitude of this project.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Longitude { get; set; }
+        public string? Longitude { get; set; }
 #nullable restore
 #else
-        public UntypedNode Longitude { get; set; }
+        public string Longitude { get; set; }
 #endif
         /// <summary>Indicates total number of members for this project</summary>
         public int? MemberCount { get; set; }
         /// <summary>This is the Autodesk identifier of the permissions group to which all users on the project belong.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? MemberGroupId { get; private set; }
+        public string? MemberGroupId { get; private set; }
 #nullable restore
 #else
-        public UntypedNode MemberGroupId { get; private set; }
+        public string MemberGroupId { get; private set; }
 #endif
         /// <summary>The name of this project.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -168,10 +157,10 @@ namespace Autodesk.ACC.AccountAdmin.Models
         /// <summary>The zip or postal code in which this project is located.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? PostalCode { get; set; }
+        public string? PostalCode { get; set; }
 #nullable restore
 #else
-        public UntypedNode PostalCode { get; set; }
+        public string PostalCode { get; set; }
 #endif
         /// <summary>The list of products on this project.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -206,31 +195,27 @@ namespace Autodesk.ACC.AccountAdmin.Models
         public List<global::Autodesk.ACC.AccountAdmin.Models.Project_services> Services { get; set; }
 #endif
         /// <summary>Indicates total number of sheets for this project</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public UntypedNode? SheetCount { get; set; }
-#nullable restore
-#else
-        public UntypedNode SheetCount { get; set; }
-#endif
+        public int? SheetCount { get; set; }
         /// <summary>The estimated start date for this project.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public UntypedNode? StartDate { get; set; }
-#nullable restore
-#else
-        public UntypedNode StartDate { get; set; }
-#endif
+        public Date? StartDate { get; set; }
         /// <summary>The state or province in which this project is located. Only valid state/province names and ISO 3166-1 alpha-2 codes will be accepted. The provided state or province must exist in the country of the project.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? StateOrProvince { get; set; }
+        public string? StateOrProvince { get; set; }
 #nullable restore
 #else
-        public UntypedNode StateOrProvince { get; set; }
+        public string StateOrProvince { get; set; }
 #endif
         /// <summary>The status of this project.  Valid values are `active`, `pending`, `archived` and `suspended`.</summary>
         public global::Autodesk.ACC.AccountAdmin.Models.Project_status? Status { get; set; }
+        /// <summary>Template id used to create the project</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TemplateId { get; set; }
+#nullable restore
+#else
+        public string TemplateId { get; set; }
+#endif
         /// <summary>The url of the project thumbnail image.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -277,39 +262,40 @@ namespace Autodesk.ACC.AccountAdmin.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "accountId", n => { AccountId = n.GetGuidValue(); } },
-                { "addressLine1", n => { AddressLine1 = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "addressLine2", n => { AddressLine2 = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "adminGroupId", n => { AdminGroupId = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "addressLine1", n => { AddressLine1 = n.GetStringValue(); } },
+                { "addressLine2", n => { AddressLine2 = n.GetStringValue(); } },
+                { "adminGroupId", n => { AdminGroupId = n.GetStringValue(); } },
                 { "businessUnitId", n => { BusinessUnitId = n.GetGuidValue(); } },
-                { "city", n => { City = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "city", n => { City = n.GetStringValue(); } },
                 { "companyCount", n => { CompanyCount = n.GetIntValue(); } },
                 { "constructionType", n => { ConstructionType = n.GetStringValue(); } },
                 { "contractType", n => { ContractType = n.GetStringValue(); } },
-                { "country", n => { Country = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "country", n => { Country = n.GetStringValue(); } },
                 { "createdAt", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "currentPhase", n => { CurrentPhase = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "currentPhase", n => { CurrentPhase = n.GetStringValue(); } },
                 { "deliveryMethod", n => { DeliveryMethod = n.GetStringValue(); } },
-                { "endDate", n => { EndDate = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "endDate", n => { EndDate = n.GetDateValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "imageUrl", n => { ImageUrl = n.GetStringValue(); } },
                 { "isAcsUnified", n => { IsAcsUnified = n.GetBoolValue(); } },
                 { "jobNumber", n => { JobNumber = n.GetStringValue(); } },
-                { "lastSignIn", n => { LastSignIn = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "latitude", n => { Latitude = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "longitude", n => { Longitude = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "lastSignIn", n => { LastSignIn = n.GetDateTimeOffsetValue(); } },
+                { "latitude", n => { Latitude = n.GetStringValue(); } },
+                { "longitude", n => { Longitude = n.GetStringValue(); } },
                 { "memberCount", n => { MemberCount = n.GetIntValue(); } },
-                { "memberGroupId", n => { MemberGroupId = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "memberGroupId", n => { MemberGroupId = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "platform", n => { Platform = n.GetEnumValue<global::Autodesk.ACC.AccountAdmin.Models.Project_platform>(); } },
-                { "postalCode", n => { PostalCode = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "postalCode", n => { PostalCode = n.GetStringValue(); } },
                 { "products", n => { Products = n.GetCollectionOfObjectValues<global::Autodesk.ACC.AccountAdmin.Models.Projects>(global::Autodesk.ACC.AccountAdmin.Models.Projects.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "projectSize", n => { ProjectSize = n.GetObjectValue<global::Autodesk.ACC.AccountAdmin.Models.Project_projectSize>(global::Autodesk.ACC.AccountAdmin.Models.Project_projectSize.CreateFromDiscriminatorValue); } },
                 { "projectValue", n => { ProjectValue = n.GetObjectValue<global::Autodesk.ACC.AccountAdmin.Models.Project_projectValue>(global::Autodesk.ACC.AccountAdmin.Models.Project_projectValue.CreateFromDiscriminatorValue); } },
                 { "services", n => { Services = n.GetCollectionOfObjectValues<global::Autodesk.ACC.AccountAdmin.Models.Project_services>(global::Autodesk.ACC.AccountAdmin.Models.Project_services.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "sheetCount", n => { SheetCount = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "startDate", n => { StartDate = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "stateOrProvince", n => { StateOrProvince = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "sheetCount", n => { SheetCount = n.GetIntValue(); } },
+                { "startDate", n => { StartDate = n.GetDateValue(); } },
+                { "stateOrProvince", n => { StateOrProvince = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Autodesk.ACC.AccountAdmin.Models.Project_status>(); } },
+                { "templateId", n => { TemplateId = n.GetStringValue(); } },
                 { "thumbnailImageUrl", n => { ThumbnailImageUrl = n.GetStringValue(); } },
                 { "timezone", n => { Timezone = n.GetEnumValue<global::Autodesk.ACC.AccountAdmin.Models.Project_timezone>(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
@@ -323,33 +309,34 @@ namespace Autodesk.ACC.AccountAdmin.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<UntypedNode>("addressLine1", AddressLine1);
-            writer.WriteObjectValue<UntypedNode>("addressLine2", AddressLine2);
+            writer.WriteStringValue("addressLine1", AddressLine1);
+            writer.WriteStringValue("addressLine2", AddressLine2);
             writer.WriteGuidValue("businessUnitId", BusinessUnitId);
-            writer.WriteObjectValue<UntypedNode>("city", City);
+            writer.WriteStringValue("city", City);
             writer.WriteIntValue("companyCount", CompanyCount);
             writer.WriteStringValue("constructionType", ConstructionType);
             writer.WriteStringValue("contractType", ContractType);
-            writer.WriteObjectValue<UntypedNode>("country", Country);
-            writer.WriteObjectValue<UntypedNode>("currentPhase", CurrentPhase);
+            writer.WriteStringValue("country", Country);
+            writer.WriteStringValue("currentPhase", CurrentPhase);
             writer.WriteStringValue("deliveryMethod", DeliveryMethod);
-            writer.WriteObjectValue<UntypedNode>("endDate", EndDate);
+            writer.WriteDateValue("endDate", EndDate);
             writer.WriteBoolValue("isAcsUnified", IsAcsUnified);
             writer.WriteStringValue("jobNumber", JobNumber);
-            writer.WriteObjectValue<UntypedNode>("latitude", Latitude);
-            writer.WriteObjectValue<UntypedNode>("longitude", Longitude);
+            writer.WriteStringValue("latitude", Latitude);
+            writer.WriteStringValue("longitude", Longitude);
             writer.WriteIntValue("memberCount", MemberCount);
             writer.WriteStringValue("name", Name);
             writer.WriteEnumValue<global::Autodesk.ACC.AccountAdmin.Models.Project_platform>("platform", Platform);
-            writer.WriteObjectValue<UntypedNode>("postalCode", PostalCode);
+            writer.WriteStringValue("postalCode", PostalCode);
             writer.WriteCollectionOfObjectValues<global::Autodesk.ACC.AccountAdmin.Models.Projects>("products", Products);
             writer.WriteObjectValue<global::Autodesk.ACC.AccountAdmin.Models.Project_projectSize>("projectSize", ProjectSize);
             writer.WriteObjectValue<global::Autodesk.ACC.AccountAdmin.Models.Project_projectValue>("projectValue", ProjectValue);
             writer.WriteCollectionOfObjectValues<global::Autodesk.ACC.AccountAdmin.Models.Project_services>("services", Services);
-            writer.WriteObjectValue<UntypedNode>("sheetCount", SheetCount);
-            writer.WriteObjectValue<UntypedNode>("startDate", StartDate);
-            writer.WriteObjectValue<UntypedNode>("stateOrProvince", StateOrProvince);
+            writer.WriteIntValue("sheetCount", SheetCount);
+            writer.WriteDateValue("startDate", StartDate);
+            writer.WriteStringValue("stateOrProvince", StateOrProvince);
             writer.WriteEnumValue<global::Autodesk.ACC.AccountAdmin.Models.Project_status>("status", Status);
+            writer.WriteStringValue("templateId", TemplateId);
             writer.WriteEnumValue<global::Autodesk.ACC.AccountAdmin.Models.Project_timezone>("timezone", Timezone);
             writer.WriteStringValue("type", Type);
         }

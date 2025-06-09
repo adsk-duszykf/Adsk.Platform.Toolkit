@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "91AB39A4503FC3DAF281FF7D152F8A45A31306569494EA7987D0929F3BD9C26897B0E132C3BC6AD824F3C25A3B30AEA80A12D6B2646ABEE3BC5A16E3C3A8C751",
+  "descriptionHash": "874163211CB373E8DBDAC02267942595E164F98F61BBAB132182AA973EE067DFA1234CF4D7348BFC117AB86577196047A34CD27B34E989BD27F08145FF2BF0D8",
   "descriptionLocation": "../../../private/Autodesk.ACC.AccountAdmin/OpenAPI/Autodesk.ACC.AccountAdmin.yaml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.19.1",
+  "kiotaVersion": "1.25.1",
   "clientClassName": "BaseAccountAdminClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "Autodesk.ACC.AccountAdmin",

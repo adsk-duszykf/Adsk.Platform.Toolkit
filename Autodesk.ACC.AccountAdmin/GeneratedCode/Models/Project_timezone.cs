@@ -7,6 +7,10 @@ namespace Autodesk.ACC.AccountAdmin.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Project_timezone
     {
+        [EnumMember(Value = "null")]
+        #pragma warning disable CS1591
+        Null,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Pacific/Honolulu")]
         #pragma warning disable CS1591
         PacificHonolulu,
