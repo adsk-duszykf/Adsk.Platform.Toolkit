@@ -12,6 +12,7 @@ namespace Sdk_Tests
         public string PROJECT_ID { get; set; } = string.Empty;
         public string FOLDER_ID { get; set; } = string.Empty;
         public string FILE_URN { get; set; } = string.Empty;
+        public string DELETED_FILE_URN { get; set; } = string.Empty;
         public string MODEL_GUID { get; set; } = string.Empty;
         public string SAMPLE_FILE_PATH { get; set; } = string.Empty;
         public string REFRESH_TOKEN_FILE { get; set; } = string.Empty;

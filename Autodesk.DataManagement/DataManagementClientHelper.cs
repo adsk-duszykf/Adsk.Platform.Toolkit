@@ -100,6 +100,70 @@ public class DataManagementClientHelper
     }
 
     /// <summary>
+    /// Determines whether the specified item in a project is marked as deleted.
+    /// </summary>
+    /// <param name="projectId">The unique identifier of the project containing the item. Cannot be null or empty.</param>
+    /// <param name="itemUrn">The unique identifier (URN) of the item to check. Cannot be null or empty.</param>
+    /// <returns><see langword="true"/> if the item is marked as deleted;  otherwise, <see langword="false"/>.</returns>
+    public async Task<bool> IsFileDeletedAsync(string projectId, string itemUrn)
+    {
+        projectId = FixProjectId(projectId);
+
+        var result = await DataMgtApi.Data.V1.Projects[projectId].Items[itemUrn].GetAsync();
+
+        var isDeleted = result!.Data!.Attributes!.Hidden ?? false;
+
+        if (isDeleted)
+        {
+            return true;
+        }
+
+
+        // ACC Limitation: The "hidden" item attribute remains "true" if the file has not been deleted directly
+        // that happens when a parent folder has been deleted, that's why we have to check if the parent folders are hidden or not
+
+        var parentFolderUrn = result!.Data!.Relationships!.Parent!.Data!.Id!;
+
+        return await IsFolderDeletedAsync(projectId, parentFolderUrn);
+
+    }
+
+    /// <summary>
+    /// Determines whether the specified folder has been deleted in the project.
+    /// </summary>
+    /// <param name="projectId">The unique identifier of the project containing the folder. Cannot be null or empty.</param>
+    /// <param name="folderUrn">The unique resource name (URN) of the folder to check. Cannot be null or empty.</param>
+    /// <returns><see langword="true"/> if the folder has been deleted; otherwise, <see langword="false"/>.</returns>
+    public async Task<bool> IsFolderDeletedAsync(string projectId, string folderUrn)
+    {
+        projectId = FixProjectId(projectId);
+
+        var folderInfo = await DataMgtApi.Data.V1.Projects[projectId].Folders[folderUrn].GetAsync();
+
+
+        var isDeleted = folderInfo!.Data!.Attributes!.Hidden ?? false;
+
+        var isRootFolder = false;
+
+        // ACC Limitation: The "hidden" item attribute remains "true" if the file has not been deleted directly
+        // that happens when a parent folder has been deleted, that's why we have to check if the parent folders are hidden or not
+
+        while (isDeleted == false && isRootFolder == false)
+        {
+
+            var parentFolder = await DataMgtApi.Data.V1.Projects[projectId].Folders[folderUrn].Parent.GetAsync();
+
+            folderUrn = parentFolder!.Data!.Id!;
+
+            isRootFolder = parentFolder!.Data!.Attributes!.Name!.EndsWith("root-folder", StringComparison.InvariantCultureIgnoreCase);
+            isDeleted = parentFolder!.Data!.Attributes!.Hidden ?? false;
+        }
+
+        return isDeleted;
+
+    }
+
+    /// <summary>
     /// Download file version from ACC/BIM360
     /// </summary>
     /// <param name="projectId">Id of the project. The prefix 'b.' is handled automatically</param>

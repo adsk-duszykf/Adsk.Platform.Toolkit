@@ -233,6 +233,13 @@ public class DataManagementClientHelperTests
         Assert.IsTrue(result.versionId.EndsWith("3"));
     }
 
+    [TestMethod]
+    public async Task ShouldReturnFileIsDeleted()
+    {
+        var isDeleted = await DMclient.Helper.IsFileDeletedAsync(config.PROJECT_ID, config.DELETED_FILE_URN);
+        Assert.IsTrue(isDeleted);
+    }
+
     private static DataManagementClient InitializeDMclient()
     {
 
