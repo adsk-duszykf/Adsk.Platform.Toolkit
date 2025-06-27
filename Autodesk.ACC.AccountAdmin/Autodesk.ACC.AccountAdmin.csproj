@@ -7,6 +7,7 @@
     <PackageId>Adsk.Platform.ACC.AccountAdmin</PackageId>
     <Description>Autodesk Platform: ACC Account service SDK and tools</Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
 
   </PropertyGroup>
 

@@ -9,6 +9,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <Title>$(AssemblyName)</Title>
     <Description>Resilient HttpClient serving the Adsk Toolkit SDKs</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>

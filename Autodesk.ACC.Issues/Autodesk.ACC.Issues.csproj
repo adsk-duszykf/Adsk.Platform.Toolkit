@@ -8,6 +8,7 @@
     <Title>$(AssemblyName)</Title>
     <Description>Autodesk Platform: ACC Issues Service SDK and tools</Description>    
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>

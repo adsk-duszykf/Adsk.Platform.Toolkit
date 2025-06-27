@@ -13,6 +13,8 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
 
     <PackageId>Adsk.Platform.ACC.ModelProperties</PackageId>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+
   </PropertyGroup>
 
   <ItemGroup>

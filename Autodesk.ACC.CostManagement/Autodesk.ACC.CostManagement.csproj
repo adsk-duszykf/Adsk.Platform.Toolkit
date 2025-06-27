@@ -7,6 +7,8 @@
     <PackageId>Adsk.Platform.ACC.CostManagement</PackageId>
     <Description>Autodesk Platform: ACC Cost Service SDK and tools</Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+
   </PropertyGroup>
 
   <ItemGroup>

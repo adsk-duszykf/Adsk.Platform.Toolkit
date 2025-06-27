@@ -12,6 +12,9 @@
     <Version>1.0.0</Version>
 
     <PackageId>Adsk.Platform.ModelDerivative</PackageId>
+    
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+
   </PropertyGroup>
 
   <ItemGroup>
