@@ -775,7 +775,7 @@ public class DataManagementClientHelper
     /// <returns>File item id and version Id of the file version created in ACC/BIM360</returns>
     /// <exception cref="InvalidDataException">Upload failed</exception>
     /// <exception cref="InvalidOperationException">Version creation failed</exception>
-    public async Task<(string fileItemId, string versionId)> UploadFileAsync(string projectId, string folderId, string fileName, Stream fileContent, int defaultChunkSize = 10000000)
+    public async Task<(string fileItemId, string versionId, Completes3upload_response_200 uploadResult)> UploadFileAsync(string projectId, string folderId, string fileName, Stream fileContent, int defaultChunkSize = 10000000)
     {
         var newVersion = await UploadNewVersionAsync(projectId, folderId, fileName, fileContent, defaultChunkSize);
         if (newVersion?.ObjectId is null || newVersion?.ObjectKey is null)
@@ -804,7 +804,7 @@ public class DataManagementClientHelper
             fileItemId = result?.Included?.FirstOrDefault()?.Id ?? throw new InvalidOperationException("File id is null");
         }
 
-        return (fileItemId, versionId);
+        return (fileItemId, versionId, newVersion);
     }
 
     /// <summary>
