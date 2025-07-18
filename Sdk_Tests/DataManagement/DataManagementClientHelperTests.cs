@@ -213,7 +213,7 @@ public class DataManagementClientHelperTests
         var fileContent = new MemoryStream(byteArray);
 
         //Upload the file by chunks
-        var (fileItemId, versionId) = await DMclient.Helper.UploadFileAsync(config.PROJECT_ID, config.FOLDER_ID, uniqueFileName, fileContent, 50000);
+        var (fileItemId, versionId, _) = await DMclient.Helper.UploadFileAsync(config.PROJECT_ID, config.FOLDER_ID, uniqueFileName, fileContent, 50000);
 
         Assert.IsNotNull(fileItemId);
         Assert.IsTrue(versionId.EndsWith("1"));
@@ -221,7 +221,7 @@ public class DataManagementClientHelperTests
         //Upload a new version of the file by chunks
         rnd.NextBytes(byteArray);
 
-        (fileItemId, versionId) = await DMclient.Helper.UploadFileAsync(config.PROJECT_ID, config.FOLDER_ID, uniqueFileName, fileContent, 50000);
+        (fileItemId, versionId, _) = await DMclient.Helper.UploadFileAsync(config.PROJECT_ID, config.FOLDER_ID, uniqueFileName, fileContent, 50000);
 
         Assert.IsNotNull(fileItemId);
         Assert.IsTrue(versionId.EndsWith("2"));
