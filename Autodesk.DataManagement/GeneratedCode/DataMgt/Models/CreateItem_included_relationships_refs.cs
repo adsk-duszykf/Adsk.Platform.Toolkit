@@ -15,10 +15,10 @@ namespace Autodesk.DataManagement.Models
         /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Autodesk.DataManagement.Models.CreateItem_included_relationships_refs_data? Data { get; set; }
+        public List<global::Autodesk.DataManagement.Models.CreateItem_included_relationships_refs_data>? Data { get; set; }
 #nullable restore
 #else
-        public global::Autodesk.DataManagement.Models.CreateItem_included_relationships_refs_data Data { get; set; }
+        public List<global::Autodesk.DataManagement.Models.CreateItem_included_relationships_refs_data> Data { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -38,7 +38,7 @@ namespace Autodesk.DataManagement.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetObjectValue<global::Autodesk.DataManagement.Models.CreateItem_included_relationships_refs_data>(global::Autodesk.DataManagement.Models.CreateItem_included_relationships_refs_data.CreateFromDiscriminatorValue); } },
+                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Autodesk.DataManagement.Models.CreateItem_included_relationships_refs_data>(global::Autodesk.DataManagement.Models.CreateItem_included_relationships_refs_data.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -48,7 +48,7 @@ namespace Autodesk.DataManagement.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Autodesk.DataManagement.Models.CreateItem_included_relationships_refs_data>("data", Data);
+            writer.WriteCollectionOfObjectValues<global::Autodesk.DataManagement.Models.CreateItem_included_relationships_refs_data>("data", Data);
         }
     }
 }

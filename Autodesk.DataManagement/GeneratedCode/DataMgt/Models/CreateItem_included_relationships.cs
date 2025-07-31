@@ -15,10 +15,10 @@ namespace Autodesk.DataManagement.Models
         /// <summary>The refs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Autodesk.DataManagement.Models.CreateItem_included_relationships_refs>? Refs { get; set; }
+        public global::Autodesk.DataManagement.Models.CreateItem_included_relationships_refs? Refs { get; set; }
 #nullable restore
 #else
-        public List<global::Autodesk.DataManagement.Models.CreateItem_included_relationships_refs> Refs { get; set; }
+        public global::Autodesk.DataManagement.Models.CreateItem_included_relationships_refs Refs { get; set; }
 #endif
         /// <summary>The storage property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -46,7 +46,7 @@ namespace Autodesk.DataManagement.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "refs", n => { Refs = n.GetCollectionOfObjectValues<global::Autodesk.DataManagement.Models.CreateItem_included_relationships_refs>(global::Autodesk.DataManagement.Models.CreateItem_included_relationships_refs.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "refs", n => { Refs = n.GetObjectValue<global::Autodesk.DataManagement.Models.CreateItem_included_relationships_refs>(global::Autodesk.DataManagement.Models.CreateItem_included_relationships_refs.CreateFromDiscriminatorValue); } },
                 { "storage", n => { Storage = n.GetObjectValue<global::Autodesk.DataManagement.Models.CreateItem_included_relationships_storage>(global::Autodesk.DataManagement.Models.CreateItem_included_relationships_storage.CreateFromDiscriminatorValue); } },
             };
         }
@@ -57,7 +57,7 @@ namespace Autodesk.DataManagement.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Autodesk.DataManagement.Models.CreateItem_included_relationships_refs>("refs", Refs);
+            writer.WriteObjectValue<global::Autodesk.DataManagement.Models.CreateItem_included_relationships_refs>("refs", Refs);
             writer.WriteObjectValue<global::Autodesk.DataManagement.Models.CreateItem_included_relationships_storage>("storage", Storage);
         }
     }
