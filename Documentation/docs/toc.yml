@@ -20,10 +20,18 @@
 - name: Issues
   href: ACC/Issues/index.md
 - name: How To
+- name: Rate limit handling
+  href: HowTo/rateLimitHandling.md
+- name: Logging
+  href: HowTo/logging.md
+- name: Error handling
+  href: HowTo/errorHandling.md
 - name: .Net Core Web API with the SDK
   href: HowTo/dotnetCoreWebAPI.md
-- name: Customizing the SDK (Advanced)
+- name: Custom HttpClient in the SDK
   href: HowTo/customizeSDK.md
+- name: Skipping deserialization
+  href: HowTo/getHttpResponse.md
 
 
 

@@ -22,20 +22,21 @@ namespace Tests
             {AdskService.ACC_RFIs, "https://developer.api.autodesk.com/bim360/rfis"},
         };
 
-        public static System.Net.Http.HttpClient CreateProxyHttpClient(AdskService service, System.Net.Http.HttpClient? httpClient = null)
+        public static System.Net.Http.HttpClient CreateProxyHttpClient(AdskService service)
         {
 
-            var handler = new Autodesk.Common.HttpClientLibrary.ErrorHandler
-            (
-                innerHandler: new HttpClientHandler
+            var handler = new Autodesk.Common.HttpClientLibrary.Middleware.ErrorHandler()
+            {
+                InnerHandler = new HttpClientHandler
                 {
                     AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
                 }
-            );
+            };
 
-            httpClient ??= new(handler);
-
-            httpClient.BaseAddress = new Uri(GetMockAPSserviceUrl(service));
+            var httpClient = new System.Net.Http.HttpClient(handler)
+            {
+                BaseAddress = new Uri(GetMockAPSserviceUrl(service))
+            };
 
             return httpClient;
         }
@@ -44,9 +45,6 @@ namespace Tests
         {
             return $"{BaseMockServerURL}/{service}";
         }
-
-
-
 
         /// <summary>
         /// Create a mock
@@ -109,11 +107,20 @@ namespace Tests
                     );
             }
 
+            // Specific mock for rate limiting testing
             MockServer.Given(Request.Create().WithPath("*/ratelimit/*"))
                 .RespondWith(Response.Create()
                                 .WithStatusCode(System.Net.HttpStatusCode.OK)
                                 .WithDelay(2)
                                 .WithHeader("Retry-After", "120"));
+
+            // Specific mock for error testing
+            MockServer.Given(Request.Create().WithPath("*/error/*"))
+                .RespondWith(Response.Create()
+                                .WithStatusCode(System.Net.HttpStatusCode.InternalServerError)
+                                .WithBodyAsJson(new { message = "Expected error" })
+                                );
+
 
             return MockServer;
         }

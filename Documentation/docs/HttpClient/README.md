@@ -7,10 +7,9 @@
 Compare to the standard `System.Net.Http.HttpClient`, this implementation has the following features:
 
 - [Retry logic](#retry-logic)
-- Response decompression
 - [Error handling](#error-handling)
 - [Url Redirection](#url-redirection)
-- [Concurrency rate limit](#concurrency-rate-limit)
+- [Concurrency rate limit](#Preventive rate limit)
 
 ## Installation
 
@@ -43,9 +42,8 @@ public async Task<Hubs> GetHub()
 }
 ```
 
-### Concurrency rate limit
+### Preventive rate limit
 
-The concurrency rate limit can be enabled with the `HttpClient` constructor.
 The rate limit is defined by the maximum number of concurrent requests and the time window. This limit is per endpoint.
 
 ```csharp

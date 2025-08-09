@@ -1,19 +1,29 @@
 ﻿using System.Collections.Concurrent;
+using Autodesk.Common.HttpClientLibrary.Middleware.Options;
+using Microsoft.Kiota.Http.HttpClientLibrary.Extensions;
 
-namespace Autodesk.Common.HttpClientLibrary;
+namespace Autodesk.Common.HttpClientLibrary.Middleware;
 
-public class RateLimitingHandler(HttpMessageHandler innerHandler, int maxRequests, TimeSpan? timeWindow = null) : DelegatingHandler(innerHandler)
+public class RateLimitingHandler : DelegatingHandler
 {
+    private readonly RateLimitingHandlerOption _options;
+    public RateLimitingHandler(RateLimitingHandlerOption? rateLimitingHandlerOption = null)
+    {
+        _options = rateLimitingHandlerOption ?? new RateLimitingHandlerOption();
+    }
+
     private readonly ConcurrentDictionary<string, RateLimiter> _rateLimiters = new();
-    private readonly int _maxRequests = maxRequests;
-    private readonly TimeSpan? _timeWindows = timeWindow;
 
     protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
     {
-        if (_maxRequests > 0)
+        var rateOptions = request.GetRequestOption<RateLimitingHandlerOption>() ?? _options;
+
+        var rateLimit = rateOptions.GetRateLimit();
+
+        if (rateLimit != null)
         {
             var endpoint = GetEndpoint(request);
-            var rateLimiter = _rateLimiters.GetOrAdd(endpoint, (_) => new RateLimiter(_maxRequests, _timeWindows));
+            var rateLimiter = _rateLimiters.GetOrAdd(endpoint, (_) => new RateLimiter(rateLimit.Value.maxConcurrentRequests, rateLimit.Value.timeWindow));
 
             await rateLimiter.WaitForAvailabilityAsync();
 
@@ -37,10 +47,10 @@ public class RateLimiter
     private readonly TimeSpan _timeWindow;
     private readonly SemaphoreSlim _semaphore;
 
-    public RateLimiter(int maxRequests = 10, TimeSpan? timeWindow = null)
+    public RateLimiter(int maxRequests, TimeSpan timeWindow)
     {
         _maxRequests = maxRequests;
-        _timeWindow = timeWindow ?? TimeSpan.FromMinutes(1);
+        _timeWindow = timeWindow;
         _resetTime = DateTime.UtcNow + _timeWindow;
         _semaphore = new SemaphoreSlim(1, 1);
     }

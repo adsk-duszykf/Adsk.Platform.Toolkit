@@ -1,20 +1,38 @@
-﻿using System.Net;
+﻿using Autodesk.Common.HttpClientLibrary.Middleware;
+using Autodesk.Common.HttpClientLibrary.Middleware.Options;
 using Microsoft.Kiota.Abstractions.Authentication;
 using Microsoft.Kiota.Http.HttpClientLibrary;
+using static Microsoft.Kiota.Http.HttpClientLibrary.KiotaClientFactory;
 
 namespace Autodesk.Common.HttpClientLibrary;
 public static class HttpClientFactory
 {
+
     /// <summary>
-    /// Creates a new HttpClient with an error handler and a decompression handler.
+    /// Create a resilient Http Client
     /// </summary>
-    /// <param name="finalHandler">Optional: If set will replace the default error and decompression handlers</param>
-    /// <returns>A new instance of <see cref="Microsoft.Kiota.Http.HttpClientLibrary.KiotaClientFactory"/></returns>
-    public static System.Net.Http.HttpClient Create((int maxRequests, TimeSpan? timeWindow) rateLimit = default, HttpMessageHandler? finalHandler = null)
+    /// <param name="rateLimit">Optional: Maximum calls per endpoint in a specific timeframe. Disabled by default</param>
+    /// <returns>Http client including Kitoa middleware and custom error handling></returns>
+    public static System.Net.Http.HttpClient Create((int maxConcurrentRequests, TimeSpan timeWindow)? rateLimit = null)
     {
-        var handler = finalHandler ?? GetDefaultHandler(rateLimit.maxRequests, rateLimit.timeWindow);
-        return KiotaClientFactory.Create(handler);
+        var rateLimitHandlerOption = new RateLimitingHandlerOption();
+        if (rateLimit.HasValue)
+        {
+            rateLimitHandlerOption.SetRateLimit(rateLimit.Value.maxConcurrentRequests, rateLimit.Value.timeWindow);
+        }
+
+        var handlers = CreateDefaultHandlers();
+        handlers.Add(new RateLimitingHandler(rateLimitHandlerOption));
+        handlers.Add(new ErrorHandler());
+
+        var defaultFinalHandler = GetDefaultHttpMessageHandler();
+        var httpMessageHandler =
+                    ChainHandlersCollectionAndGetFirstLink(defaultFinalHandler, [.. handlers])
+                    ?? defaultFinalHandler;
+
+        return new HttpClient(httpMessageHandler);
     }
+
 
     /// <summary>
     /// Creates a new HttpClientRequestAdapter with an AccessTokenProvider. The adapter will use the default error and decompression handlers.
@@ -22,7 +40,7 @@ public static class HttpClientFactory
     /// <param name="getAccessToken"></param>
     /// <param name="httpClient"></param>
     /// <returns>Request adapter for SDK client instances</returns>
-    public static HttpClientRequestAdapter CreateAdapter(Func<Task<string>> getAccessToken, System.Net.Http.HttpClient? httpClient)
+    public static HttpClientRequestAdapter CreateAdapter(Func<Task<string>> getAccessToken, HttpClient? httpClient)
     {
         var auth = new BaseBearerTokenAuthenticationProvider(new AccessTokenProvider(getAccessToken));
 
@@ -31,27 +49,15 @@ public static class HttpClientFactory
         return new HttpClientRequestAdapter(auth, null, null, httpClient); ;
     }
 
-    private static HttpMessageHandler GetDefaultHandler(int maxRequests, TimeSpan? timeWindow)
+    /// <summary>
+    /// Gets the default handler types.
+    /// </summary>
+    /// <returns>A list of all the default handlers</returns>
+    /// <remarks>Order matters</remarks>
+    public static IList<ActivatableType> GetDefaultHandlerActivatableTypes()
     {
+        var nativeDefaultHandlers = KiotaClientFactory.GetDefaultHandlerActivatableTypes();
 
-        var httpHandlerStack = new ErrorHandler
-        (
-            innerHandler: new RateLimitingHandler(
-                 new HttpClientHandler()
-                 {
-                     AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
-
-                 }
-                 , maxRequests, timeWindow)
-        );
-
-        return httpHandlerStack;
-
-    }
-    public static IList<Type> GetDefaultHandlerTypes()
-    {
-        var nativeDefaultHanlders = KiotaClientFactory.GetDefaultHandlerTypes();
-
-        return [.. nativeDefaultHanlders, typeof(ErrorHandler)];
+        return [.. nativeDefaultHandlers, new(typeof(RateLimitingHandler)), new(typeof(ErrorHandler))];
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Autodesk.Common.HttpClientLibrary;
 
-internal class AccessTokenProvider(Func<Task<string>> getAccessToken) : IAccessTokenProvider
+public class AccessTokenProvider(Func<Task<string>> getAccessToken) : IAccessTokenProvider
 {
     public AllowedHostsValidator AllowedHostsValidator => throw new NotImplementedException();
 

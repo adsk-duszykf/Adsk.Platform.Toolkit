@@ -1,6 +1,68 @@
-# Customizing the SDK (Advanced)
+# Customizing the HttpClient in the SDK (Advanced)
 
-## HttpClient
+You can pass your own `HttpClient` to the `{service}client` constructor.
+
+You can either create a new instance of `HttpClient` with your custom settings or modify the existing one.
+
+## Adding a new middleware in the HttpClient pipeline
+
+````csharp
+public async Task<Hubs> GetHub()
+{
+
+    async Task<string> getAccessToken()
+    {
+        //return access token with your logic
+    }
+
+    // Create a custom HttpClient with the desired middleware (see the implementation below)
+    var customHttpClient = CreateCustomHttpClient();
+
+    // Pass the custom HttpClient to the DataManagementClient
+    var DMclient = new DataManagementClient(getAccessToken, customHttpClient);
+
+    var hubs = await DMclient.DataMgtApi.Project.V1.Hubs.GetAsync();
+
+    return hubs;
+}
+
+public static System.Net.Http.HttpClient CreateCustomHttpClient((int maxConcurrentRequests, TimeSpan timeWindow)? rateLimit = null)
+{
+    // Get the default middleware (Retry, error handling, etc.)
+    var handlers = CreateDefaultHandlers();
+    
+    // Add your custom middleware (see the implementation below)
+    handlers.Add(new Logger());
+
+    var defaultFinalHandler = GetDefaultHttpMessageHandler();
+
+    // Chain the middlewares.
+    // The first in the collection is the next to the final handler
+    var httpMessageHandler =
+                ChainHandlersCollectionAndGetFirstLink(defaultFinalHandler, [.. handlers])
+                ?? defaultFinalHandler;
+
+    return new HttpClient(httpMessageHandler);
+}
+
+
+/// <summary>
+/// Minimal logging handler for the HttpClient.
+/// It must inherit from DelegatingHandler.
+/// </summary>
+public class Logger : DelegatingHandler
+{
+
+    protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+    {
+        var response = await base.SendAsync(request, cancellationToken);
+
+        Trace.TraceInformation($"Response status code:  {response.StatusCode}");
+    }
+
+}
+
+````
 
 The requests and responses can be customized by providing a custom `HttpClient` to the `client` constructor by adding a `DelegatingHandler` to the `HttpClient` pipeline.
 
@@ -65,88 +127,4 @@ public class LoggingHandler() : DelegatingHandler
         return response;
     }
 }
-````
-
-## Per Request Customization
-
-The default response handlers can be customized by providing a custom `ResponseHandlerOption` to the `request`.
-
-This approach is useful when you don't get response immediately because the server is still processing the request, or if you want to handle errors in a specific way. In this case, you can use the `responseHandler` to get the response
-
-### Example 1: Custom Error Handling for a specific request
-
-````csharp
-public async Task TestMethod1()
-{
-    var auth = new Microsoft.Kiota.Abstractions.Authentication.BaseBearerTokenAuthenticationProvider(new Auth());
-
-    var adapter = new Microsoft.Kiota.Http.HttpClientLibrary.HttpClientRequestAdapter(auth);
-
-    var client = new Autodesk.DataManagement.DataManagementClient(adapter);
-
-    Hubs? hubs = null;
-
-    // Initialize the custom ResponseHandler here
-    var responseHandler = new NativeResponseHandler();
-
-    // Add the ResponseHandler to the request options
-    await client.Project.V1.Hubs.GetAsync(request =>
-    {
-        request.Options.Add(new ResponseHandlerOption() { ResponseHandler = responseHandler });
-    });
-
-    // Adding a ResponseHandler skips the default error handling and response parsing.
-    // Check if the response is successful.
-    var response = responseHandler.Value as HttpResponseMessage;
-    if (response?.IsSuccessStatusCode == false)
-    {
-        var errorMessage = await response.Content.ReadAsStringAsync();
-        Trace.(errorMessage);
-    }
-
-    // Parse the response, because default parsing is skipped.
-    hub = response.Content.ReadFromJsonAsync<Hubs>().Result;
-}
-````
-
-### Example 2: Wait until the response is ready
-
-Here is an example with the `ModelDerivativeClient` for getting a large object tree:
-
-````csharp
-  public async Task<ObjectTree?> GetObjectTree(string fileUrnToBase64, string modelGuid)
-    {
-
-        // Override the default response handler to get the response
-        HttpResponseMessage getTree = async () =>
-        {
-            var responseHandler = new NativeResponseHandler();
-            var objectTree = await api.Designdata[fileUrnToBase64].Metadata[modelGuid].GetAsync(r =>
-             {
-                 r.QueryParameters.Forceget = true;
-                 r.Headers.Add("ForceGet", "true");
-                 r.Options.Add(new ResponseHandlerOption() { ResponseHandler = responseHandler });
-             });
-
-            return responseHandler.Value as HttpResponseMessage;
-        };
-
-        var response = await getTree();
-
-        // For large models, the response is 202 Accepted, and the tree is not ready yet.
-        // We need to wait and retry until the tree is ready.
-        while (response.StatusCode == System.Net.HttpStatusCode.Created)
-        {
-            await Task.Delay(5000);
-            response = await getTree();
-        }
-
-        // Now we call again the API to get the tree with the default response handler. 
-        //In this way, the response is unzipped and parsed and the tree is returned.
-
-        var objectTree = await api.Designdata[fileUrnToBase64].Metadata[modelGuid].GetAsync();
-
-        return objectTree;
-
-    }
 ````

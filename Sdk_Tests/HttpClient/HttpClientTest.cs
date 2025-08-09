@@ -49,8 +49,9 @@ public class HttpClientTest
     //Test the rate limit handler
     public async Task ShouldSlowerDownByRateLimit()
     {
-        var requestTimeWindow = TimeSpan.FromMilliseconds(1000);
-        var httpClient = Autodesk.Common.HttpClientLibrary.HttpClientFactory.Create((10, requestTimeWindow));
+        var requestTimeWindow = TimeSpan.FromSeconds(1);
+        var rateLimit = (maxConcurrentRequests: 10, timeWindow: requestTimeWindow);
+        var httpClient = Autodesk.Common.HttpClientLibrary.HttpClientFactory.Create(rateLimit);
 
         var startingAt = DateTime.Now;
 
@@ -76,6 +77,8 @@ public class HttpClientTest
     public async Task ShouldIgnoreRateLimit()
     {
         var requestTimeWindow = TimeSpan.FromSeconds(1);
+
+        // By default the rate limiting is disabled
         var httpClient = Autodesk.Common.HttpClientLibrary.HttpClientFactory.Create();
 
         var startingAt = DateTime.Now;
@@ -96,13 +99,32 @@ public class HttpClientTest
         Assert.IsTrue((endAt - startingAt).TotalMilliseconds < requestTimeWindow.TotalMilliseconds);
 
     }
-    private AuthenticationClient InitializeAuthClient()
+    [TestMethod]
+    [ExpectedException(typeof(HttpRequestException))]
+    //Test the rate limit handler
+    public async Task ShouldThrowException()
     {
         var httpClient = Autodesk.Common.HttpClientLibrary.HttpClientFactory.Create();
 
-        var authProxyClient = APSmockServer.CreateProxyHttpClient(AdskService.Authentication, httpClient);
+        try
+        {
+            await httpClient.GetAsync("http://localhost:4200/error/test?testparam=1");
+        }
+        catch (HttpRequestException ex)
+        {
+            // Validate that the exception message or data contains "context"
+            Assert.IsNotNull(ex.Message);
+            Assert.IsTrue(ex.Data.Contains("context"), "Exception data should contain 'context' entry");
 
-        var authClient = new AuthenticationClient(authProxyClient);
+            throw;
+        }
+    }
+    private AuthenticationClient InitializeAuthClient()
+    {
+        var httpClient = Autodesk.Common.HttpClientLibrary.HttpClientFactory.Create();
+        httpClient.BaseAddress = new Uri(APSmockServer.GetMockAPSserviceUrl(AdskService.Authentication));
+
+        var authClient = new AuthenticationClient(httpClient);
 
         return authClient;
     }

@@ -24,7 +24,7 @@ public static class HttpClientExtensions
     /// <returns><see cref="IServiceCollection"/> as per convention</returns>
     internal static IServiceCollection AddToolkitHandlers(this IServiceCollection services)
     {
-        var toolkitHandlers = HttpClientFactory.GetDefaultHandlerTypes();
+        var toolkitHandlers = HttpClientFactory.GetDefaultHandlerActivatableTypes();
 
         // And register them in the DI container
         foreach (var handler in toolkitHandlers)
@@ -44,7 +44,7 @@ public static class HttpClientExtensions
     /// </remarks>
     internal static IHttpClientBuilder AttachToolkitHandlers(this IHttpClientBuilder builder)
     {
-        var toolkitHandlers = HttpClientFactory.GetDefaultHandlerTypes();
+        var toolkitHandlers = HttpClientFactory.GetDefaultHandlerActivatableTypes();
 
         // And attach them to the http client builder
         foreach (var handler in toolkitHandlers)
