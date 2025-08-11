@@ -1,5 +1,6 @@
 ﻿using Autodesk.Authentication;
 using Autodesk.Authentication.Helpers.Models;
+using Autodesk.Common.HttpClientLibrary.Middleware.Options;
 using Sdk_Tests;
 
 namespace Tests.HttpClient;
@@ -99,6 +100,7 @@ public class HttpClientTest
         Assert.IsTrue((endAt - startingAt).TotalMilliseconds < requestTimeWindow.TotalMilliseconds);
 
     }
+
     [TestMethod]
     [ExpectedException(typeof(HttpRequestException))]
     //Test the rate limit handler
@@ -119,6 +121,23 @@ public class HttpClientTest
             throw;
         }
     }
+
+    [TestMethod]
+    //Test the add query parameter handler
+    public async Task ShouldAddQueryParameter()
+    {
+        //Introduce a query parameter in the url with the queryParameter middleware
+        var queryParamHandler = new QueryParameterHandlerOption();
+        queryParamHandler.QueryParameters.Add("testparam", "1");
+
+        var httpClient = Autodesk.Common.HttpClientLibrary.HttpClientFactory.Create(null, [queryParamHandler]);
+
+        // The query parameter is not part of the url, it is added by the middleware
+        var resp = await httpClient.GetAsync("http://localhost:4200/queryParam/");
+
+        Assert.IsTrue(resp.IsSuccessStatusCode, "Response should be successful");
+    }
+
     private AuthenticationClient InitializeAuthClient()
     {
         var httpClient = Autodesk.Common.HttpClientLibrary.HttpClientFactory.Create();

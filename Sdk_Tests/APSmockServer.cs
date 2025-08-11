@@ -120,6 +120,15 @@ namespace Tests
                                 .WithStatusCode(System.Net.HttpStatusCode.InternalServerError)
                                 .WithBodyAsJson(new { message = "Expected error" })
                                 );
+            // Specific mock for query parameter testing
+            MockServer.Given(Request.Create().WithPath("*/queryParam/*").WithParam(p =>
+            {
+                var testParam = p.Keys.FirstOrDefault(k => k == "testparam");
+                return testParam != null && p.Count == 1;
+            })).RespondWith(Response.Create()
+                                .WithStatusCode(System.Net.HttpStatusCode.OK)
+                                .WithBodyAsJson(new { message = "Expected query parameter" })
+                                );
 
 
             return MockServer;

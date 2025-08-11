@@ -8,20 +8,20 @@ namespace Autodesk.Common.HttpClientLibrary.Middleware;
 /// </summary>
 public class ErrorHandler : DelegatingHandler
 {
-    private readonly ErrorHandlerOptions _options;
+    private readonly ErrorHandlerOption _errorHandlerOptions;
 
-    public ErrorHandler(ErrorHandlerOptions? options = null)
+    public ErrorHandler(ErrorHandlerOption? errorHandlerOptions = null)
     {
-        _options = options ?? new ErrorHandlerOptions() { ThrowErrorOnFailure = true };
+        _errorHandlerOptions = errorHandlerOptions ?? new ErrorHandlerOption() { Enabled = true };
     }
     protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
     {
         var response = await base.SendAsync(request, cancellationToken);
 
         // Check if the request has a specific ErrorHandlerOptions set, otherwise use the default options
-        var errorOptions = request.GetRequestOption<ErrorHandlerOptions>() ?? _options;
+        var errorOptions = request.GetRequestOption<ErrorHandlerOption>() ?? _errorHandlerOptions;
 
-        if (errorOptions.ThrowErrorOnFailure && response.IsSuccessStatusCode == false)
+        if (errorOptions.Enabled && response.IsSuccessStatusCode == false)
         {
 
             var err = new HttpRequestException($"Request to '{request.RequestUri}' failed with status code '{response.StatusCode}'.", null, response.StatusCode)

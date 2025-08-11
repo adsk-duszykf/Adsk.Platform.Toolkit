@@ -2,8 +2,6 @@
 - href: ../index.md
 - href: GetStarted/quickStart.md
 - name: Core Services
-- name: HttpClient
-  href: HttpClient/README.md
 - name: Authentication
   href: Authentication/README.md
 - name: Data Management
@@ -26,11 +24,13 @@
   href: HowTo/logging.md
 - name: Error handling
   href: HowTo/errorHandling.md
+- name: Query Parameters
+  href: HowTo/queryParameters.md
 - name: .Net Core Web API with the SDK
   href: HowTo/dotnetCoreWebAPI.md
 - name: Custom HttpClient in the SDK
   href: HowTo/customizeSDK.md
-- name: Skipping deserialization
+- name: Intercept Http Response
   href: HowTo/getHttpResponse.md
 
 
