@@ -1,5 +1,6 @@
 ﻿using Autodesk.Common.HttpClientLibrary.Middleware;
 using Autodesk.Common.HttpClientLibrary.Middleware.Options;
+using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Authentication;
 using Microsoft.Kiota.Http.HttpClientLibrary;
 using static Microsoft.Kiota.Http.HttpClientLibrary.KiotaClientFactory;
@@ -7,13 +8,21 @@ using static Microsoft.Kiota.Http.HttpClientLibrary.KiotaClientFactory;
 namespace Autodesk.Common.HttpClientLibrary;
 public static class HttpClientFactory
 {
+    /// <summary>
+    /// Create a resilient Http Client
+    /// </summary>
+    /// <returns>Http client including default middleware WITHOUT rate limit</returns>
+    public static System.Net.Http.HttpClient Create()
+    {
+        return Create(null);
+    }
 
     /// <summary>
     /// Create a resilient Http Client
     /// </summary>
-    /// <param name="rateLimit">Optional: Maximum calls per endpoint in a specific timeframe. Disabled by default</param>
-    /// <returns>Http client including Kitoa middleware and custom error handling></returns>
-    public static System.Net.Http.HttpClient Create((int maxConcurrentRequests, TimeSpan timeWindow)? rateLimit = null)
+    /// <param name="rateLimit">Maximum calls per endpoint in a specific timeframe</param>
+    /// <returns>Http client including default middleware WITH rate limit</returns>
+    public static System.Net.Http.HttpClient Create((int maxConcurrentRequests, TimeSpan timeWindow)? rateLimit)
     {
         var rateLimitHandlerOption = new RateLimitingHandlerOption();
         if (rateLimit.HasValue)
@@ -21,18 +30,33 @@ public static class HttpClientFactory
             rateLimitHandlerOption.SetRateLimit(rateLimit.Value.maxConcurrentRequests, rateLimit.Value.timeWindow);
         }
 
-        var handlers = CreateDefaultHandlers();
-        handlers.Add(new RateLimitingHandler(rateLimitHandlerOption));
-        handlers.Add(new ErrorHandler());
+        return Create(null, [rateLimitHandlerOption]);
+    }
 
-        var defaultFinalHandler = GetDefaultHttpMessageHandler();
+    /// <summary>
+    /// Initializes the <see cref="HttpClient"/> with the default configuration and middlewares including a authentication middleware using the <see cref="IAuthenticationProvider"/> if provided.
+    /// </summary>
+    /// <param name="finalHandler">The final <see cref="HttpMessageHandler"/> in the http pipeline. Can be configured for proxies, auto-decompression and auto-redirects </param>
+    /// <param name="optionsForHandlers">A array of <see cref="IRequestOption"/> objects passed to the default handlers.</param>
+    /// <returns>The <see cref="HttpClient"/> with the default middlewares.</returns>
+    public static HttpClient Create(HttpMessageHandler? finalHandler = null, IRequestOption[]? optionsForHandlers = null)
+    {
+        var rateLimitHandlerOption = (RateLimitingHandlerOption?)optionsForHandlers?.FirstOrDefault(o => o.GetType() == typeof(RateLimitingHandlerOption)) ?? new RateLimitingHandlerOption();
+        var errorHandlerOption = (ErrorHandlerOption?)optionsForHandlers?.FirstOrDefault(o => o.GetType() == typeof(ErrorHandlerOption)) ?? new ErrorHandlerOption();
+        var queryParameterHandlerOption = (QueryParameterHandlerOption?)optionsForHandlers?.FirstOrDefault(o => o.GetType() == typeof(QueryParameterHandlerOption)) ?? new QueryParameterHandlerOption();
+
+        var handlers = CreateDefaultHandlers(optionsForHandlers);
+        handlers.Add(new RateLimitingHandler(rateLimitHandlerOption));
+        handlers.Add(new QueryParameterHandler(queryParameterHandlerOption));
+        handlers.Add(new ErrorHandler(errorHandlerOption));
+
+        var defaultFinalHandler = finalHandler ?? GetDefaultHttpMessageHandler();
         var httpMessageHandler =
                     ChainHandlersCollectionAndGetFirstLink(defaultFinalHandler, [.. handlers])
                     ?? defaultFinalHandler;
 
-        return new HttpClient(httpMessageHandler);
+        return httpMessageHandler != null ? new HttpClient(httpMessageHandler) : new HttpClient();
     }
-
 
     /// <summary>
     /// Creates a new HttpClientRequestAdapter with an AccessTokenProvider. The adapter will use the default error and decompression handlers.
