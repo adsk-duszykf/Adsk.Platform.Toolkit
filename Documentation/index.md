@@ -61,7 +61,8 @@ Console.WriteLine($"Hubs: {string.Join(';', hubIds)}");
 | Model Derivative | Stable | [Yes](https://adsk-duszykf.github.io/Adsk.Platform.Toolkit/api/Autodesk.ModelDerivative.Helpers.ModelDerivativeClientHelper.html) | [Adsk.Platform.ModelDerivative](https://www.nuget.org/packages/Adsk.Platform.ModelDerivative) |
 | ACC Model Properties | Stable | [Yes](https://adsk-duszykf.github.io/Adsk.Platform.Toolkit/api/Autodesk.ACC.ModelProperties.Helpers.ModelPropertiesClientHelper.html) | [Adsk.Platform.ACC.ModelProperties](https://www.nuget.org/packages/Adsk.Platform.ACC.ModelProperties) |
 | ACC File Management *(Custom Attributes only)* | Stable | [Yes](https://adsk-duszykf.github.io/Adsk.Platform.Toolkit/api/Autodesk.ACC.FileManagement.Helpers.FileManagementClientHelper.html) | [Adsk.Platform.ACC.FileManagement](https://www.nuget.org/packages/Adsk.Platform.ACC.ModelProperties) |
-| ACC RFIs | Stable | [Yes](https://adsk-duszykf.github.io/Adsk.Platform.Toolkit/api/Autodesk.ACC.RFIs.Helpers.RFIsClientHelper.html) | [Adsk.Platform.ACC.RFIs](https://www.nuget.org/packages/Adsk.Platform.ACC.ModelProperties) |
+| ACC RFIs | Stable | [Yes](https://adsk-duszykf.github.io/Adsk.Platform.Toolkit/api/Autodesk.ACC.RFIs.Helpers.RFIsClientHelper.html) | [Adsk.Platform.ACC.RFIs](https://www.nuget.org/packages/Adsk.Platform.ACC.RFIs) |
+| ACC Data Connector | Stable | [Yes](https://adsk-duszykf.github.io/Adsk.Platform.Toolkit/api/Autodesk.ACC.DataConnector.Helpers.DataConnectorClientHelper.html) | [Adsk.Platform.ACC.DataConnector](https://www.nuget.org/packages/Adsk.Platform.ACC.DataConnector) |
 | ACC/BIM360 Account Admin | In development | No | [Adsk.Platform.ACC.AccountAdmin](https://www.nuget.org/packages/Adsk.Platform.ACC.AccountAdmin) |
 | ACC Cost Management | In development | No | [Adsk.Platform.ACC.CostManagement](https://www.nuget.org/packages/Adsk.Platform.ACC.CostManagement) |
 | ACC Assets | In development | No | - |

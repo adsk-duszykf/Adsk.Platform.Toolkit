@@ -11,6 +11,8 @@
 - name: ACC
 - name: File Management
   href: ACC/FileManagement/index.md
+- name: Data Connector
+  href: ACC/DataConnector/index.md
 - name: Model Properties
   href: ACC/ModelProperties/index.md
 - name: RFIs
